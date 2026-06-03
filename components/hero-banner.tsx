@@ -57,12 +57,12 @@ export function HeroBanner() {
             {/* Background glowing orb */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/20 blur-[100px] rounded-full z-0" />
             
-            {/* Top Right Image (Fisherman) */}
+            {/* Top Right Image (Scuba Diver) */}
             <Reveal delay={200} className="absolute top-4 right-4 w-[60%] h-[60%] z-10">
               <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 hover:scale-105 hover:z-30">
                 <Image
-                  src="/fisherman_net.png"
-                  alt="Traditional Native Hawaiian fisherman preparing a hoop net"
+                  src="/scuba_diver.png"
+                  alt="Scuba diver working on coral reef restoration tree"
                   fill
                   className="object-cover"
                 />
