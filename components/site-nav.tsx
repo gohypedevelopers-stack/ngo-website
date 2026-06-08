@@ -1,17 +1,19 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
-  { label: 'Mission', href: '/mission' },
-  { label: 'Products', href: '/products' },
-  { label: 'Futures', href: '/futures' },
-  { label: 'Ecosystem', href: '/ecosystem' },
+  { label: 'The Crisis', href: '/the-crisis' },
+  { label: 'Our Work', href: '/our-work' },
+  { label: 'The Hui', href: '/the-hui' },
+  { label: 'Get Involved', href: '/get-involved' },
+  { label: 'News & Research', href: '/news-research' },
 ]
 
-export function SiteNav() {
+export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -27,30 +29,44 @@ export function SiteNav() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
         scrolled
-          ? 'border-b border-white/10 bg-slate-950/80 py-3 backdrop-blur-md shadow-lg'
+          ? theme === 'light'
+            ? 'border-b border-slate-200 bg-white/80 py-3 backdrop-blur-md shadow-sm'
+            : 'border-b border-white/10 bg-slate-950/80 py-3 backdrop-blur-md shadow-lg'
           : 'border-b border-transparent bg-transparent py-5',
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 sm:px-8">
         <a
           href="/"
-          className="font-display text-lg font-bold tracking-tight text-white"
+          className="flex items-center gap-2"
         >
-          Hui Nehu
-          <span className="ml-1.5 align-middle text-xs font-normal uppercase tracking-[0.2em] text-teal-400">
-            ◦ HI
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Hui Nehu Logo"
+            width={48}
+            height={48}
+            className="h-10 w-auto object-contain bg-white rounded-lg p-0.5 shadow-sm"
+            priority
+          />
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-5 lg:flex xl:gap-7">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group relative text-sm font-medium tracking-wide text-slate-300 transition-colors hover:text-white"
+                className={cn(
+                  "group relative whitespace-nowrap text-xs font-semibold tracking-wide transition-colors lg:text-sm",
+                  theme === 'light' && !scrolled
+                    ? "text-slate-600 hover:text-slate-900"
+                    : "text-slate-300 hover:text-white"
+                )}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-teal-400 transition-all duration-300 group-hover:w-full" />
+                <span className={cn(
+                  "absolute -bottom-1 left-0 h-px w-0 transition-all duration-300 group-hover:w-full",
+                  theme === 'light' && !scrolled ? "bg-teal-600" : "bg-teal-400"
+                )} />
               </a>
             </li>
           ))}
@@ -58,8 +74,13 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#guide"
-            className="hidden rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:bg-white hover:text-slate-950 sm:inline-block backdrop-blur-sm"
+            href="/get-involved/investment-tiers"
+            className={cn(
+              "hidden whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-all xl:inline-block xl:px-5 xl:text-sm backdrop-blur-sm",
+              theme === 'light' && !scrolled
+                ? "border-slate-900/20 bg-slate-900/5 text-slate-900 hover:bg-slate-900 hover:text-white"
+                : "border-white/20 bg-white/5 text-white hover:bg-white hover:text-slate-950"
+            )}
           >
             Invest now
           </a>
@@ -67,7 +88,12 @@ export function SiteNav() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white md:hidden hover:bg-white/10 transition-colors"
+            className={cn(
+              "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors lg:hidden",
+              theme === 'light' && !scrolled
+                ? "text-slate-900 hover:bg-slate-900/10"
+                : "text-white hover:bg-white/10"
+            )}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -77,7 +103,10 @@ export function SiteNav() {
       {/* Mobile menu */}
       <div
         className={cn(
-          'overflow-hidden border-t border-white/10 bg-slate-950/95 backdrop-blur-xl transition-all duration-300 md:hidden',
+          'overflow-hidden border-t backdrop-blur-xl transition-all duration-300 lg:hidden',
+          theme === 'light'
+            ? 'border-slate-200 bg-white/95'
+            : 'border-white/10 bg-slate-950/95',
           open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
         )}
       >
@@ -87,7 +116,12 @@ export function SiteNav() {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:bg-white/10 hover:text-white"
+                className={cn(
+                  "block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                  theme === 'light'
+                    ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
+                    : "text-slate-300 hover:bg-white/10 hover:text-white"
+                )}
               >
                 {link.label}
               </a>
@@ -95,9 +129,14 @@ export function SiteNav() {
           ))}
           <li>
             <a
-              href="#guide"
+              href="/get-involved/investment-tiers"
               onClick={() => setOpen(false)}
-              className="mt-2 block rounded-full bg-white px-3 py-2.5 text-center text-sm font-bold text-slate-950 hover:bg-teal-400 transition-colors"
+              className={cn(
+                "mt-2 block rounded-full px-3 py-2.5 text-center text-sm font-bold transition-colors",
+                theme === 'light'
+                  ? "bg-slate-900 text-white hover:bg-teal-600"
+                  : "bg-white text-slate-950 hover:bg-teal-400"
+              )}
             >
               Invest now
             </a>
