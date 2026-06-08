@@ -10,6 +10,7 @@ const tiers = [
     period: '/ yr',
     featured: false,
     cta: 'Become a partner',
+    checkoutParam: 'nehu-community-partner',
     perks: [
       'Named in our annual reef health report',
       'Quarterly impact updates',
@@ -23,6 +24,7 @@ const tiers = [
     period: '/ yr',
     featured: true,
     cta: 'Become a steward',
+    checkoutParam: 'koa-reef-steward',
     perks: [
       'Name a coral nursery site',
       'Private science briefings with Dr. Goo',
@@ -37,6 +39,7 @@ const tiers = [
     period: '/ yr',
     featured: false,
     cta: 'Start a conversation',
+    checkoutParam: 'koa-founding-partner',
     perks: [
       'Named program sponsorship',
       'Seat on the Science Advisory Council',
@@ -47,6 +50,8 @@ const tiers = [
 ]
 
 export function AskSection() {
+  const stripePaymentLink = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK
+
   return (
     <section id="ask" className="relative bg-[#FAF8F5] px-5 py-16 sm:px-8 sm:py-20 overflow-hidden">
       <div className="relative mx-auto max-w-7xl z-10">
@@ -121,16 +126,21 @@ export function AskSection() {
                   ))}
                 </ul>
                 
-                <button
+                <a
+                  href={
+                    stripePaymentLink
+                      ? `${stripePaymentLink}?client_reference_id=${tier.checkoutParam}`
+                      : `mailto:partners@huinehu.org?subject=${encodeURIComponent(tier.name)}`
+                  }
                   className={cn(
-                    'mt-auto w-full rounded-full py-3 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer',
+                    'mt-auto inline-flex w-full items-center justify-center rounded-full py-3 text-xs font-bold uppercase tracking-wider transition-all duration-300',
                     tier.featured
                       ? 'bg-teal-bright text-white hover:bg-teal-deep'
                       : 'border border-slate-200 text-[#0a4a40] hover:border-teal-bright hover:bg-teal-pale/50',
                   )}
                 >
                   {tier.cta}
-                </button>
+                </a>
               </div>
             </Reveal>
           ))}

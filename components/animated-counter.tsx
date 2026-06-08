@@ -63,10 +63,14 @@ export function AnimatedCounter({
     return () => observer.disconnect()
   }, [value, durationMs])
 
-  const formatted = display.toLocaleString('en-US', {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  })
+  const parsedDecimals = typeof decimals === 'number' && !isNaN(decimals) ? Math.min(Math.max(0, decimals), 3) : 0;
+
+  const formatted = parsedDecimals === 0 
+    ? Math.round(display).toLocaleString('en-US')
+    : display.toLocaleString('en-US', {
+        minimumFractionDigits: parsedDecimals,
+        maximumFractionDigits: parsedDecimals,
+      });
 
   return (
     <span ref={ref} className={className}>

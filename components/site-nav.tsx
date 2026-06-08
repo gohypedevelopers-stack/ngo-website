@@ -5,10 +5,10 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
-  { label: 'Mission', href: '#initiatives' },
-  { label: 'Products', href: '#products' },
-  { label: 'Futures', href: '#futures' },
-  { label: 'Ecosystem', href: '#ecosystem' },
+  { label: 'Mission', href: '/mission' },
+  { label: 'Products', href: '/products' },
+  { label: 'Futures', href: '/futures' },
+  { label: 'Ecosystem', href: '/ecosystem' },
 ]
 
 export function SiteNav() {
@@ -33,7 +33,7 @@ export function SiteNav() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-8">
         <a
-          href="#top"
+          href="/"
           className="font-display text-lg font-bold tracking-tight text-white"
         >
           Hui Nehu

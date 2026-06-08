@@ -12,22 +12,25 @@ import { EvCanoe } from '@/components/ev-canoe'
 import { KoinaEcosystem } from '@/components/koina-ecosystem'
 import { AskSection } from '@/components/ask-section'
 import { SiteFooter } from '@/components/site-footer'
+import { fetchHomepageData } from '@/lib/strapi'
 
-export default function Page() {
+export default async function Page() {
+  const homepageData = await fetchHomepageData()
+
   return (
     <main className="bg-slate-950 text-slate-100 overflow-x-hidden">
       <h1 className="sr-only">
         Hui Nehu — Hawaiʻi marine conservation nonprofit
       </h1>
       <SiteNav />
-      <HeroBanner />
+      <HeroBanner data={homepageData} />
       <StatsBar />
-      <CrisisSection />
-      <SolutionSection />
-      <ScienceSection />
-      <TeamSection />
-      <UpenaInitiative />
-      <PrintedCanoes />
+      <CrisisSection data={homepageData} />
+      <SolutionSection data={homepageData} />
+      <ScienceSection data={homepageData} />
+      <TeamSection data={homepageData} />
+      <UpenaInitiative data={homepageData} />
+      <PrintedCanoes data={homepageData} />
       <ReefFutures />
       <EvCanoe />
       <KoinaEcosystem />
@@ -36,3 +39,4 @@ export default function Page() {
     </main>
   )
 }
+
