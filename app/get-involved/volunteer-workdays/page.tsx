@@ -87,7 +87,7 @@ export default function VolunteerWorkdaysPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
                   <Image
-                    src="/banner.png"
+                    src="/volunteer_workday.png"
                     alt="Volunteers in Hawaiian water restoration workday"
                     fill
                     priority

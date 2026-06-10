@@ -56,7 +56,7 @@ export default function CoalitionPartnersPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
                   <Image
-                    src="/banner.png"
+                    src="/coalition_partnerships.png"
                     alt="Coalition network partners"
                     fill
                     priority
