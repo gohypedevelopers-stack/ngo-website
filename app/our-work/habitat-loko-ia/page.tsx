@@ -49,7 +49,7 @@ export default function HabitatLokoIaPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
                   <Image
-                    src="/cesspool_split.png"
+                    src="/coral_limu_restoration.png"
                     alt="Habitat & Loko I'a Restoration"
                     fill
                     priority
