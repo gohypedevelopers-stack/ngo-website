@@ -1,109 +1,150 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft, Check, Compass, ShieldAlert, Waves, BookOpen } from 'lucide-react'
+import { Heart, Eye, Droplets, Trash2, GraduationCap, Calendar, Compass } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
 
 export const metadata = {
-  title: 'Community Workdays — Hui Nehu',
-  description: 'Join our field crews for hands-on restoration and citizen science campaigns on Maui.',
+  title: 'Volunteer & Workdays — Hui Nehu',
+  description: 'Volunteers are the backbone of the Nā Kiaʻi Kai Community Science program. Join a workday on Maui.',
 }
 
-const pathways = [
+const volunteerActivities = [
   {
-    title: 'In-Water Restoration',
-    desc: 'Assisting in physical loko i\u02BBa dry-stack wall restoration, clearing invasive seaweeds, and outplanting native nursery-grown limu strains.',
-    icon: Waves,
-    color: 'text-cyan-400',
+    title: 'Fish & limu surveys',
+    desc: 'Conducting visual census counts of fish populations and tracking native seaweed distribution.',
+    icon: Eye,
+    color: 'text-cyan-600 bg-cyan-50'
   },
   {
-    title: 'Debris Extraction',
-    desc: 'Participating in organized beach, estuary, stream, and reef cleanup actions, gathering weights and polymer data for local recyclers.',
-    icon: ShieldAlert,
-    color: 'text-red-400',
+    title: 'Water quality testing',
+    desc: 'Sampling local streams and coastlines to check for nutrient spikes, salinity, and runoff contamination.',
+    icon: Droplets,
+    color: 'text-blue-600 bg-blue-50'
   },
   {
-    title: 'Educational Days',
-    desc: 'Bringing family and students to active sites to learn traditional land stewardship methods and master modern citizen science data gear.',
-    icon: BookOpen,
-    color: 'text-amber-405',
+    title: 'Marine debris removal',
+    desc: 'Extracting shoreline plastic pollution, microplastics, and heavy ghost fishing nets.',
+    icon: Trash2,
+    color: 'text-rose-600 bg-rose-50'
   },
+  {
+    title: 'Coral outplanting',
+    desc: 'Transplanting resilient, thermal-tolerant coral fragments onto degraded nearshore reef flats.',
+    icon: Heart,
+    color: 'text-emerald-600 bg-emerald-50'
+  },
+  {
+    title: 'Youth education support',
+    desc: 'Assisting in mentoring local Maui students during outdoor hands-on marine science days.',
+    icon: GraduationCap,
+    color: 'text-amber-600 bg-amber-50'
+  },
+  {
+    title: 'Community workdays',
+    desc: 'Joining watershed restoration, clearing stream blockages, and rebuilding traditional fishponds.',
+    icon: Calendar,
+    color: 'text-teal-600 bg-teal-50'
+  }
 ]
 
 export default function VolunteerWorkdaysPage() {
   return (
-    <main className="bg-slate-950 text-slate-100 overflow-x-hidden min-h-screen flex flex-col justify-between">
+    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
+      {/* Dark Nav Background container */}
+      <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center bg-slate-900 overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/banner.png"
-            alt="Volunteers in Hawaiian water background"
-            fill
-            className="object-cover object-center opacity-25 select-none pointer-events-none"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/90 to-slate-950" />
-        </div>
+      {/* Split Hero Section */}
+      <section className="relative bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <Compass className="h-5 w-5 animate-spin-slow" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    Get Involved &mdash; Volunteer
+                  </span>
+                </div>
+                
+                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+                  Join a Community Workday.<br />Become a Kiaʻi Kai.
+                </h1>
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
+                  Volunteers are the backbone of the Nā Kiaʻi Kai Community Science program. From beach cleanups to fish surveys to coral outplanting, there is a role for every skill level.
+                </p>
+              </Reveal>
+            </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 py-12">
-          <Reveal>
-            <Link 
-              href="/get-involved"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-cyan-400 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to Get Involved
-            </Link>
-            <span className="text-xs font-mono font-bold tracking-widest text-amber-300 block mb-2 uppercase">Field Engagement</span>
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white">Volunteer & Community Workdays</h1>
-            <p className="mt-4 text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
-              Join our field teams for structured community workdays across Mauiʻs watersheds (ahupuaʻa).
-            </p>
-          </Reveal>
+            {/* Right Image */}
+            <div className="lg:col-span-5">
+              <Reveal delay={100}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
+                  <Image
+                    src="/banner.png"
+                    alt="Volunteers in Hawaiian water restoration workday"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Pathways Grid */}
-      <section className="py-20 bg-slate-950">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-            {pathways.map((path, index) => {
-              const Icon = path.icon
+      {/* Activities Section */}
+      <section className="bg-white py-20 border-b border-slate-200">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">Volunteer Activities</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {volunteerActivities.map((act, index) => {
+              const IconComp = act.icon
               return (
-                <Reveal key={path.title} delay={index * 100}>
-                  <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 hover:border-cyan-500/20 transition-all flex flex-col justify-between h-full">
-                    <div>
-                      <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 border border-slate-800 ${path.color}`}>
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="text-xl font-serif font-bold text-white mb-4">
-                        {path.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-slate-300 font-light mb-6">
-                        {path.desc}
-                      </p>
+                <Reveal key={act.title} delay={index * 50}>
+                  <div className="h-full rounded-2xl border border-slate-200/60 bg-slate-50/50 p-6 hover:border-teal-500/30 hover:bg-white hover:shadow-md transition-all duration-300">
+                    <div className={`inline-flex items-center justify-center h-9 w-9 rounded-xl ${act.color} mb-4`}>
+                      <IconComp className="h-5 w-5" />
                     </div>
+                    <h4 className="text-base font-semibold text-slate-950 mb-2">{act.title}</h4>
+                    <p className="text-xs text-slate-500 font-light leading-relaxed">{act.desc}</p>
                   </div>
                 </Reveal>
               )
             })}
           </div>
+        </div>
+      </section>
 
-          {/* Registration highlight */}
+      {/* Registration Callout */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <Reveal>
-            <div className="border border-white/5 bg-slate-900/40 rounded-3xl p-8 md:p-12 max-w-3xl mx-auto mt-16 text-center">
-              <h2 className="text-2xl font-serif font-bold text-white mb-4">Ready to Join a Field Crew?</h2>
-              <p className="text-sm text-slate-300 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-                Workdays are held bi-weekly on Saturdays across various locations on Maui. We provide safety instructions, gloves, water, and lunch. No prior science or construction experience is required.
+            <div className="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 text-white p-8 sm:p-12 shadow-xl text-center space-y-6">
+              <h3 className="text-3xl font-serif font-bold">Ready to Join a Field Crew?</h3>
+              <p className="text-lg font-light text-slate-350 leading-relaxed max-w-2xl mx-auto">
+                No prior marine science or engineering background required. We provide protective gear, safety briefs, water, and lunch.
               </p>
-              <a 
-                href="mailto:partnerships@huinehu.org?subject=Volunteer%20Workday%20Registration"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-950 font-bold px-8 py-4 text-sm hover:bg-teal-400 transition-all hover:scale-105"
-              >
-                Sign Up for Next Workday
-              </a>
+              <div className="pt-4">
+                <a 
+                  href="mailto:volunteer@huinehu.org?subject=Community%20Workday%20Registration"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-950 font-bold px-8 py-4 text-sm hover:bg-teal-400 hover:text-slate-950 transition-all hover:scale-105"
+                >
+                  Sign up for the next community workday &rarr;
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>

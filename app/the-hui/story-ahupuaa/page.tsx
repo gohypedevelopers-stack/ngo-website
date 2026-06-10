@@ -67,27 +67,55 @@ export default function StoryAhupuaaPage() {
           <div className="grid gap-8 md:grid-cols-2">
             {/* Who We Are */}
             <Reveal>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-8 hover:shadow-md transition-all duration-300">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-50 text-teal-600 mb-5">
-                  <Users className="h-5 w-5" />
+              <div className="relative h-full min-h-[220px] rounded-2xl overflow-hidden shadow-lg p-8 group transition-all duration-300 hover:shadow-xl">
+                {/* Background Image */}
+                <Image
+                  src="/who_we_are_bg.png"
+                  alt="Maui coastline and mountains"
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/60" />
+
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div>
+                    <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-500/15 text-teal-300 mb-5 border border-teal-500/20">
+                      <Users className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-xl font-serif font-bold text-white mb-3">Who We Are</h3>
+                    <p className="text-sm text-slate-300 leading-relaxed font-light">
+                      A Maui-based 501(c)(3) marine conservation nonprofit, established 2023. The first community-led, whole-system marine conservation organization in Hawaiʻi.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-slate-900 mb-3">Who We Are</h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-light">
-                  A Maui-based 501(c)(3) marine conservation nonprofit, established 2023. The first community-led, whole-system marine conservation organization in Hawaiʻi.
-                </p>
               </div>
             </Reveal>
 
             {/* Our Model */}
             <Reveal delay={150}>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-8 hover:shadow-md transition-all duration-300">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-cyan-50 text-cyan-600 mb-5">
-                  <Network className="h-5 w-5" />
+              <div className="relative h-full min-h-[220px] rounded-2xl overflow-hidden shadow-lg p-8 group transition-all duration-300 hover:shadow-xl">
+                {/* Background Image */}
+                <Image
+                  src="/our_model_bg.png"
+                  alt="Hawaiian ahupuaa system"
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/60" />
+
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div>
+                    <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-cyan-500/15 text-cyan-300 mb-5 border border-cyan-500/20">
+                      <Network className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-xl font-serif font-bold text-white mb-3">Our Model</h3>
+                    <p className="text-sm text-slate-300 leading-relaxed font-light">
+                      The ahupuaʻa made operational &mdash; organizing conservation work from land-based pollution sources to offshore nurseries, addressing issues at source not just symptoms in the ocean.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-slate-900 mb-3">Our Model</h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-light">
-                  The ahupuaʻa made operational &mdash; organizing conservation work from land-based pollution sources to offshore nurseries, addressing issues at source not just symptoms in the ocean.
-                </p>
               </div>
             </Reveal>
           </div>
@@ -96,16 +124,27 @@ export default function StoryAhupuaaPage() {
       </section>
 
       {/* Proverb Banner */}
-      <section className="bg-teal-50/40 py-14 text-center relative overflow-hidden border-b border-slate-200">
+      <section className="bg-gradient-to-r from-slate-50 via-teal-50/70 to-slate-50 py-6 text-center relative overflow-hidden border-b border-slate-200/80">
+        {/* Radial background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] pointer-events-none" />
+        
+        {/* Stylized background quotes */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-[280px] -translate-y-[100px] text-teal-600/5 text-9xl font-serif select-none pointer-events-none hidden md:block">
+          &ldquo;
+        </div>
+        <div className="absolute left-1/2 top-1/2 translate-x-[200px] translate-y-[-10px] text-teal-600/5 text-9xl font-serif select-none pointer-events-none hidden md:block">
+          &rdquo;
+        </div>
+
         <div className="relative z-10 mx-auto max-w-5xl px-5">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-600 mb-4 block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-teal-600 mb-2 block">
             ʻŌlelo Noʻeau · Hawaiian Proverb
           </span>
-          <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-teal-950 leading-relaxed font-light">
+          <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-slate-800 leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
             &ldquo;He aliʻi ka ʼaina, he kauwā ke kanaka.&rdquo;
           </blockquote>
-          <div className="mx-auto my-5 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
-          <cite className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
+          <div className="mx-auto my-3 h-px w-32 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
+          <cite className="text-xs sm:text-sm font-sans uppercase tracking-[0.25em] text-slate-500 not-italic font-medium">
             The land is chief; the people are its servants.
           </cite>
         </div>

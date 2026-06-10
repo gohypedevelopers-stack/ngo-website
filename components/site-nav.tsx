@@ -34,8 +34,17 @@ const links = [
       { label: 'Partners & Coalition', href: '/the-hui/coalition-partners' },
     ],
   },
-  { label: 'Get Involved', href: '/get-involved' },
+  {
+    label: 'Get Involved',
+    href: '/get-involved',
+    dropdown: [
+      { label: 'Invest', href: '/get-involved/investment-tiers' },
+      { label: 'Volunteer', href: '/get-involved/volunteer-workdays' },
+      { label: 'Partner', href: '/get-involved/partner-with-us' },
+    ],
+  },
   { label: 'News & Research', href: '/news-research' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
@@ -139,7 +148,7 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
                 : "border-white/20 bg-white/5 text-white hover:bg-white hover:text-slate-950"
             )}
           >
-            Invest now
+            Donate now
           </a>
           <button
             type="button"
@@ -223,7 +232,7 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
                   : "bg-white text-slate-950 hover:bg-teal-400"
               )}
             >
-              Invest now
+              Donate now
             </a>
           </li>
         </ul>

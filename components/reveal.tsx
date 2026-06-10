@@ -33,11 +33,20 @@ export function Reveal({
           }
         })
       },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' },
     )
 
     observer.observe(node)
-    return () => observer.disconnect()
+
+    // Fallback in case observer fails to trigger (e.g. scroll restoration / page transitions)
+    const timeout = setTimeout(() => {
+      setVisible(true)
+    }, 450)
+
+    return () => {
+      observer.disconnect()
+      clearTimeout(timeout)
+    }
   }, [])
 
   const Tag = as as React.ElementType

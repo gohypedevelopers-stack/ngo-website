@@ -49,7 +49,7 @@ export default function HabitatLokoIaPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
                   <Image
-                    src="/reef_split.png"
+                    src="/cesspool_split.png"
                     alt="Habitat & Loko I'a Restoration"
                     fill
                     priority
@@ -97,20 +97,33 @@ export default function HabitatLokoIaPage() {
 
           {/* Target Metric Segment */}
           <Reveal delay={200}>
-            <div className="rounded-2xl border border-teal-100 bg-teal-50/30 p-8 sm:p-12 shadow-xs relative overflow-hidden">
-              <div className="relative z-10 grid gap-6 md:grid-cols-12 md:items-center">
-                <div className="md:col-span-5 flex flex-col items-start">
-                  <span className="text-xs font-mono font-bold tracking-widest text-teal-600 uppercase mb-2">Target Metric</span>
-                  <div className="flex items-baseline text-6xl sm:text-7xl font-serif font-bold text-teal-700">
-                    <AnimatedCounter value={70} suffix="%" />
+            <div className="relative rounded-2xl overflow-hidden shadow-lg">
+              {/* Background Image */}
+              <Image
+                src="/contact_ocean.png"
+                alt="Ocean reef background"
+                fill
+                className="object-cover object-center"
+              />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/85 to-slate-950/70" />
+
+              <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 px-8 py-8">
+                <div className="flex items-center gap-5 shrink-0">
+                  <div className="flex flex-col items-start">
+                    <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-400 uppercase mb-1">Target Metric</span>
+                    <div className="flex items-baseline text-5xl font-serif font-bold text-white">
+                      <AnimatedCounter value={70} suffix="%" />
+                    </div>
+                    <span className="mt-1 text-[10px] font-semibold tracking-widest uppercase text-slate-400">Coral Survival Rate</span>
                   </div>
-                  <span className="mt-2 text-xs font-semibold tracking-wider uppercase text-slate-500">Coral Survival Rate</span>
                 </div>
-                <div className="md:col-span-7">
-                  <p className="text-lg font-light text-slate-700 leading-relaxed">
-                    Target for pilot sites (integrating Indigenous Ecological Knowledge + modern marine science).
-                  </p>
-                </div>
+
+                <div className="h-12 w-px bg-white/15 hidden sm:block" />
+
+                <p className="text-sm font-light text-slate-300 leading-relaxed">
+                  Target for pilot sites — integrating Indigenous Ecological Knowledge with modern marine science to achieve unprecedented restoration outcomes.
+                </p>
               </div>
             </div>
           </Reveal>

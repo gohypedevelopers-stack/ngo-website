@@ -22,7 +22,7 @@ export const crisisPages = [
     title: 'The Most Important Fish You’ve Never Heard Of',
     subtitle: 'Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands.',
     description: 'The foundational forage fish of the Hawaiian marine food web.',
-    image: '/nehu_forage_fish.png',
+    image: '/contact_ocean.png',
     icon: Fish,
     stats: [
       { value: 'Endemic', label: 'Encrasicholina purpurea — found exclusively in the Hawaiian Islands' },
@@ -55,7 +55,7 @@ export const crisisPages = [
     title: '53 Million Gallons of Sewage Enter Hawaiʻi’s Ocean Every Single Day',
     subtitle: 'Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats.',
     description: 'Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: ~300/year. Required rate: 3,000+/year — a 10x acceleration needed.',
-    image: '/cesspool_pollution.png',
+    image: '/cesspool_split.png',
     icon: Droplets,
     stats: [
       { value: '88,000', label: 'Cesspools statewide (12,000+ on Maui alone)' },
@@ -87,7 +87,7 @@ export const crisisPages = [
     title: 'Conservation in Hawaiʻi Is Fragmented, Underfunded, and Culturally Disconnected',
     subtitle: 'Traditional conservation efforts are currently isolated and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist.',
     description: 'No single organization has ever attempted to address the full system. Until now.',
-    image: '/ahupuaa_watershed.png',
+    image: '/ahupuaa_aerial.png',
     icon: Network,
     stats: [
       { value: '-23%', label: 'Decline in marine conservation funding since 2019' },
@@ -119,7 +119,7 @@ export const crisisLanding = {
     'Conservation funding in Hawaiʻi has experienced a sharp 23% decline since 2019, compounding an already severe ecological emergency.',
   description:
     'Our nearshore waters face three interlocking threats: the collapse of the foundational nehu food web, devastating nutrient pollution from cesspools, and a fragmented conservation response that remains detached from traditional practices.',
-  image: '/cesspool_pollution.png',
+  image: '/cesspool_split.png',
 }
 
 export function CrisisPageTemplate({
@@ -335,7 +335,7 @@ export function CrisisLandingPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
                   <Image
-                    src="/nehu_forage_fish.png"
+                    src="/contact_ocean.png"
                     alt="Endemic Nehu species details"
                     fill
                     className="object-cover"
@@ -372,7 +372,7 @@ export function CrisisLandingPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
                   <Image
-                    src="/cesspool_pollution.png"
+                    src="/cesspool_split.png"
                     alt="Split view of wastewater pollution"
                     fill
                     className="object-cover"
@@ -409,7 +409,7 @@ export function CrisisLandingPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
                   <Image
-                    src="/ahupuaa_watershed.png"
+                    src="/ahupuaa_aerial.png"
                     alt="Ahupuaa restoration loop details"
                     fill
                     className="object-cover"
