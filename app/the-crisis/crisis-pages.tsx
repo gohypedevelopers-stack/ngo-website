@@ -13,94 +13,102 @@ import {
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { CrisisStats } from '@/components/crisis-stats'
 
 export const crisisPages = [
   {
     slug: '/the-crisis/the-nehu',
-    eyebrow: 'Section 1: The Forgotten Keystone',
-    title: 'The Nehu (The Forgotten Keystone)',
-    subtitle: 'The foundational forage fish of Hawaiʻi nearshore marine systems.',
-    description:
-      'The nehu is an endemic silver anchovy that acts as the foundational forage fish for the entire nearshore ecosystem. Without it, the marine food web collapses.',
+    eyebrow: 'Section 1: Keystone Species',
+    title: 'The Most Important Fish You’ve Never Heard Of',
+    subtitle: 'Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands.',
+    description: 'The foundational forage fish of the Hawaiian marine food web.',
     image: '/nehu_forage_fish.png',
     icon: Fish,
     stats: [
-      { value: 'Endemic', label: 'Found exclusively in the Hawaiian Islands' },
-      { value: 'Keystone', label: 'Foundational food for ahi, \u02B5\u014Dpelu, akule, dolphins, and seabirds' },
-      { value: 'Traditional', label: 'Primary live bait for traditional aku pole-and-line fishery' },
+      { value: 'Endemic', label: 'Encrasicholina purpurea — found exclusively in the Hawaiian Islands' },
+      { value: 'Forage Base', label: 'Foundational forage fish of the Hawaiian food web' },
+      { value: 'Vulnerable', label: 'Extremely vulnerable to nearshore pollution' },
     ],
     sections: [
       {
-        title: 'Species Profile & Ecological Impact',
-        body: 'The nehu (Encrasicholina purpurea) is a critical food source for apex marine life. Without this endemic anchovy, the nearshore marine food web collapses. It acts as the key link transferring energy from plankton to larger predators.',
+        title: 'Traditional Aku Fishery',
+        body: 'Primary live bait for traditional aku (skipjack tuna) pole-and-line fishery. A vital link connecting local fishing heritage with marine resources.',
       },
       {
-        title: 'Economic & Cultural Value',
-        body: 'For centuries, the nehu has been the primary live bait utilized for the traditional Hawaiian aku (skipjack tuna) pole-and-line fishery. This practice represents a direct connection between local fishermen, ancestral knowledge, and marine resource harvest.',
+        title: 'Apex Food Web',
+        body: 'Critical food for ahi, ʻopelu, akule, dolphins, and seabirds. The biological heartbeat of our nearshore marine ecosystems.',
       },
       {
-        title: 'The Vulnerability Threat',
-        body: 'Because nehu populations are restricted to semi-enclosed bays and coastal estuaries, they are acutely vulnerable to nearshore human pollution. The systemic equation is clear: No nehu = no aku fishery = no food sovereignty for Hawaiian communities.',
+        title: 'Estuarine Habitats',
+        body: 'Lives only in semi-enclosed bays — extremely vulnerable to nearshore pollution, sedimentation, and coastal runoff.',
+      },
+      {
+        title: 'Food Sovereignty',
+        body: 'No nehu = no aku fishery = no food sovereignty. The collapse of this keystone species directly threatens local community food independence.',
       },
     ],
+    proverb: '“He aliʻi ka ʼaina, he kauwā ke kanaka.” — The land is chief; the people are its servants.',
   },
   {
     slug: '/the-crisis/cesspool-problem',
     eyebrow: 'Section 2: The Hidden Killer',
-    title: 'The Cesspool Problem (The Hidden Killer)',
-    subtitle: 'Wastewater pollution undermining coastal coral reef systems.',
-    description:
-      'With the highest number of cesspools per capita in the nation, Hawaiʻi discharges catastrophic levels of untreated human waste directly into groundwater and coastal coral reefs every day.',
+    title: '53 Million Gallons of Sewage Enter Hawaiʻi’s Ocean Every Single Day',
+    subtitle: 'Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats.',
+    description: 'Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: ~300/year. Required rate: 3,000+/year — a 10x acceleration needed.',
     image: '/cesspool_pollution.png',
     icon: Droplets,
     stats: [
       { value: '88,000', label: 'Cesspools statewide (12,000+ on Maui alone)' },
       { value: '53 Million', label: 'Gallons of untreated human waste discharged daily' },
-      { value: '10x Gap', label: 'Need 3,000+ annual conversions vs 300 current rate' },
+      { value: '10x Acceleration', label: 'Required conversion rate of 3,000+/year vs 300 current rate' },
     ],
     sections: [
       {
-        title: 'The Environmental Cost',
-        body: 'Daily effluent introducing severe nitrogen and phosphorus nutrient loading sparks devastating algal blooms. These blooms suffocate and kill coral reefs, destroying the nursery habitats nehu and other reef species rely on.',
+        title: 'Nutrient Loading & Coral Death',
+        body: 'Cesspool effluent introduces catastrophic levels of nitrogen and phosphorus. This nutrient loading triggers devastating algal blooms that suffocate and kill nearshore coral reefs.',
       },
       {
-        title: 'Public Health Risks',
-        body: '50% of private drinking water wells located near high-cesspool zones test positive for fecal bacteria contamination, directly contributing to Hawai\u02BBi having the highest rates of MRSA infections in the nation.',
+        title: 'Pathogen Contamination',
+        body: 'Effluent discharges bacteria, viruses, and raw waste directly into aquifers. 50% of private drinking water wells near cesspools test positive for fecal bacteria contamination.',
       },
       {
-        title: 'The Legislative Mandate & The Acceleration Gap',
-        body: 'Hawai\u02BBi State Act 125 (2017) legally mandates all 88,000 residential cesspools must be fully converted by 2050. However, the current conversion rate of 300/year must be accelerated by 10x to 3,000+/year to meet the legal deadline.',
+        title: 'Public Health (MRSA)',
+        body: 'Runoff in recreational waters directly impacts human safety, contributing to Hawaiʻi having the highest rates of community-acquired MRSA infections in the entire nation.',
+      },
+      {
+        title: 'Legislative Mandate (Act 125)',
+        body: 'Hawaiʻi State Act 125 (2017) legally mandates all 88,000 residential cesspools must be fully converted by 2050. Meeting this requires an immediate 10x acceleration.',
       },
     ],
   },
   {
     slug: '/the-crisis/fragmented-response',
     eyebrow: 'Section 3: Gaps in Conservation',
-    title: 'A Fragmented Response',
-    subtitle: 'Why traditional conservation efforts are currently isolated and underfunded.',
-    description:
-      'Traditional conservation efforts are currently isolated, underfunded, and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist.',
+    title: 'Conservation in Hawaiʻi Is Fragmented, Underfunded, and Culturally Disconnected',
+    subtitle: 'Traditional conservation efforts are currently isolated and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist.',
+    description: 'No single organization has ever attempted to address the full system. Until now.',
     image: '/ahupuaa_watershed.png',
     icon: Network,
     stats: [
       { value: '-23%', label: 'Decline in marine conservation funding since 2019' },
-      { value: 'Isolated Silos', label: 'Organizations working separately' },
-      { value: 'Cultural Gap', label: 'Detached from local, Indigenous ecological practices' },
+      { value: 'Isolated Silos', label: 'Organizations working in isolated silos' },
+      { value: 'Cultural Gap', label: 'Detached from Native Hawaiian ecological knowledge' },
     ],
     sections: [
       {
-        title: 'Structural Failure: Fragmentation',
-        body: 'Existing regional environmental organizations work inside isolated silos, leaving massive, unaddressed gaps in the coastal ecosystem chain. Efforts are disconnected between watershed management, marine cleanup, and community involvement.',
+        title: '1. Fragmentation',
+        body: 'Environmental organizations work inside isolated silos, leaving massive, unaddressed gaps in the coastal ecosystem chain.',
       },
       {
-        title: 'Structural Failure: Cultural Disconnect',
-        body: 'Modern conservation programs regularly lack integration with Native Hawaiian ecological knowledge and traditional practices (like the ahupua\u02BBa framework), missing out on centuries of tested ecosystem balance.',
+        title: '2. Cultural Disconnect',
+        body: 'Conservation programs lack integration with Native Hawaiian ecological knowledge and traditional practices.',
       },
       {
-        title: 'The Funding Gap & Solution',
-        body: 'Available marine conservation funding across the islands has suffered a severe 23% decline since 2019. Prior to Hui Nehu, no singular organization had attempted to construct an operational model addressing this full ecosystem loop simultaneously.',
+        title: '3. Funding Gap',
+        body: 'Available marine conservation funding across the islands has suffered a severe 23% decline since 2019.',
       },
     ],
+    proverb: 'No single organization has ever attempted to address the full system. — Until now.',
   },
 ]
 
@@ -108,7 +116,7 @@ export const crisisLanding = {
   eyebrow: 'Ecosystem Emergency',
   title: 'The Connected Crisis',
   subtitle:
-    'Conservation funding in Hawai\u02BBi has experienced a sharp 23% decline since 2019, compounding an already severe ecological emergency.',
+    'Conservation funding in Hawaiʻi has experienced a sharp 23% decline since 2019, compounding an already severe ecological emergency.',
   description:
     'Our nearshore waters face three interlocking threats: the collapse of the foundational nehu food web, devastating nutrient pollution from cesspools, and a fragmented conservation response that remains detached from traditional practices.',
   image: '/cesspool_pollution.png',
@@ -120,6 +128,7 @@ export function CrisisPageTemplate({
   page: (typeof crisisPages)[number]
 }) {
   const Icon = page.icon
+  const hasProverb = 'proverb' in page && typeof page.proverb === 'string' && page.proverb
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800">
@@ -135,15 +144,7 @@ export function CrisisPageTemplate({
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <Link
-                  href="/the-crisis"
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600 transition-colors hover:text-teal-800"
-                >
-                  <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-                  Back to Crisis Overview
-                </Link>
-                
-                <div className="mt-4 flex items-center gap-3">
+                <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
                     <Icon className="h-5 w-5" />
                   </span>
@@ -160,7 +161,7 @@ export function CrisisPageTemplate({
                   {page.subtitle}
                 </p>
                 
-                <p className="mt-4 text-base leading-relaxed text-slate-650">
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   {page.description}
                 </p>
               </Reveal>
@@ -169,7 +170,7 @@ export function CrisisPageTemplate({
             {/* Right Image (Split Screen) */}
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-lg">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
                   <Image
                     src={page.image}
                     alt={page.title}
@@ -186,35 +187,35 @@ export function CrisisPageTemplate({
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-teal-50/50 py-16 text-slate-950 border-b border-slate-200">
+      <section className="bg-teal-50/20 py-8 text-slate-900 border-b border-slate-200">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid gap-6 md:grid-cols-3">
-            {page.stats.map((stat, index) => (
-              <Reveal key={stat.label} delay={index * 100}>
-                <div className="h-full rounded-2xl border border-teal-100 bg-white p-8 shadow-sm">
-                  <div className="mb-2 font-serif text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-cyan-600">
-                    {stat.value}
-                  </div>
-                  <p className="text-sm leading-relaxed text-slate-606 font-light">
-                    {stat.label}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <CrisisStats stats={page.stats} />
         </div>
       </section>
 
       {/* Content Sections */}
       <section className="bg-white py-24">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 lg:grid-cols-3">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 mb-12 text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+            Significance
+          </span>
+          <h2 className="mt-2 font-serif text-3xl font-bold text-slate-900">
+            Why It Matters
+          </h2>
+          <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full animate-pulse-soft" />
+        </div>
+        <div className={`mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 grid-cols-1 md:grid-cols-2 ${page.sections.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
           {page.sections.map((section, index) => (
             <Reveal key={section.title} delay={index * 100}>
-              <article className="h-full rounded-2xl border border-slate-100 bg-slate-50 p-8 shadow-sm hover:border-teal-500/20 transition-all">
-                <h2 className="mb-4 font-serif text-2xl font-bold text-slate-900">
+              <article className="group h-full rounded-2xl border border-slate-200/50 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md hover:shadow-teal-100/10 hover:bg-gradient-to-b hover:from-white hover:to-teal-50/10">
+                {/* Numbered Badge */}
+                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-teal-50/40 border border-teal-100/40 text-teal-700 font-mono text-xs font-bold shadow-xs transition-all duration-300 group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600 group-hover:scale-105">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <h3 className="mb-2.5 font-serif text-lg font-bold text-slate-900 transition-colors duration-300 group-hover:text-teal-700">
                   {section.title}
-                </h2>
-                <p className="text-sm leading-relaxed text-slate-605 font-light">
+                </h3>
+                <p className="text-xs md:text-sm leading-relaxed text-slate-500 font-light">
                   {section.body}
                 </p>
               </article>
@@ -223,50 +224,23 @@ export function CrisisPageTemplate({
         </div>
       </section>
 
-      {/* Cross-Link section */}
-      <section className="border-t border-slate-200 bg-slate-50 py-20">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Reveal>
-            <div className="rounded-2xl border border-teal-100 bg-white p-8 md:p-12 relative overflow-hidden shadow-sm">
-              <div className="relative z-10">
-                <div className="mb-4 flex items-center gap-3 text-amber-600">
-                  <AlertTriangle className="h-5 w-5" />
-                  <span className="text-xs font-bold uppercase tracking-[0.2em]">
-                    Connected Crisis Threat Matrix
-                  </span>
-                </div>
-                <h2 className="mb-4 font-serif text-2xl font-bold text-slate-900">
-                  A whole-system problem requires a whole-system response.
-                </h2>
-                <p className="mb-8 max-w-3xl text-sm leading-relaxed text-slate-605 sm:text-base font-light">
-                  Hui Nehu targets the full loop of nearshore conservation. Explore how the other dimensions of this ecological emergency connect.
-                </p>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {crisisPages
-                    .filter((item) => item.slug !== page.slug)
-                    .map((item) => (
-                      <Link
-                        key={item.slug}
-                        href={item.slug}
-                        className="group flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 p-6 transition-all hover:border-teal-500/40 hover:bg-teal-50/20"
-                      >
-                        <div>
-                          <div className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-teal-600">
-                            {item.eyebrow}
-                          </div>
-                          <div className="font-serif text-lg font-bold text-slate-905 group-hover:text-teal-700 transition-colors">
-                            {item.title.split(' (')[0]}
-                          </div>
-                        </div>
-                        <ArrowUpRight className="h-5 w-5 text-slate-400 transition-all group-hover:text-teal-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </Link>
-                    ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* Closing Proverb Banner */}
+      {hasProverb && (
+        <section className="bg-teal-50/40 py-14 text-center relative overflow-hidden border-y border-teal-500/10">
+          <div className="relative z-10 mx-auto max-w-5xl px-5">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-600 mb-4 block">
+              ʻŌlelo Noʻeau · Hawaiian Proverb
+            </span>
+            <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-teal-950 leading-relaxed font-light">
+              {page.proverb.split(' — ')[0]}
+            </blockquote>
+            <div className="mx-auto my-5 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
+            <cite className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
+              {page.proverb.split(' — ')[1]}
+            </cite>
+          </div>
+        </section>
+      )}
 
       <SiteFooter />
     </main>
@@ -292,7 +266,7 @@ export function CrisisLandingPage() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
                     <Waves className="h-5 w-5 animate-pulse" />
                   </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-655">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
                     {crisisLanding.eyebrow}
                   </span>
                 </div>
@@ -305,7 +279,7 @@ export function CrisisLandingPage() {
                   {crisisLanding.subtitle}
                 </p>
                 
-                <p className="mt-4 text-base leading-relaxed text-slate-650">
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   {crisisLanding.description}
                 </p>
               </Reveal>
@@ -314,7 +288,7 @@ export function CrisisLandingPage() {
             {/* Right Image Column (Split Screen) */}
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl">
                   <Image
                     src={crisisLanding.image}
                     alt={crisisLanding.title}
@@ -326,42 +300,6 @@ export function CrisisLandingPage() {
               </Reveal>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* Core Crisis Sections List */}
-      <section className="bg-slate-50 py-20 border-b border-slate-200">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-            {crisisPages.map((page, index) => {
-              const Icon = page.icon
-              return (
-                <Reveal key={page.slug} delay={index * 100}>
-                  <Link
-                    href={page.slug}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-teal-500/40 hover:shadow-md"
-                  >
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <div className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-600">
-                      {page.eyebrow.split(':')[0]}
-                    </div>
-                    <h2 className="mb-3 font-serif text-2xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                      {page.title}
-                    </h2>
-                    <p className="mb-6 flex-1 text-sm leading-relaxed text-slate-600 font-light">
-                      {page.description}
-                    </p>
-                    <span className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 group-hover:text-teal-900 transition-colors">
-                      Explore Sub-Page
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                </Reveal>
-              )
-            })}
           </div>
         </div>
       </section>
@@ -378,10 +316,10 @@ export function CrisisLandingPage() {
                   <Fish className="h-4 w-4" /> Section 1: Forage Base
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">
-                  The Nehu: The Forgotten Keystone
+                  The Nehu: The Most Important Fish You’ve Never Heard Of
                 </h2>
-                <p className="text-base leading-relaxed text-slate-650 font-light">
-                  The nehu (Encrasicholina purpurea) is an endemic silver anchovy that acts as the foundational forage fish for the entire nearshore ecosystem. Without it, the marine food web collapses. It links primary plankton production directly to larger pelagic predators and reef life.
+                <p className="text-base leading-relaxed text-slate-600 font-light">
+                  Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands. The foundational forage fish of the Hawaiian marine food web. Lives only in semi-enclosed bays, making nehu populations extremely vulnerable to nearshore pollution.
                 </p>
                 <div className="pt-4">
                   <Link 
@@ -411,19 +349,19 @@ export function CrisisLandingPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6 lg:order-2 space-y-6">
               <Reveal>
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-red-655">
-                  <Droplets className="h-4 w-4 text-red-500" /> Section 2: Sewage & Reefs
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">
+                  <Droplets className="h-4 w-4 text-teal-500" /> Section 2: Sewage & Reefs
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">
-                  The Cesspool Problem: The Hidden Killer
+                  The Cesspool Crisis: The Hidden Killer
                 </h2>
-                <p className="text-base leading-relaxed text-slate-655 font-light">
-                  With the highest number of cesspools per capita in the nation, Hawaiʻi discharges catastrophic levels of untreated human waste directly into groundwater and coastal coral reefs every day. This causes extreme nutrient overloading, suffocating coral nurseries and triggering toxic algal bloom outbreaks.
+                <p className="text-base leading-relaxed text-slate-600 font-light">
+                  Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats. Act 125 (2017) mandates all 88,000 cesspools converted by 2050, requiring a 10x acceleration to convert 3,000+ per year instead of the current 300.
                 </p>
                 <div className="pt-4">
                   <Link 
                     href="/the-crisis/cesspool-problem"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-red-700 hover:text-slate-950"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-slate-950"
                   >
                     Read about septic mandates <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -452,10 +390,10 @@ export function CrisisLandingPage() {
                   <Network className="h-4 w-4" /> Section 3: Governance Gaps
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">
-                  A Fragmented Response
+                  A Fragmented Response: Siloed & Underfunded
                 </h2>
-                <p className="text-base leading-relaxed text-slate-655 font-light">
-                  Traditional conservation efforts are currently isolated, underfunded, and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist. Solving this requires a unified mountain-to-sea framework that connects science, policy, and community action.
+                <p className="text-base leading-relaxed text-slate-600 font-light">
+                  Traditional conservation efforts are currently isolated, underfunded, and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist. No single organization has ever attempted to address the full system. Until now.
                 </p>
                 <div className="pt-4">
                   <Link 

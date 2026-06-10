@@ -15,6 +15,8 @@ export interface HomepageData {
   heroPrimaryBtnLink?: string;
   heroSecondaryBtnText?: string;
   heroSecondaryBtnLink?: string;
+  heroTertiaryBtnText?: string;
+  heroTertiaryBtnLink?: string;
   heroBannerImage?: StrapiImage;
   heroScubaDiverImage?: StrapiImage;
   heroManufacturingImage?: StrapiImage;
@@ -111,14 +113,16 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 const USE_STRAPI = process.env.NEXT_PUBLIC_USE_STRAPI === 'true';
 
 export const staticHomepageData: HomepageData = {
-  heroSubtitle: 'Reef restoration meets ocean technology',
-  heroTitle: 'Restoring Hawaiʻi reefs\nwith culture and science',
+  heroSubtitle: 'A Maui-Based 501(c)(3) Marine Conservation Nonprofit — Est. 2023',
+  heroTitle: 'Protecting Hawaiʻi’s Ocean,\nFrom the Ground Up',
   heroDescription:
-    'Hui Nehu builds community-led conservation programs, sustainable fishing tools, and reef-safe ocean products for Hawaiʻi.',
-  heroPrimaryBtnText: 'Support the mission',
-  heroPrimaryBtnLink: '#ask',
-  heroSecondaryBtnText: 'Explore products',
-  heroSecondaryBtnLink: '/products',
+    'Mālama ʼAīna. Mālama Wai. Mālama Kai. — Care for the Land. Care for the Water. Care for the Sea.',
+  heroPrimaryBtnText: 'Join the Hui',
+  heroPrimaryBtnLink: '/the-hui',
+  heroSecondaryBtnText: 'Learn About the Crisis',
+  heroSecondaryBtnLink: '/the-crisis',
+  heroTertiaryBtnText: 'Invest in Hawaiʻi’s Ocean',
+  heroTertiaryBtnLink: '/get-involved/investment-tiers',
   heroBannerImage: {
     id: 1,
     url: '/banner.png',
@@ -134,12 +138,11 @@ export const staticHomepageData: HomepageData = {
     url: '/3dprinted.png',
     alternativeText: 'Large format additive manufacturing',
   },
-  crisisLabel: 'The challenge',
-  crisisTitle: 'Reefs need practical\nlocal solutions',
+  crisisLabel: 'The Crisis',
+  crisisTitle: 'Hawaiʻi’s reefs are dying,\nand the window to act is closing fast.',
   crisisBody:
-    'Coastal communities are facing declining reef health, rising gear costs, and fewer pathways for young people to enter ocean stewardship.',
-  crisisSecondaryBody:
-    'Hui Nehu connects restoration science with products and training that can be built, maintained, and taught locally.',
+    '84% of the world’s coral reefs bleached this year. The nehu — Hawaiʻi’s tiny endemic anchovy — is the foundation of this entire food web. When it disappears, the whole system collapses.',
+  crisisSecondaryBody: '',
   crisisQuote:
     'When conservation creates livelihoods, communities can protect reefs for generations.',
   crisisImage: {
@@ -147,19 +150,19 @@ export const staticHomepageData: HomepageData = {
     url: '/reef_split.png',
     alternativeText: 'Split view of reef ecosystem',
   },
-  problem1Title: 'Fragmented programs',
+  problem1Title: 'Habitat & Loko Iʻa Restoration',
   problem1Body:
-    'Conservation, education, and product development often move separately instead of reinforcing each other.',
-  problem2Title: 'High equipment costs',
+    'Restoring estuarine habitats, coral reefs, and traditional fishponds. Propagating thermal-tolerant coral and native limu.',
+  problem2Title: 'Bio-Cleaner & Pollution Response',
   problem2Body:
-    'Island communities need durable ocean tools that are affordable to repair and produce locally.',
-  problem3Title: 'Limited funding pathways',
+    'Deploying advanced septic systems. Removing marine debris. Target: 10+ tons in Year 1.',
+  problem3Title: 'Nā Kiaʻi Kai Community Science',
   problem3Body:
-    'Restoration work needs repeatable support models with clear, measurable impact.',
-  solutionLabel: 'Our model',
-  solutionTitle: 'Build the tools,\nteach the practice',
+    'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.',
+  solutionLabel: 'Why We’re Different',
+  solutionTitle: 'Whole-system marine conservation',
   solutionBody:
-    'We combine marine science, Hawaiian resource management, and modern manufacturing to create scalable reef stewardship programs.',
+    'Hui Nehu is the first community-led, whole-system marine conservation organization in Hawaiʻi. We don’t just restore coral — we restore the entire food web. Our model is the ahupuaʻa made operational.',
   solutionImage: {
     id: 5,
     url: '/ahupuaa_restoration.png',

@@ -6,7 +6,16 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
-  { label: 'The Crisis', href: '/the-crisis' },
+  {
+    label: 'The Crisis',
+    href: '/the-crisis',
+    dropdown: [
+      { label: 'Overview', href: '/the-crisis' },
+      { label: 'The Nehu (Keystone)', href: '/the-crisis/the-nehu' },
+      { label: 'The Cesspool Crisis', href: '/the-crisis/cesspool-problem' },
+      { label: 'Fragmented Response', href: '/the-crisis/fragmented-response' },
+    ],
+  },
   { label: 'Our Work', href: '/our-work' },
   { label: 'The Hui', href: '/the-hui' },
   { label: 'Get Involved', href: '/get-involved' },
@@ -52,22 +61,54 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
 
         <ul className="hidden items-center gap-5 lg:flex xl:gap-7">
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="relative group">
               <a
                 href={link.href}
                 className={cn(
-                  "group relative whitespace-nowrap text-xs font-semibold tracking-wide transition-colors lg:text-sm",
+                  "group relative whitespace-nowrap text-xs font-semibold tracking-wide transition-colors lg:text-sm flex items-center gap-1 py-2",
                   theme === 'light' && !scrolled
                     ? "text-slate-600 hover:text-slate-900"
                     : "text-slate-300 hover:text-white"
                 )}
               >
                 {link.label}
+                {link.dropdown && (
+                  <svg className="h-3 w-3 opacity-60 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  </svg>
+                )}
                 <span className={cn(
-                  "absolute -bottom-1 left-0 h-px w-0 transition-all duration-300 group-hover:w-full",
+                  "absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full",
                   theme === 'light' && !scrolled ? "bg-teal-600" : "bg-teal-400"
                 )} />
               </a>
+
+              {link.dropdown && (
+                <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block w-56 pt-2">
+                  <ul className={cn(
+                    "rounded-xl border p-2 shadow-lg backdrop-blur-md",
+                    theme === 'light'
+                      ? "border-slate-200 bg-white/95 text-slate-800"
+                      : "border-white/10 bg-slate-950/95 text-slate-200"
+                  )}>
+                    {link.dropdown.map((sub) => (
+                      <li key={sub.href}>
+                        <a
+                          href={sub.href}
+                          className={cn(
+                            "block rounded-lg px-4 py-2.5 text-xs font-medium transition-colors",
+                            theme === 'light'
+                              ? "hover:bg-slate-100 hover:text-teal-600"
+                              : "hover:bg-white/10 hover:text-teal-400"
+                          )}
+                        >
+                          {sub.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -107,24 +148,52 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
           theme === 'light'
             ? 'border-slate-200 bg-white/95'
             : 'border-white/10 bg-slate-950/95',
-          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
+          open ? 'max-h-[550px] opacity-100' : 'max-h-0 opacity-0',
         )}
       >
         <ul className="flex flex-col gap-1 px-5 py-4">
           {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                  theme === 'light'
-                    ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
-                    : "text-slate-300 hover:bg-white/10 hover:text-white"
-                )}
-              >
-                {link.label}
-              </a>
+            <li key={link.href} className="flex flex-col">
+              {link.dropdown ? (
+                <>
+                  <span className={cn(
+                    "px-3 pt-2 pb-1 text-xs font-bold uppercase tracking-wider",
+                    theme === 'light' ? "text-slate-400" : "text-slate-500"
+                  )}>
+                    {link.label}
+                  </span>
+                  <div className="flex flex-col gap-0.5 pl-3 border-l border-teal-500/20 ml-3 mb-2">
+                    {link.dropdown.map((sub) => (
+                      <a
+                        key={sub.href}
+                        href={sub.href}
+                        onClick={() => setOpen(false)}
+                        className={cn(
+                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                          theme === 'light'
+                            ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
+                            : "text-slate-300 hover:bg-white/10 hover:text-white"
+                        )}
+                      >
+                        {sub.label}
+                      </a>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                    theme === 'light'
+                      ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
+                      : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  )}
+                >
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
           <li>

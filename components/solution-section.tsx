@@ -35,7 +35,7 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
       <div className="relative mx-auto max-w-7xl">
         
         {/* Header Block */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-5xl mb-16">
           <Reveal>
             {label && (
               <div className="flex items-center gap-3 mb-6">
@@ -47,13 +47,13 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
             )}
             
             {title && (
-              <h2 className="mb-6 font-serif text-4xl sm:text-5xl font-bold leading-tight text-teal-deep">
+              <h2 className="mb-6 font-serif text-4xl sm:text-5xl font-bold leading-tight text-teal-deep tracking-tight">
                 {title}
               </h2>
             )}
             
             {body && (
-              <p className="text-lg leading-relaxed text-[#3A5652] font-light">
+              <p className="text-lg sm:text-xl text-[#3A5652] font-light leading-relaxed max-w-2xl">
                 {body}
               </p>
             )}
@@ -65,14 +65,15 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
           
           {/* Left: Image Showcase */}
           {imgUrl && (
-            <Reveal className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-100 shadow-lg">
+            <Reveal className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200/60 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-0.5 group">
               <Image
                 src={imgUrl}
                 alt={data?.solutionImage?.alternativeText || "Solution Image"}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-103"
                 priority
               />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             </Reveal>
           )}
 
@@ -82,19 +83,19 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
               {programs.map((p, i) => {
                 return (
                   <Reveal key={i} delay={i * 100}>
-                    <div className="group flex gap-5 rounded-2xl border border-slate-50 bg-[#FAF8F5] p-6 transition-all duration-300 hover:bg-[#FAF6EE] hover:shadow-sm">
-                      {/* Emoji circle container */}
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-white border border-slate-100 shadow-sm text-2xl">
+                    <div className="group flex gap-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1 hover:border-teal-500/30 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-teal-50/10">
+                      {/* Emoji/Number Circle Container */}
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-50 border border-teal-100/40 text-teal-700 font-serif text-lg font-bold shadow-sm transition-all duration-350 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 group-hover:scale-110">
                         {p.emoji}
                       </div>
                       <div>
                         {p.title && (
-                          <h3 className="mb-1 font-serif text-lg font-bold text-teal-deep">
+                          <h3 className="mb-1.5 font-serif text-lg font-bold text-teal-deep transition-colors duration-300 group-hover:text-teal-bright">
                             {p.title}
                           </h3>
                         )}
                         {p.body && (
-                          <p className="text-sm leading-relaxed text-[#5A7470]">
+                          <p className="text-sm leading-relaxed text-[#5A7470] font-light">
                             {p.body}
                           </p>
                         )}

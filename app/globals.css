@@ -241,8 +241,36 @@
   animation: pulse-soft 3s ease-in-out infinite;
 }
 
+/* Hero entrance animations */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-text {
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-image-1 {
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+.animate-hero-image-2 {
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .animate-hero-image-1,
+  .animate-hero-image-2 {
     opacity: 1;
     transform: none;
     transition: none;
@@ -252,7 +280,10 @@
   .animate-wave-slow,
   .animate-ken-burns,
   .animate-pulse-soft,
-  .animate-marquee {
+  .animate-marquee,
+  .animate-hero-text,
+  .animate-hero-image-1,
+  .animate-hero-image-2 {
     animation: none;
   }
 }

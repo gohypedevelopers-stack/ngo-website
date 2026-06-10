@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import { ArrowRight, BookOpen } from 'lucide-react'
-import { Reveal } from './reveal'
+import { ArrowRight, BookOpen, Heart } from 'lucide-react'
 import { HomepageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 export function HeroBanner({ data }: { data?: HomepageData | null }) {
@@ -17,6 +16,9 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
   
   const secondaryBtnText = data?.heroSecondaryBtnText || ''
   const secondaryBtnLink = data?.heroSecondaryBtnLink || '#'
+
+  const tertiaryBtnText = data?.heroTertiaryBtnText || ''
+  const tertiaryBtnLink = data?.heroTertiaryBtnLink || '#'
 
   const bannerImgUrl = getStrapiMediaUrl(data?.heroBannerImage) || ''
   const scubaDiverImgUrl = getStrapiMediaUrl(data?.heroScubaDiverImage) || ''
@@ -39,11 +41,11 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 py-24 sm:py-32">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           
           {/* Left Column: Text */}
-          <div className="max-w-2xl">
-            <Reveal>
+          <div className="lg:col-span-7 max-w-3xl">
+            <div className="animate-hero-text">
               {subtitle && (
                 <div className="inline-flex items-center gap-3 mb-8">
                   <span className="h-px w-12 bg-teal-400"></span>
@@ -67,29 +69,35 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
 
               <div className="flex flex-wrap items-center gap-4">
                 {primaryBtnText && (
-                  <a href={primaryBtnLink} className="group flex items-center justify-center gap-3 rounded-full bg-teal-500 px-8 py-4 text-sm font-bold text-slate-950 transition-all hover:bg-teal-400 hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(45,212,191,0.4)]">
+                  <a href={primaryBtnLink} className="group flex items-center justify-center gap-2.5 rounded-full bg-teal-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all hover:bg-teal-400 hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(45,212,191,0.4)]">
                     {primaryBtnText}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </a>
                 )}
                 {secondaryBtnText && (
-                  <a href={secondaryBtnLink} className="group flex items-center justify-center gap-3 rounded-full border border-slate-500/40 bg-slate-900/40 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-slate-400 hover:bg-slate-800/60">
+                  <a href={secondaryBtnLink} className="group flex items-center justify-center gap-2.5 rounded-full border border-slate-500/40 bg-slate-900/40 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-slate-400 hover:bg-slate-800/60 hover:scale-105 hover:shadow-[0_0_25px_-5px_rgba(45,212,191,0.15)]">
                     {secondaryBtnText}
                     <BookOpen className="h-4 w-4 text-teal-400" />
                   </a>
                 )}
+                {tertiaryBtnText && (
+                  <a href={tertiaryBtnLink} className="group flex items-center justify-center gap-2.5 rounded-full border border-slate-500/40 bg-slate-900/40 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-slate-400 hover:bg-slate-800/60 hover:scale-105 hover:shadow-[0_0_25px_-5px_rgba(45,212,191,0.15)]">
+                    {tertiaryBtnText}
+                    <Heart className="h-4 w-4 text-teal-400 transition-transform group-hover:scale-110" />
+                  </a>
+                )}
               </div>
-            </Reveal>
+            </div>
           </div>
 
           {/* Right Column: Image Composition */}
-          <div className="relative hidden lg:block h-[600px] w-full">
+          <div className="relative hidden lg:block h-[600px] w-full lg:col-span-5">
             {/* Background glowing orb */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/20 blur-[100px] rounded-full z-0" />
             
             {/* Top Right Image (Scuba Diver) */}
             {scubaDiverImgUrl && (
-              <Reveal delay={200} className="absolute top-4 right-4 w-[60%] h-[60%] z-10">
+              <div className="absolute top-4 right-4 w-[60%] h-[60%] z-10 animate-hero-image-1">
                 <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 hover:scale-105 hover:z-30">
                   <Image
                     src={scubaDiverImgUrl}
@@ -98,12 +106,12 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
                     className="object-cover"
                   />
                 </div>
-              </Reveal>
+              </div>
             )}
 
             {/* Bottom Left Image (3D Printed) */}
             {manufacturingImgUrl && (
-              <Reveal delay={400} className="absolute bottom-4 left-4 w-[65%] h-[55%] z-20">
+              <div className="absolute bottom-4 left-4 w-[65%] h-[55%] z-20 animate-hero-image-2">
                 <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 shadow-2xl shadow-slate-950/50 transition-transform duration-700 hover:scale-105 hover:z-30">
                   <Image
                     src={manufacturingImgUrl}
@@ -113,7 +121,7 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
                   />
                   <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-lg pointer-events-none" />
                 </div>
-              </Reveal>
+              </div>
             )}
           </div>
 
