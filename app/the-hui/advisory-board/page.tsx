@@ -28,7 +28,7 @@ const advisoryPillars = [
   },
   {
     title: 'Traditional Fishing Communities',
-    desc: 'Securing multi-generational heritage guidelines around selective harvesting and traditional loko i\u02BBa pond rules.',
+    desc: 'Securing multi-generational heritage guidelines around selective harvesting and traditional loko iʻa pond rules.',
     icon: Users,
   },
 ]

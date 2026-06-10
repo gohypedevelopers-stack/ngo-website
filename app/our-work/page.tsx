@@ -93,8 +93,8 @@ export default function OurWorkPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
                   <Image
-                    src="/banner.png"
-                    alt="Ocean reef environment"
+                    src="/food_web_restoration.png"
+                    alt="Thriving marine food web ecosystem showing volcanic mountains above crystal clear ocean water and healthy coral reef below"
                     fill
                     priority
                     className="object-cover object-center"

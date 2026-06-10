@@ -65,7 +65,7 @@ export default function TheHuiPage() {
                 </div>
                 
                 <h1 className="mt-4 font-serif text-3xl sm:text-4xl italic font-bold text-slate-900 leading-tight">
-                  &ldquo;He ali&apos;i ka &apos;\u0101ina, he kauw\u0101 ke kanaka.&rdquo;
+                  &ldquo;He aliʻi ka ʻāina, he kauwā ke kanaka.&rdquo;
                 </h1>
                 
                 <p className="text-lg text-teal-700 font-light leading-relaxed">
@@ -73,7 +73,7 @@ export default function TheHuiPage() {
                 </p>
                 
                 <p className="text-base text-slate-650 font-light leading-relaxed max-w-2xl">
-                  Hui Nehu builds unified coalitions to share resources, empower community-led restoration projects, and drive collective advocacy based on historical self-sustaining ahupua\u02BBa frameworks.
+                  Hui Nehu builds unified coalitions to share resources, empower community-led restoration projects, and drive collective advocacy based on historical self-sustaining ahupuaʻa frameworks.
                 </p>
 
                 <div className="pt-6">
@@ -93,8 +93,8 @@ export default function TheHuiPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
                   <Image
-                    src="/team_stewards.png"
-                    alt="Stewardship team on Maui waters"
+                    src="/ahupuaa_stewardship.png"
+                    alt="Traditional community stewardship of the ahupuaʻa"
                     fill
                     priority
                     className="object-cover object-center"
