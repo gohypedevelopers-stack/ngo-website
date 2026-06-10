@@ -16,7 +16,17 @@ const links = [
       { label: 'Fragmented Response', href: '/the-crisis/fragmented-response' },
     ],
   },
-  { label: 'Our Work', href: '/our-work' },
+  {
+    label: 'Our Work',
+    href: '/our-work',
+    dropdown: [
+      { label: 'Overview', href: '/our-work' },
+      { label: 'Habitat & Loko Iʻa', href: '/our-work/habitat-loko-ia' },
+      { label: 'Bio-Cleaner & Pollution', href: '/our-work/bio-cleaner' },
+      { label: 'Community Science', href: '/our-work/community-science' },
+      { label: 'Methodology', href: '/our-work/methodology' },
+    ],
+  },
   { label: 'The Hui', href: '/the-hui' },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'News & Research', href: '/news-research' },

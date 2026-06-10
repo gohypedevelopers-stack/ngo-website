@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Check, ShieldAlert, Zap } from 'lucide-react'
+import { Droplets, ShieldAlert, Award } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { AnimatedCounter } from '@/components/animated-counter'
 
 export const metadata = {
   title: 'Bio-Cleaner & Pollution Response — Hui Nehu',
@@ -12,145 +13,99 @@ export const metadata = {
 
 export default function BioCleanerPage() {
   return (
-    <main className="bg-slate-950 text-slate-100 overflow-x-hidden min-h-screen flex flex-col justify-between">
+    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
+      {/* Dark Nav Background container */}
+      <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center bg-slate-900 overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/scuba_diver.png"
-            alt="Diver inspecting reef environment background"
-            fill
-            className="object-cover object-center opacity-20 select-none pointer-events-none"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/90 to-slate-950" />
-        </div>
+      {/* Split Hero Section */}
+      <section className="relative bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <Droplets className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    Program 2: Bio-Cleaner & Pollution Response
+                  </span>
+                </div>
+                
+                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+                  Bio Cleaner Septic Jockey:<br />An Act of Mālama ʼAīna
+                </h1>
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
+                  Deploying advanced Bio Cleaner septic systems to replace cesspools. Removing marine debris from Maui’s coastline. Responding to acute pollution events.
+                </p>
+              </Reveal>
+            </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 py-12">
-          <Reveal>
-            <Link 
-              href="/our-work"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-cyan-400 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to Programs
-            </Link>
-            <span className="text-xs font-mono font-bold tracking-widest text-teal-400 block mb-2 uppercase">Program 2</span>
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white">Bio-Cleaner & Pollution Response</h1>
-            <p className="mt-4 text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
-              Mitigating land-based nutrient pollution directly at the source. We coordinate septic conversions and physical debris extraction campaigns.
-            </p>
-          </Reveal>
+            {/* Right Image */}
+            <div className="lg:col-span-5">
+              <Reveal delay={100}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
+                  <Image
+                    src="/scuba_diver.png"
+                    alt="Bio-Cleaner operations"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Detailed Pillars */}
-      <section className="py-20 bg-slate-950">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-24">
+      {/* Content Section */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-16">
           
-          {/* Pillar 1 */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <Reveal>
-              <h2 className="text-3xl font-serif font-bold text-white mb-6">Source Interception</h2>
-              <p className="text-slate-300 leading-relaxed font-light mb-4">
-                Wastewater discharging from 88,000 statewide cesspools is the primary silent killer of Hawaiʻi coral systems. By intercepting these discharges, we cut off the flow of harmful nitrates and phosphates before they enter the shoreline water table.
-              </p>
-              <p className="text-slate-300 leading-relaxed font-light">
-                Hui Nehu facilitates the design, funding, and deployment of advanced individual wastewater treatment systems (IWS). These eco-friendly containment systems treat waste to secondary levels, protecting groundwater channels.
-              </p>
-            </Reveal>
-            <Reveal delay={100}>
-              <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 shadow-sm hover:border-teal-500/20 transition-all">
-                <div className="flex items-center gap-2 text-teal-400 mb-4">
+          {/* Section: The Bigger Picture */}
+          <Reveal>
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 hover:shadow-md transition-all duration-300">
+              <div className="flex items-center gap-3 text-cyan-600 mb-5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-50">
                   <ShieldAlert className="h-5 w-5" />
-                  <span className="text-xs font-bold tracking-wider uppercase">Preventative Defense</span>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3">Interception Metrics</h3>
-                <ul className="space-y-3 text-sm font-light text-slate-300">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-teal-400 shrink-0" />
-                    Targeted regional cesspool replacements
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-teal-400 shrink-0" />
-                    90%+ reduction in coastal nutrient loading metrics
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-teal-400 shrink-0" />
-                    Long-term soil absorption and bio-filter checks
-                  </li>
-                </ul>
+                </span>
+                <h3 className="text-xl font-serif font-bold text-slate-900">The Bigger Picture</h3>
               </div>
-            </Reveal>
-          </div>
+              <p className="text-base text-slate-650 leading-relaxed font-light mb-6">
+                Bio Cleaner Septic Jockey is the commercial arm that directly funds the nonprofit’s conservation mission while addressing the cesspool crisis at scale.
+              </p>
+              <div className="rounded-xl border border-dashed border-amber-300 bg-amber-50/30 p-4 text-xs sm:text-sm text-slate-700 flex items-start gap-2.5">
+                <span className="text-amber-600 mt-0.5">⚑</span>
+                <p className="font-light">
+                  <strong className="font-semibold text-slate-900">Note:</strong> Decide whether Bio Cleaner gets its own subdomain for commercial/investor audiences.
+                </p>
+              </div>
+            </div>
+          </Reveal>
 
-          {/* Pillar 2 */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:flex-row-reverse">
-            <Reveal className="lg:order-2">
-              <h2 className="text-3xl font-serif font-bold text-white mb-6">Commercial Synergy</h2>
-              <p className="text-slate-300 leading-relaxed font-light mb-4">
-                To fund and scale wastewater operations, we coordinate with the commercial waste utility startup, the **Bio Cleaner Septic Jockey** service truck fleet.
-              </p>
-              <p className="text-slate-300 leading-relaxed font-light">
-                This commercial integration allows corporate, private-sector logistics and utility profits to cross-fund community-focused non-profit restoration programs and cesspool changeouts for low-income families.
-              </p>
-            </Reveal>
-            <Reveal delay={100} className="lg:order-1">
-              <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 shadow-sm hover:border-teal-500/20 transition-all">
-                <div className="flex items-center gap-2 text-cyan-400 mb-4">
-                  <Zap className="h-5 w-5" />
-                  <span className="text-xs font-bold tracking-wider uppercase">Operational Engine</span>
+          {/* Target Metric Segment */}
+          <Reveal delay={150}>
+            <div className="rounded-2xl border border-teal-100 bg-teal-50/30 p-8 sm:p-12 shadow-xs relative overflow-hidden">
+              <div className="relative z-10 grid gap-6 md:grid-cols-12 md:items-center">
+                <div className="md:col-span-5 flex flex-col items-start">
+                  <span className="text-xs font-mono font-bold tracking-widest text-teal-600 uppercase mb-2">Target Metric</span>
+                  <div className="flex items-baseline text-6xl sm:text-7xl font-serif font-bold text-teal-700">
+                    <AnimatedCounter value={10} suffix="+" />
+                  </div>
+                  <span className="mt-2 text-xs font-semibold tracking-wider uppercase text-slate-500">Tons of Marine Debris Removed</span>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-3">Septic Jockey Utility</h3>
-                <ul className="space-y-3 text-sm font-light text-slate-300">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 shrink-0" />
-                    Utility truck operations funding cleanups
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 shrink-0" />
-                    Bridging public service with sustainable margins
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 shrink-0" />
-                    Accelerating conversion capacity beyond municipal limits
-                  </li>
-                </ul>
+                <div className="md:col-span-7">
+                  <p className="text-lg font-light text-slate-700 leading-relaxed">
+                    Year 1 Target.
+                  </p>
+                </div>
               </div>
-            </Reveal>
-          </div>
-
-          {/* Pillar 3 */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <Reveal>
-              <h2 className="text-3xl font-serif font-bold text-white mb-6">Debris Mitigation</h2>
-              <p className="text-slate-300 leading-relaxed font-light mb-4">
-                Micro-plastics and heavy ghost nets actively shred reefs and trap marine life. Direct physical removal is critical to clear space for restoration sites.
-              </p>
-              <p className="text-slate-300 leading-relaxed font-light">
-                Hui Nehu has established a targeted field target to extract **10+ tons of marine debris** during our first year of active field operations, focusing on estuaries, local fishponds, and nearshore reefs.
-              </p>
-            </Reveal>
-            <Reveal delay={100}>
-              <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 shadow-sm hover:border-teal-500/20 transition-all">
-                <h3 className="text-lg font-bold text-teal-400 mb-3">Year 1 Cleanup Strategy</h3>
-                <ul className="space-y-3 text-sm font-light text-slate-300">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 bg-teal-400 rounded-full shrink-0" />
-                    Removing derelict fishing gear (ghost nets)
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 bg-teal-400 rounded-full shrink-0" />
-                    Targeting 10+ tons of plastic & debris removal
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 bg-teal-400 rounded-full shrink-0" />
-                    Sorting and recycling polymers for 3D printed products
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
 
         </div>
       </section>

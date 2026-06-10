@@ -15,7 +15,7 @@ const programs = [
     slug: '/our-work/habitat-loko-ia',
     eyebrow: 'Program 1',
     title: 'Habitat & Loko Iʻa Restoration',
-    description: 'Restoring degraded estuarine habitats, local coral reefs, and traditional fishponds while propagating thermal-tolerant coral strains and native limu.',
+    description: 'Restoring estuarine habitats, coral reefs, and traditional fishponds (loko iʻa). Propagating thermal-tolerant coral and native limu using traditional cultivation and modern asexual propagation methods.',
     icon: Anchor,
     color: 'from-cyan-600 to-teal-600',
   },

@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft, Compass, ShieldAlert, Waves, Check } from 'lucide-react'
+import { Compass, Network, Award, ShieldAlert } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { AnimatedCounter } from '@/components/animated-counter'
 
 export const metadata = {
   title: 'Our Methodology — Hui Nehu',
@@ -12,36 +12,33 @@ export const metadata = {
 
 export default function MethodologyPage() {
   return (
-    <main className="bg-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
+    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
       {/* Dark Nav Background container */}
       <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
 
-      {/* Split Hero Section (High Contrast Light Theme) */}
+      {/* Split Hero Section */}
       <section className="relative bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <Link 
-                  href="/our-work"
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600 hover:text-teal-800 transition-colors mb-2"
-                >
-                  <ArrowLeft className="h-4 w-4" /> Back to Programs
-                </Link>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <Compass className="h-5 w-5 animate-spin-slow" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    Our Methodology &mdash; The science behind the work
+                  </span>
+                </div>
                 
-                <span className="text-xs font-mono font-bold tracking-widest text-teal-600 block uppercase">
-                  Core Methodology
-                </span>
-                
-                <h1 className="mt-2 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                  Our Methodology
+                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+                  Indigenous Knowledge + Modern Science:<br />The Most Effective Conservation
                 </h1>
                 
-                <p className="mt-4 text-lg text-slate-650 font-light leading-relaxed max-w-2xl">
-                  By integrating modern marine science with Indigenous Ecological Knowledge, our community-embedded conservation model targets a 70% coral survival rate in pilot sites.
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
+                  The most resilient conservation integrates the deep observational knowledge of Indigenous Hawaiian practitioners with peer-reviewed marine biology.
                 </p>
               </Reveal>
             </div>
@@ -54,79 +51,113 @@ export default function MethodologyPage() {
                     src="/methodology_integration.png"
                     alt="Scientific and Native Hawaiian practitioner outplanting coral"
                     fill
+                    priority
                     className="object-cover object-center"
                   />
                 </div>
               </Reveal>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Pillars of Methodology */}
-      <section className="py-20 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-20">
-          
+      {/* Three Pillars Section */}
+      <section className="bg-slate-50 py-20 border-b border-slate-200">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">Three Pillars of Action</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </Reveal>
+          </div>
+
           <div className="grid gap-8 md:grid-cols-3">
-            {/* Pillar 1 */}
+            {/* Pillar 01 */}
             <Reveal delay={100}>
-              <div className="border border-slate-200 bg-white rounded-2xl p-8 shadow-sm hover:border-teal-500/20 transition-all flex flex-col justify-between h-full">
+              <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-teal-500/20 transition-all flex flex-col justify-between h-full">
                 <div>
-                  <span className="text-xs font-mono font-bold text-teal-600 block mb-2">Pillar 1</span>
+                  <span className="text-xs font-mono font-bold text-teal-600 block mb-2">Pillar 01</span>
                   <h3 className="text-xl font-serif font-bold text-slate-900 mb-4">Coral & Limu Propagation</h3>
                   <p className="text-sm text-slate-600 font-light leading-relaxed mb-6">
-                    Rebuilding degraded reef ecosystems by combining traditional cultivation techniques with modern, asexual coral propagation methods. We select, fragment, and nurse heat-resilient coral micro-fragments to speed up calcification.
+                    Combining traditional cultivation with modern asexual propagation methods to rebuild foundational nearshore habitats.
                   </p>
                 </div>
                 <div className="border-t border-slate-100 pt-4 text-xs font-mono text-teal-600 font-semibold">
-                  Asexual fragmentation & native limu outplanting
+                  Cultivation + asexual propagation
                 </div>
               </div>
             </Reveal>
 
-            {/* Pillar 2 */}
+            {/* Pillar 02 */}
             <Reveal delay={200}>
-              <div className="border border-slate-200 bg-white rounded-2xl p-8 shadow-sm hover:border-teal-500/20 transition-all flex flex-col justify-between h-full">
+              <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-amber-500/20 transition-all flex flex-col justify-between h-full">
                 <div>
-                  <span className="text-xs font-mono font-bold text-amber-600 block mb-2">Pillar 2</span>
+                  <span className="text-xs font-mono font-bold text-amber-600 block mb-2">Pillar 02</span>
                   <h3 className="text-xl font-serif font-bold text-slate-900 mb-4">Ahupuaʻa & Loko Iʻa Management</h3>
                   <p className="text-sm text-slate-600 font-light leading-relaxed mb-6">
-                    Implementing holistic watershed management frameworks alongside the revitalization of ancestral fishpond networks to foster sustainable, balanced resource flow. Managing mountain forests prevents sediment runoffs from choking lower corals.
+                    Fostering holistic watershed protection alongside ancestral fishpond revival to balance coastal ecosystems.
                   </p>
                 </div>
                 <div className="border-t border-slate-100 pt-4 text-xs font-mono text-amber-600 font-semibold">
-                  Mauka-to-makai land flow stewardship
+                  Holistic watershed + fishponds
                 </div>
               </div>
             </Reveal>
 
-            {/* Pillar 3 */}
+            {/* Pillar 03 */}
             <Reveal delay={300}>
-              <div className="border border-slate-200 bg-white rounded-2xl p-8 shadow-sm hover:border-teal-500/20 transition-all flex flex-col justify-between h-full">
+              <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-cyan-500/20 transition-all flex flex-col justify-between h-full">
                 <div>
-                  <span className="text-xs font-mono font-bold text-cyan-600 block mb-2">Pillar 3</span>
+                  <span className="text-xs font-mono font-bold text-cyan-600 block mb-2">Pillar 03</span>
                   <h3 className="text-xl font-serif font-bold text-slate-900 mb-4">Citizen Science Rigor</h3>
                   <p className="text-sm text-slate-600 font-light leading-relaxed mb-6">
-                    Engaging the community through highly standardized data collection procedures to generate robust scientific datasets. Every volunteer follows strict checklists verified by marine ecologist oversight.
+                    Translating standardized community observations and data logs into robust scientific datasets accepted by policy makers.
                   </p>
                 </div>
                 <div className="border-t border-slate-100 pt-4 text-xs font-mono text-cyan-600 font-semibold">
-                  Standardized monitoring & transparency
+                  Community data → robust science
                 </div>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
 
-          {/* Outcome highlight */}
+      {/* The Ahupuaʻa Model & Core Metric */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-16">
+          
+          {/* The Ahupua'a Model Card */}
           <Reveal>
-            <div className="rounded-3xl border border-teal-100 bg-white p-8 md:p-12 text-center max-w-4xl mx-auto shadow-sm">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mb-4">Targeting 70% Coral Survival</h2>
-              <p className="text-sm sm:text-base text-slate-650 font-light leading-relaxed max-w-2xl mx-auto mb-6">
-                Most standard reef transplantations suffer high mortality rates under thermal stress events. By breeding tolerant strains, managing upland wastewater runoff, and planting protective native limu buffers, our pilot sites aim to secure a landmark 70% survival rate.
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 hover:shadow-md transition-all duration-300">
+              <div className="flex items-center gap-3 text-cyan-600 mb-5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-50">
+                  <Network className="h-5 w-5" />
+                </span>
+                <h3 className="text-xl font-serif font-bold text-slate-900">The Ahupuaʻa Model</h3>
+              </div>
+              <p className="text-base text-slate-650 leading-relaxed font-light">
+                Traditional Hawaiian land system from mountain peak (mauka) to ocean (makai). Kānāwai — “the equal sharing of water” — was the source of all wealth. Hui Nehu makes this operational in the 21st century.
               </p>
-              <div className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-teal-700">
-                <Check className="h-4 w-4" /> Scientifically Monitored & Verified
+            </div>
+          </Reveal>
+
+          {/* Core Metric Segment */}
+          <Reveal delay={150}>
+            <div className="rounded-2xl border border-teal-100 bg-teal-50/30 p-8 sm:p-12 shadow-xs relative overflow-hidden">
+              <div className="relative z-10 grid gap-6 md:grid-cols-12 md:items-center">
+                <div className="md:col-span-5 flex flex-col items-start">
+                  <span className="text-xs font-mono font-bold tracking-widest text-teal-600 uppercase mb-2">Core Metric</span>
+                  <div className="flex items-baseline text-6xl sm:text-7xl font-serif font-bold text-teal-700">
+                    <AnimatedCounter value={70} suffix="%" />
+                  </div>
+                  <span className="mt-2 text-xs font-semibold tracking-wider uppercase text-slate-500">Coral Survival Rate</span>
+                </div>
+                <div className="md:col-span-7">
+                  <p className="text-lg font-light text-slate-700 leading-relaxed">
+                    Targeting 70% coral survival rate at pilot sites — above national average.
+                  </p>
+                </div>
               </div>
             </div>
           </Reveal>
