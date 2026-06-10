@@ -1,103 +1,190 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft, Mail, Linkedin } from 'lucide-react'
+import { Users, Mail, Linkedin, Briefcase, ShieldAlert, Award } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
 
 export const metadata = {
   title: 'Team & Leadership — Hui Nehu',
-  description: 'Meet the team behind Hui Nehu: Indigenous practitioners, marine scientists, and operational experts.',
+  description: 'Led by a balanced coalition of Indigenous Hawaiian cultural authority, peer-reviewed marine science, and operational experts.',
 }
 
-const team = [
+const leaders = [
   {
     name: 'James J.K. Carpio',
     role: 'Executive Director & President',
-    bio: 'Indigenous Hawaiian natural resource practitioner providing deep cultural authority, ancestral ecosystem direction, and community engagement guidance.',
+    desc: 'Indigenous Hawaiian natural resource practitioner. James provides deep cultural authority, ancestral ecosystem direction, and community stewardship guidance.',
     initials: 'JC',
   },
   {
     name: 'Dr. Nakoa Goo',
     role: 'Chief Science Officer & Vice President',
-    bio: 'Holds a PhD in Marine Ecology from the University of Hawai\u02BBi. Dr. Nakoa anchors the organization\u02BBs field operations in peer-reviewed marine science.',
+    desc: 'PhD in Marine Ecology, University of Hawaiʻi. Dr. Nakoa anchors the organization’s field operations and ecological monitoring in peer-reviewed marine science.',
     initials: 'NG',
   },
+]
+
+const openRoles = [
   {
-    name: 'Lehua K. Wilcox',
-    role: 'Director of Community Engagement',
-    bio: 'Tasked with managing public educational programming, local school outreach, coordinating volunteer networks, and organizing community workday logistics.',
-    initials: 'LW',
+    title: 'Director of Community Engagement',
+    focus: 'Education programs + community workdays',
   },
   {
-    name: 'Kainoa S. Vance',
-    role: 'Director of Operations / Managing Director',
-    bio: 'Coordinates backend commercial operations, asset tracking, marine fleet management, and septic truck logistics partnerships.',
-    initials: 'KV',
+    title: 'Director of Operations / Managing Director',
+    focus: 'Commercial operations + fleet management',
   },
+]
+
+const advisoryBoard = [
+  'DLNR Division of Aquatic Resources',
+  'University of Hawaiʻi',
+  'Maui County',
+  'Traditional Hawaiian fishing communities',
 ]
 
 export default function TeamPage() {
   return (
-    <main className="bg-slate-950 text-slate-100 overflow-x-hidden min-h-screen flex flex-col justify-between">
+    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
+      {/* Dark Nav Background container */}
+      <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center bg-slate-900 overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/team_stewards.png"
-            alt="Hui Nehu team background"
-            fill
-            className="object-cover object-center opacity-25 select-none pointer-events-none"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/90 to-slate-950" />
-        </div>
+      {/* Split Hero Section */}
+      <section className="relative bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <Users className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    The Hui &mdash; Team & Leadership
+                  </span>
+                </div>
+                
+                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+                  Led by Hawaiʻi’s Most<br className="hidden sm:inline" /> Credible Ocean Stewards
+                </h1>
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
+                  A team combining Indigenous Hawaiian cultural authority, peer-reviewed marine science, and operational expertise.
+                </p>
+              </Reveal>
+            </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 py-12">
-          <Reveal>
-            <Link 
-              href="/the-hui"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-cyan-400 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to The Hui
-            </Link>
-            <span className="text-xs font-mono font-bold tracking-widest text-amber-300 block mb-2 uppercase">Coalition</span>
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white">Team & Leadership</h1>
-            <p className="mt-4 text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
-              Led by a balanced coalition of Indigenous cultural authorities, peer-reviewed marine scientists, and seasoned operational experts.
-            </p>
-          </Reveal>
+            {/* Right Image */}
+            <div className="lg:col-span-5">
+              <Reveal delay={100}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
+                  <Image
+                    src="/team_stewards.png"
+                    alt="Hui Nehu team stewards"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-slate-950">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member, index) => (
+      {/* Core Leadership Section */}
+      <section className="bg-slate-50 py-20 border-b border-slate-200">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">Core Leadership</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </Reveal>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {leaders.map((member, index) => (
               <Reveal key={member.name} delay={index * 100}>
-                <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-6 shadow-sm hover:border-cyan-500/20 transition-all flex flex-col justify-between h-full">
+                <div className="border border-slate-200 bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full">
                   <div>
-                    <div className="h-16 w-16 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/25 flex items-center justify-center font-bold font-serif text-xl mb-6">
+                    <div className="h-14 w-14 rounded-2xl bg-teal-550/10 text-teal-700 border border-teal-200/50 flex items-center justify-center font-bold font-serif text-lg mb-6">
                       {member.initials}
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                    <div className="text-xs font-mono text-amber-400 uppercase tracking-widest block mb-4">
+                    <h3 className="text-xl font-serif font-bold text-slate-900 mb-1">{member.name}</h3>
+                    <div className="text-xs font-mono text-teal-600 uppercase tracking-widest block mb-4">
                       {member.role}
                     </div>
-                    <p className="text-sm font-light text-slate-300 leading-relaxed mb-6">
-                      {member.bio}
+                    <p className="text-sm font-light text-slate-605 leading-relaxed mb-6">
+                      {member.desc}
                     </p>
                   </div>
-                  <div className="flex gap-4 border-t border-slate-800 pt-4 text-xs font-mono text-slate-500">
-                    <span className="hover:text-cyan-400 cursor-pointer flex items-center gap-1">
+                  <div className="flex gap-4 border-t border-slate-100 pt-4 text-xs font-mono text-slate-400">
+                    <span className="hover:text-teal-700 cursor-pointer flex items-center gap-1.5 transition-colors">
                       <Mail className="h-3.5 w-3.5" /> Email
                     </span>
-                    <span className="hover:text-cyan-400 cursor-pointer flex items-center gap-1">
+                    <span className="hover:text-teal-700 cursor-pointer flex items-center gap-1.5 transition-colors">
                       <Linkedin className="h-3.5 w-3.5" /> LinkedIn
                     </span>
                   </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Open Roles Section */}
+      <section className="bg-white py-20 border-b border-slate-200">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <div className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-cyan-50 text-cyan-600 mb-4">
+                <Briefcase className="h-5 w-5" />
+              </div>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">Open Roles</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-cyan-500 rounded-full" />
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {openRoles.map((role, index) => (
+              <Reveal key={role.title} delay={index * 100}>
+                <div className="border border-dashed border-slate-300 bg-slate-50/50 rounded-2xl p-8 hover:border-cyan-500/40 hover:bg-slate-50 transition-all duration-300">
+                  <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">{role.title}</h3>
+                  <p className="text-sm font-light text-slate-500 leading-relaxed mb-4">
+                    Focus: {role.focus}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-600 hover:text-cyan-700 cursor-pointer">
+                    Apply Now &rarr;
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advisory Board Section */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <div className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-teal-50 text-teal-600 mb-4">
+                <Award className="h-5 w-5 animate-pulse" />
+              </div>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">Advisory Board</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </Reveal>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {advisoryBoard.map((partner, index) => (
+              <Reveal key={partner} delay={index * 50}>
+                <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex items-center justify-center text-center hover:shadow-md hover:border-teal-500/20 transition-all duration-300">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-700 leading-relaxed">
+                    {partner}
+                  </span>
                 </div>
               </Reveal>
             ))}

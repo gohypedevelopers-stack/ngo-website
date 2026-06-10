@@ -10,7 +10,6 @@ const links = [
     label: 'The Crisis',
     href: '/the-crisis',
     dropdown: [
-      { label: 'Overview', href: '/the-crisis' },
       { label: 'The Nehu (Keystone)', href: '/the-crisis/the-nehu' },
       { label: 'The Cesspool Crisis', href: '/the-crisis/cesspool-problem' },
       { label: 'Fragmented Response', href: '/the-crisis/fragmented-response' },
@@ -20,14 +19,21 @@ const links = [
     label: 'Our Work',
     href: '/our-work',
     dropdown: [
-      { label: 'Overview', href: '/our-work' },
       { label: 'Habitat & Loko Iʻa', href: '/our-work/habitat-loko-ia' },
       { label: 'Bio-Cleaner & Pollution', href: '/our-work/bio-cleaner' },
       { label: 'Community Science', href: '/our-work/community-science' },
       { label: 'Methodology', href: '/our-work/methodology' },
     ],
   },
-  { label: 'The Hui', href: '/the-hui' },
+  {
+    label: 'The Hui',
+    href: '/the-hui',
+    dropdown: [
+      { label: 'Our Story', href: '/the-hui/story-ahupuaa' },
+      { label: 'Team & Leadership', href: '/the-hui/team' },
+      { label: 'Partners & Coalition', href: '/the-hui/coalition-partners' },
+    ],
+  },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'News & Research', href: '/news-research' },
 ]

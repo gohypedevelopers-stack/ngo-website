@@ -1,12 +1,11 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft, Check, Share2, Scale, BarChart3, Building } from 'lucide-react'
+import { Share2, Scale, BarChart3, Building } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
 
 export const metadata = {
-  title: 'Coalition & Partners — Hui Nehu',
+  title: 'Partners & Coalition — Hui Nehu',
   description: 'Operating explicitly as a collaborative catalyst rather than a competitor. Discover our partnerships.',
 }
 
@@ -21,99 +20,129 @@ const targetPartners = [
 
 export default function CoalitionPartnersPage() {
   return (
-    <main className="bg-slate-950 text-slate-100 overflow-x-hidden min-h-screen flex flex-col justify-between">
+    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
+      {/* Dark Nav Background container */}
+      <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center bg-slate-900 overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/banner.png"
-            alt="Collaboration partners background"
-            fill
-            className="object-cover object-center opacity-20 select-none pointer-events-none"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/90 to-slate-950" />
-        </div>
+      {/* Split Hero Section */}
+      <section className="relative bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <Share2 className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    The Hui &mdash; Coalition & Partnerships
+                  </span>
+                </div>
+                
+                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+                  A Collaborative Catalyst, Not a Competitor
+                </h1>
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
+                  Coalition anchor — supporting, empowering, and partnering with existing grassroots organizations to accelerate marine conservation across Hawaiʻi. We do not operate in silos.
+                </p>
+              </Reveal>
+            </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 py-12">
-          <Reveal>
-            <Link 
-              href="/the-hui"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-cyan-400 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to The Hui
-            </Link>
-            <span className="text-xs font-mono font-bold tracking-widest text-amber-300 block mb-2 uppercase">Our Network</span>
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white">Coalition & Partners</h1>
-            <p className="mt-4 text-lg text-slate-300 font-light max-w-2xl leading-relaxed">
-              Operating explicitly as a collaborative catalyst rather than a competitor, Hui Nehu actively builds unified coalitions to empower community-led projects.
-            </p>
-          </Reveal>
+            {/* Right Image */}
+            <div className="lg:col-span-5">
+              <Reveal delay={100}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
+                  <Image
+                    src="/banner.png"
+                    alt="Coalition network partners"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Detailed Pillars */}
-      <section className="py-20 bg-slate-950">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-24">
-          
-          {/* Pillars of Coalition */}
+      {/* Partnership Modes Section */}
+      <section className="bg-slate-50 py-20 border-b border-slate-200">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">3 Partnership Modes</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </Reveal>
+          </div>
+
           <div className="grid gap-8 md:grid-cols-3">
-            {/* Pillar 1 */}
+            {/* Mode 1 */}
             <Reveal delay={100}>
-              <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 shadow-sm flex flex-col justify-between h-full hover:border-cyan-500/20 transition-all">
+              <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-teal-500/20 transition-all flex flex-col justify-between h-full">
                 <div>
-                  <Share2 className="h-8 w-8 text-cyan-400 mb-6" />
-                  <h3 className="text-xl font-serif font-bold text-white mb-4">Resource & Technology Sharing</h3>
-                  <p className="text-xs text-slate-350 leading-relaxed font-light">
-                    Providing local community associations with open-source marine science data, technical expertise, and direct access to advanced Bio Cleaner septic equipment. We share tools so communities don&apos;t have to double-purchase expensive machinery.
+                  <Share2 className="h-8 w-8 text-teal-600 mb-6" />
+                  <h3 className="text-xl font-serif font-bold text-slate-900 mb-4">Resource & Technology Sharing</h3>
+                  <p className="text-sm text-slate-600 font-light leading-relaxed">
+                    Technical expertise, marine science data, Bio Cleaner septic access.
                   </p>
                 </div>
               </div>
             </Reveal>
 
-            {/* Pillar 2 */}
+            {/* Mode 2 */}
             <Reveal delay={200}>
-              <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 shadow-sm flex flex-col justify-between h-full hover:border-cyan-500/20 transition-all">
+              <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-amber-500/20 transition-all flex flex-col justify-between h-full">
                 <div>
-                  <Scale className="h-8 w-8 text-amber-300 mb-6" />
-                  <h3 className="text-xl font-serif font-bold text-white mb-4">Joint Advocacy</h3>
-                  <p className="text-xs text-slate-350 leading-relaxed font-light">
-                    Linking smaller, isolated organizations into a unified political coalition to reshape state-level environmental policy, streamline restoration permissions, and unlock substantial federal funding grants.
+                  <Scale className="h-8 w-8 text-amber-600 mb-6" />
+                  <h3 className="text-xl font-serif font-bold text-slate-900 mb-4">Joint Advocacy</h3>
+                  <p className="text-sm text-slate-600 font-light leading-relaxed">
+                    Unified coalition for state environmental policy + federal grants.
                   </p>
                 </div>
               </div>
             </Reveal>
 
-            {/* Pillar 3 */}
+            {/* Mode 3 */}
             <Reveal delay={300}>
-              <div className="border border-white/5 bg-slate-900/40 rounded-2xl p-8 shadow-sm flex flex-col justify-between h-full hover:border-cyan-500/20 transition-all">
+              <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-cyan-500/20 transition-all flex flex-col justify-between h-full">
                 <div>
-                  <BarChart3 className="h-8 w-8 text-teal-400 mb-6" />
-                  <h3 className="text-xl font-serif font-bold text-white mb-4">Capacity Building</h3>
-                  <p className="text-xs text-slate-355 leading-relaxed font-light">
-                    Elevating volunteer-led ahupuaʻa and loko iʻa projects by providing them with institutional administrative backbones, scientific logging validation, and professional safety gear.
+                  <BarChart3 className="h-8 w-8 text-cyan-600 mb-6" />
+                  <h3 className="text-xl font-serif font-bold text-slate-900 mb-4">Capacity Building</h3>
+                  <p className="text-sm text-slate-600 font-light leading-relaxed">
+                    Admin support + scientific validation for volunteer-led ahupuaʻa projects.
                   </p>
                 </div>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
 
-          {/* Target Partners List */}
-          <Reveal>
-            <div className="border border-white/5 bg-slate-900/40 rounded-3xl p-8 md:p-12 max-w-4xl mx-auto">
-              <h2 className="text-2xl font-serif font-bold text-white mb-6 text-center">Target Institutional Partners</h2>
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {targetPartners.map((partner) => (
-                  <div key={partner} className="flex items-center gap-3 bg-white/5 border border-white/5 rounded-xl p-4">
-                    <Building className="h-4 w-4 text-cyan-400 shrink-0" />
-                    <span className="text-xs font-semibold text-white">{partner}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+      {/* Target Partners Section */}
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
+          <div className="text-center max-w-xl mx-auto">
+            <Reveal>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">Target Partners</h2>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </Reveal>
+          </div>
 
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {targetPartners.map((partner, index) => (
+              <Reveal key={partner} delay={index * 50}>
+                <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex items-center justify-center text-center hover:shadow-md hover:border-teal-500/20 transition-all duration-300">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-700 leading-relaxed">
+                    {partner}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
