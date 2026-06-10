@@ -3,6 +3,7 @@ import { Heart, Eye, Droplets, Trash2, GraduationCap, Calendar, Compass } from '
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { VolunteerModalButton } from '@/components/volunteer-modal-button'
 
 export const metadata = {
   title: 'Volunteer & Workdays — Hui Nehu',
@@ -129,21 +130,28 @@ export default function VolunteerWorkdaysPage() {
       </section>
 
       {/* Registration Callout */}
-      <section className="bg-slate-50 py-20">
+      <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <Reveal>
-            <div className="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 text-white p-8 sm:p-12 shadow-xl text-center space-y-6">
-              <h3 className="text-3xl font-serif font-bold">Ready to Join a Field Crew?</h3>
-              <p className="text-lg font-light text-slate-350 leading-relaxed max-w-2xl mx-auto">
-                No prior marine science or engineering background required. We provide protective gear, safety briefs, water, and lunch.
-              </p>
-              <div className="pt-4">
-                <a 
-                  href="mailto:volunteer@huinehu.org?subject=Community%20Workday%20Registration"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-950 font-bold px-8 py-4 text-sm hover:bg-teal-400 hover:text-slate-950 transition-all hover:scale-105"
-                >
-                  Sign up for the next community workday &rarr;
-                </a>
+            <div className="relative rounded-3xl overflow-hidden text-white p-8 sm:p-12 shadow-xl text-center">
+              {/* Background Image */}
+              <Image
+                src="/volunteer_crew_bg.png"
+                alt="Community volunteers ready for workday"
+                fill
+                className="object-cover object-center"
+              />
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/85 to-slate-950/80" />
+
+              <div className="relative z-10 space-y-6">
+                <h3 className="text-3xl font-serif font-bold">Ready to Join a Field Crew?</h3>
+                <p className="text-base sm:text-lg font-light text-slate-200 leading-relaxed max-w-2xl mx-auto">
+                  No prior marine science or engineering background required. We provide protective gear, safety briefs, water, and lunch.
+                </p>
+                <div className="pt-4">
+                  <VolunteerModalButton />
+                </div>
               </div>
             </div>
           </Reveal>

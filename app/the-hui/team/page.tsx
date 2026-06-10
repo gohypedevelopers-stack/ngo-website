@@ -115,17 +115,9 @@ export default function TeamPage() {
                     <div className="text-xs font-mono text-teal-600 uppercase tracking-widest block mb-4">
                       {member.role}
                     </div>
-                    <p className="text-sm font-light text-slate-605 leading-relaxed mb-6">
+                    <p className="text-sm font-light text-slate-605 leading-relaxed">
                       {member.desc}
                     </p>
-                  </div>
-                  <div className="flex gap-4 border-t border-slate-100 pt-4 text-xs font-mono text-slate-400">
-                    <span className="hover:text-teal-700 cursor-pointer flex items-center gap-1.5 transition-colors">
-                      <Mail className="h-3.5 w-3.5" /> Email
-                    </span>
-                    <span className="hover:text-teal-700 cursor-pointer flex items-center gap-1.5 transition-colors">
-                      <Linkedin className="h-3.5 w-3.5" /> LinkedIn
-                    </span>
                   </div>
                 </div>
               </Reveal>
@@ -166,22 +158,32 @@ export default function TeamPage() {
       </section>
 
       {/* Advisory Board Section */}
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
+      <section className="relative py-12 overflow-hidden border-b border-slate-200">
+        {/* Background Image */}
+        <Image
+          src="/advisory_board_bg.png"
+          alt="Hawaiian bay background"
+          fill
+          className="object-cover object-center pointer-events-none"
+        />
+        {/* Light Overlay */}
+        <div className="absolute inset-0 bg-slate-50/90 backdrop-blur-[2px]" />
+
+        <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8 space-y-8">
           <div className="text-center max-w-xl mx-auto">
             <Reveal>
-              <div className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-teal-50 text-teal-600 mb-4">
+              <div className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-teal-50 text-teal-600 mb-3 border border-teal-100">
                 <Award className="h-5 w-5 animate-pulse" />
               </div>
               <h2 className="font-serif text-3xl font-bold text-slate-900">Advisory Board</h2>
-              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+              <div className="mx-auto mt-2 h-1 w-12 bg-teal-500 rounded-full" />
             </Reveal>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {advisoryBoard.map((partner, index) => (
               <Reveal key={partner} delay={index * 50}>
-                <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex items-center justify-center text-center hover:shadow-md hover:border-teal-500/20 transition-all duration-300">
+                <div className="h-full rounded-2xl border border-slate-200 bg-white/95 p-5 shadow-sm flex items-center justify-center text-center hover:shadow-md hover:border-teal-500/30 transition-all duration-300 min-h-[70px]">
                   <span className="text-xs font-semibold uppercase tracking-wider text-slate-700 leading-relaxed">
                     {partner}
                   </span>

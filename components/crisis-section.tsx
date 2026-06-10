@@ -17,7 +17,7 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
   const label = data?.crisisLabel || ''
   
   const title = data?.crisisTitle ? (
-    <span dangerouslySetInnerHTML={{ __html: data.crisisTitle.replace(/\n/g, '<br />') }} />
+    <span dangerouslySetInnerHTML={{ __html: data.crisisTitle.replace(/\n/g, ' ') }} />
   ) : null
 
   const body = data?.crisisBody || ''
@@ -56,16 +56,15 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
           <div className="lg:col-span-7 max-w-3xl">
             <Reveal>
               {label && (
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="h-px w-10 bg-coral"></span>
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-coral">
+                <div className="inline-flex mb-6">
+                  <span className="text-xs font-mono font-semibold tracking-[0.15em] uppercase text-coral bg-coral/10 border border-coral/20 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(240,113,103,0.08)]">
                     {label}
                   </span>
                 </div>
               )}
               
               {title && (
-                <h2 className="mb-6 font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-teal-deep tracking-tight">
+                <h2 className="mb-6 font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-teal-deep tracking-tight">
                   {title}
                 </h2>
               )}
@@ -99,20 +98,20 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
           {/* Right Column: Stat Card + Image */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <Reveal delay={200}>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 sm:p-8 text-slate-800 shadow-md">
+              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
                 {/* Background glowing orb */}
                 <div className="absolute -right-8 -top-8 w-36 h-36 bg-coral/5 blur-3xl rounded-full pointer-events-none" />
                 
                 <div className="relative z-10">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1 text-[10px] font-bold text-coral border border-coral/20 mb-6 uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1 text-[10px] font-bold text-coral border border-coral/20 mb-4 uppercase tracking-wider">
                     ⚠️ Hidden Killer Stat
                   </span>
                   
-                  <div className="mb-4">
-                    <span className="font-serif text-6xl sm:text-7xl font-black text-coral tracking-tight block">
+                  <div className="mb-3 flex items-baseline gap-2 flex-wrap">
+                    <span className="font-serif text-4xl sm:text-5xl font-black text-coral tracking-tight">
                       53M
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mt-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                       Gallons of Sewage / Day
                     </span>
                   </div>

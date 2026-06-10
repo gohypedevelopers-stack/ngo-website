@@ -15,8 +15,8 @@ export function StatsBar() {
         {stats.map((stat, i) => {
           const Icon = stat.icon
           return (
-            <Reveal key={i} delay={i * 100}>
-              <div className="group relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-6 sm:p-8 text-center flex flex-col items-center justify-center shadow-xl backdrop-blur-md transition-all duration-500 hover:border-teal-500/30 hover:bg-slate-900/80 hover:-translate-y-1 hover:shadow-teal-500/5">
+            <Reveal key={i} delay={i * 100} className="h-full">
+              <div className="group relative h-full overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-5 sm:p-6 text-center flex flex-col items-center justify-center shadow-xl backdrop-blur-md transition-all duration-500 hover:border-teal-500/30 hover:bg-slate-900/80 hover:-translate-y-1 hover:shadow-teal-500/5">
                 {/* Background glowing gradient orb */}
                 <div className="absolute -right-8 -top-8 w-24 h-24 bg-teal-500/5 blur-2xl rounded-full pointer-events-none group-hover:bg-teal-500/10 transition-all duration-500" />
                 

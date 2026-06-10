@@ -88,8 +88,8 @@ export default function InvestmentTiersPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
                   <Image
-                    src="/get_involved_funding.png"
-                    alt="Funding conservation programs"
+                    src="/ocean image.png"
+                    alt="Pristine Hawaiian coastline and reef"
                     fill
                     priority
                     className="object-cover object-center"

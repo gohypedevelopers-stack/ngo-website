@@ -47,8 +47,8 @@ export default function StoryAhupuaaPage() {
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
                   <Image
-                    src="/ahupuaa_restoration.png"
-                    alt="Traditional Hawaiian Ahupuaa system layout"
+                    src="/contact_ocean.png"
+                    alt="Traditional Hawaiian coastal ocean view"
                     fill
                     priority
                     className="object-cover object-center"
