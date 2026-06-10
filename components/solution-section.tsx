@@ -15,18 +15,18 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
   const programs = [
     {
       emoji: data?.solutionProg1Emoji || '🪸',
-      title: data?.solutionProg1Title || '',
-      body: data?.solutionProg1Body || '',
+      title: data?.problem1Title || data?.solutionProg1Title || '',
+      body: data?.problem1Body || data?.solutionProg1Body || '',
     },
     {
       emoji: data?.solutionProg2Emoji || '🌊',
-      title: data?.solutionProg2Title || '',
-      body: data?.solutionProg2Body || '',
+      title: data?.problem2Title || data?.solutionProg2Title || '',
+      body: data?.problem2Body || data?.solutionProg2Body || '',
     },
     {
       emoji: data?.solutionProg3Emoji || '🔬',
-      title: data?.solutionProg3Title || '',
-      body: data?.solutionProg3Body || '',
+      title: data?.problem3Title || data?.solutionProg3Title || '',
+      body: data?.problem3Body || data?.solutionProg3Body || '',
     },
   ].filter(p => p.title || p.body);
 
@@ -39,7 +39,6 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
           <Reveal>
             {label && (
               <div className="flex items-center gap-3 mb-6">
-                <span className="h-px w-10 bg-teal-bright"></span>
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-teal-bright">
                   {label}
                 </span>

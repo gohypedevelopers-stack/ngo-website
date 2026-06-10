@@ -135,8 +135,8 @@ export const staticHomepageData: HomepageData = {
   },
   heroManufacturingImage: {
     id: 3,
-    url: '/3dprinted.png',
-    alternativeText: 'Large format additive manufacturing',
+    url: '/loko_ia_restoration.png',
+    alternativeText: 'Traditional Hawaiian fishpond (loko iʻa) restoration',
   },
   crisisLabel: 'The Crisis',
   crisisTitle: 'Hawaiʻi’s reefs are dying,\nand the window to act is closing fast.',

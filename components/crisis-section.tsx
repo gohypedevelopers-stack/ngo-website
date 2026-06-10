@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Reveal } from './reveal'
-import { GitFork, Compass, Coins } from 'lucide-react'
+
 import { HomepageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 interface ExtendedHomepageData extends HomepageData {
@@ -25,23 +25,7 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
   const quote = data?.crisisQuote || ''
   const imgUrl = getStrapiMediaUrl(data?.crisisImage) || ''
 
-  const problems = [
-    {
-      title: data?.problem1Title || '',
-      body: data?.problem1Body || '',
-      icon: GitFork,
-    },
-    {
-      title: data?.problem2Title || '',
-      body: data?.problem2Body || '',
-      icon: Compass,
-    },
-    {
-      title: data?.problem3Title || '',
-      body: data?.problem3Body || '',
-      icon: Coins,
-    },
-  ].filter(p => p.title || p.body);
+
 
   return (
     <section id="crisis" className="relative bg-[#FAF8F5] px-5 py-20 sm:px-8 sm:py-28 overflow-hidden">
@@ -140,38 +124,7 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
 
         </div>
 
-        {/* Problems Cards Section */}
-        {problems.length > 0 && (
-          <div className="mt-20 grid gap-8 md:grid-cols-3">
-            {problems.map((p, i) => {
-              const Icon = p.icon
-              return (
-                <Reveal key={i} delay={i * 100}>
-                  <div className="h-full rounded-2xl bg-white border border-slate-100 p-8 shadow-sm transition-all duration-500 hover:border-coral/30 hover:-translate-y-1 group hover:shadow-md">
-                    <div className="relative z-10 flex flex-col h-full">
-                      {/* Icon container */}
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-coral/10 text-coral border border-coral/20 mb-5 group-hover:bg-coral group-hover:text-white transition-all duration-500">
-                        <Icon className="w-5 h-5 transition-transform duration-500 group-hover:rotate-6" />
-                      </div>
 
-                      {p.title && (
-                        <h3 className="mb-3 font-serif text-xl font-bold text-teal-deep transition-colors duration-300 group-hover:text-coral">
-                          {p.title}
-                        </h3>
-                      )}
-                      
-                      {p.body && (
-                        <p className="text-sm leading-relaxed text-[#5A7470] font-light">
-                          {p.body}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-              )
-            })}
-          </div>
-        )}
       </div>
     </section>
   )
