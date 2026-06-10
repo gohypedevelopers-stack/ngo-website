@@ -6,7 +6,7 @@ export function ScienceSection({ data }: { data?: HomepageData | null }) {
   const label = data?.scienceLabel || ''
   
   const title = data?.scienceTitle ? (
-    <span dangerouslySetInnerHTML={{ __html: data.scienceTitle.replace(/\n/g, '<br />') }} />
+    <span dangerouslySetInnerHTML={{ __html: data.scienceTitle.replace(/\s+/g, ' ') }} />
   ) : null
 
   const body = data?.scienceBody || ''

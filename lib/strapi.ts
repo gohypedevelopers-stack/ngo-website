@@ -114,7 +114,7 @@ const USE_STRAPI = process.env.NEXT_PUBLIC_USE_STRAPI === 'true';
 
 export const staticHomepageData: HomepageData = {
   heroSubtitle: 'A Maui-Based 501(c)(3) Marine Conservation Nonprofit — Est. 2023',
-  heroTitle: 'Protecting Hawaiʻi’s Ocean,\nFrom the Ground Up',
+  heroTitle: 'Protecting Hawaiʻi’s Ocean, From the \nGround Up',
   heroDescription:
     'Mālama ʼAīna. Mālama Wai. Mālama Kai. — Care for the Land. Care for the Water. Care for the Sea.',
   heroPrimaryBtnText: 'Join the Hui',
