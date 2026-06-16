@@ -16,20 +16,20 @@ export default async function BioCleanerPage() {
   const subPages = await fetchOurWorkSubPages()
   const page = subPages.find(p => p.slug === 'bio-cleaner')
 
-  const eyebrow = page?.eyebrow || 'Program 2: Bio-Cleaner & Pollution Response'
-  const title = page?.title || 'Bio Cleaner Septic Jockey:\nAn Act of Mālama ʼAīna'
-  const description = page?.description || 'Deploying advanced Bio Cleaner septic systems to replace cesspools. Removing marine debris from Maui’s coastline. Responding to acute pollution events.'
-  const image = getStrapiMediaUrl(page?.image) || '/underwate.png'
+  const eyebrow = page?.eyebrow || ''
+  const title = page?.title || ''
+  const description = page?.description || ''
+  const image = getStrapiMediaUrl(page?.image) || ''
 
-  const card1Title = page?.card1Title || 'The Bigger Picture'
-  const card1Body = page?.card1Body || 'Bio Cleaner Septic Jockey is the commercial arm that directly funds the nonprofit’s conservation mission while addressing the cesspool crisis at scale.'
+  const card1Title = page?.card1Title || ''
+  const card1Body = page?.card1Body || ''
 
-  const metricLabel = page?.metricLabel || 'Target Metric'
-  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 10
-  const metricSuffix = page?.metricSuffix || '+'
-  const metricDesc = page?.metricDesc || 'Tons of Marine Debris Removed'
-  const metricDetail = page?.metricDetail || 'Year 1 Target — deploying Bio Cleaner septic systems and coordinating coastline debris removal across Maui County.'
-  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || '/bio_cleaner_bg.png'
+  const metricLabel = page?.metricLabel || ''
+  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 0
+  const metricSuffix = page?.metricSuffix || ''
+  const metricDesc = page?.metricDesc || ''
+  const metricDetail = page?.metricDetail || ''
+  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || ''
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">

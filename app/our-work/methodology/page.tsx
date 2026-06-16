@@ -15,29 +15,29 @@ export default async function MethodologyPage() {
   const subPages = await fetchOurWorkSubPages()
   const page = subPages.find(p => p.slug === 'methodology')
 
-  const eyebrow = page?.eyebrow || 'Our Methodology — The science behind the work'
-  const title = page?.title || 'Indigenous Knowledge + Modern Science:\nThe Most Effective Conservation'
-  const description = page?.description || 'The most resilient conservation integrates the deep observational knowledge of Indigenous Hawaiian practitioners with peer-reviewed marine biology.'
-  const image = getStrapiMediaUrl(page?.image) || '/methodology_integration.png'
+  const eyebrow = page?.eyebrow || ''
+  const title = page?.title || ''
+  const description = page?.description || ''
+  const image = getStrapiMediaUrl(page?.image) || ''
 
-  const card1Title = page?.card1Title || 'The Ahupuaʻa Model'
-  const card1Body = page?.card1Body || 'Traditional Hawaiian land system from mountain peak (mauka) to ocean (makai). Kānāwai — “the equal sharing of water” — was the source of all wealth. Hui Nehu makes this operational in the 21st century.'
+  const card1Title = page?.card1Title || ''
+  const card1Body = page?.card1Body || ''
 
-  const metricLabel = page?.metricLabel || 'Core Metric'
-  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 70
-  const metricSuffix = page?.metricSuffix || '%'
-  const metricDesc = page?.metricDesc || 'Coral Survival Rate'
-  const metricDetail = page?.metricDetail || 'Targeting 70% coral survival rate at pilot sites — above national average.'
-  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || '/coral_survival_bg.png'
+  const metricLabel = page?.metricLabel || ''
+  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 0
+  const metricSuffix = page?.metricSuffix || ''
+  const metricDesc = page?.metricDesc || ''
+  const metricDetail = page?.metricDetail || ''
+  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || ''
 
-  const pillar1Title = page?.activity1Title || 'Coral & Limu Propagation'
-  const pillar1Body = page?.activity1Body || 'Combining traditional cultivation with modern asexual propagation methods to rebuild foundational nearshore habitats.'
+  const pillar1Title = page?.activity1Title || ''
+  const pillar1Body = page?.activity1Body || ''
 
-  const pillar2Title = page?.activity2Title || 'Ahupuaʻa & Loko Iʻa Management'
-  const pillar2Body = page?.activity2Body || 'Fostering holistic watershed protection alongside ancestral fishpond revival to balance coastal ecosystems.'
+  const pillar2Title = page?.activity2Title || ''
+  const pillar2Body = page?.activity2Body || ''
 
-  const pillar3Title = page?.activity3Title || 'Citizen Science Rigor'
-  const pillar3Body = page?.activity3Body || 'Translating standardized community observations and data logs into robust scientific datasets accepted by policy makers.'
+  const pillar3Title = page?.activity3Title || ''
+  const pillar3Body = page?.activity3Body || ''
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">

@@ -17,23 +17,23 @@ export default async function HabitatLokoIaPage() {
   const subPages = await fetchOurWorkSubPages()
   const page = subPages.find(p => p.slug === 'habitat-loko-ia')
 
-  const eyebrow = page?.eyebrow || 'Program 1: Habitat & Loko Iʻa'
-  const title = page?.title || 'We Don’t Just Restore Coral — We Restore the Entire Food Web'
-  const description = page?.description || 'Restoring estuarine habitats, coral reefs, and traditional fishponds (loko iʻa). Propagating thermal-tolerant coral and native limu using traditional cultivation and modern asexual propagation methods.'
-  const image = getStrapiMediaUrl(page?.image) || '/coral_limu_restoration.png'
+  const eyebrow = page?.eyebrow || ''
+  const title = page?.title || ''
+  const description = page?.description || ''
+  const image = getStrapiMediaUrl(page?.image) || ''
 
-  const card1Title = page?.card1Title || 'Keystone Focus'
-  const card1Body = page?.card1Body || 'Restoring foundational habitats triggers a trophic cascade that revitalizes the entire coastal ecosystem.'
+  const card1Title = page?.card1Title || ''
+  const card1Body = page?.card1Body || ''
 
-  const card2Title = page?.card2Title || 'Ahupuaʻa Link'
-  const card2Body = page?.card2Body || 'Ancient Hawaiians built 300+ fishponds (loko iʻa) and managed freshwater flow to protect downstream coral nurseries. We revive this 1,000-year-old wisdom.'
+  const card2Title = page?.card2Title || ''
+  const card2Body = page?.card2Body || ''
 
-  const metricLabel = page?.metricLabel || 'Target Metric'
-  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 70
-  const metricSuffix = page?.metricSuffix || '%'
-  const metricDesc = page?.metricDesc || 'Coral Survival Rate'
-  const metricDetail = page?.metricDetail || 'Target for pilot sites — integrating Indigenous Ecological Knowledge with modern marine science to achieve unprecedented restoration outcomes.'
-  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || '/contact_ocean.png'
+  const metricLabel = page?.metricLabel || ''
+  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 0
+  const metricSuffix = page?.metricSuffix || ''
+  const metricDesc = page?.metricDesc || ''
+  const metricDetail = page?.metricDetail || ''
+  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || ''
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">

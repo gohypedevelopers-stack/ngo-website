@@ -15,52 +15,52 @@ export default async function CommunitySciencePage() {
   const subPages = await fetchOurWorkSubPages()
   const page = subPages.find(p => p.slug === 'community-science')
 
-  const eyebrow = page?.eyebrow || 'Program 3: Nā Kiaʻi Kai Community Science'
-  const title = page?.title || 'Training Hawaiʻi’s Next\n Generation of Ocean Guardians'
-  const description = page?.description || 'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.'
-  const image = getStrapiMediaUrl(page?.image) || '/traning.png'
+  const eyebrow = page?.eyebrow || ''
+  const title = page?.title || ''
+  const description = page?.description || ''
+  const image = getStrapiMediaUrl(page?.image) || ''
 
-  const metricLabel = page?.metricLabel || 'Science & Policy'
-  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 500
-  const metricSuffix = page?.metricSuffix || '+'
-  const metricDesc = page?.metricDesc || 'Water Samples Analyzed'
-  const metricDetail = page?.metricDetail || 'Standardized community data collection informing state and federal policy. Publication-quality scientific output from volunteer-led monitoring.'
-  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || '/science_data_bg.png'
+  const metricLabel = page?.metricLabel || ''
+  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 0
+  const metricSuffix = page?.metricSuffix || ''
+  const metricDesc = page?.metricDesc || ''
+  const metricDetail = page?.metricDetail || ''
+  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || ''
 
   const activities = [
     {
-      title: page?.activity1Title || 'Fish surveys',
-      desc: page?.activity1Body || 'Standardized visual censuses of nearshore reef fish species diversity and biomass tracking.',
+      title: page?.activity1Title || '',
+      desc: page?.activity1Body || '',
       icon: Eye,
       color: 'text-cyan-600 bg-cyan-50'
     },
     {
-      title: page?.activity2Title || 'Limu monitoring',
-      desc: page?.activity2Body || 'Tracking native and invasive seaweed distribution across shallow reef flats.',
+      title: page?.activity2Title || '',
+      desc: page?.activity2Body || '',
       icon: Activity,
       color: 'text-teal-600 bg-teal-50'
     },
     {
-      title: page?.activity3Title || 'Water quality testing',
-      desc: page?.activity3Body || 'Conducting regular chemical assays to monitor nutrient loading, pathogens, and runoff cycles.',
+      title: page?.activity3Title || '',
+      desc: page?.activity3Body || '',
       icon: Droplets,
       color: 'text-blue-600 bg-blue-50'
     },
     {
-      title: page?.activity4Title || 'Marine debris removal',
-      desc: page?.activity4Body || 'Removing ghost nets, microplastics, and derelict gear from marine nurseries.',
+      title: page?.activity4Title || '',
+      desc: page?.activity4Body || '',
       icon: Trash2,
       color: 'text-rose-600 bg-rose-50'
     },
     {
-      title: page?.activity5Title || 'Coral outplanting',
-      desc: page?.activity5Body || 'Assisting in asexual propagation and transplanting of thermal-tolerant coral colonies.',
+      title: page?.activity5Title || '',
+      desc: page?.activity5Body || '',
       icon: Heart,
       color: 'text-emerald-600 bg-emerald-50'
     },
     {
-      title: page?.activity6Title || 'Youth ocean science education',
-      desc: page?.activity6Body || 'Empowering future ocean guardians through field excursions and school partnerships.',
+      title: page?.activity6Title || '',
+      desc: page?.activity6Body || '',
       icon: GraduationCap,
       color: 'text-amber-600 bg-amber-50'
     }
