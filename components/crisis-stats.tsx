@@ -8,7 +8,13 @@ interface StatItem {
   label: string
 }
 
-export function CrisisStats({ stats }: { stats: StatItem[] }) {
+export function CrisisStats({
+  stats,
+  variant = 'teal',
+}: {
+  stats: StatItem[]
+  variant?: 'teal' | 'rose' | 'amber'
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -26,6 +32,12 @@ export function CrisisStats({ stats }: { stats: StatItem[] }) {
     })
   }, [stats])
 
+  const valueColors = {
+    teal: 'text-teal-950',
+    rose: 'text-rose-950',
+    amber: 'text-amber-950',
+  }
+
   return (
     <div ref={containerRef} className="grid gap-5 md:grid-cols-3">
       {stats.map((stat) => (
@@ -33,7 +45,7 @@ export function CrisisStats({ stats }: { stats: StatItem[] }) {
           key={stat.label}
           className="stat-card opacity-0 h-full rounded-xl border border-slate-100 bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-sm"
         >
-          <div className="font-serif text-xl sm:text-2xl font-bold text-teal-955">
+          <div className={`font-serif text-xl sm:text-2xl font-bold ${valueColors[variant]}`}>
             {stat.value}
           </div>
           <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-500 font-light">

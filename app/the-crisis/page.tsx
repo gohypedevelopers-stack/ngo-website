@@ -1,5 +1,5 @@
 import { CrisisLandingPage } from './crisis-pages'
-import { fetchCrisisPageData, fetchCrisisSubPages } from '@/lib/strapi'
+import { fetchCrisisPageData } from '@/lib/strapi'
 
 export const metadata = {
   title: 'The Crisis — Hui Nehu',
@@ -9,8 +9,7 @@ export const metadata = {
 
 export default async function TheCrisisPage() {
   const crisisPageData = await fetchCrisisPageData()
-  const subPages = await fetchCrisisSubPages()
-  return <CrisisLandingPage data={crisisPageData} subPages={subPages} />
+  return <CrisisLandingPage data={crisisPageData} />
 }
 
 

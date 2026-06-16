@@ -9,39 +9,18 @@ const links = [
   {
     label: 'The Crisis',
     href: '/the-crisis',
-    dropdown: [
-      { label: 'The Nehu (Keystone)', href: '/the-crisis/the-nehu' },
-      { label: 'The Cesspool Crisis', href: '/the-crisis/cesspool-problem' },
-      { label: 'Fragmented Response', href: '/the-crisis/fragmented-response' },
-    ],
   },
   {
     label: 'Our Work',
     href: '/our-work',
-    dropdown: [
-      { label: 'Habitat & Loko Iʻa', href: '/our-work/habitat-loko-ia' },
-      { label: 'Bio-Cleaner & Pollution', href: '/our-work/bio-cleaner' },
-      { label: 'Community Science', href: '/our-work/community-science' },
-      { label: 'Methodology', href: '/our-work/methodology' },
-    ],
   },
   {
     label: 'The Hui',
     href: '/the-hui',
-    dropdown: [
-      { label: 'Our Story', href: '/the-hui/story-ahupuaa' },
-      { label: 'Team & Leadership', href: '/the-hui/team' },
-      { label: 'Partners & Coalition', href: '/the-hui/coalition-partners' },
-    ],
   },
   {
     label: 'Get Involved',
     href: '/get-involved',
-    dropdown: [
-      { label: 'Invest', href: '/get-involved/investment-tiers' },
-      { label: 'Volunteer', href: '/get-involved/volunteer-workdays' },
-      { label: 'Partner', href: '/get-involved/partner-with-us' },
-    ],
   },
   { label: 'News & Research', href: '/news-research' },
   { label: 'Contact', href: '/contact' },
@@ -91,7 +70,7 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
                 href={link.href}
                 className={cn(
                   "group relative whitespace-nowrap text-xs font-semibold tracking-wide transition-colors lg:text-sm flex items-center gap-1 py-2",
-                  theme === 'light' && !scrolled
+                  theme === 'light'
                     ? "text-slate-600 hover:text-slate-900"
                     : "text-slate-300 hover:text-white"
                 )}
@@ -104,7 +83,7 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
                 )}
                 <span className={cn(
                   "absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full",
-                  theme === 'light' && !scrolled ? "bg-teal-600" : "bg-teal-400"
+                  theme === 'light' ? "bg-teal-600" : "bg-teal-400"
                 )} />
               </a>
 
@@ -143,7 +122,7 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
             href="/get-involved/investment-tiers"
             className={cn(
               "hidden whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-all xl:inline-block xl:px-5 xl:text-sm backdrop-blur-sm",
-              theme === 'light' && !scrolled
+              theme === 'light'
                 ? "border-slate-900/20 bg-slate-900/5 text-slate-900 hover:bg-slate-900 hover:text-white"
                 : "border-white/20 bg-white/5 text-white hover:bg-white hover:text-slate-950"
             )}
@@ -156,7 +135,7 @@ export function SiteNav({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
             aria-label={open ? 'Close menu' : 'Open menu'}
             className={cn(
               "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors lg:hidden",
-              theme === 'light' && !scrolled
+              theme === 'light'
                 ? "text-slate-900 hover:bg-slate-900/10"
                 : "text-white hover:bg-white/10"
             )}

@@ -10,7 +10,7 @@ import {
   ShieldAlert,
   ArrowUpRight,
 } from 'lucide-react'
-import { CrisisPageData, CrisisSubPageData, getStrapiMediaUrl } from '@/lib/strapi'
+import { CrisisPageData, getStrapiMediaUrl } from '@/lib/strapi'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
@@ -19,342 +19,191 @@ import { CrisisStats } from '@/components/crisis-stats'
 export const crisisPages = [
   {
     slug: '/the-crisis/the-nehu',
-    eyebrow: 'Section 1: Keystone Species',
+    eyebrow: 'Keystone species',
     title: 'The Most Important Fish You’ve Never Heard Of',
-    subtitle: 'Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands.',
-    description: 'The foundational forage fish of the Hawaiian marine food web.',
+    subtitle: 'What It Is',
+    description: 'Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands. The foundational forage fish of the Hawaiian marine food web.',
     image: '/contact_ocean.png',
     icon: Fish,
     stats: [
-      { value: 'Endemic', label: 'Encrasicholina purpurea — found exclusively in the Hawaiian Islands' },
-      { value: 'Forage Base', label: 'Foundational forage fish of the Hawaiian food web' },
-      { value: 'Vulnerable', label: 'Extremely vulnerable to nearshore pollution' },
+      { value: 'Endemic', label: 'Only in the Hawaiian Islands' },
+      { value: 'Forage Base', label: 'Foundational fish of the food web' },
+      { value: 'Vulnerable', label: 'Nearshore pollution threat' },
     ],
     sections: [
       {
         title: 'Traditional Aku Fishery',
-        body: 'Primary live bait for traditional aku (skipjack tuna) pole-and-line fishery. A vital link connecting local fishing heritage with marine resources.',
+        body: 'Primary live bait for traditional aku (skipjack tuna) pole-and-line fishery.',
       },
       {
         title: 'Apex Food Web',
-        body: 'Critical food for ahi, ʻopelu, akule, dolphins, and seabirds. The biological heartbeat of our nearshore marine ecosystems.',
+        body: 'Critical food for ahi, ʻopelu, akule, dolphins, and seabirds.',
       },
       {
         title: 'Estuarine Habitats',
-        body: 'Lives only in semi-enclosed bays — extremely vulnerable to nearshore pollution, sedimentation, and coastal runoff.',
+        body: 'Lives only in semi-enclosed bays — extremely vulnerable to nearshore pollution.',
       },
       {
         title: 'Food Sovereignty',
-        body: 'No nehu = no aku fishery = no food sovereignty. The collapse of this keystone species directly threatens local community food independence.',
+        body: 'No nehu = no aku fishery = no food sovereignty.',
       },
     ],
     proverb: '“He aliʻi ka ʼaina, he kauwā ke kanaka.” — The land is chief; the people are its servants.',
   },
   {
     slug: '/the-crisis/cesspool-problem',
-    eyebrow: 'Section 2: The Hidden Killer',
+    eyebrow: 'The hidden killer',
     title: '53 Million Gallons of Sewage Enter Hawaiʻi’s Ocean Every Single Day',
-    subtitle: 'Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats.',
-    description: 'Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: ~300/year. Required rate: 3,000+/year — a 10x acceleration needed.',
+    subtitle: 'The Problem',
+    description: 'Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats.',
     image: '/cesspool_split.png',
     icon: Droplets,
     stats: [
       { value: '88,000', label: 'Cesspools statewide (12,000+ on Maui alone)' },
-      { value: '53 Million', label: 'Gallons of untreated human waste discharged daily' },
+      { value: '53 Million', label: 'Gallons of sewage discharged daily' },
       { value: '10x Acceleration', label: 'Required conversion rate of 3,000+/year vs 300 current rate' },
     ],
     sections: [
       {
-        title: 'Nutrient Loading & Coral Death',
-        body: 'Cesspool effluent introduces catastrophic levels of nitrogen and phosphorus. This nutrient loading triggers devastating algal blooms that suffocate and kill nearshore coral reefs.',
-      },
-      {
         title: 'Pathogen Contamination',
-        body: 'Effluent discharges bacteria, viruses, and raw waste directly into aquifers. 50% of private drinking water wells near cesspools test positive for fecal bacteria contamination.',
+        body: 'Effluent carries nitrogen, phosphorus, bacteria, and viruses. 50% of private drinking water wells near cesspools test positive for fecal bacteria.',
       },
       {
-        title: 'Public Health (MRSA)',
-        body: 'Runoff in recreational waters directly impacts human safety, contributing to Hawaiʻi having the highest rates of community-acquired MRSA infections in the entire nation.',
+        title: 'Nutrient Loading & Coral Death',
+        body: 'Nutrient loading causes algal blooms that suffocate and kill nearshore coral reefs.',
       },
       {
-        title: 'Legislative Mandate (Act 125)',
-        body: 'Hawaiʻi State Act 125 (2017) legally mandates all 88,000 residential cesspools must be fully converted by 2050. Meeting this requires an immediate 10x acceleration.',
+        title: 'Public Health Crisis',
+        body: 'Hawaiʻi has the highest MRSA rates in the nation due to pathogen-laden runoff in recreational waters.',
+      },
+      {
+        title: 'The Law (Act 125)',
+        body: 'Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: ~300/year. Required rate: 3,000+/year — a 10x acceleration needed.',
       },
     ],
   },
   {
     slug: '/the-crisis/fragmented-response',
-    eyebrow: 'Section 3: Gaps in Conservation',
+    eyebrow: 'The gap in current efforts',
     title: 'Conservation in Hawaiʻi Is Fragmented, Underfunded, and Culturally Disconnected',
-    subtitle: 'Traditional conservation efforts are currently isolated and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist.',
-    description: 'No single organization has ever attempted to address the full system. Until now.',
+    subtitle: 'Three Failures',
+    description: '',
     image: '/ahupuaa_aerial.png',
     icon: Network,
     stats: [
-      { value: '-23%', label: 'Decline in marine conservation funding since 2019' },
-      { value: 'Isolated Silos', label: 'Organizations working in isolated silos' },
-      { value: 'Cultural Gap', label: 'Detached from Native Hawaiian ecological knowledge' },
+      { value: 'Silos', label: 'Organizations working in separation' },
+      { value: 'Disconnect', label: 'Lacking Native Hawaiian ecological knowledge' },
+      { value: '-23%', label: 'Conservation funding declined since 2019' },
     ],
     sections: [
       {
         title: '1. Fragmentation',
-        body: 'Environmental organizations work inside isolated silos, leaving massive, unaddressed gaps in the coastal ecosystem chain.',
+        body: 'Organizations work in silos, leaving critical gaps.',
       },
       {
         title: '2. Cultural Disconnect',
-        body: 'Conservation programs lack integration with Native Hawaiian ecological knowledge and traditional practices.',
+        body: 'Programs lack Native Hawaiian ecological knowledge.',
       },
       {
         title: '3. Funding Gap',
-        body: 'Available marine conservation funding across the islands has suffered a severe 23% decline since 2019.',
+        body: 'Conservation funding declined 23% since 2019.',
       },
     ],
-    proverb: 'No single organization has ever attempted to address the full system. — Until now.',
+    proverb: 'No single organization has ever attempted to address the full system. Until now.',
   },
 ]
 
 export const crisisLanding = {
-  eyebrow: 'Ecosystem Emergency',
-  title: 'The Connected Crisis',
+  eyebrow: 'Why Hui Nehu exists — 3 sub-pages',
+  title: 'The Crisis',
   subtitle:
-    'Conservation funding in Hawaiʻi has experienced a sharp 23% decline since 2019, compounding an already severe ecological emergency.',
+    'Hawaiʻi’s nearshore ecosystems are facing a critical turning point, driven by three interconnected challenges.',
   description:
-    'Our nearshore waters face three interlocking threats: the collapse of the foundational nehu food web, devastating nutrient pollution from cesspools, and a fragmented conservation response that remains detached from traditional practices.',
+    'Explore the keystone role of the nehu, the devastating impact of the cesspool crisis, and the fragmentation of current conservation efforts.',
   image: '/cesspool_split.png',
-}
-
-export function CrisisPageTemplate({
-  page,
-  fallback,
-}: {
-  page?: CrisisSubPageData | null
-  fallback: (typeof crisisPages)[number]
-}) {
-  const Icon = fallback.icon
-  const eyebrow = page?.eyebrow || fallback.eyebrow
-  const title = page?.title || fallback.title
-  const subtitle = page?.subtitle || fallback.subtitle
-  const description = page?.description || fallback.description
-  const image = getStrapiMediaUrl(page?.image) || fallback.image
-  const proverb = page?.proverb !== undefined && page?.proverb !== null ? page?.proverb : (fallback as any).proverb
-
-  const hasPageStats = page && (page.stat1Value || page.stat2Value || page.stat3Value)
-  const stats = hasPageStats
-    ? [
-        { value: page.stat1Value || '', label: page.stat1Label || '' },
-        { value: page.stat2Value || '', label: page.stat2Label || '' },
-        { value: page.stat3Value || '', label: page.stat3Label || '' },
-      ].filter((s) => s.value || s.label)
-    : fallback.stats
-
-  const hasPageCards = page && (page.card1Title || page.card2Title || page.card3Title || page.card4Title)
-  const sections = hasPageCards
-    ? [
-        { title: page.card1Title || '', body: page.card1Body || '' },
-        { title: page.card2Title || '', body: page.card2Body || '' },
-        { title: page.card3Title || '', body: page.card3Body || '' },
-        { title: page.card4Title || '', body: page.card4Body || '' },
-      ].filter((s) => s.title || s.body)
-    : fallback.sections
-
-  const hasProverb = typeof proverb === 'string' && proverb.trim().length > 0
-
-  return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800">
-      {/* Dark Nav Background container */}
-      <div className="bg-slate-950 w-full h-20" />
-      <SiteNav />
-
-      {/* Split Hero Section */}
-      <section className="relative bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <Reveal>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    {eyebrow}
-                  </span>
-                </div>
-                
-                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                  {title}
-                </h1>
-                
-                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/80">
-                  {subtitle}
-                </p>
-                
-                <p className="mt-4 text-base leading-relaxed text-slate-600">
-                  {description}
-                </p>
-              </Reveal>
-            </div>
-
-            {/* Right Image (Split Screen) */}
-            <div className="lg:col-span-5">
-              <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
-                  {image && (
-                    <Image
-                      src={image}
-                      alt={title || "Crisis page image"}
-                      fill
-                      priority
-                      className="object-cover object-center"
-                    />
-                  )}
-                </div>
-              </Reveal>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="bg-teal-50/20 py-8 text-slate-900 border-b border-slate-200">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <CrisisStats stats={stats} />
-        </div>
-      </section>
-
-      {/* Content Sections */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 mb-12 text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-            Significance
-          </span>
-          <h2 className="mt-2 font-serif text-3xl font-bold text-slate-900">
-            Why It Matters
-          </h2>
-          <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full animate-pulse-soft" />
-        </div>
-        <div className={`mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 grid-cols-1 md:grid-cols-2 ${sections.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
-          {sections.map((section, index) => (
-            <Reveal key={section.title} delay={index * 100}>
-              <article className="group h-full rounded-2xl border border-slate-200/50 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md hover:shadow-teal-100/10 hover:bg-gradient-to-b hover:from-white hover:to-teal-50/10">
-                {/* Numbered Badge */}
-                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-teal-50/40 border border-teal-100/40 text-teal-700 font-mono text-xs font-bold shadow-xs transition-all duration-300 group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600 group-hover:scale-105">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="mb-2.5 font-serif text-lg font-bold text-slate-900 transition-colors duration-300 group-hover:text-teal-700">
-                  {section.title}
-                </h3>
-                <p className="text-xs md:text-sm leading-relaxed text-slate-500 font-light">
-                  {section.body}
-                </p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Closing Proverb Banner */}
-      {hasProverb && (
-        <section className="bg-teal-50/40 py-14 text-center relative overflow-hidden border-y border-teal-500/10">
-          <div className="relative z-10 mx-auto max-w-5xl px-5">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-600 mb-4 block">
-              ʻŌlelo Noʻeau · Hawaiian Proverb
-            </span>
-            <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-teal-950 leading-relaxed font-light">
-              {proverb.split(' — ')[0]}
-            </blockquote>
-            {proverb.includes(' — ') && (
-              <>
-                <div className="mx-auto my-5 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
-                <cite className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
-                  {proverb.split(' — ')[1]}
-                </cite>
-              </>
-            )}
-          </div>
-        </section>
-      )}
-
-      <SiteFooter />
-    </main>
-  )
 }
 
 export function CrisisLandingPage({
   data,
-  subPages = [],
 }: {
   data?: CrisisPageData | null
-  subPages?: CrisisSubPageData[]
 }) {
-  const eyebrow = data?.eyebrow || ""
-  const title = data?.title || ""
-  const subtitle = data?.subtitle || ""
-  const description = data?.description || ""
-  const image = getStrapiMediaUrl(data?.image) || ""
+  const eyebrow = data?.eyebrow || crisisLanding.eyebrow
+  const title = data?.title || crisisLanding.title
+  const subtitle = data?.subtitle || crisisLanding.subtitle
+  const description = data?.description || crisisLanding.description
+  const image = getStrapiMediaUrl(data?.image) || crisisLanding.image
 
-  // Dynamic values with no static fallbacks (coming only from Strapi)
-  const nehuEyebrow = data?.sec1Eyebrow || ""
-  const nehuTitle = data?.sec1Title || ""
-  const nehuSubtitle = data?.sec1Subtitle || ""
-  const nehuDesc = data?.sec1Description || ""
-  const nehuImage = getStrapiMediaUrl(data?.sec1Image) || ""
+  // Dynamic overrides from Strapi if present
+  const nehuTitle = data?.sec1Title || crisisPages[0].title
+  const nehuSubtitle = data?.sec1Subtitle || crisisPages[0].subtitle
+  const nehuDesc = data?.sec1Description || crisisPages[0].description
+  const nehuImage = getStrapiMediaUrl(data?.sec1Image) || crisisPages[0].image
+  const nehuEyebrow = data?.sec1Eyebrow || crisisPages[0].eyebrow
 
-  const cesspoolEyebrow = data?.sec2Eyebrow || ""
-  const cesspoolTitle = data?.sec2Title || ""
-  const cesspoolSubtitle = data?.sec2Subtitle || ""
-  const cesspoolDesc = data?.sec2Description || ""
-  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image) || ""
-
-  const fragmentedEyebrow = data?.sec3Eyebrow || ""
-  const fragmentedTitle = data?.sec3Title || ""
-  const fragmentedSubtitle = data?.sec3Subtitle || ""
-  const fragmentedDesc = data?.sec3Description || ""
-  const fragmentedImage = getStrapiMediaUrl(data?.sec3Image) || ""
+  const cesspoolTitle = data?.sec2Title || crisisPages[1].title
+  const cesspoolSubtitle = data?.sec2Subtitle || crisisPages[1].subtitle
+  const cesspoolDesc = data?.sec2Description || crisisPages[1].description
+  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image) || crisisPages[1].image
+  const cesspoolEyebrow = data?.sec2Eyebrow || crisisPages[1].eyebrow
+  const fragmentedTitle = crisisPages[2].title
+  const fragmentedSubtitle = crisisPages[2].subtitle
+  const fragmentedDesc = crisisPages[2].description
+  const fragmentedImage = getStrapiMediaUrl(data?.sec3Image) || crisisPages[2].image
+  const fragmentedEyebrow = crisisPages[2].eyebrow
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800">
       {/* Dark Nav Background container */}
-      <div className="bg-slate-950 w-full h-20" />
-      <SiteNav />
+      <div className="bg-slate-900 w-full h-20" />
+      <SiteNav theme="dark" />
+      {/* Main Crisis Hero Section */}
+      <section className="relative bg-slate-900 text-white py-20 lg:py-32 overflow-hidden">
+        {/* Ambient ocean glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(13,148,136,0.12)_0%,transparent_55%),radial-gradient(circle_at_20%_80%,rgba(99,102,241,0.08)_0%,transparent_60%)]" />
+        
+        {/* Floating gradient orbs */}
+        <div className="absolute top-1/4 left-10 h-72 w-72 rounded-full bg-teal-500/10 blur-[100px] animate-float-slow" />
+        <div className="absolute bottom-1/4 right-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[120px] animate-float-slow" style={{ animationDelay: '-4s' }} />
+        
+        {/* Subtle grid pattern for modern layout */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)]" />
 
-      {/* Split Landing Hero */}
-      <section className="relative bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
+        {/* Subtle bottom line */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/20 to-transparent" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            
-            {/* Left Info Column */}
+            {/* Left Column info */}
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="inline-flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-400">
                     <Waves className="h-5 w-5 animate-pulse" />
                   </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                     {eyebrow}
                   </span>
                 </div>
                 
-                <h1 className="mt-4 font-serif text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
+                <h1 className="mt-4 font-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl text-white">
                   {title}
                 </h1>
                 
-                <p className="mt-4 text-xl font-light leading-relaxed text-teal-900">
+                <p className="mt-4 text-xl font-light leading-relaxed text-teal-200/90">
                   {subtitle}
                 </p>
                 
-                <p className="mt-4 text-base leading-relaxed text-slate-600">
+                <p className="mt-4 text-base leading-relaxed text-slate-300 font-light">
                   {description}
                 </p>
               </Reveal>
             </div>
 
-            {/* Right Image Column (Split Screen) */}
+            {/* Right Column Image */}
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-800 shadow-2xl">
                   {image && (
                     <Image
                       src={image}
@@ -367,52 +216,48 @@ export function CrisisLandingPage({
                 </div>
               </Reveal>
             </div>
-
           </div>
         </div>
-      </section>
-
-      {/* Deep-Dive Expand Sections directly on Landing Page */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-32">
-          
-          {/* Section 1: The Nehu */}
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6 space-y-6">
+      </section>      {/* =========================================================================
+          SECTION 1: THE NEHU (KEYSTONE SPECIES)
+         ========================================================================= */}
+      <section className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
+            <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">
-                  <Fish className="h-4 w-4" /> {nehuEyebrow}
+                <div className="inline-flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
+                    <Fish className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    {nehuEyebrow}
+                  </span>
                 </div>
-                <h2 className="font-serif text-3xl font-bold text-slate-900">
+                
+                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
                   {nehuTitle}
                 </h2>
-                {nehuSubtitle && (
-                  <p className="text-sm font-semibold text-slate-700 italic">
-                    {nehuSubtitle}
-                  </p>
-                )}
-                <p className="text-base leading-relaxed text-slate-600 font-light">
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/80">
+                  {nehuSubtitle}
+                </p>
+                
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   {nehuDesc}
                 </p>
-                <div className="pt-4">
-                  <Link 
-                    href="/the-crisis/the-nehu"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-slate-950"
-                  >
-                    Read full species profile <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </Reveal>
             </div>
-            <div className="lg:col-span-6">
+
+            <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
                   {nehuImage && (
                     <Image
                       src={nehuImage}
                       alt={nehuTitle}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   )}
                 </div>
@@ -420,43 +265,104 @@ export function CrisisLandingPage({
             </div>
           </div>
 
-          {/* Section 2: The Cesspool Problem */}
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6 lg:order-2 space-y-6">
+          {/* Stats Bar */}
+          <div className="mb-20 rounded-2xl bg-teal-50/30 border border-teal-500/10 p-6">
+            <CrisisStats stats={crisisPages[0].stats} variant="teal" />
+          </div>
+
+          {/* Significance Grid */}
+          <div className="space-y-8">
+            <div className="text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                Significance
+              </span>
+              <h3 className="mt-2 font-serif text-2xl font-bold text-slate-900">
+                Why the Nehu Matters
+              </h3>
+              <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {crisisPages[0].sections.map((section, idx) => (
+                <Reveal key={section.title} delay={idx * 100}>
+                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md">
+                    <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-700 font-mono text-xs font-bold transition-all group-hover:bg-teal-600 group-hover:text-white">
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <h4 className="mb-2 font-serif text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                      {section.title}
+                    </h4>
+                    <p className="text-sm text-slate-500 leading-relaxed font-light">
+                      {section.body}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Proverb Banner */}
+          {crisisPages[0].proverb && (
+            <div className="mt-20 bg-teal-50/30 rounded-2xl py-12 px-6 text-center border border-teal-500/10">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-600 mb-4 block">
+                ʻŌlelo Noʻeau · Hawaiian Proverb
+              </span>
+              <blockquote className="font-serif italic text-lg sm:text-xl md:text-2xl text-teal-950 leading-relaxed max-w-4xl mx-auto font-light">
+                {crisisPages[0].proverb.split(' — ')[0]}
+              </blockquote>
+              {crisisPages[0].proverb.includes(' — ') && (
+                <>
+                  <div className="mx-auto my-4 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
+                  <cite className="text-xs font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
+                    {crisisPages[0].proverb.split(' — ')[1]}
+                  </cite>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 2: THE CESSPOOL CRISIS (THE HIDDEN KILLER)
+         ========================================================================= */}
+      <section className="bg-gradient-to-b from-white to-rose-50/20 py-24 border-b border-slate-200 text-slate-800">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
+            <div className="lg:col-span-7 space-y-6 lg:order-2">
               <Reveal>
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">
-                  <Droplets className="h-4 w-4 text-teal-500" /> {cesspoolEyebrow}
+                <div className="inline-flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 text-rose-700">
+                    <Droplets className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-600">
+                    {cesspoolEyebrow}
+                  </span>
                 </div>
-                <h2 className="font-serif text-3xl font-bold text-slate-900">
+                
+                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
                   {cesspoolTitle}
                 </h2>
-                {cesspoolSubtitle && (
-                  <p className="text-sm font-semibold text-slate-700 italic">
-                    {cesspoolSubtitle}
-                  </p>
-                )}
-                <p className="text-base leading-relaxed text-slate-600 font-light">
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-rose-900/80">
+                  {cesspoolSubtitle}
+                </p>
+                
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   {cesspoolDesc}
                 </p>
-                <div className="pt-4">
-                  <Link 
-                    href="/the-crisis/cesspool-problem"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-slate-950"
-                  >
-                    Read about septic mandates <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </Reveal>
             </div>
-            <div className="lg:col-span-6 lg:order-1">
+
+            <div className="lg:col-span-5 lg:order-1">
               <Reveal delay={100}>
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
                   {cesspoolImage && (
                     <Image
                       src={cesspoolImage}
                       alt={cesspoolTitle}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   )}
                 </div>
@@ -464,43 +370,86 @@ export function CrisisLandingPage({
             </div>
           </div>
 
-          {/* Section 3: A Fragmented Response */}
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6 space-y-6">
+          {/* Stats Bar */}
+          <div className="mb-20 rounded-2xl bg-rose-50/30 border border-rose-500/10 p-6">
+            <CrisisStats stats={crisisPages[1].stats} variant="rose" />
+          </div>
+
+          {/* Grid of issues */}
+          <div className="space-y-8">
+            <div className="text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-600">
+                The Impact
+              </span>
+              <h3 className="mt-2 font-serif text-2xl font-bold text-slate-900">
+                How Waste Destroys Nearshore Life
+              </h3>
+              <div className="mx-auto mt-3 h-1 w-12 bg-rose-500 rounded-full" />
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {crisisPages[1].sections.map((section, idx) => (
+                <Reveal key={section.title} delay={idx * 100}>
+                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-rose-500/30 hover:shadow-md">
+                    <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-rose-50 text-rose-700 font-mono text-xs font-bold transition-all group-hover:bg-rose-600 group-hover:text-white">
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <h4 className="mb-2 font-serif text-lg font-bold text-slate-900 group-hover:text-rose-700 transition-colors">
+                      {section.title}
+                    </h4>
+                    <p className="text-sm text-slate-500 leading-relaxed font-light">
+                      {section.body}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 3: A FRAGMENTED RESPONSE (GAPS IN CURRENT EFFORTS)
+         ========================================================================= */}
+      <section className="bg-gradient-to-b from-white to-slate-100 py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-10">
+            <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-600">
-                  <Network className="h-4 w-4" /> {fragmentedEyebrow}
+                <div className="inline-flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-700">
+                    <Network className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">
+                    {fragmentedEyebrow}
+                  </span>
                 </div>
-                <h2 className="font-serif text-3xl font-bold text-slate-900">
+                
+                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
                   {fragmentedTitle}
                 </h2>
-                {fragmentedSubtitle && (
-                  <p className="text-sm font-semibold text-slate-700 italic">
-                    {fragmentedSubtitle}
+                
+                <p className="mt-4 text-lg font-light leading-relaxed text-amber-900/80">
+                  {fragmentedSubtitle}
+                </p>
+                
+                {fragmentedDesc && (
+                  <p className="mt-4 text-base leading-relaxed text-slate-600">
+                    {fragmentedDesc}
                   </p>
                 )}
-                <p className="text-base leading-relaxed text-slate-600 font-light">
-                  {fragmentedDesc}
-                </p>
-                <div className="pt-4">
-                  <Link 
-                    href="/the-crisis/fragmented-response"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 hover:text-slate-950"
-                  >
-                    Read structural fails & solutions <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </Reveal>
             </div>
-            <div className="lg:col-span-6">
+
+            <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
                   {fragmentedImage && (
                     <Image
                       src={fragmentedImage}
                       alt={fragmentedTitle}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   )}
                 </div>
@@ -508,6 +457,58 @@ export function CrisisLandingPage({
             </div>
           </div>
 
+          {/* Stats Bar */}
+          <div className="mb-12 rounded-2xl bg-amber-50/20 border border-amber-500/10 p-6">
+            <CrisisStats stats={crisisPages[2].stats} variant="amber" />
+          </div>
+
+          {/* Grid of Gaps */}
+          <div className="space-y-8">
+            <div className="text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">
+                The Structural Failures
+              </span>
+              <h3 className="mt-2 font-serif text-2xl font-bold text-slate-900">
+                Why Traditional Conservation Falls Short
+              </h3>
+              <div className="mx-auto mt-3 h-1 w-12 bg-amber-500 rounded-full" />
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-3">
+              {crisisPages[2].sections.map((section, idx) => (
+                <Reveal key={section.title} delay={idx * 100}>
+                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-500/30 hover:shadow-md">
+                    <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-amber-50 text-amber-700 font-mono text-xs font-bold transition-all group-hover:bg-amber-600 group-hover:text-white">
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <h4 className="mb-2 font-serif text-lg font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
+                      {section.title.replace(/^\d+\.\s+/, '')}
+                    </h4>
+                    <p className="text-sm text-slate-500 leading-relaxed font-light">
+                      {section.body}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Closing Line Banner */}
+          {crisisPages[2].proverb && (
+            <div className="mt-20 bg-amber-50/30 rounded-2xl py-12 px-6 text-center border border-amber-500/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-5">
+                <AlertTriangle className="h-24 w-24 text-amber-700" />
+              </div>
+              <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-amber-950 leading-relaxed max-w-4xl mx-auto font-light">
+                {crisisPages[2].proverb.split(' — ')[0]}
+              </p>
+              {crisisPages[2].proverb.includes(' — ') && (
+                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">
+                  {crisisPages[2].proverb.split(' — ')[1]}
+                </p>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -515,4 +516,3 @@ export function CrisisLandingPage({
     </main>
   )
 }
-
