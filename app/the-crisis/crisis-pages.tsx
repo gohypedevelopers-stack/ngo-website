@@ -10,6 +10,7 @@ import {
   ShieldAlert,
   ArrowUpRight,
 } from 'lucide-react'
+import { CrisisPageData, CrisisSubPageData, getStrapiMediaUrl } from '@/lib/strapi'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
@@ -124,11 +125,39 @@ export const crisisLanding = {
 
 export function CrisisPageTemplate({
   page,
+  fallback,
 }: {
-  page: (typeof crisisPages)[number]
+  page?: CrisisSubPageData | null
+  fallback: (typeof crisisPages)[number]
 }) {
-  const Icon = page.icon
-  const hasProverb = 'proverb' in page && typeof page.proverb === 'string' && page.proverb
+  const Icon = fallback.icon
+  const eyebrow = page?.eyebrow || fallback.eyebrow
+  const title = page?.title || fallback.title
+  const subtitle = page?.subtitle || fallback.subtitle
+  const description = page?.description || fallback.description
+  const image = getStrapiMediaUrl(page?.image) || fallback.image
+  const proverb = page?.proverb !== undefined && page?.proverb !== null ? page?.proverb : (fallback as any).proverb
+
+  const hasPageStats = page && (page.stat1Value || page.stat2Value || page.stat3Value)
+  const stats = hasPageStats
+    ? [
+        { value: page.stat1Value || '', label: page.stat1Label || '' },
+        { value: page.stat2Value || '', label: page.stat2Label || '' },
+        { value: page.stat3Value || '', label: page.stat3Label || '' },
+      ].filter((s) => s.value || s.label)
+    : fallback.stats
+
+  const hasPageCards = page && (page.card1Title || page.card2Title || page.card3Title || page.card4Title)
+  const sections = hasPageCards
+    ? [
+        { title: page.card1Title || '', body: page.card1Body || '' },
+        { title: page.card2Title || '', body: page.card2Body || '' },
+        { title: page.card3Title || '', body: page.card3Body || '' },
+        { title: page.card4Title || '', body: page.card4Body || '' },
+      ].filter((s) => s.title || s.body)
+    : fallback.sections
+
+  const hasProverb = typeof proverb === 'string' && proverb.trim().length > 0
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800">
@@ -149,20 +178,20 @@ export function CrisisPageTemplate({
                     <Icon className="h-5 w-5" />
                   </span>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    {page.eyebrow}
+                    {eyebrow}
                   </span>
                 </div>
                 
                 <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                  {page.title}
+                  {title}
                 </h1>
                 
                 <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/80">
-                  {page.subtitle}
+                  {subtitle}
                 </p>
                 
                 <p className="mt-4 text-base leading-relaxed text-slate-600">
-                  {page.description}
+                  {description}
                 </p>
               </Reveal>
             </div>
@@ -171,13 +200,15 @@ export function CrisisPageTemplate({
             <div className="lg:col-span-5">
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
-                  <Image
-                    src={page.image}
-                    alt={page.title}
-                    fill
-                    priority
-                    className="object-cover object-center"
-                  />
+                  {image && (
+                    <Image
+                      src={image}
+                      alt={title || "Crisis page image"}
+                      fill
+                      priority
+                      className="object-cover object-center"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -189,7 +220,7 @@ export function CrisisPageTemplate({
       {/* Stats Bar */}
       <section className="bg-teal-50/20 py-8 text-slate-900 border-b border-slate-200">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <CrisisStats stats={page.stats} />
+          <CrisisStats stats={stats} />
         </div>
       </section>
 
@@ -204,8 +235,8 @@ export function CrisisPageTemplate({
           </h2>
           <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full animate-pulse-soft" />
         </div>
-        <div className={`mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 grid-cols-1 md:grid-cols-2 ${page.sections.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
-          {page.sections.map((section, index) => (
+        <div className={`mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 grid-cols-1 md:grid-cols-2 ${sections.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
+          {sections.map((section, index) => (
             <Reveal key={section.title} delay={index * 100}>
               <article className="group h-full rounded-2xl border border-slate-200/50 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md hover:shadow-teal-100/10 hover:bg-gradient-to-b hover:from-white hover:to-teal-50/10">
                 {/* Numbered Badge */}
@@ -232,12 +263,16 @@ export function CrisisPageTemplate({
               ʻŌlelo Noʻeau · Hawaiian Proverb
             </span>
             <blockquote className="font-serif italic text-xl sm:text-2xl md:text-3xl text-teal-950 leading-relaxed font-light">
-              {page.proverb.split(' — ')[0]}
+              {proverb.split(' — ')[0]}
             </blockquote>
-            <div className="mx-auto my-5 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
-            <cite className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
-              {page.proverb.split(' — ')[1]}
-            </cite>
+            {proverb.includes(' — ') && (
+              <>
+                <div className="mx-auto my-5 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
+                <cite className="text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
+                  {proverb.split(' — ')[1]}
+                </cite>
+              </>
+            )}
           </div>
         </section>
       )}
@@ -247,7 +282,38 @@ export function CrisisPageTemplate({
   )
 }
 
-export function CrisisLandingPage() {
+export function CrisisLandingPage({
+  data,
+  subPages = [],
+}: {
+  data?: CrisisPageData | null
+  subPages?: CrisisSubPageData[]
+}) {
+  const eyebrow = data?.eyebrow || ""
+  const title = data?.title || ""
+  const subtitle = data?.subtitle || ""
+  const description = data?.description || ""
+  const image = getStrapiMediaUrl(data?.image) || ""
+
+  // Dynamic values with no static fallbacks (coming only from Strapi)
+  const nehuEyebrow = data?.sec1Eyebrow || ""
+  const nehuTitle = data?.sec1Title || ""
+  const nehuSubtitle = data?.sec1Subtitle || ""
+  const nehuDesc = data?.sec1Description || ""
+  const nehuImage = getStrapiMediaUrl(data?.sec1Image) || ""
+
+  const cesspoolEyebrow = data?.sec2Eyebrow || ""
+  const cesspoolTitle = data?.sec2Title || ""
+  const cesspoolSubtitle = data?.sec2Subtitle || ""
+  const cesspoolDesc = data?.sec2Description || ""
+  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image) || ""
+
+  const fragmentedEyebrow = data?.sec3Eyebrow || ""
+  const fragmentedTitle = data?.sec3Title || ""
+  const fragmentedSubtitle = data?.sec3Subtitle || ""
+  const fragmentedDesc = data?.sec3Description || ""
+  const fragmentedImage = getStrapiMediaUrl(data?.sec3Image) || ""
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800">
       {/* Dark Nav Background container */}
@@ -267,20 +333,20 @@ export function CrisisLandingPage() {
                     <Waves className="h-5 w-5 animate-pulse" />
                   </span>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    {crisisLanding.eyebrow}
+                    {eyebrow}
                   </span>
                 </div>
                 
                 <h1 className="mt-4 font-serif text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-                  {crisisLanding.title}
+                  {title}
                 </h1>
                 
                 <p className="mt-4 text-xl font-light leading-relaxed text-teal-900">
-                  {crisisLanding.subtitle}
+                  {subtitle}
                 </p>
                 
                 <p className="mt-4 text-base leading-relaxed text-slate-600">
-                  {crisisLanding.description}
+                  {description}
                 </p>
               </Reveal>
             </div>
@@ -289,13 +355,15 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-5">
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl">
-                  <Image
-                    src={crisisLanding.image}
-                    alt={crisisLanding.title}
-                    fill
-                    priority
-                    className="object-cover object-center"
-                  />
+                  {image && (
+                    <Image
+                      src={image}
+                      alt={title || "Crisis landing image"}
+                      fill
+                      priority
+                      className="object-cover object-center"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -313,13 +381,18 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-6 space-y-6">
               <Reveal>
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">
-                  <Fish className="h-4 w-4" /> Section 1: Forage Base
+                  <Fish className="h-4 w-4" /> {nehuEyebrow}
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">
-                  The Nehu: The Most Important Fish You’ve Never Heard Of
+                  {nehuTitle}
                 </h2>
+                {nehuSubtitle && (
+                  <p className="text-sm font-semibold text-slate-700 italic">
+                    {nehuSubtitle}
+                  </p>
+                )}
                 <p className="text-base leading-relaxed text-slate-600 font-light">
-                  Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands. The foundational forage fish of the Hawaiian marine food web. Lives only in semi-enclosed bays, making nehu populations extremely vulnerable to nearshore pollution.
+                  {nehuDesc}
                 </p>
                 <div className="pt-4">
                   <Link 
@@ -334,12 +407,14 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-6">
               <Reveal delay={100}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
-                  <Image
-                    src="/contact_ocean.png"
-                    alt="Endemic Nehu species details"
-                    fill
-                    className="object-cover"
-                  />
+                  {nehuImage && (
+                    <Image
+                      src={nehuImage}
+                      alt={nehuTitle}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -350,13 +425,18 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-6 lg:order-2 space-y-6">
               <Reveal>
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-teal-600">
-                  <Droplets className="h-4 w-4 text-teal-500" /> Section 2: Sewage & Reefs
+                  <Droplets className="h-4 w-4 text-teal-500" /> {cesspoolEyebrow}
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">
-                  The Cesspool Crisis: The Hidden Killer
+                  {cesspoolTitle}
                 </h2>
+                {cesspoolSubtitle && (
+                  <p className="text-sm font-semibold text-slate-700 italic">
+                    {cesspoolSubtitle}
+                  </p>
+                )}
                 <p className="text-base leading-relaxed text-slate-600 font-light">
-                  Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats. Act 125 (2017) mandates all 88,000 cesspools converted by 2050, requiring a 10x acceleration to convert 3,000+ per year instead of the current 300.
+                  {cesspoolDesc}
                 </p>
                 <div className="pt-4">
                   <Link 
@@ -371,12 +451,14 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-6 lg:order-1">
               <Reveal delay={100}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
-                  <Image
-                    src="/cesspool_split.png"
-                    alt="Split view of wastewater pollution"
-                    fill
-                    className="object-cover"
-                  />
+                  {cesspoolImage && (
+                    <Image
+                      src={cesspoolImage}
+                      alt={cesspoolTitle}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -387,13 +469,18 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-6 space-y-6">
               <Reveal>
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-600">
-                  <Network className="h-4 w-4" /> Section 3: Governance Gaps
+                  <Network className="h-4 w-4" /> {fragmentedEyebrow}
                 </div>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">
-                  A Fragmented Response: Siloed & Underfunded
+                  {fragmentedTitle}
                 </h2>
+                {fragmentedSubtitle && (
+                  <p className="text-sm font-semibold text-slate-700 italic">
+                    {fragmentedSubtitle}
+                  </p>
+                )}
                 <p className="text-base leading-relaxed text-slate-600 font-light">
-                  Traditional conservation efforts are currently isolated, underfunded, and fundamentally detached from local, Indigenous ecological practices, allowing critical structural gaps to persist. No single organization has ever attempted to address the full system. Until now.
+                  {fragmentedDesc}
                 </p>
                 <div className="pt-4">
                   <Link 
@@ -408,12 +495,14 @@ export function CrisisLandingPage() {
             <div className="lg:col-span-6">
               <Reveal delay={100}>
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-md">
-                  <Image
-                    src="/ahupuaa_aerial.png"
-                    alt="Ahupuaa restoration loop details"
-                    fill
-                    className="object-cover"
-                  />
+                  {fragmentedImage && (
+                    <Image
+                      src={fragmentedImage}
+                      alt={fragmentedTitle}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -426,3 +515,4 @@ export function CrisisLandingPage() {
     </main>
   )
 }
+

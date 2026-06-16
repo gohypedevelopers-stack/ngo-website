@@ -5,13 +5,32 @@ import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
 import { AnimatedCounter } from '@/components/animated-counter'
+import { fetchOurWorkSubPages, getStrapiMediaUrl } from '@/lib/strapi'
 
 export const metadata = {
   title: 'Bio-Cleaner & Pollution Response — Hui Nehu',
   description: 'Deploying advanced septic solutions and intercepting land-based pollution before it hits reefs.',
 }
 
-export default function BioCleanerPage() {
+export default async function BioCleanerPage() {
+  const subPages = await fetchOurWorkSubPages()
+  const page = subPages.find(p => p.slug === 'bio-cleaner')
+
+  const eyebrow = page?.eyebrow || 'Program 2: Bio-Cleaner & Pollution Response'
+  const title = page?.title || 'Bio Cleaner Septic Jockey:\nAn Act of Mālama ʼAīna'
+  const description = page?.description || 'Deploying advanced Bio Cleaner septic systems to replace cesspools. Removing marine debris from Maui’s coastline. Responding to acute pollution events.'
+  const image = getStrapiMediaUrl(page?.image) || '/underwate.png'
+
+  const card1Title = page?.card1Title || 'The Bigger Picture'
+  const card1Body = page?.card1Body || 'Bio Cleaner Septic Jockey is the commercial arm that directly funds the nonprofit’s conservation mission while addressing the cesspool crisis at scale.'
+
+  const metricLabel = page?.metricLabel || 'Target Metric'
+  const metricValue = page?.metricValue !== undefined && page.metricValue !== null ? page.metricValue : 10
+  const metricSuffix = page?.metricSuffix || '+'
+  const metricDesc = page?.metricDesc || 'Tons of Marine Debris Removed'
+  const metricDetail = page?.metricDetail || 'Year 1 Target — deploying Bio Cleaner septic systems and coordinating coastline debris removal across Maui County.'
+  const metricBgImage = getStrapiMediaUrl(page?.metricBgImage) || '/bio_cleaner_bg.png'
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
       {/* Dark Nav Background container */}
@@ -30,16 +49,16 @@ export default function BioCleanerPage() {
                     <Droplets className="h-5 w-5" />
                   </span>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    Program 2: Bio-Cleaner & Pollution Response
+                    {eyebrow}
                   </span>
                 </div>
                 
-                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                  Bio Cleaner Septic Jockey:<br />An Act of Mālama ʼAīna
+                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl whitespace-pre-line">
+                  {title}
                 </h1>
                 
                 <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
-                  Deploying advanced Bio Cleaner septic systems to replace cesspools. Removing marine debris from Maui’s coastline. Responding to acute pollution events.
+                  {description}
                 </p>
               </Reveal>
             </div>
@@ -48,13 +67,15 @@ export default function BioCleanerPage() {
             <div className="lg:col-span-5">
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
-                  <Image
-                    src="/underwate.png"
-                    alt="Bio-Cleaner operations"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                  />
+                  {image && (
+                    <Image
+                      src={image}
+                      alt={title || "Bio-Cleaner operations"}
+                      fill
+                      priority
+                      className="object-cover object-center"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -73,10 +94,10 @@ export default function BioCleanerPage() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-50">
                   <ShieldAlert className="h-5 w-5" />
                 </span>
-                <h3 className="text-xl font-serif font-bold text-slate-900">The Bigger Picture</h3>
+                <h3 className="text-xl font-serif font-bold text-slate-900">{card1Title}</h3>
               </div>
               <p className="text-base text-slate-650 leading-relaxed font-light mb-6">
-                Bio Cleaner Septic Jockey is the commercial arm that directly funds the nonprofit’s conservation mission while addressing the cesspool crisis at scale.
+                {card1Body}
               </p>
               <div className="rounded-xl border border-dashed border-amber-300 bg-amber-50/30 p-4 text-xs sm:text-sm text-slate-700 flex items-start gap-2.5">
                 <span className="text-amber-600 mt-0.5">⚑</span>
@@ -91,30 +112,32 @@ export default function BioCleanerPage() {
           <Reveal delay={150}>
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               {/* Background Image */}
-              <Image
-                src="/bio_cleaner_bg.png"
-                alt="Restored coral reef"
-                fill
-                className="object-cover object-center"
-              />
+              {metricBgImage && (
+                <Image
+                  src={metricBgImage}
+                  alt="Restored coral reef background"
+                  fill
+                  className="object-cover object-center"
+                />
+              )}
               {/* Dark overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/85 to-slate-950/70" />
 
               <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 px-8 py-8">
                 <div className="flex items-center gap-5 shrink-0">
                   <div className="flex flex-col items-start">
-                    <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-400 uppercase mb-1">Target Metric</span>
+                    <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-400 uppercase mb-1">{metricLabel}</span>
                     <div className="flex items-baseline text-5xl font-serif font-bold text-white">
-                      <AnimatedCounter value={10} suffix="+" />
+                      <AnimatedCounter value={metricValue} suffix={metricSuffix} />
                     </div>
-                    <span className="mt-1 text-[10px] font-semibold tracking-widest uppercase text-slate-400">Tons of Marine Debris Removed</span>
+                    <span className="mt-1 text-[10px] font-semibold tracking-widest uppercase text-slate-400">{metricDesc}</span>
                   </div>
                 </div>
 
                 <div className="h-12 w-px bg-white/15 hidden sm:block" />
 
                 <p className="text-sm font-light text-slate-300 leading-relaxed">
-                  Year 1 Target — deploying Bio Cleaner septic systems and coordinating coastline debris removal across Maui County.
+                  {metricDetail}
                 </p>
               </div>
             </div>

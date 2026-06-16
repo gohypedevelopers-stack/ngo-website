@@ -15,20 +15,22 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
   const programs = [
     {
       emoji: data?.solutionProg1Emoji || '🪸',
-      title: data?.problem1Title || data?.solutionProg1Title || '',
-      body: data?.problem1Body || data?.solutionProg1Body || '',
+      title: data?.solutionProg1Title || '',
+      body: data?.solutionProg1Body || '',
     },
     {
       emoji: data?.solutionProg2Emoji || '🌊',
-      title: data?.problem2Title || data?.solutionProg2Title || '',
-      body: data?.problem2Body || data?.solutionProg2Body || '',
+      title: data?.solutionProg2Title || '',
+      body: data?.solutionProg2Body || '',
     },
     {
       emoji: data?.solutionProg3Emoji || '🔬',
-      title: data?.problem3Title || data?.solutionProg3Title || '',
-      body: data?.problem3Body || data?.solutionProg3Body || '',
+      title: data?.solutionProg3Title || '',
+      body: data?.solutionProg3Body || '',
     },
   ].filter(p => p.title || p.body);
+
+
 
   return (
     <section id="solution" className="relative overflow-hidden bg-white px-5 py-20 sm:px-8 sm:py-28">

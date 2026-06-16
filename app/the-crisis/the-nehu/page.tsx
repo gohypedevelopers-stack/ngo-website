@@ -1,6 +1,5 @@
 import { CrisisPageTemplate, crisisPages } from '../crisis-pages'
-
-const page = crisisPages.find((item) => item.slug === '/the-crisis/the-nehu')!
+import { fetchCrisisSubPages } from '@/lib/strapi'
 
 export const metadata = {
   title: 'The Nehu — Hui Nehu',
@@ -8,6 +7,11 @@ export const metadata = {
     'Why nehu are a keystone species in Hawaiʻi reef food webs and why Hui Nehu centers restoration around them.',
 }
 
-export default function TheNehuPage() {
-  return <CrisisPageTemplate page={page} />
+export default async function TheNehuPage() {
+  const subPages = await fetchCrisisSubPages()
+  const page = subPages.find((item) => item.slug === 'the-nehu')
+  const staticPage = crisisPages.find((item) => item.slug === '/the-crisis/the-nehu')!
+
+  return <CrisisPageTemplate page={page} fallback={staticPage} />
 }
+

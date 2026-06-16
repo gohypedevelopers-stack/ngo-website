@@ -4,46 +4,57 @@ import { ArrowRight, Anchor, ShieldCheck, GraduationCap, ArrowUpRight, Waves } f
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { fetchOurWorkPageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 export const metadata = {
   title: 'Our Work — Hui Nehu',
   description: "WE DON'T JUST RESTORE CORAL - WE RESTORE THE ENTIRE FOOD WEB. Discover Hui Nehu's three integrated conservation programs.",
 }
 
-const programs = [
-  {
-    slug: '/our-work/habitat-loko-ia',
-    eyebrow: 'Program 1',
-    title: 'Habitat & Loko Iʻa Restoration',
-    description: 'Restoring estuarine habitats, coral reefs, and traditional fishponds (loko iʻa). Propagating thermal-tolerant coral and native limu using traditional cultivation and modern asexual propagation methods.',
-    icon: Anchor,
-    color: 'from-cyan-600 to-teal-600',
-  },
-  {
-    slug: '/our-work/bio-cleaner',
-    eyebrow: 'Program 2',
-    title: 'Bio-Cleaner & Pollution Response',
-    description: 'Addressing localized pollution at the source by deploying advanced septic systems and removing 10+ tons of marine debris in Year 1.',
-    icon: ShieldCheck,
-    color: 'from-teal-600 to-emerald-600',
-  },
-  {
-    slug: '/our-work/community-science',
-    eyebrow: 'Program 3',
-    title: 'Nā Kiaʻi Kai Community Science',
-    description: 'Training local community volunteers to conduct professional fish surveys, monitor limu growth, and execute rigorous water quality testing.',
-    icon: GraduationCap,
-    color: 'from-amber-500 to-orange-500',
-  },
-]
+export default async function OurWorkPage() {
+  const data = await fetchOurWorkPageData()
 
-export default function OurWorkPage() {
+  const heroEyebrow = data?.heroEyebrow || ''
+  const heroTitle = data?.heroTitle || ''
+  const heroDescription = data?.heroDescription || ''
+  const heroImage = getStrapiMediaUrl(data?.heroImage) || ''
+
+  const progs = [
+    {
+      slug: '/our-work/habitat-loko-ia',
+      eyebrow: data?.prog1Eyebrow || '',
+      title: data?.prog1Title || '',
+      description: data?.prog1Description || '',
+      icon: Anchor,
+      color: 'from-cyan-600 to-teal-600',
+    },
+    {
+      slug: '/our-work/bio-cleaner',
+      eyebrow: data?.prog2Eyebrow || '',
+      title: data?.prog2Title || '',
+      description: data?.prog2Description || '',
+      icon: ShieldCheck,
+      color: 'from-teal-600 to-emerald-600',
+    },
+    {
+      slug: '/our-work/community-science',
+      eyebrow: data?.prog3Eyebrow || '',
+      title: data?.prog3Title || '',
+      description: data?.prog3Description || '',
+      icon: GraduationCap,
+      color: 'from-amber-500 to-orange-500',
+    },
+  ]
+
+  const trophicTitle = data?.trophicTitle || ''
+  const trophicDescription = data?.trophicDescription || ''
+
   return (
     <main className="bg-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
       {/* Dark Nav Background container */}
       <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
-
+ 
       {/* Split Hero Section */}
       <section className="relative bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
@@ -55,19 +66,16 @@ export default function OurWorkPage() {
                 <div className="inline-flex items-center gap-3">
                   <span className="h-px w-8 bg-teal-600"></span>
                   <span className="text-xs font-semibold tracking-[0.2em] uppercase text-teal-600">
-                    Our Core Philosophy
+                    {heroEyebrow}
                   </span>
                 </div>
                 
                 <h1 className="mt-4 font-serif text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-                  WE DON&apos;T JUST RESTORE CORAL &mdash;<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 via-teal-600 to-cyan-600">
-                    WE RESTORE THE ENTIRE FOOD WEB.
-                  </span>
+                  {heroTitle}
                 </h1>
                 
                 <p className="mt-4 text-lg text-slate-650 font-light leading-relaxed max-w-2xl">
-                  Hui Nehu implements three tightly integrated programs that directly target the full ecological chain, from mountain watersheds to the open sea.
+                  {heroDescription}
                 </p>
 
                 <div className="pt-6 flex flex-wrap items-center gap-4">
@@ -92,13 +100,15 @@ export default function OurWorkPage() {
             <div className="lg:col-span-5">
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
-                  <Image
-                    src="/food_web_restoration.png"
-                    alt="Thriving marine food web ecosystem showing volcanic mountains above crystal clear ocean water and healthy coral reef below"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                  />
+                  {heroImage && (
+                    <Image
+                      src={heroImage}
+                      alt={heroTitle || "Our Work Page image"}
+                      fill
+                      priority
+                      className="object-cover object-center"
+                    />
+                  )}
                 </div>
               </Reveal>
             </div>
@@ -111,7 +121,7 @@ export default function OurWorkPage() {
       <section id="programs" className="py-24 bg-slate-50 border-b border-slate-200">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="grid gap-8 md:grid-cols-3">
-            {programs.map((prog, index) => {
+            {progs.map((prog, index) => {
               const Icon = prog.icon
               return (
                 <Reveal key={prog.slug} delay={index * 100}>
@@ -154,10 +164,10 @@ export default function OurWorkPage() {
               <Waves className="h-6 w-6 animate-pulse" />
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              The Trophic Cascade
+              {trophicTitle}
             </h2>
             <p className="text-lg sm:text-xl text-slate-650 max-w-3xl mx-auto font-light leading-relaxed mb-8">
-              Restoring foundational marine habitats creates a positive trophic cascade that naturally revitalizes the broader coastal ecosystem. By protecting the nehu at the base and removing toxic land runoff at the source, we trigger a self-reinforcing recovery wave for ahi, seabirds, coral, and communities.
+              {trophicDescription}
             </p>
             <Link 
               href="/our-work/methodology"
