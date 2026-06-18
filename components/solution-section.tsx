@@ -14,21 +14,21 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
 
   const programs = [
     {
-      emoji: data?.solutionProg1Emoji || '🪸',
-      title: data?.solutionProg1Title || '',
-      body: data?.solutionProg1Body || '',
+      emoji: (data?.solutionProg1Emoji && data?.solutionProg1Emoji !== '01') ? data.solutionProg1Emoji : '01',
+      title: (data?.solutionProg1Title && data?.solutionProg1Title !== 'Reef restoration') ? data.solutionProg1Title : 'Habitat & Loko Iʻa Restoration',
+      body: (data?.solutionProg1Body && !data?.solutionProg1Body.includes('Community monitoring')) ? data.solutionProg1Body : 'Restoring estuarine habitats, coral reefs, and traditional fishponds. Propagating thermal-tolerant coral and native limu.',
     },
     {
-      emoji: data?.solutionProg2Emoji || '🌊',
-      title: data?.solutionProg2Title || '',
-      body: data?.solutionProg2Body || '',
+      emoji: (data?.solutionProg2Emoji && data?.solutionProg2Emoji !== '02') ? data.solutionProg2Emoji : '02',
+      title: (data?.solutionProg2Title && data?.solutionProg2Title !== 'Sustainable gear') ? data.solutionProg2Title : 'Bio-Cleaner & Pollution Response',
+      body: (data?.solutionProg2Body && !data?.solutionProg2Body.includes('Hoop nets')) ? data.solutionProg2Body : 'Deploying advanced septic systems. Removing marine debris. Target: 10+ tons in Year 1.',
     },
     {
-      emoji: data?.solutionProg3Emoji || '🔬',
-      title: data?.solutionProg3Title || '',
-      body: data?.solutionProg3Body || '',
+      emoji: (data?.solutionProg3Emoji && data?.solutionProg3Emoji !== '03') ? data.solutionProg3Emoji : '03',
+      title: (data?.solutionProg3Title && data?.solutionProg3Title !== 'Local manufacturing') ? data.solutionProg3Title : 'Nā Kiaʻi Kai Community Science',
+      body: (data?.solutionProg3Body && !data?.solutionProg3Body.includes('Large-format')) ? data.solutionProg3Body : 'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.',
     },
-  ].filter(p => p.title || p.body);
+  ];
 
 
 
@@ -36,37 +36,55 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
     <section id="solution" className="relative overflow-hidden bg-white px-5 py-20 sm:px-8 sm:py-28">
       <div className="relative mx-auto max-w-7xl">
         
-        {/* Header Block */}
-        <div className="max-w-5xl mb-16">
-          <Reveal>
-            {label && (
-              <div className="flex items-center gap-3 mb-6">
+        {/* PART 1: Three Program Overview Cards */}
+        <div className="mb-20">
+          <div className="max-w-3xl mb-12">
+            <Reveal>
+              <div className="flex items-center gap-3 mb-4">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-teal-bright">
-                  {label}
+                  Our Programs
                 </span>
               </div>
-            )}
-            
-            {title && (
-              <h2 className="mb-6 font-serif text-4xl sm:text-5xl font-bold leading-tight text-teal-deep tracking-tight">
-                {title}
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold leading-tight text-teal-deep tracking-tight">
+                Active Conservation & Restoration Programs
               </h2>
-            )}
-            
-            {body && (
-              <p className="text-lg sm:text-xl text-[#3A5652] font-light leading-relaxed max-w-2xl">
-                {body}
-              </p>
-            )}
-          </Reveal>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {programs.map((p, i) => (
+              <Reveal key={i} delay={i * 100}>
+                <div className="group h-full flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1 hover:border-teal-500/30 hover:shadow-md hover:bg-gradient-to-b hover:from-white hover:to-teal-50/10">
+                  <div>
+                    {/* Emoji/Number Circle Container */}
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 border border-teal-100/40 text-teal-700 font-serif text-lg font-bold shadow-sm transition-all duration-350 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 group-hover:scale-110 mb-5">
+                      {p.emoji}
+                    </div>
+                    {p.title && (
+                      <h3 className="mb-2 font-serif text-lg font-bold text-teal-deep transition-colors duration-300 group-hover:text-teal-bright">
+                        {p.title}
+                      </h3>
+                    )}
+                    {p.body && (
+                      <p className="text-sm leading-relaxed text-slate-600 font-light">
+                        {p.body}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
-        {/* 2-Column Split: Image & Programs */}
+        {/* Divider */}
+        <div className="my-16 h-px bg-slate-100" />
+
+        {/* PART 2: Why We're Different */}
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          
           {/* Left: Image Showcase */}
           {imgUrl && (
-            <Reveal className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200/60 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-0.5 group">
+            <Reveal className="lg:col-span-5 relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200/60 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-0.5 group">
               <Image
                 src={imgUrl}
                 alt={data?.solutionImage?.alternativeText || "Solution Image"}
@@ -78,36 +96,32 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
             </Reveal>
           )}
 
-          {/* Right: Program Cards */}
-          {programs.length > 0 && (
-            <div className="lg:col-span-6 flex flex-col gap-6">
-              {programs.map((p, i) => {
-                return (
-                  <Reveal key={i} delay={i * 100}>
-                    <div className="group flex gap-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1 hover:border-teal-500/30 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-teal-50/10">
-                      {/* Emoji/Number Circle Container */}
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-50 border border-teal-100/40 text-teal-700 font-serif text-lg font-bold shadow-sm transition-all duration-350 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 group-hover:scale-110">
-                        {p.emoji}
-                      </div>
-                      <div>
-                        {p.title && (
-                          <h3 className="mb-1.5 font-serif text-lg font-bold text-teal-deep transition-colors duration-300 group-hover:text-teal-bright">
-                            {p.title}
-                          </h3>
-                        )}
-                        {p.body && (
-                          <p className="text-sm leading-relaxed text-[#5A7470] font-light">
-                            {p.body}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </Reveal>
-                )
-              })}
-            </div>
-          )}
+          {/* Right: Why We're Different Card */}
+          <div className="lg:col-span-7 space-y-6">
+            <Reveal>
+              {label && (
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-teal-bright">
+                    {label}
+                  </span>
+                </div>
+              )}
+              
+              {title && (
+                <h2 className="mb-6 font-serif text-3xl sm:text-4xl font-bold leading-tight text-teal-deep tracking-tight">
+                  {title}
+                </h2>
+              )}
 
+              {body && (
+                <div className="rounded-2xl border border-teal-500/15 bg-teal-50/25 p-6 sm:p-8 shadow-xs backdrop-blur-xs">
+                  <p className="text-base sm:text-lg text-teal-deep/90 font-light leading-relaxed">
+                    {body}
+                  </p>
+                </div>
+              )}
+            </Reveal>
+          </div>
         </div>
 
       </div>

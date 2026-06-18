@@ -14,15 +14,19 @@ interface ExtendedHomepageData extends HomepageData {
 }
 
 export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) {
-  const label = data?.crisisLabel || ''
+  const label = data?.crisisLabel || 'The Crisis'
   
-  const title = data?.crisisTitle ? (
-    <span dangerouslySetInnerHTML={{ __html: data.crisisTitle.replace(/\n/g, ' ') }} />
-  ) : null
+  // Normalize title to match the spec exactly (without comma)
+  const rawTitle = data?.crisisTitle || 'Hawaiʻi’s reefs are dying and the window to act is closing fast.'
+  const normalizedTitle = rawTitle.replace(/,\s*and/gi, ' and').replace(/\n/g, ' ')
+  const title = (
+    <span>{normalizedTitle}</span>
+  )
 
-  const body = data?.crisisBody || ''
+  const body = data?.crisisBody || '84% of the world’s coral reefs bleached this year. The nehu — Hawaiʻi’s tiny endemic anchovy — is the foundation of this entire food web. When it disappears, the whole system collapses.'
   const secondaryBody = data?.crisisSecondaryBody || ''
-  const quote = data?.crisisQuote || ''
+  // Quote is removed as it is not in the specified content
+  const quote = ''
   const imgUrl = getStrapiMediaUrl(data?.crisisImage) || ''
 
 
@@ -82,26 +86,23 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
           {/* Right Column: Stat Card + Image */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <Reveal delay={200}>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                {/* Background glowing orb */}
-                <div className="absolute -right-8 -top-8 w-36 h-36 bg-coral/5 blur-3xl rounded-full pointer-events-none" />
-                
-                <div className="relative z-10">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1 text-[10px] font-bold text-coral border border-coral/20 mb-4 uppercase tracking-wider">
+              <div className="relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div>
+                  <span className="inline-flex items-center gap-1 rounded bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-5 border border-slate-200">
                     ⚠️ Hidden Killer Stat
                   </span>
                   
-                  <div className="mb-3 flex items-baseline gap-2 flex-wrap">
-                    <span className="font-serif text-4xl sm:text-5xl font-black text-coral tracking-tight">
+                  <div className="mb-4 flex items-baseline gap-2">
+                    <span className="font-serif text-2xl sm:text-3xl font-black text-teal-deep tracking-tight shrink-0">
                       53M
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                       Gallons of Sewage / Day
                     </span>
                   </div>
                   
-                  <p className="text-sm sm:text-base leading-relaxed text-[#5A7470] font-light">
-                    enter Hawaiʻi’s ocean every single day — originating from <span className="font-semibold text-teal-deep">88,000 cesspools</span> statewide. <span className="italic text-slate-400 font-normal">Most people have no idea.</span>
+                  <p className="text-base leading-relaxed text-slate-700 font-light">
+                    enter Hawaiʻi’s ocean every single day — originating from <span className="font-semibold text-teal-deep">88,000 cesspools</span> statewide. <span className="italic text-slate-500 font-medium">Most people have no idea.</span>
                   </p>
                 </div>
               </div>

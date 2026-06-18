@@ -36,7 +36,7 @@ export function SiteFooter() {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a
-                href="/get-involved/investment-tiers"
+                href="/donate"
                 className="group flex items-center justify-center gap-2.5 rounded-full bg-teal-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all hover:bg-teal-400 hover:scale-105 hover:shadow-[0_0_25px_-5px_rgba(45,212,191,0.4)]"
               >
                 Invest in Hawaiʻi’s Ocean

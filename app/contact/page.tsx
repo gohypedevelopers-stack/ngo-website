@@ -97,15 +97,38 @@ const faqs = [
 ]
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle')
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent' | 'error' | 'duplicate'>('idle')
+  const [email, setEmail] = useState('')
+  const [lastSubmittedEmail, setLastSubmittedEmail] = useState('')
+  const [captchaValue, setCaptchaValue] = useState('')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Simulate captcha check
+    if (captchaValue.trim().toUpperCase() !== 'NEHU') {
+      setFormState('error')
+      return
+    }
+
+    // Simulate duplicate check
+    if (email === lastSubmittedEmail) {
+      setFormState('duplicate')
+      return
+    }
+
+    // Simulate failure case for a specific address
+    if (email.toLowerCase() === 'fail@ngo.org') {
+      setFormState('error')
+      return
+    }
+
     setFormState('sending')
     setTimeout(() => {
+      setLastSubmittedEmail(email)
       setFormState('sent')
-    }, 1800)
+    }, 1200)
   }
 
   return (
@@ -126,7 +149,7 @@ export default function ContactPage() {
           <Reveal>
             <div className="text-center max-w-3xl mx-auto space-y-6">
               <div className="flex items-center justify-center gap-3 mb-4">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-400">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">
                   <Mail className="h-5 w-5" />
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400 font-mono">
@@ -198,32 +221,52 @@ export default function ContactPage() {
                       Send Us a Message
                     </h2>
                     <p className="text-sm text-slate-500 font-light">
-                      Fill out the form below and our team will get back to you
-                      within 1–2 business days.
+                      Fill out the form below and our team will get back to you soon.
                     </p>
                   </div>
 
                   {formState === 'sent' ? (
-                    <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
+                    <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-200">
                         <CheckCircle className="h-8 w-8" />
                       </div>
                       <h3 className="text-xl font-serif font-bold text-slate-900">
-                        Mahalo!
+                        Thank You for Reaching Out!
                       </h3>
-                      <p className="text-sm text-slate-500 font-light max-w-sm">
-                        Your message has been sent successfully. We&apos;ll be in
-                        touch soon. 🤙
+                      <p className="text-sm text-slate-600 font-light max-w-md leading-relaxed">
+                        We&apos;ve received your message and truly appreciate you taking the time to connect with us. Our team will review your inquiry and get back to you soon on your email <strong className="font-semibold text-slate-900">{email}</strong>.
+                      </p>
+                      <p className="text-xs text-slate-500 font-light max-w-md leading-relaxed pt-2 border-t border-slate-200/60">
+                        While you wait, feel free to explore our ongoing campaigns or consider making a difference today by donating.
+                      </p>
+                      <p className="text-xs font-semibold text-teal-650 pt-2">
+                        — The Hui-NehuTeam
                       </p>
                       <button
-                        onClick={() => setFormState('idle')}
-                        className="mt-4 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors underline underline-offset-4"
+                        onClick={() => {
+                          setFormState('idle')
+                          setEmail('')
+                          setCaptchaValue('')
+                        }}
+                        className="mt-6 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors underline underline-offset-4"
                       >
                         Send another message
                       </button>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
+                      {formState === 'error' && (
+                        <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs font-medium text-rose-800">
+                          Something went wrong. Please try again or email us directly at help@ngo.org
+                        </div>
+                      )}
+
+                      {formState === 'duplicate' && (
+                        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs font-medium text-amber-800">
+                          It looks like you already submitted this. We have it!
+                        </div>
+                      )}
+
                       <div className="grid gap-5 sm:grid-cols-2">
                         <div className="space-y-1.5">
                           <label
@@ -245,42 +288,60 @@ export default function ContactPage() {
                             htmlFor="contact-email"
                             className="text-xs font-semibold text-slate-700 uppercase tracking-wider"
                           >
-                            Email *
+                            Email Address *
                           </label>
                           <input
                             id="contact-email"
                             type="email"
                             required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             placeholder="you@example.com"
                             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
                           />
                         </div>
                       </div>
 
-                      <div className="space-y-1.5">
-                        <label
-                          htmlFor="contact-subject"
-                          className="text-xs font-semibold text-slate-700 uppercase tracking-wider"
-                        >
-                          Subject *
-                        </label>
-                        <select
-                          id="contact-subject"
-                          required
-                          defaultValue=""
-                          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all appearance-none"
-                        >
-                          <option value="" disabled>
-                            Select a topic…
-                          </option>
-                          <option>General Inquiry</option>
-                          <option>Volunteering</option>
-                          <option>Donations & Giving</option>
-                          <option>Partnerships</option>
-                          <option>Media & Press</option>
-                          <option>Research Collaboration</option>
-                          <option>Other</option>
-                        </select>
+                      <div className="grid gap-5 sm:grid-cols-2">
+                        <div className="space-y-1.5">
+                          <label
+                            htmlFor="contact-phone"
+                            className="text-xs font-semibold text-slate-700 uppercase tracking-wider"
+                          >
+                            Phone Number (optional)
+                          </label>
+                          <input
+                            id="contact-phone"
+                            type="tel"
+                            placeholder="(808) 555-0000"
+                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
+                          />
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label
+                            htmlFor="contact-subject"
+                            className="text-xs font-semibold text-slate-700 uppercase tracking-wider"
+                          >
+                            Subject/Inquiry Type *
+                          </label>
+                          <select
+                            id="contact-subject"
+                            required
+                            defaultValue=""
+                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
+                          >
+                            <option value="" disabled>
+                              Select a topic…
+                            </option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Volunteer">Volunteer</option>
+                            <option value="Donate">Donate</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Media/Press">Media/Press</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
                       </div>
 
                       <div className="space-y-1.5">
@@ -293,16 +354,34 @@ export default function ContactPage() {
                         <textarea
                           id="contact-message"
                           required
-                          rows={5}
+                          rows={4}
                           placeholder="Tell us how we can help…"
                           className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all resize-none"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="contact-captcha"
+                          className="text-xs font-semibold text-slate-700 uppercase tracking-wider"
+                        >
+                          Captcha field (Please enter &ldquo;NEHU&rdquo; to verify you are human) *
+                        </label>
+                        <input
+                          id="contact-captcha"
+                          type="text"
+                          required
+                          value={captchaValue}
+                          onChange={(e) => setCaptchaValue(e.target.value)}
+                          placeholder="Type NEHU here"
+                          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
                         />
                       </div>
 
                       <button
                         type="submit"
                         disabled={formState === 'sending'}
-                        className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-teal-600 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-teal-650 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                       >
                         {formState === 'sending' ? (
                           <>

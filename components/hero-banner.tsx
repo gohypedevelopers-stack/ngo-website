@@ -3,22 +3,23 @@ import { ArrowRight, BookOpen, Heart } from 'lucide-react'
 import { HomepageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 export function HeroBanner({ data }: { data?: HomepageData | null }) {
-  const subtitle = data?.heroSubtitle || ''
+  const subtitle = data?.heroSubtitle || 'A Maui-Based 501(c)(3) Marine Conservation Nonprofit — Est. 2023'
   
-  const title = data?.heroTitle ? (
-    <span dangerouslySetInnerHTML={{ __html: data.heroTitle.replace(/\n/g, '<br />') }} />
-  ) : null
+  const rawTitle = data?.heroTitle || 'Protecting Hawaiʻi’s Ocean, From the\nGround Up'
+  const title = (
+    <span dangerouslySetInnerHTML={{ __html: rawTitle.replace(/\n/g, '<br />') }} />
+  )
 
-  const description = data?.heroDescription || ''
+  const description = data?.heroDescription || 'Mālama ʼAīna. Mālama Wai. Mālama Kai. — Care for the Land. Care for the Water. Care for the Sea.'
   
-  const primaryBtnText = data?.heroPrimaryBtnText || ''
-  const primaryBtnLink = data?.heroPrimaryBtnLink || '#'
+  const primaryBtnText = data?.heroPrimaryBtnText || 'Join the Hui'
+  const primaryBtnLink = data?.heroPrimaryBtnLink || '/the-hui'
   
-  const secondaryBtnText = data?.heroSecondaryBtnText || ''
-  const secondaryBtnLink = data?.heroSecondaryBtnLink || '#'
+  const secondaryBtnText = data?.heroSecondaryBtnText || 'Learn About the Crisis'
+  const secondaryBtnLink = data?.heroSecondaryBtnLink || '/the-crisis'
 
-  const tertiaryBtnText = data?.heroTertiaryBtnText || ''
-  const tertiaryBtnLink = data?.heroTertiaryBtnLink || '#'
+  const tertiaryBtnText = data?.heroTertiaryBtnText || 'Invest in Hawaiʻi’s Ocean'
+  const tertiaryBtnLink = data?.heroTertiaryBtnLink || '/get-involved#invest'
 
   const bannerImgUrl = getStrapiMediaUrl(data?.heroBannerImage) || ''
   const scubaDiverImgUrl = getStrapiMediaUrl(data?.heroScubaDiverImage) || ''

@@ -4,9 +4,6 @@ import {
   CircleDollarSign, 
   Calendar, 
   HeartHandshake, 
-  Waves,
-  Coins,
-  ShieldCheck,
   CheckCircle2,
   Mail,
   Phone,
@@ -15,7 +12,6 @@ import {
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
-import { AnimatedCounter } from '@/components/animated-counter'
 
 export const metadata = {
   title: 'Get Involved — Hui Nehu',
@@ -52,10 +48,10 @@ export default function GetInvolvedPage() {
   ]
 
   const fundingUse = [
-    { percent: 40, label: 'Coral Restoration', amount: '$200K', color: 'bg-teal-500' },
-    { percent: 30, label: 'Community Science', amount: '$150K', color: 'bg-emerald-500' },
-    { percent: 20, label: 'Youth Education', amount: '$100K', color: 'bg-amber-500' },
-    { percent: 10, label: 'Operations', amount: '$50K', color: 'bg-slate-700' }
+    { percent: 40, label: 'Coral Restoration', amount: '$200K', color: 'bg-teal-650' },
+    { percent: 30, label: 'Community Science', amount: '$150K', color: 'bg-teal-500' },
+    { percent: 20, label: 'Youth Education', amount: '$100K', color: 'bg-teal-350' },
+    { percent: 10, label: 'Operations', amount: '$50K', color: 'bg-slate-500' }
   ]
 
   const volunteerActivities = [
@@ -87,77 +83,6 @@ export default function GetInvolvedPage() {
       <div className="bg-white border-b border-slate-100 w-full h-20" />
       <SiteNav theme="light" />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-50 to-white py-20 lg:py-28 overflow-hidden border-b border-slate-200">
-        {/* Ambient ocean glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(13,148,136,0.06)_0%,transparent_55%),radial-gradient(circle_at_20%_80%,rgba(99,102,241,0.04)_0%,transparent_60%)]" />
-        
-        {/* Floating gradient orbs */}
-        <div className="absolute top-1/4 left-10 h-72 w-72 rounded-full bg-teal-500/5 blur-[100px] animate-float-slow" />
-        <div className="absolute bottom-1/4 right-10 h-80 w-80 rounded-full bg-cyan-500/5 blur-[120px] animate-float-slow" style={{ animationDelay: '-4s' }} />
-        
-        {/* Subtle grid pattern for modern layout */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)]" />
-
-        {/* Subtle bottom line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/10 to-transparent" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <Reveal>
-                <div className="inline-flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
-                    <HeartHandshake className="h-5 w-5 animate-pulse" />
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    Join the Mission
-                  </span>
-                </div>
-                
-                <h1 className="mt-4 font-serif text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl text-slate-900">
-                  Your Action Directly Protects Hawaiʻi’s Ocean
-                </h1>
-                
-                <p className="mt-4 text-lg text-slate-650 font-light leading-relaxed">
-                  Hui Nehu provides multiple pathways for individuals, communities, and institutions to invest capital, donate time, or build regional alliances to restore Maui’s waters.
-                </p>
-
-                <div className="pt-4 flex flex-wrap gap-3">
-                  <a href="#invest" className="group flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50/50 px-5 py-2.5 text-xs font-semibold text-teal-950 hover:bg-teal-50 hover:border-teal-300 transition-all">
-                    Invest Capital
-                  </a>
-                  <a href="#volunteer" className="group flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50/50 px-5 py-2.5 text-xs font-semibold text-emerald-950 hover:bg-emerald-50 hover:border-emerald-300 transition-all">
-                    Volunteer Workdays
-                  </a>
-                  <a href="#partner" className="group flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50/50 px-5 py-2.5 text-xs font-semibold text-amber-950 hover:bg-amber-50 hover:border-amber-300 transition-all">
-                    Partner With Us
-                  </a>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* Right Image */}
-            <div className="lg:col-span-5">
-              <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xl">
-                  <Image
-                    src="/get_involved_funding.png"
-                    alt="Volunteers and clean septic jockey truck on Maui beach restoration site"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                  />
-                </div>
-              </Reveal>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* =========================================================================
           SECTION 1: INVEST (FUNDING TIERS)
          ========================================================================= */}
@@ -166,21 +91,21 @@ export default function GetInvolvedPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start mb-16">
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <div className="inline-flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-teal-200 bg-teal-50 text-teal-700">
-                    <CircleDollarSign className="h-5 w-5" />
-                  </span>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
+                    <CircleDollarSign className="h-4 w-4" />
+                  </div>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    Funding Tiers
+                    Invest · Funding tiers
                   </span>
                 </div>
                 
-                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
                   Join the Hui &mdash; Your Investment Directly Protects Hawaiʻi’s Ocean
                 </h2>
                 
-                <p className="mt-4 text-base leading-relaxed text-slate-650 font-light">
-                  Hui Nehu is raising <strong className="font-semibold text-slate-900">$500,000</strong> in seed funding to launch nonprofit conservation programs and scale the Bio Cleaner Septic Jockey commercial enterprise.
+                <p className="mt-6 text-sm leading-relaxed text-slate-650 font-light max-w-2xl">
+                  Raising <strong className="font-semibold text-slate-900">$500,000</strong> in seed funding to launch nonprofit conservation programs and the Bio Cleaner Septic Jockey commercial enterprise.
                 </p>
               </Reveal>
 
@@ -207,7 +132,7 @@ export default function GetInvolvedPage() {
 
             {/* Investment Tiers cards column */}
             <div className="lg:col-span-5 space-y-4">
-              <h3 className="font-serif text-xl font-bold text-slate-900 px-1 mb-2">Seed Support Tiers</h3>
+              <h3 className="font-serif text-xl font-bold text-slate-900 px-1 mb-2">Investment Tiers</h3>
               {investmentTiers.map((tier, idx) => (
                 <Reveal key={tier.name} delay={idx * 80}>
                   <div className="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-2xs hover:shadow-xs transition-all duration-300">
@@ -227,27 +152,27 @@ export default function GetInvolvedPage() {
       {/* =========================================================================
           SECTION 2: VOLUNTEER (COMMUNITY WORKDAYS)
          ========================================================================= */}
-      <section id="volunteer" className="bg-gradient-to-b from-white to-emerald-50/20 py-24 border-b border-slate-200">
+      <section id="volunteer" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             
             {/* Activities List */}
             <div className="lg:col-span-6 space-y-6">
               <Reveal>
-                <div className="inline-flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700">
-                    <Calendar className="h-5 w-5" />
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
-                    Community Workdays
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
+                    <Calendar className="h-4 w-4" />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    Volunteer · Community workdays
                   </span>
                 </div>
                 
-                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
                   Join a Community Workday. Become a Kiaʻi Kai.
                 </h2>
                 
-                <p className="mt-4 text-base leading-relaxed text-slate-650 font-light">
+                <p className="mt-6 text-sm leading-relaxed text-slate-650 font-light max-w-2xl">
                   Volunteers are the backbone of the Nā Kiaʻi Kai Community Science program. From beach cleanups to fish surveys to coral outplanting, there is a role for every skill level.
                 </p>
               </Reveal>
@@ -256,7 +181,7 @@ export default function GetInvolvedPage() {
                 <div className="grid gap-3 sm:grid-cols-2 pt-2">
                   {volunteerActivities.map((act) => (
                     <div key={act} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-2xs">
-                      <div className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
+                      <div className="h-2 w-2 rounded-full bg-teal-550 shrink-0" />
                       <span className="text-xs font-semibold text-slate-700">{act}</span>
                     </div>
                   ))}
@@ -267,7 +192,14 @@ export default function GetInvolvedPage() {
             {/* CTA Box */}
             <div className="lg:col-span-6">
               <Reveal delay={200}>
-                <div className="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white p-8 sm:p-10 space-y-6 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center text-center min-h-[320px]">
+                <div className="rounded-3xl border border-slate-800 bg-slate-950 text-white p-8 sm:p-10 space-y-6 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center text-center min-h-[320px]">
+                  {/* Background Image */}
+                  <Image 
+                    src="/volunteer_card_bg.png" 
+                    alt="Volunteer background" 
+                    fill 
+                    className="object-cover opacity-30 pointer-events-none z-0" 
+                  />
                   
                   {/* Decorative glowing gradient orbs */}
                   <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-teal-500/10 blur-2xl pointer-events-none z-0" />
@@ -277,7 +209,7 @@ export default function GetInvolvedPage() {
                     <h3 className="font-serif text-2xl sm:text-3xl font-bold leading-tight text-white">
                       Ready to <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent font-semibold">Mālama</span> the Coastline?
                     </h3>
-                    <p className="text-sm font-light text-slate-300 leading-relaxed">
+                    <p className="text-sm font-light text-slate-350 leading-relaxed">
                       Register to secure a spot for our next community workday on Maui. We supply the gear, training, lunch, and reef-safe sunscreen.
                     </p>
                   </div>
@@ -304,23 +236,23 @@ export default function GetInvolvedPage() {
       {/* =========================================================================
           SECTION 3: PARTNER WITH US (ALLIANCES)
          ========================================================================= */}
-      <section id="partner" className="bg-gradient-to-b from-white to-amber-50/20 py-24">
+      <section id="partner" className="bg-gradient-to-b from-white to-teal-50/20 py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start mb-16">
             
             {/* Info and Who is this for */}
             <div className="lg:col-span-7 space-y-8">
               <Reveal>
-                <div className="inline-flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-700">
-                    <HeartHandshake className="h-5 w-5" />
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">
-                    Org & Institutional Partners
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
+                    <HeartHandshake className="h-4 w-4" />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                    Partner With Us · Org & institutional partners
                   </span>
                 </div>
                 
-                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
                   Scale Your Impact. Join the Coalition.
                 </h2>
               </Reveal>
@@ -332,7 +264,7 @@ export default function GetInvolvedPage() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     {partnersWho.map((item) => (
                       <div key={item} className="rounded-xl border border-slate-200 bg-white p-4 shadow-2xs flex items-center gap-3">
-                        <CheckCircle2 className="h-4 w-4 text-amber-600 shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 text-teal-600 shrink-0" />
                         <span className="text-xs font-semibold text-slate-700">{item}</span>
                       </div>
                     ))}
@@ -345,12 +277,12 @@ export default function GetInvolvedPage() {
             <div className="lg:col-span-5 space-y-6">
               {/* Offers Box */}
               <Reveal delay={150}>
-                <div className="rounded-2xl border border-amber-500/10 bg-amber-50/20 p-6 space-y-4">
-                  <h3 className="font-serif text-lg font-bold text-amber-950">What Partnership Offers</h3>
+                <div className="rounded-2xl border border-teal-500/10 bg-teal-50/20 p-6 space-y-4">
+                  <h3 className="font-serif text-lg font-bold text-teal-950">What Partnership Offers</h3>
                   <ul className="space-y-3">
                     {partnerOffers.map((item) => (
-                      <li key={item} className="text-xs font-light text-amber-900/90 leading-relaxed flex items-start gap-2.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-amber-600 shrink-0 mt-1.5" />
+                      <li key={item} className="text-xs font-light text-teal-900/90 leading-relaxed flex items-start gap-2.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-teal-600 shrink-0 mt-1.5" />
                         <span>{item}</span>
                       </li>
                     ))}
