@@ -110,34 +110,31 @@ export default async function OurWorkPage() {
   const methodMetricDetail = 'Targeting 70% coral survival rate at pilot sites — above national average.'
 
   return (
-    <main className="bg-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
-      {/* Light Nav Background container */}
-      <div className="bg-white border-b border-slate-100 w-full h-20" />
-      <SiteNav theme="light" />
-
+    <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
+      <SiteNav theme="dark" />
 
       {/* =========================================================================
           SECTION 1: HABITAT & LOKO IʻA RESTORATION (PROGRAM 1)
          ========================================================================= */}
-      <section id="program-1" className="bg-gradient-to-b from-white to-teal-50/20 py-12">
+      <section id="program-1" className="bg-transparent pt-32 pb-20 text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-8">
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-950/50 text-teal-300 border border-teal-900/30">
                     <Anchor className="h-4 w-4" />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                     Program 1 · Habitat & Loko I'a
                   </span>
                 </div>
                 
-                <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl tracking-tight">
                   {prog1Headline}
                 </h2>
 
-                <p className="mt-6 text-sm leading-relaxed text-slate-600 font-light max-w-2xl">
+                <p className="mt-6 text-sm leading-relaxed text-slate-300 font-light max-w-2xl">
                   {prog1Desc}
                 </p>
               </Reveal>
@@ -145,7 +142,7 @@ export default async function OurWorkPage() {
 
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-lg">
                   {prog1Image && (
                     <Image
                       src={prog1Image}
@@ -163,39 +160,39 @@ export default async function OurWorkPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {/* Keystone Focus Card */}
             <Reveal>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-50 text-teal-700 mb-4">
+              <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
+                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-950/50 text-teal-300 mb-4">
                   <Shield className="h-5 w-5" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-slate-900 mb-2">{prog1Card1Title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-light">{prog1Card1Body}</p>
+                <h3 className="font-serif text-lg font-bold text-white mb-2">{prog1Card1Title}</h3>
+                <p className="text-sm text-slate-350 leading-relaxed font-light">{prog1Card1Body}</p>
               </div>
             </Reveal>
 
             {/* Ahupuaʻa Link Card */}
             <Reveal delay={100}>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-50 text-teal-700 mb-4">
+              <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
+                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-950/50 text-teal-300 mb-4">
                   <Globe className="h-5 w-5" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-slate-900 mb-2">{prog1Card2Title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-light">{prog1Card2Body}</p>
+                <h3 className="font-serif text-lg font-bold text-white mb-2">{prog1Card2Title}</h3>
+                <p className="text-sm text-slate-350 leading-relaxed font-light">{prog1Card2Body}</p>
               </div>
             </Reveal>
 
             {/* Metric Segment */}
             <Reveal delay={200}>
-              <div className="relative h-full rounded-2xl overflow-hidden border border-teal-100 bg-teal-50/30 p-6 text-slate-900 flex flex-col justify-center">
+              <div className="relative h-full rounded-2xl overflow-hidden border border-teal-900/30 bg-teal-950/25 p-6 text-white flex flex-col justify-center">
                 {prog1MetricBg && (
                   <Image src={prog1MetricBg} alt="Background" fill className="object-cover opacity-10 mix-blend-multiply" />
                 )}
                 <div className="relative z-10 space-y-2">
-                  <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-600 uppercase">{prog1MetricLabel}</span>
-                  <div className="flex items-baseline text-4xl font-serif font-bold text-teal-600">
+                  <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-400 uppercase">{prog1MetricLabel}</span>
+                  <div className="flex items-baseline text-4xl font-serif font-bold text-teal-400">
                     <AnimatedCounter value={prog1MetricValue} suffix={prog1MetricSuffix} />
                   </div>
-                  <span className="text-[10px] font-semibold tracking-widest uppercase text-slate-500 block">{prog1MetricDesc}</span>
-                  <p className="text-xs font-light text-slate-600 leading-relaxed mt-2">{prog1MetricDetail}</p>
+                  <span className="text-[10px] font-semibold tracking-widest uppercase text-slate-400 block">{prog1MetricDesc}</span>
+                  <p className="text-xs font-light text-slate-300 leading-relaxed mt-2">{prog1MetricDetail}</p>
                 </div>
               </div>
             </Reveal>
@@ -206,7 +203,7 @@ export default async function OurWorkPage() {
       {/* =========================================================================
           SECTION 2: BIO-CLEANER & POLLUTION RESPONSE (PROGRAM 2)
          ========================================================================= */}
-      <section id="program-2" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="program-2" className="bg-white py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
             <div className="lg:col-span-5 lg:order-2">
@@ -279,7 +276,7 @@ export default async function OurWorkPage() {
       {/* =========================================================================
           SECTION 3: NĀ KIAʻI KAI COMMUNITY SCIENCE (PROGRAM 3)
          ========================================================================= */}
-      <section id="program-3" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="program-3" className="bg-slate-50 py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
             <div className="lg:col-span-7 space-y-6">
@@ -354,7 +351,7 @@ export default async function OurWorkPage() {
       {/* =========================================================================
           SECTION 4: OUR METHODOLOGY
          ========================================================================= */}
-      <section id="methodology" className="bg-gradient-to-b from-white to-slate-100 py-24">
+      <section id="methodology" className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
             <div className="lg:col-span-7 space-y-6">

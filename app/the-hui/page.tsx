@@ -64,33 +64,31 @@ export default function TheHuiPage() {
   ]
 
   return (
-    <main className="bg-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
-      {/* Light Nav Background container */}
-      <div className="bg-white border-b border-slate-100 w-full h-20" />
-      <SiteNav theme="light" />
+    <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
+      <SiteNav theme="dark" />
 
       {/* =========================================================================
           SECTION 1: OUR STORY (ORIGIN & VISION)
          ========================================================================= */}
-      <section id="story" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="story" className="bg-transparent pt-32 pb-20 text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-950/50 text-teal-300 border border-teal-900/30">
                     <Compass className="h-4 w-4" />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                     Our Story · Origin & vision
                   </span>
                 </div>
                 
-                <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl tracking-tight">
                   Ancient Wisdom for a Modern Crisis
                 </h2>
-
-                <p className="mt-4 text-lg font-serif italic text-teal-800 leading-relaxed font-light">
+ 
+                <p className="mt-4 text-lg font-serif italic text-teal-200 leading-relaxed font-light">
                   &ldquo;He aliʻi ka ʼaina, he kauwā ke kanaka.&rdquo; &mdash; The land is chief; the people are its servants.
                 </p>
               </Reveal>
@@ -98,7 +96,7 @@ export default function TheHuiPage() {
 
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-lg">
                   <Image
                     src="/ahupuaa_stewardship.png"
                     alt="Traditional community stewardship of the ahupuaʻa"
@@ -113,9 +111,9 @@ export default function TheHuiPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {/* Who We Are */}
             <Reveal delay={100}>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <h3 className="font-serif text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3">Who We Are</h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-light">
+              <div className="h-full rounded-2xl border border-slate-850 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
+                <h3 className="font-serif text-lg font-bold text-white mb-3 border-b border-slate-800 pb-3">Who We Are</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
                   A Maui-based 501(c)(3) marine conservation nonprofit, established 2023. The first community-led, whole-system marine conservation organization in Hawaiʻi.
                 </p>
               </div>
@@ -123,9 +121,9 @@ export default function TheHuiPage() {
 
             {/* Name Meaning */}
             <Reveal delay={200}>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <h3 className="font-serif text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3">Name Meaning</h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-light">
+              <div className="h-full rounded-2xl border border-slate-850 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
+                <h3 className="font-serif text-lg font-bold text-white mb-3 border-b border-slate-800 pb-3">Name Meaning</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
                   Hui Nehu means &ldquo;The Community of the Anchovy.&rdquo; We believe true restoration starts at the very foundation of the food chain.
                 </p>
               </div>
@@ -133,9 +131,9 @@ export default function TheHuiPage() {
 
             {/* Our Model */}
             <Reveal delay={300}>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <h3 className="font-serif text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3">Our Model</h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-light">
+              <div className="h-full rounded-2xl border border-slate-850 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
+                <h3 className="font-serif text-lg font-bold text-white mb-3 border-b border-slate-800 pb-3">Our Model</h3>
+                <p className="text-sm text-slate-300 leading-relaxed font-light">
                   The ahupuaʻa made operational — organizing conservation work from land-based pollution sources to offshore nurseries, addressing issues at source not just symptoms in the ocean.
                 </p>
               </div>
@@ -147,7 +145,7 @@ export default function TheHuiPage() {
       {/* =========================================================================
           SECTION 2: TEAM & LEADERSHIP
          ========================================================================= */}
-      <section id="team" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="team" className="bg-white py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="max-w-3xl mb-16 space-y-4">
             <Reveal>
@@ -252,7 +250,7 @@ export default function TheHuiPage() {
       {/* =========================================================================
           SECTION 3: PARTNERS & COALITION
          ========================================================================= */}
-      <section id="partners" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="partners" className="bg-slate-50 py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="max-w-3xl mb-16 space-y-4">
             <Reveal>

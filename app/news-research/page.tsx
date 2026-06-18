@@ -11,31 +11,29 @@ export const metadata = {
 
 export default function NewsResearchPage() {
   return (
-    <main className="bg-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
-      {/* Dark Nav Background container */}
-      <div className="bg-slate-950 w-full h-20" />
-      <SiteNav />
+    <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
+      <SiteNav theme="dark" />
 
-      {/* Split Hero Section (Light Theme with high contrast) */}
-      <section className="relative bg-white border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
+      {/* Split Hero Section */}
+      <section className="relative bg-transparent pt-32 pb-20 text-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="inline-flex items-center gap-3">
-                  <span className="h-px w-8 bg-teal-600"></span>
-                  <span className="text-xs font-semibold tracking-[0.2em] uppercase text-teal-600">
+                  <span className="h-px w-8 bg-teal-400"></span>
+                  <span className="text-xs font-semibold tracking-[0.2em] uppercase text-teal-400">
                     Nā Kiaʻi Kai Dataset Console
                   </span>
                 </div>
                 
-                <h1 className="mt-2 font-serif text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
+                <h1 className="mt-2 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl">
                   News & Research
                 </h1>
                 
-                <p className="mt-4 text-base sm:text-lg text-slate-650 font-light leading-relaxed">
+                <p className="mt-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
                   Showcasing publication-quality, standardized environmental datasets generated directly by our Nā Kiaʻi Kai Community Science program volunteers.
                 </p>
               </Reveal>
@@ -44,7 +42,7 @@ export default function NewsResearchPage() {
             {/* Right Image */}
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
                   <Image
                     src="/news_research_dataset.png"
                     alt="Volunteers logging community science water quality datasets"

@@ -78,49 +78,47 @@ export default function GetInvolvedPage() {
   ]
 
   return (
-    <main className="bg-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
-      {/* Light Nav Background container */}
-      <div className="bg-white border-b border-slate-100 w-full h-20" />
-      <SiteNav theme="light" />
+    <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">
+      <SiteNav theme="dark" />
 
       {/* =========================================================================
           SECTION 1: INVEST (FUNDING TIERS)
          ========================================================================= */}
-      <section id="invest" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="invest" className="bg-transparent pt-32 pb-20 text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start mb-16">
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-950/50 text-teal-300 border border-teal-900/30">
                     <CircleDollarSign className="h-4 w-4" />
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                     Invest · Funding tiers
                   </span>
                 </div>
                 
-                <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
+                <h2 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl tracking-tight">
                   Join the Hui &mdash; Your Investment Directly Protects Hawaiʻi’s Ocean
                 </h2>
                 
-                <p className="mt-6 text-sm leading-relaxed text-slate-650 font-light max-w-2xl">
-                  Raising <strong className="font-semibold text-slate-900">$500,000</strong> in seed funding to launch nonprofit conservation programs and the Bio Cleaner Septic Jockey commercial enterprise.
+                <p className="mt-6 text-sm leading-relaxed text-slate-300 font-light max-w-2xl">
+                  Raising <strong className="font-semibold text-white">$500,000</strong> in seed funding to launch nonprofit conservation programs and the Bio Cleaner Septic Jockey commercial enterprise.
                 </p>
               </Reveal>
 
               {/* Use of Seed Funds graphic */}
               <Reveal delay={100}>
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-5 shadow-xs">
-                  <h3 className="font-serif text-lg font-bold text-slate-900">Use of Seed Funds</h3>
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 space-y-5 shadow-xs">
+                  <h3 className="font-serif text-lg font-bold text-white">Use of Seed Funds</h3>
                   <div className="space-y-4">
                     {fundingUse.map((item) => (
                       <div key={item.label} className="space-y-1.5">
-                        <div className="flex justify-between text-xs font-medium text-slate-700">
+                        <div className="flex justify-between text-xs font-medium text-slate-200">
                           <span>{item.label} ({item.amount})</span>
                           <span>{item.percent}%</span>
                         </div>
-                        <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
+                        <div className="h-2 w-full rounded-full bg-slate-800 overflow-hidden">
                           <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.percent}%` }} />
                         </div>
                       </div>
@@ -132,15 +130,15 @@ export default function GetInvolvedPage() {
 
             {/* Investment Tiers cards column */}
             <div className="lg:col-span-5 space-y-4">
-              <h3 className="font-serif text-xl font-bold text-slate-900 px-1 mb-2">Investment Tiers</h3>
+              <h3 className="font-serif text-xl font-bold text-white px-1 mb-2">Investment Tiers</h3>
               {investmentTiers.map((tier, idx) => (
                 <Reveal key={tier.name} delay={idx * 80}>
-                  <div className="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-2xs hover:shadow-xs transition-all duration-300">
+                  <div className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-4 shadow-2xs hover:shadow-xs transition-all duration-300">
                     <div>
-                      <h4 className="font-serif text-sm font-bold text-slate-950">{tier.name}</h4>
-                      <p className="text-xs text-slate-500 font-light mt-0.5">{tier.desc}</p>
+                      <h4 className="font-serif text-sm font-bold text-white">{tier.name}</h4>
+                      <p className="text-xs text-slate-400 font-light mt-0.5">{tier.desc}</p>
                     </div>
-                    <span className="text-base font-serif font-bold text-teal-700 shrink-0">{tier.amount}</span>
+                    <span className="text-base font-serif font-bold text-teal-400 shrink-0">{tier.amount}</span>
                   </div>
                 </Reveal>
               ))}
@@ -152,7 +150,7 @@ export default function GetInvolvedPage() {
       {/* =========================================================================
           SECTION 2: VOLUNTEER (COMMUNITY WORKDAYS)
          ========================================================================= */}
-      <section id="volunteer" className="bg-gradient-to-b from-white to-teal-50/20 py-24 border-b border-slate-200">
+      <section id="volunteer" className="bg-white py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             
@@ -236,7 +234,7 @@ export default function GetInvolvedPage() {
       {/* =========================================================================
           SECTION 3: PARTNER WITH US (ALLIANCES)
          ========================================================================= */}
-      <section id="partner" className="bg-gradient-to-b from-white to-teal-50/20 py-24">
+      <section id="partner" className="bg-slate-50 py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start mb-16">
             

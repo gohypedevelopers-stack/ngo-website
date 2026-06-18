@@ -157,34 +157,32 @@ export function CrisisLandingPage({
   const fragmentedEyebrow = crisisPages[2].eyebrow
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800">
-      {/* Dark Nav Background container */}
-      <div className="bg-slate-900 w-full h-20" />
+    <main className="min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800">
       <SiteNav theme="dark" />
       {/* =========================================================================
           SECTION 1: THE NEHU (KEYSTONE SPECIES)
          ========================================================================= */}
-      <section className="bg-gradient-to-b from-white to-teal-50/20 py-12">
+      <section className="bg-transparent pt-32 pb-20 text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-8">
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600 block">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400 block">
                   {nehuEyebrow}
                 </span>
                 
-                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
                   {nehuTitle}
                 </h2>
                 
-                <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/80">
+                <p className="mt-4 text-lg font-light leading-relaxed text-teal-200/80">
                   {nehuSubtitle}
                 </p>
                 
-                <p className="mt-4 text-xs font-bold uppercase tracking-[0.1em] text-teal-600">
+                <p className="mt-4 text-xs font-bold uppercase tracking-[0.1em] text-teal-400">
                   What It Is
                 </p>
-                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                <p className="mt-2 text-base leading-relaxed text-slate-300">
                   {nehuDesc}
                 </p>
               </Reveal>
@@ -192,7 +190,7 @@ export function CrisisLandingPage({
 
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-lg">
                   {nehuImage && (
                     <Image
                       src={nehuImage}
@@ -211,10 +209,10 @@ export function CrisisLandingPage({
           {/* Significance Grid */}
           <div className="space-y-8">
             <div className="text-center">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                 Significance
               </span>
-              <h3 className="mt-2 font-serif text-2xl font-bold text-slate-900">
+              <h3 className="mt-2 font-serif text-2xl font-bold text-white">
                 Why the Nehu Matters
               </h3>
               <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
@@ -223,14 +221,14 @@ export function CrisisLandingPage({
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {crisisPages[0].sections.map((section, idx) => (
                 <Reveal key={section.title} delay={idx * 100}>
-                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md">
-                    <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-700 font-mono text-xs font-bold transition-all group-hover:bg-teal-600 group-hover:text-white">
+                  <div className="group h-full rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md">
+                    <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-teal-950/50 text-teal-300 font-mono text-xs font-bold transition-all group-hover:bg-teal-600 group-hover:text-white">
                       {String(idx + 1).padStart(2, '0')}
                     </div>
-                    <h4 className="mb-2 font-serif text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                    <h4 className="mb-2 font-serif text-lg font-bold text-white group-hover:text-teal-400 transition-colors">
                       {section.title}
                     </h4>
-                    <p className="text-sm text-slate-500 leading-relaxed font-light">
+                    <p className="text-sm text-slate-300 leading-relaxed font-light">
                       {section.body}
                     </p>
                   </div>
@@ -241,17 +239,17 @@ export function CrisisLandingPage({
 
           {/* Proverb Banner */}
           {crisisPages[0].proverb && (
-            <div className="mt-10 bg-teal-50/30 rounded-2xl py-8 px-6 text-center border border-teal-500/10">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-600 mb-4 block">
+            <div className="mt-10 bg-teal-950/20 rounded-2xl py-8 px-6 text-center border border-teal-500/10">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-400 mb-4 block">
                 ʻŌlelo Noʻeau · Hawaiian Proverb
               </span>
-              <blockquote className="font-serif italic text-lg sm:text-xl md:text-2xl text-teal-950 leading-relaxed max-w-4xl mx-auto font-light">
+              <blockquote className="font-serif italic text-lg sm:text-xl md:text-2xl text-teal-100 leading-relaxed max-w-4xl mx-auto font-light">
                 {crisisPages[0].proverb.split(' — ')[0]}
               </blockquote>
               {crisisPages[0].proverb.includes(' — ') && (
                 <>
-                  <div className="mx-auto my-4 h-px w-24 bg-gradient-to-r from-transparent via-teal-600/20 to-transparent" />
-                  <cite className="text-xs font-mono uppercase tracking-[0.2em] text-slate-500 not-italic font-semibold">
+                  <div className="mx-auto my-4 h-px w-24 bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
+                  <cite className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400 not-italic font-semibold">
                     {crisisPages[0].proverb.split(' — ')[1]}
                   </cite>
                 </>
@@ -264,7 +262,7 @@ export function CrisisLandingPage({
       {/* =========================================================================
           SECTION 2: THE CESSPOOL CRISIS (THE HIDDEN KILLER)
          ========================================================================= */}
-      <section className="bg-gradient-to-b from-white to-teal-50/20 py-12 text-slate-800">
+      <section className="bg-white py-20 text-slate-800 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-8">
             <div className="lg:col-span-7 space-y-6 lg:order-2">
@@ -365,7 +363,7 @@ export function CrisisLandingPage({
       {/* =========================================================================
           SECTION 3: A FRAGMENTED RESPONSE (GAPS IN CURRENT EFFORTS)
          ========================================================================= */}
-      <section className="bg-gradient-to-b from-white to-teal-50/20 py-12">
+      <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-6">
             <div className="lg:col-span-7 space-y-6">
