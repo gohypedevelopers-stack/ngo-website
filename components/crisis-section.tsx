@@ -14,7 +14,8 @@ interface ExtendedHomepageData extends HomepageData {
 }
 
 export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) {
-  const label = data?.crisisLabel || 'The Crisis'
+  const rawLabel = data?.crisisLabel || 'The Hook'
+  const label = rawLabel === 'The Hook (Urgency Block)' ? 'The Hook' : rawLabel
   
   // Normalize title to match the spec exactly (without comma)
   const rawTitle = data?.crisisTitle || 'Hawaiʻi’s reefs are dying and the window to act is closing fast.'
