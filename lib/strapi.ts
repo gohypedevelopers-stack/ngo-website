@@ -222,63 +222,13 @@ export async function fetchCrisisPageData(): Promise<CrisisPageData | null> {
   }
 }
 
-export interface CrisisSubPageData {
-  id: number;
-  documentId: string;
-  slug: string;
-  eyebrow?: string;
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  image?: StrapiImage;
-  proverb?: string;
-  stat1Value?: string;
-  stat1Label?: string;
-  stat2Value?: string;
-  stat2Label?: string;
-  stat3Value?: string;
-  stat3Label?: string;
-  card1Title?: string;
-  card1Body?: string;
-  card2Title?: string;
-  card2Body?: string;
-  card3Title?: string;
-  card3Body?: string;
-  card4Title?: string;
-  card4Body?: string;
-}
 
-export async function fetchCrisisSubPages(): Promise<CrisisSubPageData[]> {
-  if (!STRAPI_URL || !USE_STRAPI) {
-    return [];
-  }
-
-  try {
-    const res = await fetch(`${STRAPI_URL}/api/crisis-sub-pages?populate=*`, {
-      cache: 'no-store',
-    });
-    if (!res.ok) {
-      console.warn('Failed to fetch crisis sub pages:', res.statusText);
-      return [];
-    }
-    const json = await res.json();
-    return json.data || [];
-  } catch (error: any) {
-    if (error && (error.digest === 'DYNAMIC_SERVER_USAGE' || error.message?.includes('Dynamic server usage'))) {
-      throw error;
-    }
-    console.error('Error fetching crisis sub pages:', error);
-    return [];
-  }
-}
 export interface OurWorkPageData {
-  heroEyebrow?: string;
-  heroTitle?: string;
-  heroDescription?: string;
-  heroImage?: StrapiImage;
   prog1Eyebrow?: string;
   prog1Title?: string;
   prog1Description?: string;
+  prog1Image?: StrapiImage;
+  prog1MetricBg?: StrapiImage;
   prog1Card1Title?: string;
   prog1Card1Body?: string;
   prog1Card2Title?: string;
@@ -291,6 +241,7 @@ export interface OurWorkPageData {
 
   prog2Title?: string;
   prog2Description?: string;
+  prog2Image?: StrapiImage;
   prog2Card1Title?: string;
   prog2Card1Body?: string;
   prog2MetricLabel?: string;
@@ -301,11 +252,13 @@ export interface OurWorkPageData {
 
   prog3Title?: string;
   prog3Description?: string;
+  prog3Image?: StrapiImage;
   prog3Card1Title?: string;
   prog3Card1Body?: string;
 
   methodTitle?: string;
   methodDescription?: string;
+  methodImage?: StrapiImage;
   methodCard1Title?: string;
   methodCard1Body?: string;
   methodMetricLabel?: string;
@@ -345,58 +298,4 @@ export async function fetchOurWorkPageData(): Promise<OurWorkPageData | null> {
   }
 }
 
-export interface OurWorkSubPageData {
-  id: number;
-  documentId: string;
-  slug: string;
-  eyebrow?: string;
-  title?: string;
-  description?: string;
-  image?: StrapiImage;
-  card1Title?: string;
-  card1Body?: string;
-  card2Title?: string;
-  card2Body?: string;
-  metricLabel?: string;
-  metricValue?: number;
-  metricSuffix?: string;
-  metricDesc?: string;
-  metricDetail?: string;
-  metricBgImage?: StrapiImage;
-  activity1Title?: string;
-  activity1Body?: string;
-  activity2Title?: string;
-  activity2Body?: string;
-  activity3Title?: string;
-  activity3Body?: string;
-  activity4Title?: string;
-  activity4Body?: string;
-  activity5Title?: string;
-  activity5Body?: string;
-  activity6Title?: string;
-  activity6Body?: string;
-}
 
-export async function fetchOurWorkSubPages(): Promise<OurWorkSubPageData[]> {
-  if (!STRAPI_URL || !USE_STRAPI) {
-    return [];
-  }
-
-  try {
-    const res = await fetch(`${STRAPI_URL}/api/our-work-sub-pages?populate=*`, {
-      cache: 'no-store',
-    });
-    if (!res.ok) {
-      console.warn('Failed to fetch our work sub pages:', res.statusText);
-      return [];
-    }
-    const json = await res.json();
-    return json.data || [];
-  } catch (error: any) {
-    if (error && (error.digest === 'DYNAMIC_SERVER_USAGE' || error.message?.includes('Dynamic server usage'))) {
-      throw error;
-    }
-    console.error('Error fetching our work sub pages:', error);
-    return [];
-  }
-}
