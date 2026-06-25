@@ -14,21 +14,19 @@ interface ExtendedHomepageData extends HomepageData {
 }
 
 export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) {
-  const rawLabel = data?.crisisLabel || 'The Hook'
-  const label = (rawLabel === 'The Hook (Urgency Block)' || rawLabel === 'The Crisis') ? 'The Hook' : rawLabel
+  const rawLabel = data?.crisisLabel
+  const label = rawLabel ? ((rawLabel === 'The Hook (Urgency Block)' || rawLabel === 'The Crisis') ? 'The Hook' : rawLabel) : null
   
-  // Normalize title to match the spec exactly (without comma)
-  const rawTitle = data?.crisisTitle || 'Hawaiʻi’s reefs are dying and the window to act is closing fast.'
-  const normalizedTitle = rawTitle.replace(/,\s*and/gi, ' and').replace(/\n/g, ' ')
-  const title = (
+  const rawTitle = data?.crisisTitle
+  const normalizedTitle = rawTitle ? rawTitle.replace(/,\s*and/gi, ' and').replace(/\n/g, ' ') : null
+  const title = normalizedTitle ? (
     <span>{normalizedTitle}</span>
-  )
+  ) : null
 
-  const body = data?.crisisBody || '84% of the world’s coral reefs bleached this year. The nehu — Hawaiʻi’s tiny endemic anchovy — is the foundation of this entire food web. When it disappears, the whole system collapses.'
-  const secondaryBody = data?.crisisSecondaryBody || ''
-  // Quote is removed as it is not in the specified content
+  const body = data?.crisisBody
+  const secondaryBody = data?.crisisSecondaryBody
   const quote = ''
-  const imgUrl = getStrapiMediaUrl(data?.crisisImage) || ''
+  const imgUrl = getStrapiMediaUrl(data?.crisisImage)
 
 
 

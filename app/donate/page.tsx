@@ -17,6 +17,11 @@ import {
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+import { CheckoutForm } from '@/components/checkout-form'
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
 
 const presetAmounts = [50, 100, 500, 1000, 5000]
 
@@ -37,11 +42,13 @@ export default function DonatePage() {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [pinCode, setPinCode] = useState('')
-  const [country, setCountry] = useState('United States')
+  const [country, setCountry] = useState('')
 
   // Payment Status
   const [paymentState, setPaymentState] = useState<'idle' | 'processing' | 'success' | 'failed' | 'pending'>('idle')
   const [transactionId, setTransactionId] = useState('')
+  const [clientSecret, setClientSecret] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const getDonationAmount = () => {
     if (selectedAmount === 'custom') {
@@ -50,7 +57,7 @@ export default function DonatePage() {
     return selectedAmount
   }
 
-  const handleDonate = (e: React.FormEvent) => {
+  const handleDonate = async (e: React.FormEvent) => {
     e.preventDefault()
 
     const amount = getDonationAmount()
@@ -60,23 +67,32 @@ export default function DonatePage() {
     }
 
     setPaymentState('processing')
+    setErrorMessage('')
 
-    // Generate simulated Transaction ID
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000)
-    const newTxId = `#DON-20240616-${randomSuffix}`
-    setTransactionId(newTxId)
+    try {
+      const res = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount,
+          donorName: fullName,
+          donorEmail: email,
+        }),
+      })
 
-    // Simulate payment API call
-    setTimeout(() => {
-      const emailLower = email.toLowerCase().trim()
-      if (emailLower === 'fail@ngo.org') {
-        setPaymentState('failed')
-      } else if (emailLower === 'pending@ngo.org') {
-        setPaymentState('pending')
-      } else {
-        setPaymentState('success')
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to initialize payment')
       }
-    }, 2000)
+
+      setClientSecret(data.clientSecret)
+      setPaymentState('idle')
+    } catch (err: any) {
+      console.error(err)
+      setErrorMessage(err.message)
+      setPaymentState('failed')
+    }
   }
 
   const getFirstName = () => {
@@ -175,6 +191,7 @@ export default function DonatePage() {
                   <button
                     onClick={() => {
                       setPaymentState('idle')
+                      setClientSecret('')
                       setFullName('')
                       setEmail('')
                       setPhone('')
@@ -215,7 +232,7 @@ export default function DonatePage() {
                 
                 <div className="bg-rose-50/50 border border-rose-100 rounded-2xl p-6 w-full max-w-md space-y-3 text-sm text-rose-800">
                   <p className="font-light leading-relaxed">
-                    We were unable to process your donation. No amount has been deducted.
+                    {errorMessage || 'We were unable to process your donation. No amount has been deducted.'}
                   </p>
                   <p className="font-light">
                     Please check your card details and try again, or use a different payment method.
@@ -268,6 +285,7 @@ export default function DonatePage() {
 
             {/* FORM IDLE STATE */}
             {paymentState === 'idle' && (
+              <>
               <form onSubmit={handleDonate} className="space-y-8">
                 {/* Section A: Donation Amount */}
                 <div className="space-y-4">
@@ -510,14 +528,38 @@ export default function DonatePage() {
                 </div>
 
                 {/* Submit button */}
-                <button
-                  type="submit"
-                  className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-slate-900 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-teal-650 hover:shadow-lg"
-                >
-                  <CreditCard className="h-4.5 w-4.5" />
-                  Complete Donation of ${getDonationAmount()} USD
-                </button>
+                {!clientSecret && (
+                  <button
+                    type="submit"
+                    className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-slate-900 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-teal-650 hover:shadow-lg"
+                  >
+                    Continue to Payment of ${getDonationAmount()} USD
+                  </button>
+                )}
               </form>
+
+              {/* Payment Section (Outside the primary form) */}
+              {clientSecret && (
+                <div className="pt-6 mt-8 border-t border-slate-100">
+                  <h3 className="text-lg font-serif font-bold text-slate-900 mb-4">
+                    4. Secure Payment
+                  </h3>
+                  <Elements stripe={stripePromise} options={{ clientSecret }}>
+                    <CheckoutForm 
+                      amount={getDonationAmount()} 
+                      onSuccess={(txId) => {
+                        setTransactionId(txId)
+                        setPaymentState('success')
+                      }}
+                      onError={(err) => {
+                        setErrorMessage(err)
+                        setPaymentState('failed')
+                      }}
+                    />
+                  </Elements>
+                </div>
+              )}
+              </>
             )}
 
           </div>

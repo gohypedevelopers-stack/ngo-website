@@ -3,27 +3,27 @@ import { ArrowRight, BookOpen, Heart } from 'lucide-react'
 import { HomepageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 export function HeroBanner({ data }: { data?: HomepageData | null }) {
-  const subtitle = data?.heroSubtitle || 'A Maui-Based 501(c)(3) Marine Conservation Nonprofit — Est. 2023'
+  const subtitle = data?.heroSubtitle
   
-  const rawTitle = data?.heroTitle || 'Protecting Hawaiʻi’s Ocean, From the\nGround Up'
-  const title = (
+  const rawTitle = data?.heroTitle
+  const title = rawTitle ? (
     <span dangerouslySetInnerHTML={{ __html: rawTitle.replace(/\n/g, '<br />') }} />
-  )
+  ) : null
 
-  const description = data?.heroDescription || 'Mālama ʼAīna. Mālama Wai. Mālama Kai. — Care for the Land. Care for the Water. Care for the Sea.'
+  const description = data?.heroDescription
   
-  const primaryBtnText = data?.heroPrimaryBtnText || 'Join the Hui'
-  const primaryBtnLink = data?.heroPrimaryBtnLink || '/the-hui'
+  const primaryBtnText = data?.heroPrimaryBtnText
+  const primaryBtnLink = data?.heroPrimaryBtnLink
   
-  const secondaryBtnText = data?.heroSecondaryBtnText || 'Learn About the Crisis'
-  const secondaryBtnLink = data?.heroSecondaryBtnLink || '/the-crisis'
+  const secondaryBtnText = data?.heroSecondaryBtnText
+  const secondaryBtnLink = data?.heroSecondaryBtnLink
 
-  const tertiaryBtnText = data?.heroTertiaryBtnText || 'Invest in Hawaiʻi’s Ocean'
-  const tertiaryBtnLink = data?.heroTertiaryBtnLink || '/get-involved#invest'
+  const tertiaryBtnText = data?.heroTertiaryBtnText
+  const tertiaryBtnLink = data?.heroTertiaryBtnLink
 
-  const bannerImgUrl = getStrapiMediaUrl(data?.heroBannerImage) || ''
-  const scubaDiverImgUrl = getStrapiMediaUrl(data?.heroScubaDiverImage) || ''
-  const manufacturingImgUrl = getStrapiMediaUrl(data?.heroManufacturingImage) || ''
+  const bannerImgUrl = getStrapiMediaUrl(data?.heroBannerImage)
+  const scubaDiverImgUrl = getStrapiMediaUrl(data?.heroScubaDiverImage)
+  const manufacturingImgUrl = getStrapiMediaUrl(data?.heroManufacturingImage)
 
   return (
     <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden">

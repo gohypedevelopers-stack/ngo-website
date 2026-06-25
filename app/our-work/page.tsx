@@ -34,41 +34,41 @@ export default async function OurWorkPage() {
 
   // Fetch Program 1 Data (Habitat & Loko Iʻa Restoration)
   const prog1Data = subPages.find(p => p.slug === 'habitat-loko-ia')
-  const prog1Title = 'Habitat & Loko Iʻa Restoration'
-  const prog1Headline = 'We Don’t Just Restore Coral — We Restore the Entire Food Web'
-  const prog1Desc = 'Restoring estuarine habitats, coral reefs, and traditional fishponds (loko iʻa). Propagating thermal-tolerant coral and native limu using traditional cultivation and modern asexual propagation methods.'
+  const prog1Title = pageData?.prog1Title || 'Habitat & Loko Iʻa Restoration'
+  const prog1Headline = pageData?.prog1Eyebrow || 'We Don’t Just Restore Coral — We Restore the Entire Food Web'
+  const prog1Desc = pageData?.prog1Description || 'Restoring estuarine habitats, coral reefs, and traditional fishponds (loko iʻa). Propagating thermal-tolerant coral and native limu using traditional cultivation and modern asexual propagation methods.'
   const prog1Image = getStrapiMediaUrl(prog1Data?.image) || '/contact_ocean.png'
-  const prog1Card1Title = 'Keystone Focus'
-  const prog1Card1Body = 'Restoring foundational habitats triggers a trophic cascade that revitalizes the entire coastal ecosystem.'
-  const prog1Card2Title = 'Ahupuaʻa Link'
-  const prog1Card2Body = 'Ancient Hawaiians built 300+ fishponds (loko iʻa) and managed freshwater flow to protect downstream coral nurseries. We revive this 1,000-year-old wisdom.'
-  const prog1MetricLabel = 'Target Metric'
-  const prog1MetricValue = 70
-  const prog1MetricSuffix = '%'
-  const prog1MetricDesc = 'Coral Survival Rate'
-  const prog1MetricDetail = '70% coral survival rate — target for pilot sites (integrating Indigenous Ecological Knowledge + modern marine science).'
+  const prog1Card1Title = pageData?.prog1Card1Title || 'Keystone Focus'
+  const prog1Card1Body = pageData?.prog1Card1Body || 'Restoring foundational habitats triggers a trophic cascade that revitalizes the entire coastal ecosystem.'
+  const prog1Card2Title = pageData?.prog1Card2Title || 'Ahupuaʻa Link'
+  const prog1Card2Body = pageData?.prog1Card2Body || 'Ancient Hawaiians built 300+ fishponds (loko iʻa) and managed freshwater flow to protect downstream coral nurseries. We revive this 1,000-year-old wisdom.'
+  const prog1MetricLabel = pageData?.prog1MetricLabel || 'Target Metric'
+  const prog1MetricValue = pageData?.prog1MetricValue !== undefined && pageData.prog1MetricValue !== null ? pageData.prog1MetricValue : 70
+  const prog1MetricSuffix = pageData?.prog1MetricSuffix || '%'
+  const prog1MetricDesc = pageData?.prog1MetricDesc || 'Coral Survival Rate'
+  const prog1MetricDetail = pageData?.prog1MetricDetail || '70% coral survival rate — target for pilot sites (integrating Indigenous Ecological Knowledge + modern marine science).'
   const prog1MetricBg = getStrapiMediaUrl(prog1Data?.metricBgImage) || '/ocean_aerial.png'
 
   // Fetch Program 2 Data (Bio-Cleaner & Pollution Response)
   const prog2Data = subPages.find(p => p.slug === 'bio-cleaner')
-  const prog2Title = 'Bio Cleaner Septic Jockey: An Act of Mālama ʼAīna'
-  const prog2Desc = 'Deploying advanced Bio Cleaner septic systems to replace cesspools. Removing marine debris from Maui’s coastline. Responding to acute pollution events.'
+  const prog2Title = pageData?.prog2Title || 'Bio Cleaner Septic Jockey: An Act of Mālama ʼAīna'
+  const prog2Desc = pageData?.prog2Description || 'Deploying advanced Bio Cleaner septic systems to replace cesspools. Removing marine debris from Maui’s coastline. Responding to acute pollution events.'
   const prog2Image = getStrapiMediaUrl(prog2Data?.image) || '/cesspool_split.png'
-  const prog2Card1Title = 'The Bigger Picture'
-  const prog2Card1Body = 'Bio Cleaner Septic Jockey is the commercial arm that directly funds the nonprofit’s conservation mission while addressing the cesspool crisis at scale.'
-  const prog2MetricLabel = 'Target Metric'
-  const prog2MetricValue = 10
-  const prog2MetricSuffix = '+'
-  const prog2MetricDesc = 'Tons of Debris Removed'
-  const prog2MetricDetail = 'Year 1 Target — 10+ tons of marine debris removed.'
+  const prog2Card1Title = pageData?.prog2Card1Title || 'The Bigger Picture'
+  const prog2Card1Body = pageData?.prog2Card1Body || 'Bio Cleaner Septic Jockey is the commercial arm that directly funds the nonprofit’s conservation mission while addressing the cesspool crisis at scale.'
+  const prog2MetricLabel = pageData?.prog2MetricLabel || 'Target Metric'
+  const prog2MetricValue = pageData?.prog2MetricValue !== undefined && pageData.prog2MetricValue !== null ? pageData.prog2MetricValue : 10
+  const prog2MetricSuffix = pageData?.prog2MetricSuffix || '+'
+  const prog2MetricDesc = pageData?.prog2MetricDesc || 'Tons of Debris Removed'
+  const prog2MetricDetail = pageData?.prog2MetricDetail || 'Year 1 Target — 10+ tons of marine debris removed.'
 
   // Fetch Program 3 Data (Nā Kiaʻi Kai Community Science)
   const prog3Data = subPages.find(p => p.slug === 'community-science')
-  const prog3Title = 'Training Hawaiʻi’s Next Generation of Ocean Guardians'
-  const prog3Desc = 'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.'
+  const prog3Title = pageData?.prog3Title || 'Training Hawaiʻi’s Next Generation of Ocean Guardians'
+  const prog3Desc = pageData?.prog3Description || 'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.'
   const prog3Image = getStrapiMediaUrl(prog3Data?.image) || '/ahupuaa_aerial.png'
-  const prog3Card1Title = 'Data Impact'
-  const prog3Card1Body = 'Standardized community data collection informing state and federal policy. Publication-quality scientific output from volunteer-led monitoring.'
+  const prog3Card1Title = pageData?.prog3Card1Title || 'Data Impact'
+  const prog3Card1Body = pageData?.prog3Card1Body || 'Standardized community data collection informing state and federal policy. Publication-quality scientific output from volunteer-led monitoring.'
   const prog3Activities = [
     'Fish surveys',
     'Limu monitoring',
@@ -80,34 +80,34 @@ export default async function OurWorkPage() {
 
   // Fetch Methodology Data
   const methodData = subPages.find(p => p.slug === 'methodology')
-  const methodTitle = 'Indigenous Knowledge + Modern Science: The Most Effective Conservation'
-  const methodDesc = 'The most resilient conservation integrates the deep observational knowledge of Indigenous Hawaiian practitioners with peer-reviewed marine biology.'
+  const methodTitle = pageData?.methodTitle || 'Indigenous Knowledge + Modern Science: The Most Effective Conservation'
+  const methodDesc = pageData?.methodDescription || 'The most resilient conservation integrates the deep observational knowledge of Indigenous Hawaiian practitioners with peer-reviewed marine biology.'
   const methodImage = getStrapiMediaUrl(methodData?.image) || '/ahupuaa_aerial.png'
-  const methodCard1Title = 'The Ahupuaʻa Model'
-  const methodCard1Body = 'Traditional Hawaiian land system from mountain peak (mauka) to ocean (makai). Kānāwai — “the equal sharing of water” — was the source of all wealth. Hui Nehu makes this operational in the 21st century.'
+  const methodCard1Title = pageData?.methodCard1Title || 'The Ahupuaʻa Model'
+  const methodCard1Body = pageData?.methodCard1Body || 'Traditional Hawaiian land system from mountain peak (mauka) to ocean (makai). Kānāwai — “the equal sharing of water” — was the source of all wealth. Hui Nehu makes this operational in the 21st century.'
   
   const methodPillars = [
     {
       num: '01',
-      title: 'Coral & Limu Propagation',
-      body: 'traditional cultivation + modern asexual propagation'
+      title: pageData?.methodPillar1Title || 'Coral & Limu Propagation',
+      body: pageData?.methodPillar1Body || 'traditional cultivation + modern asexual propagation'
     },
     {
       num: '02',
-      title: 'Ahupuaʻa & Loko Iʻa Management',
-      body: 'holistic watershed + ancestral fishpond revival'
+      title: pageData?.methodPillar2Title || 'Ahupuaʻa & Loko Iʻa Management',
+      body: pageData?.methodPillar2Body || 'holistic watershed + ancestral fishpond revival'
     },
     {
       num: '03',
-      title: 'Citizen Science Rigor',
-      body: 'standardized community data → robust scientific datasets'
+      title: pageData?.methodPillar3Title || 'Citizen Science Rigor',
+      body: pageData?.methodPillar3Body || 'standardized community data → robust scientific datasets'
     }
   ]
-  const methodMetricLabel = 'Core Metric'
-  const methodMetricValue = 70
-  const methodMetricSuffix = '%'
-  const methodMetricDesc = 'Coral Survival Rate'
-  const methodMetricDetail = 'Targeting 70% coral survival rate at pilot sites — above national average.'
+  const methodMetricLabel = pageData?.methodMetricLabel || 'Core Metric'
+  const methodMetricValue = pageData?.methodMetricValue !== undefined && pageData.methodMetricValue !== null ? pageData.methodMetricValue : 70
+  const methodMetricSuffix = pageData?.methodMetricSuffix || '%'
+  const methodMetricDesc = pageData?.methodMetricDesc || 'Coral Survival Rate'
+  const methodMetricDetail = pageData?.methodMetricDetail || 'Targeting 70% coral survival rate at pilot sites — above national average.'
 
   return (
     <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">

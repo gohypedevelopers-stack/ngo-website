@@ -16,145 +16,60 @@ import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
 import { CrisisStats } from '@/components/crisis-stats'
 
-export const crisisPages = [
-  {
-    slug: '/the-crisis/the-nehu',
-    eyebrow: 'Keystone species',
-    title: 'The Nehu',
-    subtitle: 'The Most Important Fish You’ve Never Heard Of',
-    description: 'Encrasicholina purpurea — a small, silver anchovy endemic exclusively to the Hawaiian Islands. The foundational forage fish of the Hawaiian marine food web.',
-    image: '/contact_ocean.png',
-    icon: Fish,
-    stats: [
-      { value: 'Endemic', label: 'Only in the Hawaiian Islands' },
-      { value: 'Forage Base', label: 'Foundational fish of the food web' },
-      { value: 'Vulnerable', label: 'Nearshore pollution threat' },
-    ],
-    sections: [
-      {
-        title: 'Traditional Aku Fishery',
-        body: 'Primary live bait for traditional aku (skipjack tuna) pole-and-line fishery.',
-      },
-      {
-        title: 'Apex Food Web',
-        body: 'Critical food for ahi, ʻopelu, akule, dolphins, and seabirds.',
-      },
-      {
-        title: 'Estuarine Habitats',
-        body: 'Lives only in semi-enclosed bays — extremely vulnerable to nearshore pollution.',
-      },
-      {
-        title: 'Food Sovereignty',
-        body: 'No nehu = no aku fishery = no food sovereignty.',
-      },
-    ],
-    proverb: '“He aliʻi ka ʼaina, he kauwā ke kanaka.” — The land is chief; the people are its servants.',
-  },
-  {
-    slug: '/the-crisis/cesspool-problem',
-    eyebrow: 'The hidden killer',
-    title: 'The Cesspool Crisis',
-    subtitle: '53 Million Gallons of Sewage Enter Hawaiʻi’s Ocean Every Single Day',
-    description: 'Hawaiʻi has the most cesspools per capita of any state. Untreated human waste discharges into groundwater and flows directly into the ocean, destroying nearshore habitats.',
-    image: '/cesspool_split.png',
-    icon: Droplets,
-    stats: [
-      { value: '88,000', label: 'Cesspools statewide (12,000+ on Maui alone)' },
-      { value: '53 Million', label: 'Gallons of sewage discharged daily' },
-      { value: '10x Acceleration', label: 'Required conversion rate of 3,000+/year vs 300 current rate' },
-    ],
-    sections: [
-      {
-        title: 'Cesspool Density',
-        body: '88,000 cesspools statewide; 12,000+ on Maui alone.',
-      },
-      {
-        title: 'Pathogen Contamination',
-        body: 'Effluent carries nitrogen, phosphorus, bacteria, viruses.',
-      },
-      {
-        title: 'Coral Reef Suffocation',
-        body: 'Nutrient loading causes algal blooms killing coral reefs.',
-      },
-      {
-        title: 'Water Supply Threat',
-        body: '50% of private drinking water wells near cesspools test positive for fecal bacteria.',
-      },
-      {
-        title: 'Public Health Impact',
-        body: 'Hawaiʻi has the highest MRSA rates in the nation.',
-      },
-    ],
-  },
-  {
-    slug: '/the-crisis/fragmented-response',
-    eyebrow: 'The gap in current efforts',
-    title: 'A Fragmented Response',
-    subtitle: 'Conservation in Hawaiʻi Is Fragmented, Underfunded, and Culturally Disconnected',
-    description: '',
-    image: '/ahupuaa_aerial.png',
-    icon: Network,
-    stats: [
-      { value: 'Silos', label: 'Organizations working in separation' },
-      { value: 'Disconnect', label: 'Lacking Native Hawaiian ecological knowledge' },
-      { value: '-23%', label: 'Conservation funding declined since 2019' },
-    ],
-    sections: [
-      {
-        title: '1. Fragmentation',
-        body: 'Organizations work in silos, leaving critical gaps.',
-      },
-      {
-        title: '2. Cultural Disconnect',
-        body: 'Programs lack Native Hawaiian ecological knowledge.',
-      },
-      {
-        title: '3. Funding Gap',
-        body: 'Conservation funding declined 23% since 2019.',
-      },
-    ],
-    proverb: 'No single organization has ever attempted to address the full system. Until now.',
-  },
-]
 
-export const crisisLanding = {
-  eyebrow: 'Why Hui Nehu exists — 3 sub-pages',
-  title: 'The Crisis',
-  subtitle:
-    'Hawaiʻi’s nearshore ecosystems are facing a critical turning point, driven by three interconnected challenges.',
-  description:
-    'Explore the keystone role of the nehu, the devastating impact of the cesspool crisis, and the fragmentation of current conservation efforts.',
-  image: '/cesspool_split.png',
-}
+
 
 export function CrisisLandingPage({
   data,
 }: {
   data?: CrisisPageData | null
 }) {
-  const eyebrow = data?.eyebrow || crisisLanding.eyebrow
-  const title = data?.title || crisisLanding.title
-  const subtitle = data?.subtitle || crisisLanding.subtitle
-  const description = data?.description || crisisLanding.description
-  const image = getStrapiMediaUrl(data?.image) || crisisLanding.image
+  // Data driven purely from Strapi
+  const nehuTitle = data?.sec1Title
+  const nehuSubtitle = data?.sec1Subtitle
+  const nehuDesc = data?.sec1Description
+  const nehuImage = getStrapiMediaUrl(data?.sec1Image)
+  const nehuEyebrow = data?.sec1Eyebrow
 
-  // Dynamic overrides from Strapi if present
-  const nehuTitle = crisisPages[0].title
-  const nehuSubtitle = crisisPages[0].subtitle
-  const nehuDesc = crisisPages[0].description
-  const nehuImage = getStrapiMediaUrl(data?.sec1Image) || crisisPages[0].image
-  const nehuEyebrow = crisisPages[0].eyebrow
+  const cesspoolTitle = data?.sec2Title
+  const cesspoolSubtitle = data?.sec2Subtitle
+  const cesspoolDesc = data?.sec2Description
+  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image)
+  const cesspoolEyebrow = data?.sec2Eyebrow
+  
+  const fragmentedTitle = data?.sec3Title
+  const fragmentedSubtitle = data?.sec3Subtitle
+  const fragmentedDesc = data?.sec3Description
+  const fragmentedImage = getStrapiMediaUrl(data?.sec3Image)
+  const fragmentedEyebrow = data?.sec3Eyebrow
 
-  const cesspoolTitle = crisisPages[1].title
-  const cesspoolSubtitle = crisisPages[1].subtitle
-  const cesspoolDesc = crisisPages[1].description
-  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image) || crisisPages[1].image
-  const cesspoolEyebrow = crisisPages[1].eyebrow
-  const fragmentedTitle = crisisPages[2].title
-  const fragmentedSubtitle = crisisPages[2].subtitle
-  const fragmentedDesc = crisisPages[2].description
-  const fragmentedImage = getStrapiMediaUrl(data?.sec3Image) || crisisPages[2].image
-  const fragmentedEyebrow = crisisPages[2].eyebrow
+  const sec1GridTitle = data?.sec1GridTitle
+  const sec2GridTitle = data?.sec2GridTitle
+  const sec3GridTitle = data?.sec3GridTitle
+
+  const sec1Sections = [
+    { title: data?.sec1Card1Title, body: data?.sec1Card1Body },
+    { title: data?.sec1Card2Title, body: data?.sec1Card2Body },
+    { title: data?.sec1Card3Title, body: data?.sec1Card3Body },
+    { title: data?.sec1Card4Title, body: data?.sec1Card4Body },
+  ].filter(s => s.title || s.body)
+  const sec1Proverb = data?.sec1Proverb
+
+  const sec2Sections = [
+    { title: data?.sec2Card1Title, body: data?.sec2Card1Body },
+    { title: data?.sec2Card2Title, body: data?.sec2Card2Body },
+    { title: data?.sec2Card3Title, body: data?.sec2Card3Body },
+    { title: data?.sec2Card4Title, body: data?.sec2Card4Body },
+    { title: data?.sec2Card5Title, body: data?.sec2Card5Body },
+  ].filter(s => s.title || s.body)
+  const sec2LawBanner = data?.sec2LawBannerBody
+
+  const sec3Sections = [
+    { title: data?.sec3Card1Title, body: data?.sec3Card1Body },
+    { title: data?.sec3Card2Title, body: data?.sec3Card2Body },
+    { title: data?.sec3Card3Title, body: data?.sec3Card3Body },
+  ].filter(s => s.title || s.body)
+  const sec3Proverb = data?.sec3Proverb
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800">
@@ -213,13 +128,13 @@ export function CrisisLandingPage({
                 Significance
               </span>
               <h3 className="mt-2 font-serif text-2xl font-bold text-white">
-                Why the Nehu Matters
+                {sec1GridTitle}
               </h3>
               <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {crisisPages[0].sections.map((section, idx) => (
+              {sec1Sections.map((section, idx) => (
                 <Reveal key={section.title} delay={idx * 100}>
                   <div className="group h-full rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md">
                     <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-teal-950/50 text-teal-300 font-mono text-xs font-bold transition-all group-hover:bg-teal-600 group-hover:text-white">
@@ -238,19 +153,19 @@ export function CrisisLandingPage({
           </div>
 
           {/* Proverb Banner */}
-          {crisisPages[0].proverb && (
+          {sec1Proverb && (
             <div className="mt-10 bg-teal-950/20 rounded-2xl py-8 px-6 text-center border border-teal-500/10">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-teal-400 mb-4 block">
                 ʻŌlelo Noʻeau · Hawaiian Proverb
               </span>
               <blockquote className="font-serif italic text-lg sm:text-xl md:text-2xl text-teal-100 leading-relaxed max-w-4xl mx-auto font-light">
-                {crisisPages[0].proverb.split(' — ')[0]}
+                {sec1Proverb.split(' — ')[0]}
               </blockquote>
-              {crisisPages[0].proverb.includes(' — ') && (
+              {sec1Proverb.includes(' — ') && (
                 <>
                   <div className="mx-auto my-4 h-px w-24 bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
                   <cite className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400 not-italic font-semibold">
-                    {crisisPages[0].proverb.split(' — ')[1]}
+                    {sec1Proverb.split(' — ')[1]}
                   </cite>
                 </>
               )}
@@ -310,13 +225,13 @@ export function CrisisLandingPage({
                 The Impact
               </span>
               <h3 className="mt-2 font-serif text-2xl font-bold text-slate-900">
-                How Waste Destroys Nearshore Life
+                {sec2GridTitle}
               </h3>
               <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
             </div>
 
             <div className="flex flex-wrap justify-center gap-6">
-              {crisisPages[1].sections.map((section, idx) => (
+              {sec2Sections.map((section, idx) => (
                 <Reveal key={section.title} delay={idx * 100} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
                   <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md">
                     <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-700 font-mono text-xs font-bold transition-all group-hover:bg-teal-600 group-hover:text-white">
@@ -350,7 +265,9 @@ export function CrisisLandingPage({
                       ⚖️ The Law (Act 125)
                     </span>
                     <p className="text-base sm:text-lg text-slate-800 font-light leading-relaxed max-w-4xl">
-                      Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: <span className="font-semibold text-teal-900">~300/year</span>. Required rate: <span className="font-semibold text-teal-900">3,000+/year</span> — a <span className="font-semibold text-teal-700 bg-teal-500/10 px-1.5 py-0.5 rounded font-mono">10x acceleration needed</span>.
+                      {sec2LawBanner ? sec2LawBanner : (
+                        <>Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: <span className="font-semibold text-teal-900">~300/year</span>. Required rate: <span className="font-semibold text-teal-900">3,000+/year</span> — a <span className="font-semibold text-teal-700 bg-teal-500/10 px-1.5 py-0.5 rounded font-mono">10x acceleration needed</span>.</>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -415,13 +332,13 @@ export function CrisisLandingPage({
                 The Structural Failures
               </span>
               <h3 className="mt-2 font-serif text-2xl font-bold text-slate-900">
-                Why Traditional Conservation Falls Short
+                {sec3GridTitle}
               </h3>
               <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
             </div>
 
             <div className="grid gap-6 sm:grid-cols-3">
-              {crisisPages[2].sections.map((section, idx) => (
+              {sec3Sections.map((section, idx) => (
                 <Reveal key={section.title} delay={idx * 100}>
                   <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/30 hover:shadow-md">
                     <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-700 font-mono text-xs font-bold transition-all group-hover:bg-teal-600 group-hover:text-white">
@@ -440,14 +357,14 @@ export function CrisisLandingPage({
           </div>
 
           {/* Closing Line Banner */}
-          {crisisPages[2].proverb && (
+          {sec3Proverb && (
             <div className="mt-10 bg-teal-50/30 rounded-2xl py-8 px-6 text-center border border-teal-500/10 relative overflow-hidden">
               <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-teal-950 leading-relaxed max-w-4xl mx-auto font-light">
-                {crisisPages[2].proverb.split(' — ')[0]}
+                {sec3Proverb.split(' — ')[0]}
               </p>
-              {crisisPages[2].proverb.includes(' — ') && (
+              {sec3Proverb.includes(' — ') && (
                 <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal-700">
-                  {crisisPages[2].proverb.split(' — ')[1]}
+                  {sec3Proverb.split(' — ')[1]}
                 </p>
               )}
             </div>

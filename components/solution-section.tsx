@@ -14,21 +14,21 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
 
   const programs = [
     {
-      emoji: (data?.solutionProg1Emoji && data?.solutionProg1Emoji !== '01') ? data.solutionProg1Emoji : '01',
-      title: (data?.solutionProg1Title && data?.solutionProg1Title !== 'Reef restoration') ? data.solutionProg1Title : 'Habitat & Loko Iʻa Restoration',
-      body: (data?.solutionProg1Body && !data?.solutionProg1Body.includes('Community monitoring')) ? data.solutionProg1Body : 'Restoring estuarine habitats, coral reefs, and traditional fishponds. Propagating thermal-tolerant coral and native limu.',
+      emoji: data?.solutionProg1Emoji,
+      title: data?.solutionProg1Title,
+      body: data?.solutionProg1Body,
     },
     {
-      emoji: (data?.solutionProg2Emoji && data?.solutionProg2Emoji !== '02') ? data.solutionProg2Emoji : '02',
-      title: (data?.solutionProg2Title && data?.solutionProg2Title !== 'Sustainable gear') ? data.solutionProg2Title : 'Bio-Cleaner & Pollution Response',
-      body: (data?.solutionProg2Body && !data?.solutionProg2Body.includes('Hoop nets')) ? data.solutionProg2Body : 'Deploying advanced septic systems. Removing marine debris. Target: 10+ tons in Year 1.',
+      emoji: data?.solutionProg2Emoji,
+      title: data?.solutionProg2Title,
+      body: data?.solutionProg2Body,
     },
     {
-      emoji: (data?.solutionProg3Emoji && data?.solutionProg3Emoji !== '03') ? data.solutionProg3Emoji : '03',
-      title: (data?.solutionProg3Title && data?.solutionProg3Title !== 'Local manufacturing') ? data.solutionProg3Title : 'Nā Kiaʻi Kai Community Science',
-      body: (data?.solutionProg3Body && !data?.solutionProg3Body.includes('Large-format')) ? data.solutionProg3Body : 'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.',
+      emoji: data?.solutionProg3Emoji,
+      title: data?.solutionProg3Title,
+      body: data?.solutionProg3Body,
     },
-  ];
+  ].filter(p => p.title || p.body);
 
 
 

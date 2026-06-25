@@ -151,26 +151,51 @@ export async function fetchHomepageData(): Promise<HomepageData | null> {
 }
 
 export interface CrisisPageData {
-  eyebrow?: string;
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  image?: StrapiImage;
   sec1Eyebrow?: string;
   sec1Title?: string;
   sec1Subtitle?: string;
   sec1Description?: string;
   sec1Image?: StrapiImage;
+  sec1GridTitle?: string;
   sec2Eyebrow?: string;
   sec2Title?: string;
   sec2Subtitle?: string;
   sec2Description?: string;
   sec2Image?: StrapiImage;
+  sec2GridTitle?: string;
   sec3Eyebrow?: string;
   sec3Title?: string;
   sec3Subtitle?: string;
   sec3Description?: string;
   sec3Image?: StrapiImage;
+  sec3GridTitle?: string;
+  sec1Card1Title?: string;
+  sec1Card1Body?: string;
+  sec1Card2Title?: string;
+  sec1Card2Body?: string;
+  sec1Card3Title?: string;
+  sec1Card3Body?: string;
+  sec1Card4Title?: string;
+  sec1Card4Body?: string;
+  sec1Proverb?: string;
+  sec2Card1Title?: string;
+  sec2Card1Body?: string;
+  sec2Card2Title?: string;
+  sec2Card2Body?: string;
+  sec2Card3Title?: string;
+  sec2Card3Body?: string;
+  sec2Card4Title?: string;
+  sec2Card4Body?: string;
+  sec2Card5Title?: string;
+  sec2Card5Body?: string;
+  sec2LawBannerBody?: string;
+  sec3Card1Title?: string;
+  sec3Card1Body?: string;
+  sec3Card2Title?: string;
+  sec3Card2Body?: string;
+  sec3Card3Title?: string;
+  sec3Card3Body?: string;
+  sec3Proverb?: string;
 }
 
 export async function fetchCrisisPageData(): Promise<CrisisPageData | null> {
@@ -254,14 +279,46 @@ export interface OurWorkPageData {
   prog1Eyebrow?: string;
   prog1Title?: string;
   prog1Description?: string;
-  prog2Eyebrow?: string;
+  prog1Card1Title?: string;
+  prog1Card1Body?: string;
+  prog1Card2Title?: string;
+  prog1Card2Body?: string;
+  prog1MetricLabel?: string;
+  prog1MetricValue?: number;
+  prog1MetricSuffix?: string;
+  prog1MetricDesc?: string;
+  prog1MetricDetail?: string;
+
   prog2Title?: string;
   prog2Description?: string;
-  prog3Eyebrow?: string;
+  prog2Card1Title?: string;
+  prog2Card1Body?: string;
+  prog2MetricLabel?: string;
+  prog2MetricValue?: number;
+  prog2MetricSuffix?: string;
+  prog2MetricDesc?: string;
+  prog2MetricDetail?: string;
+
   prog3Title?: string;
   prog3Description?: string;
-  trophicTitle?: string;
-  trophicDescription?: string;
+  prog3Card1Title?: string;
+  prog3Card1Body?: string;
+
+  methodTitle?: string;
+  methodDescription?: string;
+  methodCard1Title?: string;
+  methodCard1Body?: string;
+  methodMetricLabel?: string;
+  methodMetricValue?: number;
+  methodMetricSuffix?: string;
+  methodMetricDesc?: string;
+  methodMetricDetail?: string;
+  methodPillar1Title?: string;
+  methodPillar1Body?: string;
+  methodPillar2Title?: string;
+  methodPillar2Body?: string;
+  methodPillar3Title?: string;
+  methodPillar3Body?: string;
 }
 
 export async function fetchOurWorkPageData(): Promise<OurWorkPageData | null> {
