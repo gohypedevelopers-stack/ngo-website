@@ -346,4 +346,75 @@ export async function fetchOurWorkPageData(): Promise<OurWorkPageData | null> {
   }
 }
 
+export interface TheHuiPageData {
+  storyEyebrow?: string;
+  storyTitle?: string;
+  storyProverb?: string;
+  storyImage?: StrapiImage;
+  storyCard1Title?: string;
+  storyCard1Body?: string;
+  storyCard2Title?: string;
+  storyCard2Body?: string;
+  storyCard3Title?: string;
+  storyCard3Body?: string;
+
+  teamEyebrow?: string;
+  teamTitle?: string;
+  teamDescription?: string;
+  leader1Name?: string;
+  leader1Role?: string;
+  leader1Desc?: string;
+  leader2Name?: string;
+  leader2Role?: string;
+  leader2Desc?: string;
+  openRole1Title?: string;
+  openRole1Desc?: string;
+  openRole2Title?: string;
+  openRole2Desc?: string;
+  openRoleNote?: string;
+  advisor1?: string;
+  advisor2?: string;
+  advisor3?: string;
+  advisor4?: string;
+
+  partnersEyebrow?: string;
+  partnersTitle?: string;
+  partnersDescription?: string;
+  partnerMode1Title?: string;
+  partnerMode1Desc?: string;
+  partnerMode2Title?: string;
+  partnerMode2Desc?: string;
+  partnerMode3Title?: string;
+  partnerMode3Desc?: string;
+  targetPartner1?: string;
+  targetPartner2?: string;
+  targetPartner3?: string;
+  targetPartner4?: string;
+  targetPartner5?: string;
+  targetPartner6?: string;
+}
+
+export async function fetchTheHuiPageData(): Promise<TheHuiPageData | null> {
+  if (!STRAPI_URL || !USE_STRAPI) {
+    return null;
+  }
+
+  try {
+    const res = await fetch(`${STRAPI_URL}/api/the-hui-page?populate=*`, {
+      cache: 'no-store',
+    });
+    if (!res.ok) {
+      console.warn('Failed to fetch the hui page data from Strapi:', res.statusText);
+      return null;
+    }
+    const json = await res.json();
+    return json.data || null;
+  } catch (error: any) {
+    if (error && (error.digest === 'DYNAMIC_SERVER_USAGE' || error.message?.includes('Dynamic server usage'))) {
+      throw error;
+    }
+    console.error('Error fetching the hui page data from Strapi:', error);
+    return null;
+  }
+}
 
