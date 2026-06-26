@@ -28,7 +28,7 @@ export default async function OurWorkPage() {
   const prog1Title = pageData?.prog1Title || 'Habitat & Loko Iʻa Restoration'
   const prog1Headline = pageData?.prog1Eyebrow || 'We Don’t Just Restore Coral — We Restore the Entire Food Web'
   const prog1Desc = pageData?.prog1Description || 'Restoring estuarine habitats, coral reefs, and traditional fishponds (loko iʻa). Propagating thermal-tolerant coral and native limu using traditional cultivation and modern asexual propagation methods.'
-  const prog1Image = getStrapiMediaUrl(pageData?.prog1Image) || '/contact_ocean.png'
+  const prog1Image = getStrapiMediaUrl(pageData?.prog1Image) || '/food_web_restoration.png'
   const prog1Card1Title = pageData?.prog1Card1Title || 'Keystone Focus'
   const prog1Card1Body = pageData?.prog1Card1Body || 'Restoring foundational habitats triggers a trophic cascade that revitalizes the entire coastal ecosystem.'
   const prog1Card2Title = pageData?.prog1Card2Title || 'Ahupuaʻa Link'
@@ -38,7 +38,7 @@ export default async function OurWorkPage() {
   const prog1MetricSuffix = pageData?.prog1MetricSuffix || '%'
   const prog1MetricDesc = pageData?.prog1MetricDesc || 'Coral Survival Rate'
   const prog1MetricDetail = pageData?.prog1MetricDetail || '70% coral survival rate — target for pilot sites (integrating Indigenous Ecological Knowledge + modern marine science).'
-  const prog1MetricBg = getStrapiMediaUrl(pageData?.prog1MetricBg) || '/ocean_aerial.png'
+  const prog1MetricBg = getStrapiMediaUrl(pageData?.prog1MetricBg) || '/coral_survival_bg.png'
 
   // Fetch Program 2 Data (Bio-Cleaner & Pollution Response)
   const prog2Title = pageData?.prog2Title || 'Bio Cleaner Septic Jockey: An Act of Mālama ʼAīna'
@@ -55,7 +55,7 @@ export default async function OurWorkPage() {
   // Fetch Program 3 Data (Nā Kiaʻi Kai Community Science)
   const prog3Title = pageData?.prog3Title || 'Training Hawaiʻi’s Next Generation of Ocean Guardians'
   const prog3Desc = pageData?.prog3Description || 'Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.'
-  const prog3Image = getStrapiMediaUrl(pageData?.prog3Image) || '/ahupuaa_aerial.png'
+  const prog3Image = getStrapiMediaUrl(pageData?.prog3Image) || '/traning.png'
   const prog3Card1Title = pageData?.prog3Card1Title || 'Data Impact'
   const prog3Card1Body = pageData?.prog3Card1Body || 'Standardized community data collection informing state and federal policy. Publication-quality scientific output from volunteer-led monitoring.'
   const prog3Activities = [
@@ -70,7 +70,7 @@ export default async function OurWorkPage() {
   // Fetch Methodology Data
   const methodTitle = pageData?.methodTitle || 'Indigenous Knowledge + Modern Science: The Most Effective Conservation'
   const methodDesc = pageData?.methodDescription || 'The most resilient conservation integrates the deep observational knowledge of Indigenous Hawaiian practitioners with peer-reviewed marine biology.'
-  const methodImage = getStrapiMediaUrl(pageData?.methodImage) || '/ahupuaa_aerial.png'
+  const methodImage = getStrapiMediaUrl(pageData?.methodImage) || '/methodology_integration.png'
   const methodCard1Title = pageData?.methodCard1Title || 'The Ahupuaʻa Model'
   const methodCard1Body = pageData?.methodCard1Body || 'Traditional Hawaiian land system from mountain peak (mauka) to ocean (makai). Kānāwai — “the equal sharing of water” — was the source of all wealth. Hui Nehu makes this operational in the 21st century.'
   
@@ -114,7 +114,7 @@ export default async function OurWorkPage() {
                     <Anchor className="h-4 w-4" />
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
-                    Program 1 · Habitat & Loko I'a
+                    Program 1 · {prog1Title}
                   </span>
                 </div>
                 
@@ -216,7 +216,7 @@ export default async function OurWorkPage() {
                     <ShieldCheck className="h-4 w-4" />
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    Program 2 · Bio-Cleaner & Pollution Response
+                    Program 2
                   </span>
                 </div>
                 
@@ -274,7 +274,7 @@ export default async function OurWorkPage() {
                     <GraduationCap className="h-4 w-4" />
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    Program 3 · Nā Kiaʻi Kai Community Science
+                    Program 3
                   </span>
                 </div>
                 
