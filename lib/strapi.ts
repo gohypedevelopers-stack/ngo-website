@@ -418,3 +418,79 @@ export async function fetchTheHuiPageData(): Promise<TheHuiPageData | null> {
   }
 }
 
+export interface GetInvolvedPageData {
+  investEyebrow?: string;
+  investTitle?: string;
+  investDescPrefix?: string;
+  investDescBold?: string;
+  investDescSuffix?: string;
+  seedFundsTitle?: string;
+  fundUse1Label?: string; fundUse1Amount?: string; fundUse1Percent?: number; fundUse1Color?: string;
+  fundUse2Label?: string; fundUse2Amount?: string; fundUse2Percent?: number; fundUse2Color?: string;
+  fundUse3Label?: string; fundUse3Amount?: string; fundUse3Percent?: number; fundUse3Color?: string;
+  fundUse4Label?: string; fundUse4Amount?: string; fundUse4Percent?: number; fundUse4Color?: string;
+  investTiersTitle?: string;
+  tier1Name?: string; tier1Amount?: string; tier1Desc?: string;
+  tier2Name?: string; tier2Amount?: string; tier2Desc?: string;
+  tier3Name?: string; tier3Amount?: string; tier3Desc?: string;
+  tier4Name?: string; tier4Amount?: string; tier4Desc?: string;
+  tier5Name?: string; tier5Amount?: string; tier5Desc?: string;
+
+  volEyebrow?: string;
+  volTitle?: string;
+  volDescription?: string;
+  volActivity1?: string;
+  volActivity2?: string;
+  volActivity3?: string;
+  volActivity4?: string;
+  volActivity5?: string;
+  volActivity6?: string;
+  volCtaTitle1?: string;
+  volCtaTitleHighlight?: string;
+  volCtaTitle2?: string;
+  volCtaDesc?: string;
+  volCtaBtnText?: string;
+  volCtaBtnLink?: string;
+  volCtaBgImage?: StrapiImage;
+
+  partnerEyebrow?: string;
+  partnerTitle?: string;
+  partnerWhoTitle?: string;
+  partnerWho1?: string;
+  partnerWho2?: string;
+  partnerWho3?: string;
+  partnerWho4?: string;
+  partnerOffersTitle?: string;
+  partnerOffer1?: string;
+  partnerOffer2?: string;
+  partnerOffer3?: string;
+  partnerOffer4?: string;
+  partnerContactTitle?: string;
+  partnerEmail?: string;
+  partnerPhone?: string;
+  partnerIg?: string;
+}
+
+export async function fetchGetInvolvedPageData(): Promise<GetInvolvedPageData | null> {
+  if (!STRAPI_URL || !USE_STRAPI) {
+    return null;
+  }
+
+  try {
+    const res = await fetch(`${STRAPI_URL}/api/get-involved-page?populate=*`, {
+      cache: 'no-store',
+    });
+    if (!res.ok) {
+      console.warn('Failed to fetch the get involved page data from Strapi:', res.statusText);
+      return null;
+    }
+    const json = await res.json();
+    return json.data || null;
+  } catch (error: any) {
+    if (error && (error.digest === 'DYNAMIC_SERVER_USAGE' || error.message?.includes('Dynamic server usage'))) {
+      throw error;
+    }
+    console.error('Error fetching the get involved page data from Strapi:', error);
+}
+}
+
