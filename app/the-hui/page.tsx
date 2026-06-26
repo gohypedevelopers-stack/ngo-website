@@ -22,78 +22,78 @@ export default async function TheHuiPage() {
   const pageData = await fetchTheHuiPageData()
 
   // Story Section
-  const storyEyebrow = pageData?.storyEyebrow || 'Our Story · Origin & vision'
-  const storyTitle = pageData?.storyTitle || 'Ancient Wisdom for a Modern Crisis'
-  const storyProverb = pageData?.storyProverb || '“He aliʻi ka ʼaina, he kauwā ke kanaka.” — The land is chief; the people are its servants.'
-  const storyImage = getStrapiMediaUrl(pageData?.storyImage) || '/ahupuaa_stewardship.png'
-  const storyCard1Title = pageData?.storyCard1Title || 'Who We Are'
-  const storyCard1Body = pageData?.storyCard1Body || 'A Maui-based 501(c)(3) marine conservation nonprofit, established 2023. The first community-led, whole-system marine conservation organization in Hawaiʻi.'
-  const storyCard2Title = pageData?.storyCard2Title || 'Name Meaning'
-  const storyCard2Body = pageData?.storyCard2Body || 'Hui Nehu means “The Community of the Anchovy.” We believe true restoration starts at the very foundation of the food chain.'
-  const storyCard3Title = pageData?.storyCard3Title || 'Our Model'
-  const storyCard3Body = pageData?.storyCard3Body || 'The ahupuaʻa made operational — organizing conservation work from land-based pollution sources to offshore nurseries, addressing issues at source not just symptoms in the ocean.'
+  const storyEyebrow = pageData?.storyEyebrow
+  const storyTitle = pageData?.storyTitle
+  const storyProverb = pageData?.storyProverb
+  const storyImage = getStrapiMediaUrl(pageData?.storyImage)
+  const storyCard1Title = pageData?.storyCard1Title
+  const storyCard1Body = pageData?.storyCard1Body
+  const storyCard2Title = pageData?.storyCard2Title
+  const storyCard2Body = pageData?.storyCard2Body
+  const storyCard3Title = pageData?.storyCard3Title
+  const storyCard3Body = pageData?.storyCard3Body
 
   // Team Section
-  const teamEyebrow = pageData?.teamEyebrow || 'Team & Leadership · The people'
-  const teamTitle = pageData?.teamTitle || 'Led by Hawaiʻi’s Most Credible Ocean Stewards'
-  const teamDescription = pageData?.teamDescription || 'A team combining Indigenous Hawaiian cultural authority, peer-reviewed marine science, and operational expertise.'
+  const teamEyebrow = pageData?.teamEyebrow
+  const teamTitle = pageData?.teamTitle
+  const teamDescription = pageData?.teamDescription
   
-  const leader1Name = pageData?.leader1Name || 'James J.K. Carpio'
-  const leader1Role = pageData?.leader1Role || 'Executive Director & President'
-  const leader1Desc = pageData?.leader1Desc || 'Indigenous Hawaiian natural resource practitioner'
-  const leader2Name = pageData?.leader2Name || 'Dr. Nakoa Goo'
-  const leader2Role = pageData?.leader2Role || 'Chief Science Officer & Vice President'
-  const leader2Desc = pageData?.leader2Desc || 'PhD in Marine Ecology, University of Hawaiʻi'
+  const leader1Name = pageData?.leader1Name
+  const leader1Role = pageData?.leader1Role
+  const leader1Desc = pageData?.leader1Desc
+  const leader2Name = pageData?.leader2Name
+  const leader2Role = pageData?.leader2Role
+  const leader2Desc = pageData?.leader2Desc
 
   const openRoles = [
     {
-      role: pageData?.openRole1Title || 'Director of Community Engagement',
-      desc: pageData?.openRole1Desc || 'education programs + community workdays'
+      role: pageData?.openRole1Title,
+      desc: pageData?.openRole1Desc
     },
     {
-      role: pageData?.openRole2Title || 'Director of Operations / Managing Director',
-      desc: pageData?.openRole2Desc || 'commercial operations + fleet management'
+      role: pageData?.openRole2Title,
+      desc: pageData?.openRole2Desc
     }
   ]
-  const openRoleNote = pageData?.openRoleNote || 'Two leadership roles still have placeholder names — fill before website launch.'
+  const openRoleNote = pageData?.openRoleNote
 
   const advisors = [
-    pageData?.advisor1 || 'DLNR Division of Aquatic Resources',
-    pageData?.advisor2 || 'University of Hawaiʻi',
-    pageData?.advisor3 || 'Maui County',
-    pageData?.advisor4 || 'Traditional Hawaiian fishing communities'
+    pageData?.advisor1,
+    pageData?.advisor2,
+    pageData?.advisor3,
+    pageData?.advisor4
   ].filter(Boolean)
 
   // Partners Section
-  const partnersEyebrow = pageData?.partnersEyebrow || 'Partners & Coalition · Coalition & partnerships'
-  const partnersTitle = pageData?.partnersTitle || 'A Collaborative Catalyst, Not a Competitor'
-  const partnersDescription = pageData?.partnersDescription || 'Coalition anchor — supporting, empowering, and partnering with existing grassroots organizations to accelerate marine conservation across Hawaiʻi. We do not operate in silos.'
+  const partnersEyebrow = pageData?.partnersEyebrow
+  const partnersTitle = pageData?.partnersTitle
+  const partnersDescription = pageData?.partnersDescription
 
   const partnershipModes = [
     {
       num: '1',
-      title: pageData?.partnerMode1Title || 'Resource & Technology Sharing',
-      desc: pageData?.partnerMode1Desc || 'Technical expertise, marine science data, Bio Cleaner septic access'
+      title: pageData?.partnerMode1Title,
+      desc: pageData?.partnerMode1Desc
     },
     {
       num: '2',
-      title: pageData?.partnerMode2Title || 'Joint Advocacy',
-      desc: pageData?.partnerMode2Desc || 'Unified coalition for state environmental policy + federal grants'
+      title: pageData?.partnerMode2Title,
+      desc: pageData?.partnerMode2Desc
     },
     {
       num: '3',
-      title: pageData?.partnerMode3Title || 'Capacity Building',
-      desc: pageData?.partnerMode3Desc || 'Admin support + scientific validation for volunteer-led ahupuaʻa projects'
+      title: pageData?.partnerMode3Title,
+      desc: pageData?.partnerMode3Desc
     }
   ]
 
   const targetPartners = [
-    pageData?.targetPartner1 || 'Hawaiʻi Community Foundation',
-    pageData?.targetPartner2 || 'National Fish and Wildlife Foundation',
-    pageData?.targetPartner3 || 'NOAA Pacific Islands Region',
-    pageData?.targetPartner4 || 'DLNR Division of Aquatic Resources',
-    pageData?.targetPartner5 || 'University of Hawaiʻi Marine Programs',
-    pageData?.targetPartner6 || '1% for the Planet'
+    pageData?.targetPartner1,
+    pageData?.targetPartner2,
+    pageData?.targetPartner3,
+    pageData?.targetPartner4,
+    pageData?.targetPartner5,
+    pageData?.targetPartner6
   ].filter(Boolean)
 
   return (

@@ -165,7 +165,7 @@ export default function ContactPage() {
                 </span>
               </h1>
 
-              <p className="text-lg text-slate-400 font-light leading-relaxed max-w-xl mx-auto">
+              <p className="text-lg text-white font-light leading-relaxed max-w-xl mx-auto">
                 Whether you have a question, want to volunteer, or are interested
                 in partnering — our ʻohana is ready to connect.
               </p>

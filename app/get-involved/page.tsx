@@ -23,94 +23,94 @@ export default async function GetInvolvedPage() {
   const pageData = await fetchGetInvolvedPageData()
 
   // Invest Section
-  const investEyebrow = pageData?.investEyebrow || 'Invest · Funding tiers'
-  const investTitle = pageData?.investTitle || 'Join the Hui — Your Investment Directly Protects Hawaiʻi’s Ocean'
-  const investDescPrefix = pageData?.investDescPrefix || 'Raising '
-  const investDescBold = pageData?.investDescBold || '$500,000'
-  const investDescSuffix = pageData?.investDescSuffix || ' in seed funding to launch nonprofit conservation programs and the Bio Cleaner Septic Jockey commercial enterprise.'
-  const seedFundsTitle = pageData?.seedFundsTitle || 'Use of Seed Funds'
+  const investEyebrow = pageData?.investEyebrow
+  const investTitle = pageData?.investTitle
+  const investDescPrefix = pageData?.investDescPrefix
+  const investDescBold = pageData?.investDescBold
+  const investDescSuffix = pageData?.investDescSuffix
+  const seedFundsTitle = pageData?.seedFundsTitle
 
   const fundingUse = [
-    { percent: pageData?.fundUse1Percent || 40, label: pageData?.fundUse1Label || 'Coral Restoration', amount: pageData?.fundUse1Amount || '$200K', color: pageData?.fundUse1Color || 'bg-teal-650' },
-    { percent: pageData?.fundUse2Percent || 30, label: pageData?.fundUse2Label || 'Community Science', amount: pageData?.fundUse2Amount || '$150K', color: pageData?.fundUse2Color || 'bg-teal-500' },
-    { percent: pageData?.fundUse3Percent || 20, label: pageData?.fundUse3Label || 'Youth Education', amount: pageData?.fundUse3Amount || '$100K', color: pageData?.fundUse3Color || 'bg-teal-350' },
-    { percent: pageData?.fundUse4Percent || 10, label: pageData?.fundUse4Label || 'Operations', amount: pageData?.fundUse4Amount || '$50K', color: pageData?.fundUse4Color || 'bg-slate-500' }
+    { percent: pageData?.fundUse1Percent, label: pageData?.fundUse1Label, amount: pageData?.fundUse1Amount, color: pageData?.fundUse1Color },
+    { percent: pageData?.fundUse2Percent, label: pageData?.fundUse2Label, amount: pageData?.fundUse2Amount, color: pageData?.fundUse2Color },
+    { percent: pageData?.fundUse3Percent, label: pageData?.fundUse3Label, amount: pageData?.fundUse3Amount, color: pageData?.fundUse3Color },
+    { percent: pageData?.fundUse4Percent, label: pageData?.fundUse4Label, amount: pageData?.fundUse4Amount, color: pageData?.fundUse4Color }
   ]
 
-  const investTiersTitle = pageData?.investTiersTitle || 'Investment Tiers'
+  const investTiersTitle = pageData?.investTiersTitle
   const investmentTiers = [
     {
-      name: pageData?.tier1Name || 'Koʻa Honu Founding Partner',
-      amount: pageData?.tier1Amount || '$100K+',
-      desc: pageData?.tier1Desc || 'Full year coral nursery operations.'
+      name: pageData?.tier1Name,
+      amount: pageData?.tier1Amount,
+      desc: pageData?.tier1Desc
     },
     {
-      name: pageData?.tier2Name || 'Conservation Partner',
-      amount: pageData?.tier2Amount || '$50K',
-      desc: pageData?.tier2Desc || 'Full year debris removal, one island.'
+      name: pageData?.tier2Name,
+      amount: pageData?.tier2Amount,
+      desc: pageData?.tier2Desc
     },
     {
-      name: pageData?.tier3Name || 'Mano Science Partner',
-      amount: pageData?.tier3Amount || '$25K',
-      desc: pageData?.tier3Desc || 'Community monitoring at 3 sites.'
+      name: pageData?.tier3Name,
+      amount: pageData?.tier3Amount,
+      desc: pageData?.tier3Desc
     },
     {
-      name: pageData?.tier4Name || 'Nehu Community Partner',
-      amount: pageData?.tier4Amount || '$10K',
-      desc: pageData?.tier4Desc || 'Youth ocean science, one school year.'
+      name: pageData?.tier4Name,
+      amount: pageData?.tier4Amount,
+      desc: pageData?.tier4Desc
     },
     {
-      name: pageData?.tier5Name || 'ʻOhana Supporter',
-      amount: pageData?.tier5Amount || '$1K+',
-      desc: pageData?.tier5Desc || 'Foundational community support.'
+      name: pageData?.tier5Name,
+      amount: pageData?.tier5Amount,
+      desc: pageData?.tier5Desc
     }
   ]
 
   // Volunteer Section
-  const volEyebrow = pageData?.volEyebrow || 'Volunteer · Community workdays'
-  const volTitle = pageData?.volTitle || 'Join a Community Workday. Become a Kiaʻi Kai.'
-  const volDescription = pageData?.volDescription || 'Volunteers are the backbone of the Nā Kiaʻi Kai Community Science program. From beach cleanups to fish surveys to coral outplanting, there is a role for every skill level.'
+  const volEyebrow = pageData?.volEyebrow
+  const volTitle = pageData?.volTitle
+  const volDescription = pageData?.volDescription
   
   const volunteerActivities = [
-    pageData?.volActivity1 || 'Fish & limu surveys',
-    pageData?.volActivity2 || 'Water quality testing',
-    pageData?.volActivity3 || 'Marine debris removal',
-    pageData?.volActivity4 || 'Coral outplanting',
-    pageData?.volActivity5 || 'Youth education support',
-    pageData?.volActivity6 || 'Community workdays'
+    pageData?.volActivity1,
+    pageData?.volActivity2,
+    pageData?.volActivity3,
+    pageData?.volActivity4,
+    pageData?.volActivity5,
+    pageData?.volActivity6
   ].filter(Boolean)
 
-  const volCtaBgImage = getStrapiMediaUrl(pageData?.volCtaBgImage) || '/volunteer_card_bg.png'
-  const volCtaTitle1 = pageData?.volCtaTitle1 || 'Ready to '
-  const volCtaTitleHighlight = pageData?.volCtaTitleHighlight || 'Mālama'
-  const volCtaTitle2 = pageData?.volCtaTitle2 || ' the Coastline?'
-  const volCtaDesc = pageData?.volCtaDesc || 'Register to secure a spot for our next community workday on Maui. We supply the gear, training, lunch, and reef-safe sunscreen.'
-  const volCtaBtnText = pageData?.volCtaBtnText || 'Sign up for the next community workday'
-  const volCtaBtnLink = pageData?.volCtaBtnLink || 'https://docs.google.com/forms/d/e/1FAIpQLSfB2e7x837p1vC0Q9G4-9vWJ156'
+  const volCtaBgImage = getStrapiMediaUrl(pageData?.volCtaBgImage)
+  const volCtaTitle1 = pageData?.volCtaTitle1
+  const volCtaTitleHighlight = pageData?.volCtaTitleHighlight
+  const volCtaTitle2 = pageData?.volCtaTitle2
+  const volCtaDesc = pageData?.volCtaDesc
+  const volCtaBtnText = pageData?.volCtaBtnText
+  const volCtaBtnLink = pageData?.volCtaBtnLink
 
   // Partner Section
-  const partnerEyebrow = pageData?.partnerEyebrow || 'Partner With Us · Org & institutional partners'
-  const partnerTitle = pageData?.partnerTitle || 'Scale Your Impact. Join the Coalition.'
-  const partnerWhoTitle = pageData?.partnerWhoTitle || 'Who This Is For'
+  const partnerEyebrow = pageData?.partnerEyebrow
+  const partnerTitle = pageData?.partnerTitle
+  const partnerWhoTitle = pageData?.partnerWhoTitle
   const partnersWho = [
-    pageData?.partnerWho1 || 'Grassroots conservation orgs',
-    pageData?.partnerWho2 || 'Research institutions',
-    pageData?.partnerWho3 || 'Government agencies',
-    pageData?.partnerWho4 || 'Corporations seeking meaningful environmental partnerships'
+    pageData?.partnerWho1,
+    pageData?.partnerWho2,
+    pageData?.partnerWho3,
+    pageData?.partnerWho4
   ].filter(Boolean)
 
-  const partnerOffersTitle = pageData?.partnerOffersTitle || 'What Partnership Offers'
+  const partnerOffersTitle = pageData?.partnerOffersTitle
   const partnerOffers = [
-    pageData?.partnerOffer1 || 'Data sharing + co-publication',
-    pageData?.partnerOffer2 || 'Joint grant applications',
-    pageData?.partnerOffer3 || 'Bio Cleaner technology access',
-    pageData?.partnerOffer4 || 'Coalition representation in state policy advocacy'
+    pageData?.partnerOffer1,
+    pageData?.partnerOffer2,
+    pageData?.partnerOffer3,
+    pageData?.partnerOffer4
   ].filter(Boolean)
 
-  const partnerContactTitle = pageData?.partnerContactTitle || 'Get in Touch'
-  const partnerEmail = pageData?.partnerEmail || 'partnerships@huinehu.org'
-  const partnerPhone = pageData?.partnerPhone || '(808) 555-NEHU'
-  const partnerIg = pageData?.partnerIg || '@HuiNehu'
+  const partnerContactTitle = pageData?.partnerContactTitle
+  const partnerEmail = pageData?.partnerEmail
+  const partnerPhone = pageData?.partnerPhone
+  const partnerIg = pageData?.partnerIg
 
   return (
     <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 text-slate-800 overflow-x-hidden min-h-screen flex flex-col justify-between">

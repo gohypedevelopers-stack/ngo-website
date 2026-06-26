@@ -265,9 +265,7 @@ export function CrisisLandingPage({
                       ⚖️ The Law (Act 125)
                     </span>
                     <p className="text-base sm:text-lg text-slate-800 font-light leading-relaxed max-w-4xl">
-                      {sec2LawBanner ? sec2LawBanner : (
-                        <>Act 125 (2017) mandates all 88,000 cesspools converted by 2050. Current rate: <span className="font-semibold text-teal-900">~300/year</span>. Required rate: <span className="font-semibold text-teal-900">3,000+/year</span> — a <span className="font-semibold text-teal-700 bg-teal-500/10 px-1.5 py-0.5 rounded font-mono">10x acceleration needed</span>.</>
-                      )}
+                      {sec2LawBanner}
                     </p>
                   </div>
                 </div>
