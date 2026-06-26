@@ -132,7 +132,7 @@ export default function DonatePage() {
                 </span>
               </h1>
 
-              <p className="text-lg text-slate-400 font-light leading-relaxed max-w-xl mx-auto">
+              <p className="text-lg text-white font-light leading-relaxed max-w-xl mx-auto">
                 Your contribution directly funds community-led science, coral restoration, and watershed health across Maui.
               </p>
             </div>
@@ -382,9 +382,7 @@ export default function DonatePage() {
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
                       />
-                      <span className="text-[10px] text-slate-400 font-light block">
-                        Tip: Enter <strong className="font-semibold text-slate-600">fail@ngo.org</strong> or <strong className="font-semibold text-slate-600">pending@ngo.org</strong> to test dynamic flow states.
-                      </span>
+
                     </div>
                   </div>
 
