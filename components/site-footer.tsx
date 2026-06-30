@@ -47,7 +47,7 @@ export function SiteFooter() {
         </div>
 
         {/* 3-Column Footer Grid */}
-        <div className="grid gap-10 md:grid-cols-3 items-start mb-16 border-b border-slate-900 pb-16">
+        <div className="grid gap-8 md:gap-10 md:grid-cols-3 items-start mb-8 pb-8 md:mb-16 md:pb-16 border-b border-white/10">
           <div className="space-y-4">
             <Image
               src="/logo.png"
@@ -56,41 +56,41 @@ export function SiteFooter() {
               height={160}
               className="h-16 w-auto object-contain bg-white rounded-xl p-1 shadow-md mb-2"
             />
-            <p className="text-[10px] uppercase tracking-widest text-teal-400 font-bold font-mono">
+            <p className="text-[11px] md:text-xs uppercase tracking-widest text-teal-400 font-bold font-mono">
               Mālama &apos;Aina. Mālama Wai. Mālama Kai.
             </p>
-            <p className="text-sm leading-relaxed text-slate-400 font-light">
+            <p className="text-base leading-relaxed text-white/90 font-light">
               A Maui-Based 501(c)(3) Marine Conservation Nonprofit restoring foundational food webs, reversing wastewater pollution, and empowering local communities.
             </p>
           </div>
 
           <div className="space-y-4 md:pl-12">
-            <h4 className="text-xs uppercase tracking-wider text-white font-bold font-mono">Quick Links</h4>
-            <ul className="space-y-2.5 text-sm">
+            <h4 className="text-sm md:text-xs uppercase tracking-wider text-white font-bold font-mono">Quick Links</h4>
+            <ul className="space-y-3 md:space-y-2.5 text-base md:text-sm">
               <li>
-                <a href="/the-crisis" className="text-slate-450 hover:text-teal-400 transition-colors font-light">The Crisis</a>
+                <a href="/the-crisis" className="text-white/90 hover:text-teal-400 transition-colors font-light">The Crisis</a>
               </li>
               <li>
-                <a href="/our-work" className="text-slate-450 hover:text-teal-400 transition-colors font-light">Our Work</a>
+                <a href="/our-work" className="text-white/90 hover:text-teal-400 transition-colors font-light">Our Work</a>
               </li>
               <li>
-                <a href="/the-hui" className="text-slate-450 hover:text-teal-400 transition-colors font-light">The Hui</a>
+                <a href="/the-hui" className="text-white/90 hover:text-teal-400 transition-colors font-light">The Hui</a>
               </li>
               <li>
-                <a href="/get-involved" className="text-slate-450 hover:text-teal-400 transition-colors font-light">Get Involved</a>
+                <a href="/get-involved" className="text-white/90 hover:text-teal-400 transition-colors font-light">Get Involved</a>
               </li>
               <li>
-                <a href="/news-research" className="text-slate-450 hover:text-teal-400 transition-colors font-light">News & Research</a>
+                <a href="/news-research" className="text-white/90 hover:text-teal-400 transition-colors font-light">News & Research</a>
               </li>
             </ul>
           </div>
 
           <div className="space-y-4 md:text-right">
-            <h4 className="text-xs uppercase tracking-wider text-white font-bold font-mono">Acknowledgment</h4>
-            <p className="text-xl font-serif italic text-amber-350 tracking-wide">
+            <h4 className="text-sm md:text-xs uppercase tracking-wider text-white font-bold font-mono">Acknowledgment</h4>
+            <p className="text-2xl md:text-xl font-serif italic text-amber-350 tracking-wide">
               MAHALO A NUI LOA!
             </p>
-            <p className="text-xs text-slate-500 leading-relaxed max-w-xs md:ml-auto font-light">
+            <p className="text-sm md:text-xs text-white/80 leading-relaxed max-w-xs md:ml-auto font-light">
               He aliʻi ka ʻāina, he kauwā ke kanaka.<br />
               (The land is chief; the people are its servants.)
             </p>
@@ -98,24 +98,24 @@ export function SiteFooter() {
         </div>
 
         {/* Contact Footer Strip */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-6 text-xs sm:text-sm text-slate-450 font-mono">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 py-4 md:py-6 text-sm md:text-sm text-white/90 font-mono">
           <a href="https://huinehu.org" className="hover:text-teal-400 transition-colors">huinehu.org</a>
-          <span className="text-slate-800">•</span>
+          <span className="text-white/40 hidden sm:inline">•</span>
           <a href="mailto:partnerships@huinehu.org" className="hover:text-teal-400 transition-colors">partnerships@huinehu.org</a>
-          <span className="text-slate-800">•</span>
+          <span className="text-white/40 hidden sm:inline">•</span>
           <span>(808) 555-NEHU</span>
-          <span className="text-slate-800">•</span>
+          <span className="text-white/40 hidden md:inline">•</span>
           <span>Maui, Hawaiʻi</span>
-          <span className="text-slate-800">•</span>
+          <span className="text-white/40 hidden sm:inline">•</span>
           <span className="hover:text-teal-400 transition-colors cursor-pointer">@HuiNehu</span>
         </div>
 
         {/* Copyright & Sub-links */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-slate-900/50">
-          <p className="text-[9px] font-mono font-bold text-slate-600 tracking-widest uppercase">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10 mt-2 md:mt-0">
+          <p className="text-[10px] md:text-[10px] font-mono font-bold text-white/60 tracking-widest uppercase text-center">
             &copy; {new Date().getFullYear()} Hui Nehu. All Rights Reserved.
           </p>
-          <p className="text-[9px] font-mono font-bold text-slate-600 tracking-widest uppercase">
+          <p className="text-[10px] md:text-[10px] font-mono font-bold text-white/60 tracking-widest uppercase text-center">
             Maui, HI · Est. 2023 · 501(c)(3)
           </p>
         </div>

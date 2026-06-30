@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -41,10 +41,10 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
     <nav
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
+        scrolled || open
           ? theme === "light"
-            ? "border-b border-slate-200 bg-white/80 py-3 backdrop-blur-md shadow-sm"
-            : "border-b border-white/10 bg-slate-950/80 py-3 backdrop-blur-md shadow-lg"
+            ? "border-b border-slate-200 bg-white/95 py-3 backdrop-blur-md shadow-sm"
+            : "border-b border-white/10 bg-slate-950/95 py-3 backdrop-blur-md shadow-lg"
           : "border-b border-transparent bg-transparent py-5",
       )}
     >
@@ -145,13 +145,13 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             className={cn(
-              "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors lg:hidden",
+              "inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
               theme === "light"
-                ? "text-slate-900 hover:bg-slate-900/10"
+                ? "text-slate-900 hover:bg-slate-100"
                 : "text-white hover:bg-white/10",
             )}
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -159,40 +159,44 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
       {/* Mobile menu */}
       <div
         className={cn(
-          "overflow-hidden border-t backdrop-blur-xl transition-all duration-300 lg:hidden",
-          theme === "light"
-            ? "border-slate-200 bg-white/95"
-            : "border-white/10 bg-slate-950/95",
-          open ? "max-h-[550px] opacity-100" : "max-h-0 opacity-0",
+          "overflow-hidden transition-all duration-500 ease-in-out lg:hidden",
+          open ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <ul className="flex flex-col gap-1 px-5 py-4">
+        <ul className="flex flex-col px-6 pb-10 pt-4">
           {links.map((link) => (
-            <li key={link.href} className="flex flex-col">
+            <li 
+              key={link.href} 
+              className={cn(
+                "flex flex-col border-b",
+                theme === "light" ? "border-slate-100" : "border-white/5"
+              )}
+            >
               {link.dropdown ? (
                 <>
                   <span
                     className={cn(
-                      "px-3 pt-2 pb-1 text-xs font-bold uppercase tracking-wider",
+                      "px-2 pt-5 pb-2 text-xs font-bold uppercase tracking-widest",
                       theme === "light" ? "text-slate-400" : "text-slate-500",
                     )}
                   >
                     {link.label}
                   </span>
-                  <div className="flex flex-col gap-0.5 pl-3 border-l border-teal-500/20 ml-3 mb-2">
+                  <div className="flex flex-col pl-4 mb-4 space-y-1">
                     {link.dropdown.map((sub) => (
                       <a
                         key={sub.href}
                         href={sub.href}
                         onClick={() => setOpen(false)}
                         className={cn(
-                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                          "group flex items-center justify-between rounded-lg px-2 py-3 text-base font-medium transition-all",
                           theme === "light"
-                            ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
-                            : "text-slate-300 hover:bg-white/10 hover:text-white",
+                            ? "text-slate-600 hover:text-teal-600"
+                            : "text-slate-300 hover:text-teal-400",
                         )}
                       >
-                        {sub.label}
+                        <span className="transition-transform group-hover:translate-x-2">{sub.label}</span>
+                        <ChevronRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-x-1" />
                       </a>
                     ))}
                   </div>
@@ -202,26 +206,27 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                    "group flex items-center justify-between px-2 py-5 text-lg font-medium transition-all",
                     theme === "light"
-                      ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
-                      : "text-slate-300 hover:bg-white/10 hover:text-white",
+                      ? "text-slate-700 hover:text-teal-600"
+                      : "text-slate-200 hover:text-teal-400",
                   )}
                 >
-                  {link.label}
+                  <span className="transition-transform group-hover:translate-x-2">{link.label}</span>
+                  <ChevronRight className="h-5 w-5 opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-x-1" />
                 </a>
               )}
             </li>
           ))}
-          <li>
+          <li className="pt-8">
             <a
               href="/donate"
               onClick={() => setOpen(false)}
               className={cn(
-                "mt-2 block rounded-full px-3 py-2.5 text-center text-sm font-bold transition-colors",
+                "flex items-center justify-center w-full rounded-full px-6 py-4 text-base font-bold transition-all shadow-lg active:scale-95",
                 theme === "light"
-                  ? "bg-slate-900 text-white hover:bg-teal-600"
-                  : "bg-white text-slate-950 hover:bg-teal-400",
+                  ? "bg-slate-900 text-white hover:bg-teal-600 hover:shadow-teal-600/25"
+                  : "bg-white text-slate-950 hover:bg-teal-400 hover:shadow-teal-400/25",
               )}
             >
               Donate now
