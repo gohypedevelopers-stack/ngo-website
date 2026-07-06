@@ -46,7 +46,7 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
                 </span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold leading-tight text-teal-deep tracking-tight">
-                Active Conservation & Restoration Programs
+                Active Conservation, Revitalization & Restoration Programs
               </h2>
             </Reveal>
           </div>

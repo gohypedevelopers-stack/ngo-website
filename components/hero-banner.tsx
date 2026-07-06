@@ -49,7 +49,7 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
             <div className="animate-hero-text">
               {subtitle && (
                 <div className="inline-flex mb-8">
-                  <span className="text-xs font-mono font-semibold tracking-[0.15em] uppercase text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(20,184,166,0.1)]">
+                  <span className="whitespace-nowrap text-xs font-mono font-semibold tracking-[0.15em] uppercase text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(20,184,166,0.1)]">
                     {subtitle}
                   </span>
                 </div>

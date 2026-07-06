@@ -57,16 +57,27 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
               )}
               
               {body && (
-                <p className="text-lg sm:text-xl text-[#3A5652] leading-relaxed mb-8 font-light max-w-2xl">
-                  {body}
-                </p>
+                <p 
+                  className="text-lg sm:text-xl text-[#3A5652] leading-relaxed mb-8 font-light max-w-2xl"
+                  dangerouslySetInnerHTML={{
+                    __html: body.replace(
+                      /nehu \(enchrasicholina purpurea\)/gi,
+                      "<span class='text-red-600 font-medium'><i>nehu</i> (enchrasicholina purpurea)</span>"
+                    )
+                  }}
+                />
               )}
             </Reveal>
 
             {secondaryBody && (
               <Reveal delay={100}>
                 <div className="space-y-6 text-[#4F6E69] text-base leading-relaxed mb-8 font-light">
-                  <p>{secondaryBody}</p>
+                  <p dangerouslySetInnerHTML={{
+                    __html: secondaryBody.replace(
+                      /nehu \(enchrasicholina purpurea\)/gi,
+                      "<span class='text-red-600 font-medium'><i>nehu</i> (enchrasicholina purpurea)</span>"
+                    )
+                  }} />
                 </div>
               </Reveal>
             )}
@@ -101,7 +112,7 @@ export function CrisisSection({ data }: { data?: ExtendedHomepageData | null }) 
                   </div>
                   
                   <p className="text-base leading-relaxed text-slate-700 font-light">
-                    enter Hawaiʻi’s ocean every single day — originating from <span className="font-semibold text-teal-deep">88,000 cesspools</span> statewide. <span className="italic text-slate-500 font-medium">Most people have no idea.</span>
+                    enter Hawaiʻi’s ocean every single day — originating from <span className="font-semibold text-teal-deep">88,000 cesspools</span> statewide. This does not include injection wells and existing septic systems. <span className="italic text-slate-500 font-medium">Most people have no idea.</span>
                   </p>
                 </div>
               </div>

@@ -103,7 +103,7 @@ export function SiteFooter() {
           <span className="text-white/40 hidden sm:inline">•</span>
           <a href="mailto:partnerships@huinehu.org" className="hover:text-teal-400 transition-colors">partnerships@huinehu.org</a>
           <span className="text-white/40 hidden sm:inline">•</span>
-          <span>(808) 555-NEHU</span>
+          <span>(808) 633 0336</span>
           <span className="text-white/40 hidden md:inline">•</span>
           <span>Maui, Hawaiʻi</span>
           <span className="text-white/40 hidden sm:inline">•</span>

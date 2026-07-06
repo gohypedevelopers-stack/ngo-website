@@ -86,13 +86,20 @@ export function CrisisLandingPage({
                   {nehuEyebrow}
                 </span>
                 
-                <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
-                  {nehuTitle}
-                </h2>
+                {nehuTitle && (
+                  <h2 
+                    className="mt-4 font-serif text-3xl font-bold leading-tight text-white sm:text-4xl"
+                    dangerouslySetInnerHTML={{
+                      __html: nehuTitle.replace('Nehu', '<i>Nehu</i>')
+                    }}
+                  />
+                )}
                 
-                <p className="mt-4 text-lg font-light leading-relaxed text-teal-200/80">
-                  {nehuSubtitle}
-                </p>
+                {nehuSubtitle && (
+                  <p className="mt-4 text-xl sm:text-2xl font-bold italic leading-relaxed text-teal-200/90">
+                    {nehuSubtitle}
+                  </p>
+                )}
                 
                 <p className="mt-4 text-xs font-bold uppercase tracking-[0.1em] text-teal-400">
                   What It Is

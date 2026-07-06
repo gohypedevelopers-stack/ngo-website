@@ -53,9 +53,9 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
           <Image
             src="/logo.png"
             alt="Hui Nehu Logo"
-            width={48}
-            height={48}
-            className="h-10 w-auto object-contain bg-white rounded-lg p-0.5 shadow-sm"
+            width={64}
+            height={64}
+            className="h-16 w-auto object-contain bg-white rounded-lg p-1 shadow-sm"
             priority
           />
         </a>

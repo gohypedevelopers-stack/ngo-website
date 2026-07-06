@@ -136,6 +136,7 @@ export default async function OurWorkPage() {
                       src={prog1Image}
                       alt={prog1Title}
                       fill
+                      priority
                       className="object-cover object-center"
                     />
                   )}
@@ -172,7 +173,7 @@ export default async function OurWorkPage() {
             <Reveal delay={200}>
               <div className="relative h-full rounded-2xl overflow-hidden border border-teal-900/30 bg-teal-950/25 p-6 text-white flex flex-col justify-center">
                 {prog1MetricBg && (
-                  <Image src={prog1MetricBg} alt="Background" fill className="object-cover opacity-10 mix-blend-multiply" />
+                  <Image src={prog1MetricBg} alt="Background" fill priority className="object-cover opacity-10 mix-blend-multiply" />
                 )}
                 <div className="relative z-10 space-y-2">
                   <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-400 uppercase">{prog1MetricLabel}</span>
