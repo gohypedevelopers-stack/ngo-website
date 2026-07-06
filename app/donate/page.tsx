@@ -21,7 +21,9 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import { CheckoutForm } from '@/components/checkout-form'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string, {
+  developerTools: { assistant: { enabled: true } }
+} as any)
 
 const presetAmounts = [50, 100, 500, 1000, 5000]
 

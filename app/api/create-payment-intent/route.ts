@@ -24,6 +24,7 @@ export async function POST(request: Request) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amountInCents,
       currency: 'usd',
+      ...(metadata.donorEmail ? { receipt_email: metadata.donorEmail } : {}),
       metadata: {
         ...metadata,
       },
