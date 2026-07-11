@@ -47,23 +47,23 @@ export default async function TheHuiPage() {
 
   const openRoles = [
     {
-      role: pageData?.openRole1Title,
-      desc: pageData?.openRole1Desc
+      role: 'Program Coordinator',
+      desc: 'education programs + community workdays'
     },
     {
-      role: pageData?.openRole2Title,
-      desc: pageData?.openRole2Desc
+      role: 'Program 1 Coordinator',
+      desc: 'program delivery + scheduling'
     },
     {
-      role: pageData?.openRole3Title,
-      desc: pageData?.openRole3Desc
+      role: 'Program 2 Coordinator',
+      desc: 'field logistics + reporting'
     },
     {
-      role: pageData?.openRole4Title,
-      desc: pageData?.openRole4Desc
-    }
+      role: 'Program 3 Coordinator',
+      desc: 'partnership support + coordination'
+    },
   ]
-  const openRoleNote = pageData?.openRoleNote
+  const openRoleNote = ''
 
   const advisors = [
     pageData?.advisor1,
@@ -385,4 +385,7 @@ export default async function TheHuiPage() {
     </main>
   )
 }
+
+
+
 
