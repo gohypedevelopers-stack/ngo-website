@@ -57,6 +57,7 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
             height={64}
             className="h-16 w-auto object-contain bg-white rounded-lg p-1 shadow-sm"
             priority
+            loading="eager"
           />
         </a>
 
@@ -237,3 +238,4 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
     </nav>
   );
 }
+

@@ -134,6 +134,8 @@ export default async function TheHuiPage() {
                     src={storyImage}
                     alt="Story image"
                     fill
+                    priority
+                    loading="eager"
                     className="object-cover object-center"
                   />
                 </div>
@@ -265,7 +267,7 @@ export default async function TheHuiPage() {
             <Reveal>
               <h3 className="font-serif text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-teal-600" />
-                Advisory Board
+                Coming Soon
               </h3>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {advisors.map((adv, i) => (
@@ -345,3 +347,4 @@ export default async function TheHuiPage() {
     </main>
   )
 }
+

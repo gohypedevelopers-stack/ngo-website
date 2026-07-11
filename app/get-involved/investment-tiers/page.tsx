@@ -7,11 +7,11 @@ import { AnimatedCounter } from '@/components/animated-counter'
 
 export const metadata = {
   title: 'Investment Tiers — Hui Nehu',
-  description: 'Structured donor tiers and seed funding allocation targets for our $500,000 round.',
+  description: 'Structured donor tiers and seed funding allocation targets for our $2,000,000 round.',
 }
 
 const allocations = [
-  { percent: '40%', amount: '$200K', label: 'Coral Restoration', color: 'bg-cyan-500' },
+  { percent: '60%', amount: '$1.2M', label: 'Habitat Restoration', color: 'bg-cyan-500' },
   { percent: '30%', amount: '$150K', label: 'Community Science', color: 'bg-teal-500' },
   { percent: '20%', amount: '$100K', label: 'Youth Education', color: 'bg-amber-400' },
   { percent: '10%', amount: '$50K', label: 'Operations', color: 'bg-slate-500' },
@@ -78,7 +78,7 @@ export default function InvestmentTiersPage() {
                 </h1>
                 
                 <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
-                  Raising $500,000 in seed funding to launch nonprofit conservation programs and the Bio Cleaner Septic Jockey commercial enterprise.
+                  Raising $2,000,000 in seed funding to launch nonprofit conservation programs.
                 </p>
               </Reveal>
             </div>
@@ -170,3 +170,7 @@ export default function InvestmentTiersPage() {
     </main>
   )
 }
+
+
+
+

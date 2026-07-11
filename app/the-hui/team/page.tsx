@@ -1,59 +1,69 @@
 import Image from 'next/image'
-import { Users, Mail, Linkedin, Briefcase, ShieldAlert, Award } from 'lucide-react'
+import { Users, Briefcase, Award, ShieldCheck } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
+import { fetchTheHuiPageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 export const metadata = {
   title: 'Team & Leadership — Hui Nehu',
   description: 'Led by a balanced coalition of Indigenous Hawaiian cultural authority, peer-reviewed marine science, and operational experts.',
 }
 
-const leaders = [
-  {
-    name: 'James J.K. Carpio',
-    role: 'Executive Director & President',
-    desc: 'Indigenous Hawaiian natural resource practitioner. James provides deep cultural authority, ancestral ecosystem direction, and community stewardship guidance.',
-    initials: 'JC',
-  },
-  {
-    name: 'Dr. Nakoa Goo',
-    role: 'Chief Science Officer & Vice President',
-    desc: 'PhD in Marine Ecology, University of Hawaiʻi. Dr. Nakoa anchors the organization’s field operations and ecological monitoring in peer-reviewed marine science.',
-    initials: 'NG',
-  },
-]
+export default async function TeamPage() {
+  const pageData = await fetchTheHuiPageData()
 
-const openRoles = [
-  {
-    title: 'Director of Community Engagement',
-    focus: 'Education programs + community workdays',
-  },
-  {
-    title: 'Director of Operations / Managing Director',
-    focus: 'Commercial operations + fleet management',
-  },
-]
+  const teamEyebrow = pageData?.teamEyebrow
+  const teamTitle = pageData?.teamTitle
+  const teamDescription = pageData?.teamDescription
 
-const advisoryBoard = [
-  'DLNR Division of Aquatic Resources',
-  'University of Hawaiʻi',
-  'Maui County',
-  'Traditional Hawaiian fishing communities',
-]
+  const leaders = [
+    {
+      name: pageData?.leader1Name,
+      role: pageData?.leader1Role,
+      desc: pageData?.leader1Desc,
+      initials: 'JC',
+    },
+    {
+      name: pageData?.leader2Name,
+      role: pageData?.leader2Role,
+      desc: pageData?.leader2Desc,
+      initials: 'NG',
+    },
+  ]
 
-export default function TeamPage() {
+  const openRoles = [
+    {
+      title: pageData?.openRole1Title,
+      focus: pageData?.openRole1Desc,
+    },
+    {
+      title: pageData?.openRole2Title,
+      focus: pageData?.openRole2Desc,
+    },
+    {
+      title: pageData?.openRole3Title,
+      focus: pageData?.openRole3Desc,
+    },
+  ]
+
+  const openRoleNote = pageData?.openRoleNote
+
+  const advisoryBoard = [
+    pageData?.advisor1,
+    pageData?.advisor2,
+    pageData?.advisor3,
+    pageData?.advisor4,
+  ].filter((item): item is string => Boolean(item))
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
-      {/* Dark Nav Background container */}
       <div className="bg-slate-950 w-full h-20" />
       <SiteNav />
 
-      {/* Split Hero Section */}
       <section className="relative bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-20">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="flex items-center gap-3">
@@ -61,24 +71,23 @@ export default function TeamPage() {
                     <Users className="h-5 w-5" />
                   </span>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    The Hui &mdash; Team & Leadership
+                    {teamEyebrow}
                   </span>
                 </div>
-                
+
                 <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                  Led by Hawaiʻi’s Most<br className="hidden sm:inline" /> Credible Ocean Stewards
+                  {teamTitle}
                 </h1>
-                
+
                 <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
-                  A team combining Indigenous Hawaiian cultural authority, peer-reviewed marine science, and operational expertise.
+                  {teamDescription}
                 </p>
               </Reveal>
             </div>
 
-            {/* Right Image */}
             <div className="lg:col-span-5">
               <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-105 shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-xl">
                   <Image
                     src="/team_ocean_stewards.png"
                     alt="Hui Nehu team stewards"
@@ -93,7 +102,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Core Leadership Section */}
       <section className="bg-slate-50 py-20 border-b border-slate-200">
         <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
           <div className="text-center max-w-xl mx-auto">
@@ -105,17 +113,17 @@ export default function TeamPage() {
 
           <div className="grid gap-8 md:grid-cols-2">
             {leaders.map((member, index) => (
-              <Reveal key={member.name} delay={index * 100}>
+              <Reveal key={`${member.name ?? 'leader'}-${index}`} delay={index * 100}>
                 <div className="border border-slate-200 bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full">
                   <div>
-                    <div className="h-14 w-14 rounded-2xl bg-teal-550/10 text-teal-700 border border-teal-200/50 flex items-center justify-center font-bold font-serif text-lg mb-6">
+                    <div className="h-14 w-14 rounded-2xl bg-teal-50/10 text-teal-700 border border-teal-200/50 flex items-center justify-center font-bold font-serif text-lg mb-6">
                       {member.initials}
                     </div>
                     <h3 className="text-xl font-serif font-bold text-slate-900 mb-1">{member.name}</h3>
                     <div className="text-xs font-mono text-teal-600 uppercase tracking-widest block mb-4">
                       {member.role}
                     </div>
-                    <p className="text-sm font-light text-slate-605 leading-relaxed">
+                    <p className="text-sm font-light text-slate-600 leading-relaxed whitespace-pre-line">
                       {member.desc}
                     </p>
                   </div>
@@ -126,7 +134,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Open Roles Section */}
       <section className="bg-white py-20 border-b border-slate-200">
         <div className="mx-auto max-w-5xl px-5 sm:px-8 space-y-12">
           <div className="text-center max-w-xl mx-auto">
@@ -139,17 +146,20 @@ export default function TeamPage() {
             </Reveal>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {openRoles.map((role, index) => (
-              <Reveal key={role.title} delay={index * 100}>
+              <Reveal key={`${role.title ?? 'open-role'}-${index}`} delay={index * 100}>
                 <div className="border border-dashed border-slate-300 bg-slate-50/50 rounded-2xl p-8 hover:border-cyan-500/40 hover:bg-slate-50 transition-all duration-300">
                   <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">{role.title}</h3>
                   <p className="text-sm font-light text-slate-500 leading-relaxed mb-4">
                     Focus: {role.focus}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-600 hover:text-cyan-700 cursor-pointer">
-                    Apply Now &rarr;
-                  </span>
+                  {openRoleNote && (
+                    <div className="mt-4 pt-3 border-t border-slate-200/50 text-[10px] text-slate-450 flex items-center gap-1">
+                      <ShieldCheck className="h-3 w-3 text-cyan-600 shrink-0" />
+                      <span>{openRoleNote}</span>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             ))}
@@ -157,16 +167,13 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Advisory Board Section */}
       <section className="relative py-12 overflow-hidden border-b border-slate-200">
-        {/* Background Image */}
         <Image
           src="/advisory_board_bg.png"
           alt="Hawaiian bay background"
           fill
           className="object-cover object-center pointer-events-none"
         />
-        {/* Light Overlay */}
         <div className="absolute inset-0 bg-slate-50/90 backdrop-blur-[2px]" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8 space-y-8">

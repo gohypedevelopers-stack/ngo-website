@@ -38,12 +38,11 @@ export default async function OurWorkPage() {
   const prog1MetricSuffix = pageData?.prog1MetricSuffix
   const prog1MetricDesc = pageData?.prog1MetricDesc
   const prog1MetricDetail = pageData?.prog1MetricDetail
-  const prog1MetricBg = getStrapiMediaUrl(pageData?.prog1MetricBg)
+  const prog1MetricBg = '/coral_metric_bg.png'
 
   // Fetch Program 2 Data (Bio-Cleaner & Pollution Response)
   const prog2Title = pageData?.prog2Title
   const prog2Desc = pageData?.prog2Description
-  const prog2Image = getStrapiMediaUrl(pageData?.prog2Image)
   const prog2Card1Title = pageData?.prog2Card1Title
   const prog2Card1Body = pageData?.prog2Card1Body
   const prog2MetricLabel = pageData?.prog2MetricLabel
@@ -66,6 +65,17 @@ export default async function OurWorkPage() {
     pageData?.prog3Activity5,
     pageData?.prog3Activity6,
   ].filter(Boolean)
+
+  const fallbackProg3Activities = [
+    'Fish & limu surveys',
+    'Water quality testing',
+    'Marine debris removal',
+    'Coral outplanting',
+    'Youth education support',
+    'Community workdays',
+  ]
+
+  const displayedProg3Activities = prog3Activities.length > 0 ? prog3Activities : fallbackProg3Activities
 
   // Fetch Methodology Data
   const methodTitle = pageData?.methodTitle
@@ -171,17 +181,24 @@ export default async function OurWorkPage() {
 
             {/* Metric Segment */}
             <Reveal delay={200}>
-              <div className="relative h-full rounded-2xl overflow-hidden border border-teal-900/30 bg-teal-950/25 p-6 text-white flex flex-col justify-center">
+              <div className="relative h-full rounded-2xl overflow-hidden border border-teal-900/30 bg-slate-950 p-6 text-white flex flex-col justify-center">
                 {prog1MetricBg && (
-                  <Image src={prog1MetricBg} alt="Background" fill priority className="object-cover opacity-10 mix-blend-multiply" />
+                  <Image
+                    src={prog1MetricBg}
+                    alt="Background"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
                 )}
+                <div className="absolute inset-0 bg-slate-950/45" />
                 <div className="relative z-10 space-y-2">
-                  <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-400 uppercase">{prog1MetricLabel}</span>
-                  <div className="flex items-baseline text-4xl font-serif font-bold text-teal-400">
+                  <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-white/90 uppercase">{prog1MetricLabel}</span>
+                  <div className="flex items-baseline text-4xl font-serif font-bold text-white">
                     <AnimatedCounter value={prog1MetricValue} suffix={prog1MetricSuffix} />
                   </div>
-                  <span className="text-[10px] font-semibold tracking-widest uppercase text-slate-400 block">{prog1MetricDesc}</span>
-                  <p className="text-xs font-light text-slate-300 leading-relaxed mt-2">{prog1MetricDetail}</p>
+                  <span className="text-[10px] font-semibold tracking-widest uppercase text-white/80 block">{prog1MetricDesc}</span>
+                  <p className="text-xs font-light text-white/80 leading-relaxed mt-2">{prog1MetricDetail}</p>
                 </div>
               </div>
             </Reveal>
@@ -195,22 +212,7 @@ export default async function OurWorkPage() {
       <section id="program-2" className="bg-white py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
-            <div className="lg:col-span-5 lg:order-2">
-              <Reveal delay={100}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg">
-                  {prog2Image && (
-                    <Image
-                      src={prog2Image}
-                      alt={prog2Title}
-                      fill
-                      className="object-cover object-center"
-                    />
-                  )}
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-7 space-y-6 lg:order-1">
+            <div className="lg:col-span-12 space-y-6">
               <Reveal>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
@@ -220,11 +222,11 @@ export default async function OurWorkPage() {
                     Program 2
                   </span>
                 </div>
-                
+
                 <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
                   {prog2Title}
                 </h2>
-                
+
                 <p className="mt-6 text-sm leading-relaxed text-slate-650 font-light max-w-2xl">
                   {prog2Desc}
                 </p>
@@ -261,7 +263,6 @@ export default async function OurWorkPage() {
           </div>
         </div>
       </section>
-
       {/* =========================================================================
           SECTION 3: NĀ KIAʻI KAI COMMUNITY SCIENCE (PROGRAM 3)
          ========================================================================= */}
@@ -312,7 +313,7 @@ export default async function OurWorkPage() {
               <Reveal>
                 <h3 className="font-serif text-xl font-bold text-slate-900">Program Activities</h3>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {prog3Activities.map((act) => (
+                  {displayedProg3Activities.map((act) => (
                     <div key={act} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-xs">
                       <div className="h-2.5 w-2.5 rounded-full bg-teal-500" />
                       <span className="text-xs font-medium text-slate-700">{act}</span>
@@ -428,3 +429,9 @@ export default async function OurWorkPage() {
     </main>
   )
 }
+
+
+
+
+
+

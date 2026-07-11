@@ -371,6 +371,8 @@ export interface TheHuiPageData {
   openRole1Desc?: string;
   openRole2Title?: string;
   openRole2Desc?: string;
+  openRole3Title?: string;
+  openRole3Desc?: string;
   openRoleNote?: string;
   advisor1?: string;
   advisor2?: string;
@@ -493,4 +495,5 @@ export async function fetchGetInvolvedPageData(): Promise<GetInvolvedPageData | 
     console.error('Error fetching the get involved page data from Strapi:', error);
 }
 }
+
 
