@@ -373,6 +373,8 @@ export interface TheHuiPageData {
   openRole2Desc?: string;
   openRole3Title?: string;
   openRole3Desc?: string;
+  openRole4Title?: string;
+  openRole4Desc?: string;
   openRoleNote?: string;
   advisor1?: string;
   advisor2?: string;

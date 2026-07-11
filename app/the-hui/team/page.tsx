@@ -45,6 +45,10 @@ export default async function TeamPage() {
       title: pageData?.openRole3Title,
       focus: pageData?.openRole3Desc,
     },
+    {
+      title: pageData?.openRole4Title,
+      focus: pageData?.openRole4Desc,
+    },
   ]
 
   const openRoleNote = pageData?.openRoleNote
