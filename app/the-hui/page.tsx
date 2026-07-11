@@ -241,60 +241,64 @@ export default async function TheHuiPage() {
 
             {/* Open Role 1 */}
             <Reveal delay={200}>
-              <div className="h-full rounded-2xl border border-dashed border-slate-300 bg-slate-50/50 p-6 flex flex-col justify-between">
-                <div>
-                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase mb-3 border border-teal-200">Open Role</span>
-                  <h3 className="font-serif text-base font-bold text-slate-800 mb-2">{openRoles[0].role}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed font-light">{openRoles[0].desc}</p>
+              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="space-y-2">
+                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
+                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
+                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[0].role}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[0].desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/50 text-[10px] text-slate-450 flex items-center gap-1">
-                  <Info className="h-3 w-3 text-teal-600 shrink-0" />
-                  <span>{openRoleNote}</span>
+                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <span>Program track</span>
+                  <span>Open</span>
                 </div>
               </div>
             </Reveal>
 
             {/* Open Role 2 */}
             <Reveal delay={300}>
-              <div className="h-full rounded-2xl border border-dashed border-slate-300 bg-slate-50/50 p-6 flex flex-col justify-between">
-                <div>
-                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase mb-3 border border-teal-200">Open Role</span>
-                  <h3 className="font-serif text-base font-bold text-slate-800 mb-2">{openRoles[1].role}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed font-light">{openRoles[1].desc}</p>
+              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="space-y-2">
+                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
+                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
+                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[1].role}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[1].desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/50 text-[10px] text-slate-450 flex items-center gap-1">
-                  <Info className="h-3 w-3 text-teal-600 shrink-0" />
-                  <span>{openRoleNote}</span>
+                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <span>Program track</span>
+                  <span>Open</span>
                 </div>
               </div>
             </Reveal>
 
             {/* Open Role 3 */}
             <Reveal delay={400}>
-              <div className="h-full rounded-2xl border border-dashed border-slate-300 bg-slate-50/50 p-6 flex flex-col justify-between">
-                <div>
-                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase mb-3 border border-teal-200">Open Role</span>
-                  <h3 className="font-serif text-base font-bold text-slate-800 mb-2">{openRoles[2].role}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed font-light">{openRoles[2].desc}</p>
+              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="space-y-2">
+                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
+                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
+                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[2].role}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[2].desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/50 text-[10px] text-slate-450 flex items-center gap-1">
-                  <Info className="h-3 w-3 text-teal-600 shrink-0" />
-                  <span>{openRoleNote}</span>
+                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <span>Program track</span>
+                  <span>Open</span>
                 </div>
               </div>
             </Reveal>
 
             {/* Open Role 4 */}
             <Reveal delay={500}>
-              <div className="h-full rounded-2xl border border-dashed border-slate-300 bg-slate-50/50 p-6 flex flex-col justify-between">
-                <div>
-                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase mb-3 border border-teal-200">Open Role</span>
-                  <h3 className="font-serif text-base font-bold text-slate-800 mb-2">{openRoles[3].role}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed font-light">{openRoles[3].desc}</p>
+              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="space-y-2">
+                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
+                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
+                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[3].role}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[3].desc}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/50 text-[10px] text-slate-450 flex items-center gap-1">
-                  <Info className="h-3 w-3 text-teal-600 shrink-0" />
-                  <span>{openRoleNote}</span>
+                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <span>Program track</span>
+                  <span>Open</span>
                 </div>
               </div>
             </Reveal>
@@ -385,6 +389,17 @@ export default async function TheHuiPage() {
     </main>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
