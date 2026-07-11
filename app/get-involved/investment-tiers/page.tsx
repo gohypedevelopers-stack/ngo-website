@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import { Check, Landmark, Award } from 'lucide-react'
+import { Check, Landmark } from 'lucide-react'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
-import { AnimatedCounter } from '@/components/animated-counter'
+import { fetchGetInvolvedPageData } from '@/lib/strapi'
 
 export const metadata = {
   title: 'Investment Tiers — Hui Nehu',
@@ -50,7 +50,17 @@ const tiers = [
   },
 ]
 
-export default function InvestmentTiersPage() {
+export default async function InvestmentTiersPage() {
+  const pageData = await fetchGetInvolvedPageData()
+
+  const investEyebrow = pageData?.investEyebrow ?? 'Invest · Funding tiers'
+  const investTitle = pageData?.investTitle ?? 'Join the Hui — Your Investment Directly Protects Hawaiʻi’s Ocean'
+  const investDescPrefix = pageData?.investDescPrefix ?? 'Raising '
+  const investDescBold = pageData?.investDescBold ?? '$2,000,000'
+  const investDescSuffix = pageData?.investDescSuffix ?? ' in seed funding to launch nonprofit conservation programs.'
+  const seedFundsTitle = pageData?.seedFundsTitle ?? 'Use of Seed Funds'
+  const investTiersTitle = pageData?.investTiersTitle ?? 'Investment Tiers'
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
       {/* Dark Nav Background container */}
@@ -69,16 +79,16 @@ export default function InvestmentTiersPage() {
                     <Landmark className="h-5 w-5" />
                   </span>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-                    Get Involved &mdash; Invest
+                    {investEyebrow}
                   </span>
                 </div>
-                
+
                 <h1 className="mt-4 font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                  Join the Hui — Your Investment Directly Protects Hawaiʻi’s Ocean
+                  {investTitle}
                 </h1>
-                
+
                 <p className="mt-4 text-lg font-light leading-relaxed text-teal-900/85">
-                  Raising $2,000,000 in seed funding to launch nonprofit conservation programs.
+                  {investDescPrefix}<strong className="font-semibold text-white">{investDescBold}</strong>{investDescSuffix}
                 </p>
               </Reveal>
             </div>
@@ -105,7 +115,7 @@ export default function InvestmentTiersPage() {
       <section className="py-20 bg-white border-b border-slate-200">
         <div className="mx-auto max-w-4xl px-5 sm:px-8 space-y-12">
           <Reveal>
-            <h2 className="text-3xl font-serif font-bold text-slate-900 text-center">Use of Seed Funds</h2>
+            <h2 className="text-3xl font-serif font-bold text-slate-900 text-center">{seedFundsTitle}</h2>
             <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full mb-10" />
             <div className="space-y-6">
               {allocations.map((alloc) => (
@@ -129,7 +139,7 @@ export default function InvestmentTiersPage() {
         <div className="mx-auto max-w-6xl px-5 sm:px-8 space-y-12">
           <div className="text-center max-w-xl mx-auto">
             <Reveal>
-              <h2 className="font-serif text-3xl font-bold text-slate-900">Investment Tiers</h2>
+              <h2 className="font-serif text-3xl font-bold text-slate-900">{investTiersTitle}</h2>
               <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
             </Reveal>
           </div>
@@ -170,7 +180,3 @@ export default function InvestmentTiersPage() {
     </main>
   )
 }
-
-
-
-
