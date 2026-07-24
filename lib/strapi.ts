@@ -1,4 +1,4 @@
-export interface StrapiImage {
+﻿export interface StrapiImage {
   id: number;
   url: string;
   alternativeText?: string;
@@ -7,91 +7,34 @@ export interface StrapiImage {
   height?: number;
 }
 
-export interface HomepageData {
-  heroSubtitle?: string;
-  heroTitle?: string;
-  heroDescription?: string;
-  heroPrimaryBtnText?: string;
-  heroPrimaryBtnLink?: string;
-  heroSecondaryBtnText?: string;
-  heroSecondaryBtnLink?: string;
-  heroTertiaryBtnText?: string;
-  heroTertiaryBtnLink?: string;
-  heroBannerImage?: StrapiImage;
-  heroScubaDiverImage?: StrapiImage;
-  heroManufacturingImage?: StrapiImage;
-  crisisLabel?: string;
-  crisisTitle?: string;
-  crisisBody?: string;
-  crisisQuote?: string;
-  crisisImage?: StrapiImage;
-  crisisSecondaryBody?: string;
-  problem1Title?: string;
-  problem1Body?: string;
-  problem2Title?: string;
-  problem2Body?: string;
-  problem3Title?: string;
-  problem3Body?: string;
-  solutionLabel?: string;
-  solutionTitle?: string;
-  solutionBody?: string;
-  solutionImage?: StrapiImage;
-  solutionProg1Emoji?: string;
-  solutionProg1Title?: string;
-  solutionProg1Body?: string;
-  solutionProg2Emoji?: string;
-  solutionProg2Title?: string;
-  solutionProg2Body?: string;
-  solutionProg3Emoji?: string;
-  solutionProg3Title?: string;
-  solutionProg3Body?: string;
-  scienceLabel?: string;
-  scienceTitle?: string;
-  scienceBody?: string;
-  scienceMetric1Value?: number;
-  scienceMetric1Prefix?: string;
-  scienceMetric1Suffix?: string;
-  scienceMetric1Decimals?: number;
-  scienceMetric1Desc?: string;
-  scienceMetric2Value?: number;
-  scienceMetric2Prefix?: string;
-  scienceMetric2Suffix?: string;
-  scienceMetric2Decimals?: number;
-  scienceMetric2Desc?: string;
-  scienceMetric3Value?: number;
-  scienceMetric3Prefix?: string;
-  scienceMetric3Suffix?: string;
-  scienceMetric3Decimals?: number;
-  scienceMetric3Desc?: string;
-  teamLabel?: string;
-  teamTitle?: string;
-  teamBody?: string;
-  teamImage?: StrapiImage;
-  teamMembers?: TeamMember[];
-  upenaLabel?: string;
-  upenaTitle?: string;
-  upenaBody?: string;
-  upenaBtnText?: string;
-  upenaBtnLink?: string;
-  upenaImage?: StrapiImage;
-  upenaMetric1Value?: string;
-  upenaMetric1Unit?: string;
-  upenaMetric1Label?: string;
-  upenaMetric2Value?: string;
-  upenaMetric2Unit?: string;
-  upenaMetric2Label?: string;
-  upenaMetric3Value?: string;
-  upenaMetric3Unit?: string;
-  upenaMetric3Label?: string;
-  printedCanoesLabel?: string;
-  printedCanoesTitle?: string;
-  printedCanoesBody?: string;
-  printedCanoesProductTag?: string;
-  printedCanoesProductTitle?: string;
-  printedCanoesProductImage?: StrapiImage;
-  printedCanoesProductFeatures?: ProductFeature[];
-  printedCanoesBtnText?: string;
-  printedCanoesBtnLink?: string;
+export interface HomepageData { [key: string]: any }
+
+export async function fetchHomepageData(): Promise<HomepageData | null> {
+  if (!STRAPI_URL || !USE_STRAPI) {
+    return null;
+  }
+
+  try {
+    const res = await fetch(`${STRAPI_URL}/api/homepage?populate=*`, {
+      cache: 'no-store', // ensures we fetch fresh data on every request
+    });
+    if (!res.ok) {
+      console.warn('Failed to fetch homepage data from Strapi:', res.statusText);
+      return null;
+    }
+    const json = await res.json();
+    return json.data || null;
+  } catch (error: any) {
+    if (error && (error.digest === 'DYNAMIC_SERVER_USAGE' || error.message?.includes('Dynamic server usage'))) {
+      throw error;
+    }
+    console.error('Error fetching homepage data from Strapi:', error);
+    return null;
+  }
+}
+
+export interface SiteSettingsData {
+  showDonateButton?: boolean;
 }
 
 export interface ProductFeature {
@@ -126,17 +69,19 @@ export function getStrapiMediaUrl(media: StrapiImage | undefined | null): string
   return STRAPI_URL ? `${STRAPI_URL}${media.url}` : media.url;
 }
 
-export async function fetchHomepageData(): Promise<HomepageData | null> {
+
+
+export async function fetchSiteSettings(): Promise<SiteSettingsData | null> {
   if (!STRAPI_URL || !USE_STRAPI) {
     return null;
   }
 
   try {
-    const res = await fetch(`${STRAPI_URL}/api/homepage?populate=*`, {
-      cache: 'no-store', // ensures we fetch fresh data on every request
+    const res = await fetch(`${STRAPI_URL}/api/site-setting?populate=*`, {
+      cache: 'no-store',
     });
     if (!res.ok) {
-      console.warn('Failed to fetch homepage data from Strapi:', res.statusText);
+      console.warn('Failed to fetch site setting data from Strapi:', res.statusText);
       return null;
     }
     const json = await res.json();
@@ -145,7 +90,7 @@ export async function fetchHomepageData(): Promise<HomepageData | null> {
     if (error && (error.digest === 'DYNAMIC_SERVER_USAGE' || error.message?.includes('Dynamic server usage'))) {
       throw error;
     }
-    console.error('Error fetching homepage data from Strapi:', error);
+    console.error('Error fetching site setting data from Strapi:', error);
     return null;
   }
 }
@@ -497,5 +442,8 @@ export async function fetchGetInvolvedPageData(): Promise<GetInvolvedPageData | 
     console.error('Error fetching the get involved page data from Strapi:', error);
 }
 }
+
+
+
 
 

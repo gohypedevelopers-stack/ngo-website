@@ -1,7 +1,31 @@
+﻿"use client";
+
 import { ArrowRight, Heart } from 'lucide-react'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { fetchSiteSettings, USE_STRAPI } from '@/lib/strapi'
 
 export function SiteFooter() {
+  const [showDonateButton, setShowDonateButton] = useState(!USE_STRAPI)
+
+  useEffect(() => {
+    let active = true
+
+    async function loadSiteSettings() {
+      const settings = await fetchSiteSettings()
+      if (!active || !settings) return
+      setShowDonateButton(Boolean(settings.showDonateButton))
+    }
+
+    if (USE_STRAPI) {
+      loadSiteSettings()
+    }
+
+    return () => {
+      active = false
+    }
+  }, [])
+
   return (
     <footer className="relative bg-slate-950 border-t border-slate-900 pt-20 pb-10 overflow-hidden text-slate-400">
       {/* Decorative gradient line */}
@@ -35,13 +59,15 @@ export function SiteFooter() {
                 Join the Hui
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <a
-                href="/donate"
-                className="group flex items-center justify-center gap-2.5 rounded-full bg-teal-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all hover:bg-teal-400 hover:scale-105 hover:shadow-[0_0_25px_-5px_rgba(45,212,191,0.4)]"
-              >
-                Invest in Hawaiʻi’s Ocean
-                <Heart className="h-4 w-4 fill-slate-950 text-slate-950 transition-transform group-hover:scale-110" />
-              </a>
+              {showDonateButton ? (
+                <a
+                  href="/donate"
+                  className="group flex items-center justify-center gap-2.5 rounded-full bg-teal-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all hover:bg-teal-400 hover:scale-105 hover:shadow-[0_0_25px_-5px_rgba(45,212,191,0.4)]"
+                >
+                  Invest in Hawaiʻi’s Ocean
+                  <Heart className="h-4 w-4 fill-slate-950 text-slate-950 transition-transform group-hover:scale-110" />
+                </a>
+              ) : null}
             </div>
           </div>
         </div>
@@ -123,3 +149,5 @@ export function SiteFooter() {
     </footer>
   )
 }
+
+

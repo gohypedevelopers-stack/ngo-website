@@ -1,9 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { fetchSiteSettings, USE_STRAPI } from "@/lib/strapi";
 
 const links = [
   {
@@ -29,12 +30,31 @@ const links = [
 export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showDonateButton, setShowDonateButton] = useState(!USE_STRAPI);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadSiteSettings() {
+      const settings = await fetchSiteSettings();
+      if (!active || !settings) return;
+      setShowDonateButton(Boolean(settings.showDonateButton));
+    }
+
+    if (USE_STRAPI) {
+      loadSiteSettings();
+    }
+
+    return () => {
+      active = false;
+    };
   }, []);
 
   return (
@@ -130,17 +150,19 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href="/donate"
-            className={cn(
-              "hidden whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-all xl:inline-block xl:px-5 xl:text-sm backdrop-blur-sm",
-              theme === "light"
-                ? "border-slate-900/20 bg-slate-900/5 text-slate-900 hover:bg-slate-900 hover:text-white"
-                : "border-white/20 bg-white/5 text-white hover:bg-white hover:text-slate-950",
-            )}
-          >
-            Donate now
-          </a>
+          {showDonateButton ? (
+            <a
+              href="/donate"
+              className={cn(
+                "hidden whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-all xl:inline-block xl:px-5 xl:text-sm backdrop-blur-sm",
+                theme === "light"
+                  ? "border-slate-900/20 bg-slate-900/5 text-slate-900 hover:bg-slate-900 hover:text-white"
+                  : "border-white/20 bg-white/5 text-white hover:bg-white hover:text-slate-950",
+              )}
+            >
+              Donate now
+            </a>
+          ) : null}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -219,23 +241,24 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
               )}
             </li>
           ))}
-          <li className="pt-8">
-            <a
-              href="/donate"
-              onClick={() => setOpen(false)}
-              className={cn(
-                "flex items-center justify-center w-full rounded-full px-6 py-4 text-base font-bold transition-all shadow-lg active:scale-95",
-                theme === "light"
-                  ? "bg-slate-900 text-white hover:bg-teal-600 hover:shadow-teal-600/25"
-                  : "bg-white text-slate-950 hover:bg-teal-400 hover:shadow-teal-400/25",
-              )}
-            >
-              Donate now
-            </a>
-          </li>
+          {showDonateButton ? (
+            <li className="pt-8">
+              <a
+                href="/donate"
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "flex items-center justify-center w-full rounded-full px-6 py-4 text-base font-bold transition-all shadow-lg active:scale-95",
+                  theme === "light"
+                    ? "bg-slate-900 text-white hover:bg-teal-600 hover:shadow-teal-600/25"
+                    : "bg-white text-slate-950 hover:bg-teal-400 hover:shadow-teal-400/25",
+                )}
+              >
+                Donate now
+              </a>
+            </li>
+          ) : null}
         </ul>
       </div>
     </nav>
   );
 }
-
