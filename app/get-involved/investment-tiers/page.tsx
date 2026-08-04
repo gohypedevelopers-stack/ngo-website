@@ -48,6 +48,12 @@ const tiers = [
     desc: 'Foundational community support.',
     features: ['Annual coalition partner reports', 'Volunteer summit invitations', 'Hui Nehu gear package'],
   },
+  {
+    name: 'ʻOpae Supporter',
+    price: 'Under $999',
+    desc: 'Foundational community support.',
+    features: ['Community conservation updates', 'Volunteer workday invitations', 'Hui Nehu supporter recognition'],
+  },
 ]
 
 export default async function InvestmentTiersPage() {

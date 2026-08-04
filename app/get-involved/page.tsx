@@ -60,9 +60,14 @@ export default async function GetInvolvedPage() {
       desc: pageData?.tier4Desc
     },
     {
-      name: pageData?.tier5Name,
-      amount: pageData?.tier5Amount,
-      desc: pageData?.tier5Desc
+      name: 'ʻOhana Supporter',
+      amount: '$1K+',
+      desc: 'Foundational community support.'
+    },
+    {
+      name: 'ʻOpae Supporter',
+      amount: 'Under $999',
+      desc: 'Foundational community support.'
     }
   ]
 

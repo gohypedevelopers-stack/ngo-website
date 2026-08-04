@@ -11,6 +11,7 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
   ) : null
 
   const description = data?.heroDescription
+  const missionStatement = 'To protect, restore, and perpetuate native forage fish populations and their ecosystems through the integration of Native Hawaiian traditional ecological knowledge (TEK) and contemporary marine science.'
   
   const primaryBtnText = data?.heroPrimaryBtnText
   const primaryBtnLink = data?.heroPrimaryBtnLink
@@ -62,10 +63,20 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
               )}
               
               {description && (
-                <p className="text-lg sm:text-xl text-slate-300 font-light leading-relaxed mb-12 max-w-xl">
+                <p className="text-lg sm:text-xl text-slate-300 font-light leading-relaxed mb-7 max-w-xl">
                   {description}
                 </p>
               )}
+
+              
+              <div className="mb-10 max-w-2xl border-l-2 border-teal-400/80 bg-slate-950/35 py-3 pl-4 pr-5 backdrop-blur-sm sm:pl-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-300">
+                  Hui Nehu Mission Statement
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-200 sm:text-base">
+                  {missionStatement}
+                </p>
+              </div>
 
               <div className="flex flex-wrap items-center gap-4">
                 {primaryBtnText && (

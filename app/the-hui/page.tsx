@@ -41,10 +41,9 @@ export default async function TheHuiPage() {
   const leader1Name = pageData?.leader1Name
   const leader1Role = pageData?.leader1Role
   const leader1Desc = pageData?.leader1Desc
-  const leader2Name = pageData?.leader2Name
+  const leader2Name = pageData?.leader2Name === 'Nakoa Goo' ? 'Dr. Nakoa Goo' : pageData?.leader2Name || 'Dr. Nakoa Goo'
+  const leader2Desc = pageData?.leader2Desc || 'Treasurer'
   const leader2Role = pageData?.leader2Role
-  const leader2Desc = pageData?.leader2Desc
-
   const openRoles = [
     {
       role: 'Program Coordinator',
@@ -61,6 +60,10 @@ export default async function TheHuiPage() {
     {
       role: 'Program 3 Coordinator',
       desc: 'partnership support + coordination'
+    },
+    {
+      role: 'Director of Operations',
+      desc: 'operations leadership + organizational coordination'
     },
   ]
   const openRoleNote = ''
@@ -298,6 +301,22 @@ export default async function TheHuiPage() {
                 </div>
                 <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
                   <span>Program track</span>
+                  <span>Open</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Open Role 5 · Director of Operations */}
+            <Reveal delay={600}>
+              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="space-y-2">
+                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
+                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
+                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[4].role}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[4].desc}</p>
+                </div>
+                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <span>Operations</span>
                   <span>Open</span>
                 </div>
               </div>

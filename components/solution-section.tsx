@@ -9,7 +9,9 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
     <span dangerouslySetInnerHTML={{ __html: data.solutionTitle.replace(/\n/g, '<br />') }} />
   ) : null
 
-  const body = data?.solutionBody || ''
+  const body =
+    data?.solutionBody ||
+    'Hui Nehu is the first community-led, ***whole-system*** marine conservation organization in Hawaiʻi, with the expressed mission to revitalize its forage fish, as well as nearshore and fisheries populations. Our daily goal is to collaborate. We don’t just restore coral — we restore the entire food web. Our model is the ahupuaʻa made operational.'
   const imgUrl = getStrapiMediaUrl(data?.solutionImage) || ''
 
   const programs = [
@@ -115,8 +117,8 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
 
               {body && (
                 <div className="rounded-2xl border border-teal-500/15 bg-teal-50/25 p-6 sm:p-8 shadow-xs backdrop-blur-xs">
-                  <p className="text-base sm:text-lg text-teal-deep/90 font-light leading-relaxed">
-                    {body}
+                  <p className="whitespace-pre-line text-base sm:text-lg font-normal not-italic leading-relaxed text-teal-deep/90">
+                    {formatSolutionBody(body)}
                   </p>
                 </div>
               )}
@@ -127,5 +129,33 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
       </div>
     </section>
   )
+}
+
+function formatSolutionBody(body: string) {
+  return body
+    .split(/(\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|\*[^*]+\*)/g)
+    .flatMap((part, partIndex) => {
+      if (part.startsWith('***') && part.endsWith('***')) {
+        return <strong key={partIndex}><em>{part.slice(3, -3)}</em></strong>
+      }
+
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={partIndex}>{part.slice(2, -2)}</strong>
+      }
+
+      if (part.startsWith('*') && part.endsWith('*')) {
+        return <em key={partIndex}>{part.slice(1, -1)}</em>
+      }
+
+      return part.split(/(whole-system)/g).map((text, textIndex) =>
+        text === 'whole-system' ? (
+          <span key={`${partIndex}-${textIndex}`} className="font-bold italic">
+            {text}
+          </span>
+        ) : (
+          text
+        ),
+      )
+    })
 }
 

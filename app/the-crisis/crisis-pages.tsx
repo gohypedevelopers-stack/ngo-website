@@ -27,6 +27,9 @@ export function CrisisLandingPage({
   // Data driven purely from Strapi
   const nehuTitle = data?.sec1Title
   const nehuSubtitle = data?.sec1Subtitle
+  const nehuSubtitleWithEllipsis = nehuSubtitle
+    ? `${nehuSubtitle.replace(/\s*(?:…|\.\.\.)\s*$/, '')}...`
+    : undefined
   const nehuDesc = data?.sec1Description
   const nehuImage = getStrapiMediaUrl(data?.sec1Image)
   const nehuEyebrow = data?.sec1Eyebrow
@@ -34,7 +37,7 @@ export function CrisisLandingPage({
   const cesspoolTitle = data?.sec2Title
   const cesspoolSubtitle = data?.sec2Subtitle
   const cesspoolDesc = data?.sec2Description
-  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image)
+  const cesspoolImage = getStrapiMediaUrl(data?.sec2Image) || '/food_web_restoration.png'
   const cesspoolEyebrow = data?.sec2Eyebrow
   
   const fragmentedTitle = data?.sec3Title
@@ -50,7 +53,7 @@ export function CrisisLandingPage({
   const sec1Sections = [
     { title: data?.sec1Card1Title, body: data?.sec1Card1Body },
     { title: data?.sec1Card2Title, body: data?.sec1Card2Body },
-    { title: data?.sec1Card3Title, body: data?.sec1Card3Body },
+    { title: data?.sec1Card3Title, body: 'Lives in estuarine and inner-coastal areas — extremely vulnerable to nearshore pollution, water quality, and habitat loss.' },
     { title: data?.sec1Card4Title, body: data?.sec1Card4Body },
   ].filter(s => s.title || s.body)
   const sec1Proverb = data?.sec1Proverb
@@ -96,8 +99,8 @@ export function CrisisLandingPage({
                 )}
                 
                 {nehuSubtitle && (
-                  <p className="mt-4 text-xl sm:text-2xl font-bold italic leading-relaxed text-teal-200/90">
-                    {nehuSubtitle}
+                  <p className="mt-4 text-xl font-bold italic leading-relaxed text-teal-200/90 sm:text-2xl xl:text-[26px] xl:whitespace-nowrap xl:tracking-tight">
+                    {nehuSubtitleWithEllipsis}
                   </p>
                 )}
                 
@@ -248,8 +251,22 @@ export function CrisisLandingPage({
                       {section.title}
                     </h4>
                     <p className="text-sm text-slate-500 leading-relaxed font-light">
-                      {section.body}
+                      {section.body?.split(/(MRSA)/g).map((part, partIndex) =>
+                        part === 'MRSA' ? (
+                          <span key={partIndex}>
+                            MRSA<sup className="ml-px text-[10px] leading-none">*</sup>
+                          </span>
+                        ) : (
+                          part
+                        ),
+                      )}
                     </p>
+                    {section.body?.includes('MRSA') && (
+                      <p className="mt-3 border-t border-slate-100 pt-3 text-xs leading-relaxed text-slate-500">
+                        <span className="mr-1 font-semibold">*</span>
+                        Methicillin-resistant <em>Staphylococcus aureus</em>
+                      </p>
+                    )}
                   </div>
                 </Reveal>
               ))}

@@ -22,8 +22,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'jay.carpio@me.com',
-    href: 'mailto:jay.carpio@me.com',
+    value: 'aloha@huinehu.org',
+    href: 'mailto:aloha@huinehu.org',
     desc: 'General inquiries & support',
     color: 'text-teal-600 bg-teal-50 border-teal-200/60',
   },

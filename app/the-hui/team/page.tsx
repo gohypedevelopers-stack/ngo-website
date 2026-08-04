@@ -25,9 +25,9 @@ export default async function TeamPage() {
       initials: 'JC',
     },
     {
-      name: pageData?.leader2Name,
+      name: pageData?.leader2Name === 'Nakoa Goo' ? 'Dr. Nakoa Goo' : pageData?.leader2Name || 'Dr. Nakoa Goo',
       role: pageData?.leader2Role,
-      desc: pageData?.leader2Desc,
+      desc: pageData?.leader2Desc || 'Treasurer',
       initials: 'NG',
     },
   ]

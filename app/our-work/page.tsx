@@ -28,7 +28,7 @@ export default async function OurWorkPage() {
   const prog1Title = pageData?.prog1Title
   const prog1Headline = pageData?.prog1Eyebrow
   const prog1Desc = pageData?.prog1Description
-  const prog1Image = getStrapiMediaUrl(pageData?.prog1Image)
+  const prog1Image = '/food_web_restoration.png' // C22: Cesspool Crisis image
   const prog1Card1Title = pageData?.prog1Card1Title
   const prog1Card1Body = pageData?.prog1Card1Body
   const prog1Card2Title = pageData?.prog1Card2Title
@@ -137,49 +137,46 @@ export default async function OurWorkPage() {
                 </p>
               </Reveal>
             </div>
-
             <div className="lg:col-span-5">
               <Reveal delay={100}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-lg">
-                  {prog1Image && (
-                    <Image
-                      src={prog1Image}
-                      alt={prog1Title}
-                      fill
-                      priority
-                      className="object-cover object-center"
-                    />
-                  )}
+                  <Image
+                    src={prog1Image}
+                    alt={prog1Title || 'Habitat and loko iʻa restoration'}
+                    fill
+                    priority
+                    className="object-cover object-center"
+                  />
                 </div>
               </Reveal>
             </div>
           </div>
 
-          {/* Cards & Metric Grid */}
-          <div className="grid gap-6 md:grid-cols-3">
+          {/* Program Foundations */}
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
             {/* Keystone Focus Card */}
             <Reveal>
-              <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-950/50 text-teal-300 mb-4">
+              <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-teal-950/50 text-teal-300">
                   <Shield className="h-5 w-5" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-white mb-2">{prog1Card1Title}</h3>
-                <p className="text-sm text-slate-350 leading-relaxed font-light">{prog1Card1Body}</p>
+                <h3 className="mb-2 font-serif text-lg font-bold text-white">{prog1Card1Title}</h3>
+                <p className="text-sm font-light leading-relaxed text-slate-300">{prog1Card1Body}</p>
               </div>
             </Reveal>
 
             {/* Ahupuaʻa Link Card */}
             <Reveal delay={100}>
-              <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-teal-950/50 text-teal-300 mb-4">
+              <div className="h-full rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-teal-950/50 text-teal-300">
                   <Globe className="h-5 w-5" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-white mb-2">{prog1Card2Title}</h3>
-                <p className="text-sm text-slate-350 leading-relaxed font-light">{prog1Card2Body}</p>
+                <h3 className="mb-2 font-serif text-lg font-bold text-white">{prog1Card2Title}</h3>
+                <p className="text-sm font-light leading-relaxed text-slate-300">{prog1Card2Body}</p>
               </div>
             </Reveal>
 
-            {/* Metric Segment */}
+            {/* Target Metric card (temporarily hidden)
             <Reveal delay={200}>
               <div className="relative h-full rounded-2xl overflow-hidden border border-teal-900/30 bg-slate-950 p-6 text-white flex flex-col justify-center">
                 {prog1MetricBg && (
@@ -202,13 +199,28 @@ export default async function OurWorkPage() {
                 </div>
               </div>
             </Reveal>
+            */}
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 2: BIO-CLEANER & POLLUTION RESPONSE (PROGRAM 2)
+          SECTION 2: PROGRAM 2 (COMING SOON)
          ========================================================================= */}
+<section id="program-2" className="border-b border-slate-200 bg-white py-20">
+        <div className="mx-auto max-w-7xl px-5 text-center sm:px-8">
+          <Reveal>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Program 2</span>
+            <h2 className="mt-4 font-serif text-3xl font-bold text-slate-900 sm:text-4xl">Coming Soon</h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-slate-600">
+              New program content is being prepared.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Program 2 temporarily hidden pending replacement content. */}
+      {false && (
       <section id="program-2" className="bg-white py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center mb-16">
@@ -263,6 +275,7 @@ export default async function OurWorkPage() {
           </div>
         </div>
       </section>
+      )}
       {/* =========================================================================
           SECTION 3: NĀ KIAʻI KAI COMMUNITY SCIENCE (PROGRAM 3)
          ========================================================================= */}
