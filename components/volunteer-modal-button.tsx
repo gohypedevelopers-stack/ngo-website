@@ -1,11 +1,14 @@
 'use client'
 
-import { useState } from 'react'
-import { ArrowRight, Calendar, CheckCircle, Mail, MessageSquare, Phone, User, X } from 'lucide-react'
+import { useEffect, useState, type FormEvent } from 'react'
+import { ArrowRight, Check, CheckCircle, ChevronDown, X } from 'lucide-react'
+import { createPortal } from 'react-dom'
 
 export function VolunteerModalButton() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const [isWorkdayMenuOpen, setIsWorkdayMenuOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,9 +24,25 @@ export function VolunteerModalButton() {
     'August 15, 2026 - Limu (Seaweed) Restoration'
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isOpen])
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitted(true)
+
     setTimeout(() => {
       setIsOpen(false)
       setIsSubmitted(false)
@@ -42,17 +61,17 @@ export function VolunteerModalButton() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-teal-500 px-8 py-4 text-sm font-bold text-slate-950 shadow-[0_12px_30px_rgba(20,184,166,0.28)] transition-all hover:-translate-y-0.5 hover:bg-teal-400 hover:shadow-[0_16px_34px_rgba(20,184,166,0.34)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-teal-500 px-8 py-4 text-sm font-bold text-slate-950 shadow-[0_12px_30px_rgba(20,184,166,0.28)] transition-all hover:-translate-y-0.5 hover:bg-teal-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
       >
         Sign up for the next community workday
         <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex overflow-y-auto p-3 sm:p-6">
+      {isMounted && isOpen && createPortal(
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4 sm:p-6">
           <div
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm"
+            className="fixed inset-0 bg-slate-950/45 backdrop-blur-[2px]"
             aria-hidden="true"
           />
 
@@ -60,93 +79,68 @@ export function VolunteerModalButton() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="volunteer-signup-title"
-            className="relative z-10 m-auto w-full max-w-2xl overflow-hidden rounded-[28px] border border-white/20 bg-white shadow-[0_32px_80px_rgba(2,12,27,0.46)]"
+            className="relative z-10 my-auto w-full max-w-xl overflow-y-auto rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/10"
           >
             {isSubmitted ? (
-              <div className="relative overflow-hidden bg-slate-950 px-6 py-16 text-center text-white sm:px-12">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-300" />
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-teal-300/30 bg-teal-400/15 text-teal-300">
-                  <CheckCircle className="h-8 w-8" aria-hidden="true" />
+              <div className="relative px-6 py-12 text-center sm:px-10">
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close volunteer signup form"
+                  className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+                >
+                  <X className="h-5 w-5" aria-hidden="true" />
+                </button>
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                  <CheckCircle className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <p className="mt-6 text-xs font-bold uppercase tracking-[0.22em] text-teal-300">Mahalo</p>
-                <h3 className="mt-3 font-serif text-3xl font-bold">You&apos;re on the crew list.</h3>
-                <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-slate-300">
-                  We&apos;ll be in touch with the workday details, safety information, and what to bring.
+                <h3 className="mt-5 font-serif text-3xl font-bold text-slate-950">Mahalo!</h3>
+                <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-slate-600">
+                  We&apos;ll email you the workday details and what to bring.
                 </p>
               </div>
             ) : (
               <>
-                <div className="relative overflow-hidden bg-slate-950 px-6 pb-8 pt-7 text-white sm:px-10 sm:pb-9 sm:pt-9">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-300" />
-                  <div className="pointer-events-none absolute -bottom-24 -right-10 h-52 w-80 rounded-[100%] border border-teal-300/15" />
-                  <div className="pointer-events-none absolute -bottom-32 -right-16 h-52 w-80 rounded-[100%] border border-cyan-300/10" />
-
+                <div className="relative border-b border-slate-100 px-6 pb-6 pt-7 sm:px-8">
                   <button
                     type="button"
                     onClick={() => setIsOpen(false)}
                     aria-label="Close volunteer signup form"
-                    className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/10 text-slate-300 transition-colors hover:bg-white/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 sm:right-6 sm:top-6"
+                    className="absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
                   >
-                    <X className="h-4 w-4" aria-hidden="true" />
+                    <X className="h-5 w-5" aria-hidden="true" />
                   </button>
-
-                  <div className="relative max-w-lg">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-teal-300">Kiaʻi Kai field crew</p>
-                    <h3 id="volunteer-signup-title" className="mt-3 pr-10 font-serif text-3xl font-bold leading-none sm:text-4xl">
-                      Reserve your place on the shoreline.
-                    </h3>
-                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-[15px]">
-                      Choose a workday and share a few details. We&apos;ll send the final plan, waiver, and what to bring.
-                    </p>
-                  </div>
+                  <div className="h-1 w-10 rounded-full bg-teal-500" />
+                  <h3 id="volunteer-signup-title" className="mt-4 pr-10 font-serif text-3xl font-bold text-slate-950">
+                    Volunteer signup
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    Register for a community workday. We&apos;ll send the details before the event.
+                  </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5 px-6 py-6 sm:px-10 sm:py-8">
+                <form onSubmit={handleSubmit} className="space-y-5 px-6 py-6 sm:px-8 sm:py-7">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="volunteer-name" className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                        Full name
+                      <label htmlFor="volunteer-name" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Full name <span className="text-teal-600">*</span>
                       </label>
-                      <div className="relative">
-                        <User className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-700" aria-hidden="true" />
-                        <input
-                          id="volunteer-name"
-                          type="text"
-                          required
-                          autoComplete="name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Your full name"
-                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
-                        />
-                      </div>
+                      <input
+                        id="volunteer-name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Your full name"
+                        className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10"
+                      />
                     </div>
 
                     <div>
-                      <label htmlFor="volunteer-phone" className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                        Phone <span className="normal-case tracking-normal text-slate-400">(optional)</span>
+                      <label htmlFor="volunteer-email" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Email address <span className="text-teal-600">*</span>
                       </label>
-                      <div className="relative">
-                        <Phone className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-700" aria-hidden="true" />
-                        <input
-                          id="volunteer-phone"
-                          type="tel"
-                          autoComplete="tel"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="(808) 555-0199"
-                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="volunteer-email" className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                      Email address
-                    </label>
-                    <div className="relative">
-                      <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-700" aria-hidden="true" />
                       <input
                         id="volunteer-email"
                         type="email"
@@ -155,66 +149,115 @@ export function VolunteerModalButton() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="you@example.com"
-                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
+                        className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="volunteer-workday" className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                      Choose a workday
-                    </label>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="volunteer-phone" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Phone <span className="font-normal text-slate-400">(optional)</span>
+                      </label>
+                      <input
+                        id="volunteer-phone"
+                        type="tel"
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="(808) 555-0199"
+                        className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10"
+                      />
+                    </div>
+
                     <div className="relative">
-                      <Calendar className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-700" aria-hidden="true" />
-                      <select
+                      <label id="volunteer-workday-label" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Workday
+                      </label>
+                      <button
                         id="volunteer-workday"
-                        value={formData.workday}
-                        onChange={(e) => setFormData({ ...formData, workday: e.target.value })}
-                        className="w-full cursor-pointer rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition-colors hover:border-slate-300 focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
+                        type="button"
+                        aria-haspopup="listbox"
+                        aria-expanded={isWorkdayMenuOpen}
+                        aria-controls="volunteer-workday-options"
+                        aria-labelledby="volunteer-workday-label volunteer-workday"
+                        onClick={() => setIsWorkdayMenuOpen((isOpen) => !isOpen)}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Escape') setIsWorkdayMenuOpen(false)
+                        }}
+                        className="flex w-full items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-left text-sm text-slate-900 outline-none transition-colors hover:border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10"
                       >
-                        {workdays.map((day) => (
-                          <option key={day} value={day}>
-                            {day}
-                          </option>
-                        ))}
-                      </select>
+                        <span className="truncate">{formData.workday}</span>
+                        <ChevronDown
+                          className={`h-4 w-4 shrink-0 text-slate-500 transition-transform ${isWorkdayMenuOpen ? 'rotate-180' : ''}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+
+                      {isWorkdayMenuOpen && (
+                        <div
+                          id="volunteer-workday-options"
+                          role="listbox"
+                          aria-labelledby="volunteer-workday-label"
+                          className="absolute left-0 right-0 z-20 mt-1 overflow-hidden rounded-xl border border-slate-200 bg-white p-1 shadow-lg"
+                        >
+                          {workdays.map((day) => {
+                            const isSelected = day === formData.workday
+
+                            return (
+                              <button
+                                key={day}
+                                type="button"
+                                role="option"
+                                aria-selected={isSelected}
+                                onClick={() => {
+                                  setFormData({ ...formData, workday: day })
+                                  setIsWorkdayMenuOpen(false)
+                                }}
+                                className="flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-left text-sm leading-snug text-slate-700 transition-colors hover:bg-teal-50 hover:text-teal-900 focus-visible:bg-teal-50 focus-visible:outline-none"
+                              >
+                                <span>{day}</span>
+                                {isSelected && <Check className="h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />}
+                              </button>
+                            )
+                          })}
+                        </div>
+                      )}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="volunteer-notes" className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                      Anything our crew should know? <span className="normal-case tracking-normal text-slate-400">(optional)</span>
+                    <label htmlFor="volunteer-notes" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                      Notes <span className="font-normal text-slate-400">(optional)</span>
                     </label>
-                    <div className="relative">
-                      <MessageSquare className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-teal-700" aria-hidden="true" />
-                      <textarea
-                        id="volunteer-notes"
-                        value={formData.notes}
-                        onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                        placeholder="Accessibility needs, dietary requirements, or a question for the team."
-                        rows={2}
-                        className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
-                      />
-                    </div>
+                    <textarea
+                      id="volunteer-notes"
+                      value={formData.notes}
+                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                      placeholder="Accessibility needs, dietary requirements, or questions."
+                      rows={2}
+                      className="w-full resize-none rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10"
+                    />
                   </div>
 
-                  <div className="border-t border-slate-100 pt-5">
+                  <div className="flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-xs leading-relaxed text-slate-500">
+                      No experience is needed. We&apos;ll share what to bring.
+                    </p>
                     <button
                       type="submit"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-teal-600 px-5 py-3.5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(13,148,136,0.24)] transition-all hover:-translate-y-0.5 hover:bg-teal-700 hover:shadow-[0_14px_28px_rgba(13,148,136,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
                     >
-                      Reserve my place
+                      Sign up
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </button>
-                    <p className="mt-3 text-center text-xs text-slate-500">
-                      Takes about two minutes · No experience is required.
-                    </p>
                   </div>
                 </form>
               </>
             )}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   )
