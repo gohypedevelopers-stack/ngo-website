@@ -91,7 +91,6 @@ export default async function GetInvolvedPage() {
   const volCtaTitle2 = pageData?.volCtaTitle2
   const volCtaDesc = pageData?.volCtaDesc
   const volCtaBtnText = pageData?.volCtaBtnText
-  const volCtaBtnLink = pageData?.volCtaBtnLink
 
   // Partner Section
   const partnerEyebrow = pageData?.partnerEyebrow
@@ -254,9 +253,7 @@ export default async function GetInvolvedPage() {
 
                   <div className="relative z-10 pt-4 w-full flex justify-center">
                     <a 
-                      href={volCtaBtnLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                      href="/contact"
                       className="group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-white hover:bg-slate-100 px-8 py-4 text-sm font-bold text-slate-950 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                     >
                       <span>{volCtaBtnText}</span>
