@@ -339,7 +339,7 @@ export default async function GetInvolvedPage() {
                     </div>
                     <div className="flex items-center gap-3 text-xs text-slate-600">
                       <Phone className="h-4 w-4 text-teal-600 shrink-0" />
-                      <span className="font-semibold">{partnerPhone}</span>
+                      <a href="tel:8086330336" className="hover:underline font-semibold">{partnerPhone}</a>
                     </div>
                     <div className="flex items-center gap-3 text-xs text-slate-600">
                       <Instagram className="h-4 w-4 text-teal-600 shrink-0" />
