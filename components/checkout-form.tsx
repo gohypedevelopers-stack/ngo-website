@@ -31,7 +31,6 @@ export function CheckoutForm({ amount, onSuccess, onError }: CheckoutFormProps) 
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Return URL is not strictly needed if redirect="if_required", but good to have
         return_url: `${window.location.origin}/donate`,
       },
       redirect: 'if_required',
@@ -50,7 +49,13 @@ export function CheckoutForm({ amount, onSuccess, onError }: CheckoutFormProps) 
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 mt-6">
-      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm min-h-[120px] flex flex-col justify-center">
+        {!stripe ? (
+          <div className="flex items-center justify-center py-6 gap-2 text-slate-500 text-sm font-medium">
+            <Loader2 className="h-5 w-5 animate-spin text-teal-500" />
+            Loading secure payment options...
+          </div>
+        ) : null}
         <PaymentElement />
       </div>
       <button
