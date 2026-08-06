@@ -67,9 +67,9 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
           <div className="lg:col-span-7 max-w-3xl">
             <div className="animate-hero-text">
               {formattedSubtitle && (
-                <div className="inline-flex mb-8">
+                <div className="inline-flex max-w-full mb-8">
                   <span 
-                    className="text-xs font-mono font-semibold tracking-[0.15em] uppercase text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3.5 py-2 rounded-2xl shadow-[0_0_15px_rgba(20,184,166,0.1)] leading-relaxed"
+                    className="text-[9.5px] sm:text-xs font-mono font-semibold tracking-normal sm:tracking-[0.1em] uppercase text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl shadow-[0_0_15px_rgba(20,184,166,0.1)] leading-relaxed inline-block max-w-full text-center"
                     dangerouslySetInnerHTML={{ __html: formattedSubtitle.replace(/\n/g, '<br />') }}
                   />
                 </div>
