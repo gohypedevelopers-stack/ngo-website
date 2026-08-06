@@ -137,9 +137,11 @@ export function CrisisLandingPage({
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-400">
                 Significance
               </span>
-              <h3 className="mt-2 font-serif text-2xl font-bold text-white">
-                {sec1GridTitle}
-              </h3>
+              <h3 className="mt-2 font-serif text-2xl font-bold text-white"
+                dangerouslySetInnerHTML={{
+                  __html: (sec1GridTitle || '').replace(/Nehu/g, '<i>Nehu</i>')
+                }}
+              />
               <div className="mx-auto mt-3 h-1 w-12 bg-teal-500 rounded-full" />
             </div>
 
@@ -154,7 +156,9 @@ export function CrisisLandingPage({
                       {section.title}
                     </h4>
                     <p className="text-sm text-slate-300 leading-relaxed font-light">
-                      {section.body}
+                      {section.body?.split(/(nehu)/gi).map((part, i) =>
+                        /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                      )}
                     </p>
                   </div>
                 </Reveal>
@@ -289,7 +293,13 @@ export function CrisisLandingPage({
                       ⚖️ The Law (Act 125)
                     </span>
                     <p className="text-base sm:text-lg text-slate-800 font-light leading-relaxed max-w-4xl">
-                      {sec2LawBanner}
+                      {sec2LawBanner?.includes('Required rate:')
+                        ? <>
+                            {sec2LawBanner.split('Required rate:')[0]}
+                            <br />
+                            Required rate:{sec2LawBanner.split('Required rate:')[1]}
+                          </>
+                        : sec2LawBanner}
                     </p>
                   </div>
                 </div>

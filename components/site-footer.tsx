@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { ArrowRight, Heart } from 'lucide-react'
 import Image from 'next/image'
@@ -78,9 +78,9 @@ export function SiteFooter() {
             <Image
               src="/logo.png"
               alt="Hui Nehu Logo"
-              width={160}
-              height={160}
-              className="h-16 w-auto object-contain bg-white rounded-xl p-1 shadow-md mb-2"
+              width={200}
+              height={200}
+              className="h-24 sm:h-28 md:h-32 w-auto object-contain bg-white rounded-2xl p-2 shadow-lg mb-4 hover:scale-105 transition-transform"
             />
             <p className="text-[11px] md:text-xs uppercase tracking-widest text-teal-400 font-bold font-mono">
               Mālama &apos;Aina. Mālama Wai. Mālama Kai.

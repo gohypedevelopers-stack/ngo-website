@@ -3,14 +3,32 @@ import { ArrowRight, BookOpen, Heart } from 'lucide-react'
 import { HomepageData, getStrapiMediaUrl } from '@/lib/strapi'
 
 export function HeroBanner({ data }: { data?: HomepageData | null }) {
-  const subtitle = data?.heroSubtitle
+  const rawSubtitle = data?.heroSubtitle || "Mālama ʼAīna. Mālama Wai. Mālama Kai. Care for the Land.<br />Care for the Water. Care for the Sea."
+  let formattedSubtitle = rawSubtitle
+  if (formattedSubtitle.includes("Care for the Land.") && !formattedSubtitle.includes("<br") && !formattedSubtitle.includes("\n")) {
+    formattedSubtitle = formattedSubtitle.replace("Care for the Land.", "Care for the Land.<br />")
+  }
+
+  const rawTitle = data?.heroTitle || "Protecting Hawaiʻi’s Ocean,<br />From the Ground Up"
   
-  const rawTitle = data?.heroTitle
-  const title = rawTitle ? (
-    <span dangerouslySetInnerHTML={{ __html: rawTitle.replace(/\n/g, '<br />') }} />
+  let formattedTitleString = rawTitle
+  if (formattedTitleString.includes("Ocean,") && !formattedTitleString.includes("<br") && !formattedTitleString.includes("\n")) {
+    formattedTitleString = formattedTitleString.replace("Ocean,", "Ocean,<br />")
+  }
+
+  const title = formattedTitleString ? (
+    <span dangerouslySetInnerHTML={{ __html: formattedTitleString.replace(/\n/g, '<br />') }} />
   ) : null
 
-  const description = data?.heroDescription
+  const rawDescription = data?.heroDescription || "A Maui-Based 501(c)(3) Marine Conservation Nonprofit — Est. 2023"
+  let formattedDesc = rawDescription
+  if (formattedDesc.includes("Care for the Land.") && !formattedDesc.includes("<br") && !formattedDesc.includes("\n")) {
+    formattedDesc = formattedDesc.replace("Care for the Land.", "Care for the Land.<br />")
+  }
+
+  const description = formattedDesc ? (
+    <span dangerouslySetInnerHTML={{ __html: formattedDesc.replace(/\n/g, '<br />') }} />
+  ) : null
   const missionStatement = 'To protect, restore, and perpetuate native forage fish populations and their ecosystems through the integration of Native Hawaiian traditional ecological knowledge (TEK) and contemporary marine science.'
   
   const primaryBtnText = data?.heroPrimaryBtnText
@@ -48,16 +66,17 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
           {/* Left Column: Text */}
           <div className="lg:col-span-7 max-w-3xl">
             <div className="animate-hero-text">
-              {subtitle && (
+              {formattedSubtitle && (
                 <div className="inline-flex mb-8">
-                  <span className="whitespace-nowrap text-xs font-mono font-semibold tracking-[0.15em] uppercase text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(20,184,166,0.1)]">
-                    {subtitle}
-                  </span>
+                  <span 
+                    className="text-xs font-mono font-semibold tracking-[0.15em] uppercase text-teal-300 bg-teal-500/10 border border-teal-500/20 px-3.5 py-2 rounded-2xl shadow-[0_0_15px_rgba(20,184,166,0.1)] leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: formattedSubtitle.replace(/\n/g, '<br />') }}
+                  />
                 </div>
               )}
               
               {title && (
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-[1.1] tracking-tight mb-8 drop-shadow-lg">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-[1.15] tracking-tight mb-8 drop-shadow-lg">
                   {title}
                 </h1>
               )}
@@ -67,7 +86,6 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
                   {description}
                 </p>
               )}
-
               
               <div className="mb-10 max-w-2xl border-l-2 border-teal-400/80 bg-slate-950/35 py-3 pl-4 pr-5 backdrop-blur-sm sm:pl-5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-300">

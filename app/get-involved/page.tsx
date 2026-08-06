@@ -85,7 +85,7 @@ export default async function GetInvolvedPage() {
     pageData?.volActivity6
   ].filter(Boolean)
 
-  const volCtaBgImage = getStrapiMediaUrl(pageData?.volCtaBgImage)
+  const volCtaBgImage = getStrapiMediaUrl(pageData?.volCtaBgImage) || '/team_ocean_stewards.png'
   const volCtaTitle1 = pageData?.volCtaTitle1
   const volCtaTitleHighlight = pageData?.volCtaTitleHighlight
   const volCtaTitle2 = pageData?.volCtaTitle2
@@ -174,7 +174,11 @@ export default async function GetInvolvedPage() {
                 <Reveal key={idx} delay={idx * 80}>
                   <div className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm p-4 shadow-2xs hover:shadow-xs transition-all duration-300">
                     <div>
-                      <h4 className="font-serif text-sm font-bold text-white">{tier.name}</h4>
+                      <h4 className="font-serif text-sm font-bold text-white">
+                        {tier.name?.split(/(nehu)/gi).map((part, i) =>
+                          /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                        )}
+                      </h4>
                       <p className="text-xs text-slate-400 font-light mt-0.5">{tier.desc}</p>
                     </div>
                     <span className="text-base font-serif font-bold text-teal-400 shrink-0">{tier.amount}</span>

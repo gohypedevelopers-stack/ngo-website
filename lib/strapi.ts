@@ -1,4 +1,4 @@
-﻿export interface StrapiImage {
+export interface StrapiImage {
   id: number;
   url: string;
   alternativeText?: string;
@@ -216,6 +216,7 @@ export async function fetchCrisisSubPages(): Promise<CrisisSubPageData[]> {
     return [];
   }
 }
+
 export interface OurWorkPageData {
   prog1Eyebrow?: string;
   prog1Title?: string;
@@ -244,6 +245,12 @@ export interface OurWorkPageData {
   prog3Description?: string;
   prog3Card1Title?: string;
   prog3Card1Body?: string;
+  prog3Activity1?: string;
+  prog3Activity2?: string;
+  prog3Activity3?: string;
+  prog3Activity4?: string;
+  prog3Activity5?: string;
+  prog3Activity6?: string;
 
   methodTitle?: string;
   methodDescription?: string;
@@ -440,10 +447,7 @@ export async function fetchGetInvolvedPageData(): Promise<GetInvolvedPageData | 
       throw error;
     }
     console.error('Error fetching the get involved page data from Strapi:', error);
+    return null;
+  }
 }
-}
-
-
-
-
 

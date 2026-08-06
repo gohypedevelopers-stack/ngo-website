@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -6,7 +6,13 @@ import { Menu, X, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { fetchSiteSettings, USE_STRAPI } from "@/lib/strapi";
 
-const links = [
+type NavLink = {
+  label: string;
+  href: string;
+  dropdown?: { label: string; href: string }[];
+};
+
+const links: NavLink[] = [
   {
     label: "The Crisis",
     href: "/the-crisis",
@@ -63,9 +69,9 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || open
           ? theme === "light"
-            ? "border-b border-slate-200 bg-white/95 py-3 backdrop-blur-md shadow-sm"
-            : "border-b border-white/10 bg-slate-950/95 py-3 backdrop-blur-md shadow-lg"
-          : "border-b border-transparent bg-transparent py-5",
+            ? "border-b border-slate-200 bg-white/95 py-2 backdrop-blur-md shadow-sm"
+            : "border-b border-white/10 bg-slate-950/95 py-2 backdrop-blur-md shadow-lg"
+          : "border-b border-transparent bg-transparent py-3",
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 sm:px-8">
@@ -73,9 +79,9 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
           <Image
             src="/logo.png"
             alt="Hui Nehu Logo"
-            width={64}
-            height={64}
-            className="h-16 w-auto object-contain bg-white rounded-lg p-1 shadow-sm"
+            width={100}
+            height={100}
+            className="h-18 sm:h-20 md:h-25 w-auto object-contain bg-white rounded-xl p-1.5 shadow-md hover:scale-105 transition-transform"
             priority
             loading="eager"
           />
@@ -87,7 +93,7 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
               <a
                 href={link.href}
                 className={cn(
-                  "group relative whitespace-nowrap text-xs font-semibold tracking-wide transition-colors lg:text-sm flex items-center gap-1 py-2",
+                  "group relative whitespace-nowrap text-sm font-bold tracking-wide transition-colors lg:text-base xl:text-lg flex items-center gap-1 py-2",
                   theme === "light"
                     ? "text-slate-600 hover:text-slate-900"
                     : "text-slate-300 hover:text-white",
@@ -154,7 +160,7 @@ export function SiteNav({ theme = "dark" }: { theme?: "light" | "dark" }) {
             <a
               href="/donate"
               className={cn(
-                "hidden whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-all xl:inline-block xl:px-5 xl:text-sm backdrop-blur-sm",
+                "hidden whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold transition-all xl:inline-block xl:px-6 xl:text-base backdrop-blur-sm",
                 theme === "light"
                   ? "border-slate-900/20 bg-slate-900/5 text-slate-900 hover:bg-slate-900 hover:text-white"
                   : "border-white/20 bg-white/5 text-white hover:bg-white hover:text-slate-950",

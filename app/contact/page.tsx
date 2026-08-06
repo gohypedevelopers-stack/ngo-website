@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState } from "react";
+import Image from "next/image";
 import {
   Mail,
   Phone,
@@ -13,123 +13,137 @@ import {
   Users,
   Heart,
   ArrowRight,
-} from 'lucide-react'
-import { SiteNav } from '@/components/site-nav'
-import { SiteFooter } from '@/components/site-footer'
-import { Reveal } from '@/components/reveal'
+} from "lucide-react";
+import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
+import { Reveal } from "@/components/reveal";
 
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email Us',
-    value: 'aloha@huinehu.org',
-    href: 'mailto:aloha@huinehu.org',
-    desc: 'General inquiries & support',
-    color: 'text-teal-600 bg-teal-50 border-teal-200/60',
+    label: "Email Us",
+    value: "aloha@huinehu.org",
+    href: "mailto:aloha@huinehu.org",
+    desc: "General inquiries & support",
+    color: "text-teal-600 bg-teal-50 border-teal-200/60",
   },
   {
     icon: Phone,
-    label: 'Call Us',
-    value: '(808) 633 0336',
-    href: 'tel:8086330336',
-    desc: 'Mon – Fri, 9 AM – 5 PM HST',
-    color: 'text-cyan-600 bg-cyan-50 border-cyan-200/60',
+    label: "Call Us",
+    value: "(808) 633 0336",
+    href: "tel:8086330336",
+    desc: "Mon – Fri, 9 AM – 5 PM HST",
+    color: "text-cyan-600 bg-cyan-50 border-cyan-200/60",
   },
   {
     icon: MapPin,
-    label: 'Full Address',
-    value: 'Maui, Hawaiʻi',
-    href: '#',
-    desc: 'Kīhei Field Station, Maui County',
-    color: 'text-amber-600 bg-amber-50 border-amber-200/60',
+    label: "Visit Us",
+    value: "Maui, Hawaiʻi",
+    href: "#",
+    desc: "Kīhei Field Station, Maui County",
+    color: "text-amber-600 bg-amber-50 border-amber-200/60",
   },
   {
     icon: Clock,
-    label: 'Office Hours',
-    value: 'Mon – Fri, 9 AM – 5 PM',
-    href: '#',
-    desc: 'Hawaiʻi Standard Time (HST)',
-    color: 'text-blue-600 bg-blue-50 border-blue-200/60',
+    label: "Office Hours",
+    value: "Mon – Fri, 9 AM – 5 PM",
+    href: "#",
+    desc: "Hawaiʻi Standard Time (HST)",
+    color: "text-blue-600 bg-blue-50 border-blue-200/60",
   },
-]
+];
 
 const quickLinks = [
   {
     icon: Heart,
-    title: 'Donate',
-    desc: 'Support marine conservation with a tax-deductible gift.',
-    href: '/get-involved/investment-tiers',
-    color: 'text-rose-600 bg-rose-50',
+    title: "Donate",
+    desc: "Support marine conservation with a tax-deductible gift.",
+    href: "/get-involved/investment-tiers",
+    color: "text-rose-600 bg-rose-50",
   },
   {
     icon: Users,
-    title: 'Volunteer',
-    desc: 'Join a community workday or become a Kiaʻi Kai.',
-    href: '/get-involved/volunteer-workdays',
-    color: 'text-teal-600 bg-teal-50',
+    title: "Volunteer",
+    desc: "Join a community workday or become a Kiaʻi Kai.",
+    href: "/get-involved/volunteer-workdays",
+    color: "text-teal-600 bg-teal-50",
   },
   {
     icon: MessageCircle,
-    title: 'Partner With Us',
-    desc: 'Explore coalition and institutional partnerships.',
-    href: '/get-involved/partner-with-us',
-    color: 'text-cyan-600 bg-cyan-50',
+    title: "Partner With Us",
+    desc: "Explore coalition and institutional partnerships.",
+    href: "/get-involved/partner-with-us",
+    color: "text-cyan-600 bg-cyan-50",
   },
-]
+];
 
 const faqs = [
   {
-    q: 'How can I support Hui Nehu?',
-    a: 'You can donate, volunteer for community workdays, or partner with us as an organization. Visit our Get Involved page for all options.',
+    q: "How can I support Hui Nehu?",
+    a: "You can donate, volunteer for community workdays, or partner with us as an organization. Visit our Get Involved page for all options.",
   },
   {
-    q: 'Where are you located?',
-    a: 'Our field station is in Kīhei, Maui County, Hawaiʻi. We operate across the south and west Maui coastlines.',
+    q: "Where are you located?",
+    a: "Our field station is in Kīhei, Maui County, Hawaiʻi. We operate across the south and west Maui coastlines.",
   },
   {
-    q: 'Can I visit your field station?',
-    a: 'Yes! We welcome visitors by appointment. Reach out via email or phone to schedule a tour or join a community science event.',
+    q: "Can I visit your field station?",
+    a: "Yes! We welcome visitors by appointment. Reach out via email or phone to schedule a tour or join a community science event.",
   },
   {
-    q: 'How quickly do you respond to inquiries?',
-    a: 'We typically respond within 1–2 business days. For urgent matters, please call our office during business hours.',
+    q: "How quickly do you respond to inquiries?",
+    a: "We typically respond within 1–2 business days. For urgent matters, please call our office during business hours.",
   },
-]
+];
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent' | 'error' | 'duplicate'>('idle')
-  const [email, setEmail] = useState('')
-  const [lastSubmittedEmail, setLastSubmittedEmail] = useState('')
-  const [captchaValue, setCaptchaValue] = useState('')
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [formState, setFormState] = useState<
+    "idle" | "sending" | "sent" | "error" | "duplicate"
+  >("idle");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [lastSubmittedEmail, setLastSubmittedEmail] = useState("");
+  const [captchaValue, setCaptchaValue] = useState("");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    // Simulate captcha check
-    if (captchaValue.trim().toUpperCase() !== 'NEHU') {
-      setFormState('error')
-      return
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (captchaValue.trim().toUpperCase() !== "NEHU") {
+      setFormState("error");
+      return;
     }
 
-    // Simulate duplicate check
     if (email === lastSubmittedEmail) {
-      setFormState('duplicate')
-      return
+      setFormState("duplicate");
+      return;
     }
 
-    // Simulate failure case for a specific address
-    if (email.toLowerCase() === 'fail@ngo.org') {
-      setFormState('error')
-      return
-    }
+    setFormState("sending");
 
-    setFormState('sending')
-    setTimeout(() => {
-      setLastSubmittedEmail(email)
-      setFormState('sent')
-    }, 1200)
-  }
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, phone, subject, message }),
+      });
+
+      if (res.ok) {
+        setLastSubmittedEmail(email);
+        setFormState("sent");
+      } else {
+        setFormState("error");
+      }
+    } catch (err) {
+      console.error("Failed to send message:", err);
+      setFormState("error");
+    }
+  };
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-800 flex flex-col justify-between">
@@ -166,8 +180,8 @@ export default function ContactPage() {
               </h1>
 
               <p className="text-lg text-white font-light leading-relaxed max-w-xl mx-auto">
-                Whether you have a question, want to volunteer, or are interested
-                in partnering — our ʻohana is ready to connect.
+                Whether you have a question, want to volunteer, or are
+                interested in partnering — our ʻohana is ready to connect.
               </p>
             </div>
           </Reveal>
@@ -179,7 +193,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {contactInfo.map((item, i) => {
-              const IconComp = item.icon
+              const IconComp = item.icon;
               return (
                 <Reveal key={item.label} delay={i * 60}>
                   <a
@@ -202,7 +216,7 @@ export default function ContactPage() {
                     </p>
                   </a>
                 </Reveal>
-              )
+              );
             })}
           </div>
         </div>
@@ -221,11 +235,12 @@ export default function ContactPage() {
                       Send Us a Message
                     </h2>
                     <p className="text-sm text-slate-500 font-light">
-                      Fill out the form below and our team will get back to you soon.
+                      Fill out the form below and our team will get back to you
+                      soon.
                     </p>
                   </div>
 
-                  {formState === 'sent' ? (
+                  {formState === "sent" ? (
                     <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-200">
                         <CheckCircle className="h-8 w-8" />
@@ -234,19 +249,32 @@ export default function ContactPage() {
                         Thank You for Reaching Out!
                       </h3>
                       <p className="text-sm text-slate-600 font-light max-w-md leading-relaxed">
-                        We&apos;ve received your message and truly appreciate you taking the time to connect with us. Our team will review your inquiry and get back to you soon on your email <strong className="font-semibold text-slate-900">{email}</strong>.
+                        We&apos;ve received your message and truly appreciate
+                        you taking the time to connect with us. Our team will
+                        review your inquiry and get back to you soon on your
+                        email{" "}
+                        <strong className="font-semibold text-slate-900">
+                          {email}
+                        </strong>
+                        .
                       </p>
                       <p className="text-xs text-slate-500 font-light max-w-md leading-relaxed pt-2 border-t border-slate-200/60">
-                        While you wait, feel free to explore our ongoing campaigns or consider making a difference today by donating.
+                        While you wait, feel free to explore our ongoing
+                        campaigns or consider making a difference today by
+                        donating.
                       </p>
                       <p className="text-xs font-semibold text-teal-650 pt-2">
                         — The Hui-NehuTeam
                       </p>
                       <button
                         onClick={() => {
-                          setFormState('idle')
-                          setEmail('')
-                          setCaptchaValue('')
+                          setFormState("idle");
+                          setName("");
+                          setEmail("");
+                          setPhone("");
+                          setSubject("");
+                          setMessage("");
+                          setCaptchaValue("");
                         }}
                         className="mt-6 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors underline underline-offset-4"
                       >
@@ -255,13 +283,13 @@ export default function ContactPage() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
-                      {formState === 'error' && (
+                      {formState === "error" && (
                         <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs font-medium text-rose-800">
-                          Something went wrong. Please try again or email us directly at help@ngo.org
+                          Failed to send email. Please verify your captcha ("NEHU") and try again, or email us directly at huinehuorg@gmail.com
                         </div>
                       )}
 
-                      {formState === 'duplicate' && (
+                      {formState === "duplicate" && (
                         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs font-medium text-amber-800">
                           It looks like you already submitted this. We have it!
                         </div>
@@ -279,6 +307,8 @@ export default function ContactPage() {
                             id="contact-name"
                             type="text"
                             required
+                            value={name || ""}
+                            onChange={(e) => setName(e.target.value)}
                             placeholder="Your full name"
                             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
                           />
@@ -294,7 +324,7 @@ export default function ContactPage() {
                             id="contact-email"
                             type="email"
                             required
-                            value={email}
+                            value={email || ""}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="you@example.com"
                             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
@@ -313,6 +343,8 @@ export default function ContactPage() {
                           <input
                             id="contact-phone"
                             type="tel"
+                            value={phone || ""}
+                            onChange={(e) => setPhone(e.target.value)}
                             placeholder="(808) 555-0000"
                             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
                           />
@@ -328,13 +360,16 @@ export default function ContactPage() {
                           <select
                             id="contact-subject"
                             required
-                            defaultValue=""
+                            value={subject || ""}
+                            onChange={(e) => setSubject(e.target.value)}
                             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
                           >
                             <option value="" disabled>
                               Select a topic…
                             </option>
-                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="General Inquiry">
+                              General Inquiry
+                            </option>
                             <option value="Volunteer">Volunteer</option>
                             <option value="Donate">Donate</option>
                             <option value="Partnership">Partnership</option>
@@ -355,6 +390,8 @@ export default function ContactPage() {
                           id="contact-message"
                           required
                           rows={4}
+                          value={message || ""}
+                          onChange={(e) => setMessage(e.target.value)}
                           placeholder="Tell us how we can help…"
                           className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all resize-none"
                         />
@@ -365,13 +402,14 @@ export default function ContactPage() {
                           htmlFor="contact-captcha"
                           className="text-xs font-semibold text-slate-700 uppercase tracking-wider"
                         >
-                          Captcha field (Please enter &ldquo;NEHU&rdquo; to verify you are human) *
+                          Captcha field (Please enter &ldquo;<em className="italic">NEHU</em>&rdquo; to
+                          verify you are human) *
                         </label>
                         <input
                           id="contact-captcha"
                           type="text"
                           required
-                          value={captchaValue}
+                          value={captchaValue || ""}
                           onChange={(e) => setCaptchaValue(e.target.value)}
                           placeholder="Type NEHU here"
                           className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 focus:outline-none transition-all"
@@ -380,10 +418,10 @@ export default function ContactPage() {
 
                       <button
                         type="submit"
-                        disabled={formState === 'sending'}
+                        disabled={formState === "sending"}
                         className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-teal-650 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        {formState === 'sending' ? (
+                        {formState === "sending" ? (
                           <>
                             <svg
                               className="h-4 w-4 animate-spin"
@@ -452,7 +490,7 @@ export default function ContactPage() {
                     Quick Links
                   </h3>
                   {quickLinks.map((link) => {
-                    const IconComp = link.icon
+                    const IconComp = link.icon;
                     return (
                       <a
                         key={link.title}
@@ -474,7 +512,7 @@ export default function ContactPage() {
                           </p>
                         </div>
                       </a>
-                    )
+                    );
                   })}
                 </div>
               </Reveal>
@@ -513,8 +551,8 @@ export default function ContactPage() {
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
                         openFaq === i
-                          ? 'border-teal-500 bg-teal-50 text-teal-600 rotate-180'
-                          : 'border-slate-200 text-slate-400'
+                          ? "border-teal-500 bg-teal-50 text-teal-600 rotate-180"
+                          : "border-slate-200 text-slate-400"
                       }`}
                     >
                       <svg
@@ -534,7 +572,9 @@ export default function ContactPage() {
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      openFaq === i ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                      openFaq === i
+                        ? "max-h-40 opacity-100"
+                        : "max-h-0 opacity-0"
                     }`}
                   >
                     <p className="px-6 pb-5 text-sm text-slate-500 font-light leading-relaxed">
@@ -550,5 +590,5 @@ export default function ContactPage() {
 
       <SiteFooter />
     </main>
-  )
+  );
 }

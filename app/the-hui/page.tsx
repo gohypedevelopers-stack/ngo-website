@@ -25,7 +25,7 @@ export default async function TheHuiPage() {
   const storyEyebrow = pageData?.storyEyebrow
   const storyTitle = pageData?.storyTitle
   const storyProverb = pageData?.storyProverb
-  const storyImage = getStrapiMediaUrl(pageData?.storyImage)
+  const storyImage = getStrapiMediaUrl(pageData?.storyImage) || '/team_ocean_stewards.png'
   const storyCard1Title = pageData?.storyCard1Title
   const storyCard1Body = pageData?.storyCard1Body
   const storyCard2Title = pageData?.storyCard2Title
@@ -132,8 +132,14 @@ export default async function TheHuiPage() {
                   {storyTitle}
                 </h2>
  
-                <p className="mt-4 text-lg font-serif italic text-teal-200 leading-relaxed font-light">
-                  {storyProverb}
+                <p className="mt-4 text-xl sm:text-xl font-serif italic text-teal-200 leading-relaxed font-light">
+                  {storyProverb?.includes('The land is chief')
+                    ? <>
+                        {storyProverb.split('The land is chief')[0]}
+                        <br />
+                        The land is chief{storyProverb.split('The land is chief')[1]}
+                      </>
+                    : storyProverb}
                 </p>
               </Reveal>
             </div>
@@ -160,7 +166,9 @@ export default async function TheHuiPage() {
               <div className="h-full rounded-2xl border border-slate-850 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
                 <h3 className="font-serif text-lg font-bold text-white mb-3 border-b border-slate-800 pb-3">{storyCard1Title}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed font-light">
-                  {storyCard1Body}
+                  {storyCard1Body?.split(/(nehu)/gi).map((part, i) =>
+                    /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                  )}
                 </p>
               </div>
             </Reveal>
@@ -170,7 +178,9 @@ export default async function TheHuiPage() {
               <div className="h-full rounded-2xl border border-slate-850 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
                 <h3 className="font-serif text-lg font-bold text-white mb-3 border-b border-slate-800 pb-3">{storyCard2Title}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed font-light">
-                  {storyCard2Body}
+                  {storyCard2Body?.split(/(nehu)/gi).map((part, i) =>
+                    /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                  )}
                 </p>
               </div>
             </Reveal>
@@ -180,7 +190,9 @@ export default async function TheHuiPage() {
               <div className="h-full rounded-2xl border border-slate-850 bg-slate-900/40 backdrop-blur-sm p-6 shadow-xs hover:shadow-md transition-all duration-300">
                 <h3 className="font-serif text-lg font-bold text-white mb-3 border-b border-slate-800 pb-3">{storyCard3Title}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed font-light">
-                  {storyCard3Body}
+                  {storyCard3Body?.split(/(nehu)/gi).map((part, i) =>
+                    /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                  )}
                 </p>
               </div>
             </Reveal>
@@ -193,7 +205,7 @@ export default async function TheHuiPage() {
          ========================================================================= */}
       <section id="team" className="bg-white py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="max-w-3xl mb-16 space-y-4">
+          <div className="max-w-4xl mb-16 space-y-4">
             <Reveal>
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-600 border border-teal-100">
@@ -206,7 +218,7 @@ export default async function TheHuiPage() {
               <h2 className="font-serif text-3xl font-bold leading-tight text-slate-900 sm:text-4xl tracking-tight">
                 {teamTitle}
               </h2>
-              <p className="mt-4 text-sm text-slate-500 font-light leading-relaxed max-w-2xl">
+              <p className="mt-4 text-sm text-slate-500 font-light leading-relaxed">
                 {teamDescription}
               </p>
             </Reveal>
@@ -242,8 +254,24 @@ export default async function TheHuiPage() {
               </div>
             </Reveal>
 
-            {/* Open Role 1 */}
+            {/* Open Role 5 · Director of Operations */}
             <Reveal delay={200}>
+              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="space-y-2">
+                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
+                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
+                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[4].role}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[4].desc}</p>
+                </div>
+                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                  <span>Operations</span>
+                  <span>Open</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Open Role 1 */}
+            <Reveal delay={300}>
               <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                 <div className="space-y-2">
                   <div className="h-1 w-12 rounded-full bg-teal-500/80" />
@@ -259,7 +287,7 @@ export default async function TheHuiPage() {
             </Reveal>
 
             {/* Open Role 2 */}
-            <Reveal delay={300}>
+            <Reveal delay={400}>
               <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                 <div className="space-y-2">
                   <div className="h-1 w-12 rounded-full bg-teal-500/80" />
@@ -275,7 +303,7 @@ export default async function TheHuiPage() {
             </Reveal>
 
             {/* Open Role 3 */}
-            <Reveal delay={400}>
+            <Reveal delay={500}>
               <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                 <div className="space-y-2">
                   <div className="h-1 w-12 rounded-full bg-teal-500/80" />
@@ -291,7 +319,7 @@ export default async function TheHuiPage() {
             </Reveal>
 
             {/* Open Role 4 */}
-            <Reveal delay={500}>
+            <Reveal delay={600}>
               <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                 <div className="space-y-2">
                   <div className="h-1 w-12 rounded-full bg-teal-500/80" />
@@ -301,22 +329,6 @@ export default async function TheHuiPage() {
                 </div>
                 <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
                   <span>Program track</span>
-                  <span>Open</span>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Open Role 5 · Director of Operations */}
-            <Reveal delay={600}>
-              <div className="h-full min-h-[210px] rounded-2xl border border-dashed border-slate-300 bg-gradient-to-b from-white to-slate-50/70 p-6 flex flex-col justify-between shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-                <div className="space-y-2">
-                  <div className="h-1 w-12 rounded-full bg-teal-500/80" />
-                  <span className="inline-flex rounded-md bg-teal-50/80 px-2 py-0.5 text-[9px] font-mono tracking-widest text-teal-800 uppercase border border-teal-200">Open Role</span>
-                  <h3 className="font-serif text-lg font-bold leading-snug text-slate-900">{openRoles[4].role}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light max-w-[28ch]">{openRoles[4].desc}</p>
-                </div>
-                <div className="pt-4 border-t border-slate-200/70 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-slate-400">
-                  <span>Operations</span>
                   <span>Open</span>
                 </div>
               </div>

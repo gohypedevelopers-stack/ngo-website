@@ -147,11 +147,13 @@ function formatSolutionBody(body: string) {
         return <em key={partIndex}>{part.slice(1, -1)}</em>
       }
 
-      return part.split(/(whole-system)/g).map((text, textIndex) =>
+      return part.split(/(whole-system|Nehu)/g).map((text, textIndex) =>
         text === 'whole-system' ? (
           <span key={`${partIndex}-${textIndex}`} className="font-bold italic">
             {text}
           </span>
+        ) : text === 'Nehu' ? (
+          <em key={`${partIndex}-${textIndex}`}>{text}</em>
         ) : (
           text
         ),

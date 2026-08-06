@@ -102,7 +102,9 @@ export function AskSection() {
                 </div>
                 
                 <h3 className="mb-3 font-serif text-lg font-bold text-teal-deep">
-                  {tier.name}
+                  {tier.name?.split(/(nehu)/gi).map((part, i) =>
+                    /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                  )}
                 </h3>
                 
                 <div className="mb-6 flex items-baseline gap-1 text-3xl font-bold text-teal-deep">

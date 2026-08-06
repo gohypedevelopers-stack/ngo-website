@@ -129,7 +129,13 @@ export default async function OurWorkPage() {
                 </div>
                 
                 <h2 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl tracking-tight">
-                  {prog1Headline}
+                  {prog1Headline?.includes('We Restore the Entire')
+                    ? <>
+                        {prog1Headline.split('We Restore the Entire')[0]}
+                        <br />
+                        We Restore the Entire{prog1Headline.split('We Restore the Entire')[1]}
+                      </>
+                    : prog1Headline}
                 </h2>
 
                 <p className="mt-6 text-sm leading-relaxed text-slate-300 font-light max-w-2xl">
@@ -265,7 +271,7 @@ export default async function OurWorkPage() {
                 <div className="relative z-10 space-y-2">
                   <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-600 uppercase">{prog2MetricLabel}</span>
                   <div className="flex items-baseline text-5xl font-serif font-bold text-teal-600">
-                    <AnimatedCounter value={prog2MetricValue} suffix={prog2MetricSuffix} />
+                    <AnimatedCounter value={prog2MetricValue ?? 0} suffix={prog2MetricSuffix} />
                   </div>
                   <span className="text-[10px] font-semibold tracking-widest uppercase text-slate-500 block">{prog2MetricDesc}</span>
                   <p className="text-sm font-light text-slate-650 leading-relaxed mt-2">{prog2MetricDetail}</p>
@@ -309,7 +315,7 @@ export default async function OurWorkPage() {
                   {prog3Image && (
                     <Image
                       src={prog3Image}
-                      alt={prog3Title}
+                      alt={prog3Title || 'Program 3'}
                       fill
                       className="object-cover object-center"
                     />
@@ -384,7 +390,7 @@ export default async function OurWorkPage() {
                   {methodImage && (
                     <Image
                       src={methodImage}
-                      alt={methodTitle}
+                      alt={methodTitle || 'Methodology'}
                       fill
                       className="object-cover object-center"
                     />
@@ -419,7 +425,11 @@ export default async function OurWorkPage() {
               <Reveal delay={150}>
                 <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
                   <h3 className="font-serif text-lg font-bold text-slate-900 mb-2">{methodCard1Title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed font-light">{methodCard1Body}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed font-light">
+                    {methodCard1Body?.split(/(nehu)/gi).map((part, i) =>
+                      /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                    )}
+                  </p>
                 </div>
               </Reveal>
 
@@ -427,7 +437,7 @@ export default async function OurWorkPage() {
                 <div className="rounded-2xl border border-teal-100 bg-teal-50/30 p-6 text-slate-900 relative overflow-hidden flex flex-col justify-center">
                   <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-600 uppercase mb-1">{methodMetricLabel}</span>
                   <div className="flex items-baseline text-4xl font-serif font-bold text-teal-600">
-                    <AnimatedCounter value={methodMetricValue} suffix={methodMetricSuffix} />
+                    <AnimatedCounter value={methodMetricValue ?? 70} suffix={methodMetricSuffix} />
                   </div>
                   <span className="text-[10px] font-semibold tracking-widest uppercase text-slate-500 block">{methodMetricDesc}</span>
                   <p className="text-xs font-light text-slate-600 leading-relaxed mt-2">{methodMetricDetail}</p>

@@ -155,7 +155,11 @@ export default async function InvestmentTiersPage() {
               <Reveal key={tier.name} delay={index * 100}>
                 <div className="border border-slate-200 bg-white rounded-2xl p-8 hover:shadow-md hover:border-teal-550/20 transition-all flex flex-col justify-between h-full shadow-xs">
                   <div>
-                    <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">{tier.name}</h3>
+                    <h3 className="text-lg font-serif font-bold text-slate-900 mb-2">
+                      {tier.name?.split(/(nehu)/gi).map((part, i) =>
+                        /^nehu$/i.test(part) ? <em key={i}>{part}</em> : part
+                      )}
+                    </h3>
                     <div className="text-3xl font-bold text-teal-650 mb-4">{tier.price}</div>
                     <p className="text-sm font-light text-slate-600 leading-relaxed mb-6 border-b border-slate-100 pb-4">
                       {tier.desc}
