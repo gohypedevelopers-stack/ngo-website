@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     const adminMailOptions = {
       from: `"Hui Nehu Contact Form" <${user}>`,
       replyTo: email,
-      to: user,
+      to: process.env.CONTACT_EMAIL || 'jay.carpio@me.com',
       subject: `[Website Inquiry] ${subject || 'New Contact Form Submission'} from ${name}`,
       text: `
 Hui Nehu Website - Contact Form Submission

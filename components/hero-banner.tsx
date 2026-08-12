@@ -40,24 +40,26 @@ export function HeroBanner({ data }: { data?: HomepageData | null }) {
   const tertiaryBtnText = data?.heroTertiaryBtnText
   const tertiaryBtnLink = data?.heroTertiaryBtnLink
 
-  const bannerImgUrl = getStrapiMediaUrl(data?.heroBannerImage)
-  const scubaDiverImgUrl = getStrapiMediaUrl(data?.heroScubaDiverImage)
-  const manufacturingImgUrl = getStrapiMediaUrl(data?.heroManufacturingImage)
+  const bannerImgUrl = getStrapiMediaUrl(data?.heroBannerImage) || '/banner.png'
+  const scubaDiverImgUrl = getStrapiMediaUrl(data?.heroScubaDiverImage) || '/underwate.png'
+  const manufacturingImgUrl = getStrapiMediaUrl(data?.heroManufacturingImage) || '/ahupuaa_restoration.png'
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative min-h-[90vh] flex items-center bg-slate-950 overflow-hidden">
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         {bannerImgUrl && (
           <Image
             src={bannerImgUrl}
             alt={data?.heroBannerImage?.alternativeText || "Banner Image"}
             fill
             priority
-            className="object-cover object-center"
+            quality={95}
+            sizes="100vw"
+            className="object-cover object-center w-full h-full min-w-full min-h-full"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-900/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-slate-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/30 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 py-24 sm:py-32">

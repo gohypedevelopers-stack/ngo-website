@@ -135,7 +135,7 @@ export default function DonatePage() {
               </h1>
 
               <p className="text-lg text-white font-light leading-relaxed max-w-xl mx-auto">
-                Your contribution directly funds community-led science, coral restoration, and watershed health across Maui.
+                Your contribution funds community led science, forage fish revitalization, ecosystem restoration and watershed health throughout Maui Nui, Hawaii and Globally.
               </p>
             </div>
           </Reveal>

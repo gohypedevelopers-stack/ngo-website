@@ -22,8 +22,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "aloha@huinehu.org",
-    href: "mailto:aloha@huinehu.org",
+    value: "jay.carpio@me.com",
+    href: "mailto:jay.carpio@me.com",
     desc: "General inquiries & support",
     color: "text-teal-600 bg-teal-50 border-teal-200/60",
   },
@@ -37,7 +37,7 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    label: "Visit Us",
+    label: "Full Address",
     value: "Maui, Hawaiʻi",
     href: "#",
     desc: "Kīhei Field Station, Maui County",
@@ -285,7 +285,7 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                       {formState === "error" && (
                         <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs font-medium text-rose-800">
-                          Failed to send email. Please verify your captcha ("NEHU") and try again, or email us directly at huinehuorg@gmail.com
+                          Failed to send email. Please verify your captcha ("NEHU") and try again, or email us directly at jay.carpio@me.com
                         </div>
                       )}
 

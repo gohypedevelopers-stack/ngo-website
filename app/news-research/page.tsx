@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/reveal'
@@ -39,20 +40,37 @@ export default function NewsResearchPage() {
         </div>
       </section>
 
-      {/* Coming Soon Section */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
-        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+      {/* Coming Soon Section with HM4 Image in Background */}
+      <section className="py-24 bg-slate-50 border-t border-slate-200">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
-            <div className="rounded-3xl border border-dashed border-teal-200 bg-white px-8 py-16 text-center shadow-xs">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-teal-600 mb-4">
-                Coming Soon
-              </p>
-              <h2 className="font-serif text-3xl font-bold text-slate-900 sm:text-4xl">
-                Reports, datasets, and research updates are being prepared.
-              </h2>
-              <p className="mt-4 text-sm sm:text-base font-light leading-relaxed text-slate-600 max-w-2xl mx-auto">
-                The Nā Kiaʻi Kai Dataset Console will house standardized environmental data, monitoring summaries, and publication-ready research material.
-              </p>
+            <div className="relative overflow-hidden rounded-3xl border border-teal-200/60 bg-white py-24 px-8 sm:py-36 sm:px-16 text-center shadow-xl group min-h-[480px] flex flex-col justify-center items-center">
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src="/HM4.jpg"
+                  alt="News and Research - HM4"
+                  fill
+                  priority
+                  quality={95}
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  className="object-cover object-center opacity-95 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/50 to-transparent" />
+              </div>
+
+              {/* Text Content */}
+              <div className="relative z-10 max-w-3xl mx-auto space-y-5">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-teal-700 font-mono">
+                  Coming Soon
+                </p>
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                  Reports, datasets, and research updates are being prepared.
+                </h2>
+                <p className="text-base sm:text-lg font-light leading-relaxed text-slate-800 max-w-2xl mx-auto">
+                  The Nā Kiaʻi Kai Dataset Console will house standardized environmental data, monitoring summaries, and publication-ready research material.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

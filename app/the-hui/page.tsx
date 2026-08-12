@@ -38,12 +38,19 @@ export default async function TheHuiPage() {
   const teamTitle = pageData?.teamTitle
   const teamDescription = pageData?.teamDescription
   
-  const leader1Name = pageData?.leader1Name
-  const leader1Role = pageData?.leader1Role
-  const leader1Desc = pageData?.leader1Desc
+  const leader1Name = pageData?.leader1Name || 'James J.K. Carpio'
+  const leader1Role = 'Founder / CEO & Director'
+  const rawLeader1Desc = pageData?.leader1Desc || ''
+  const leader1Desc = (rawLeader1Desc.includes('Executive Director') || rawLeader1Desc.includes('Maker of Miracles') || rawLeader1Desc === 'Founder / CEO & Director')
+    ? ''
+    : rawLeader1Desc
   const leader2Name = pageData?.leader2Name === 'Nakoa Goo' ? 'Dr. Nakoa Goo' : pageData?.leader2Name || 'Dr. Nakoa Goo'
-  const leader2Desc = pageData?.leader2Desc || 'Treasurer'
-  const leader2Role = pageData?.leader2Role
+  const leader2Role = 'Co-Founder / Vice-Director'
+  const rawLeader2Desc = pageData?.leader2Desc || ''
+  const leader2Desc = (rawLeader2Desc === 'Treasurer' || rawLeader2Desc.includes('VICE PRESIDENT') || rawLeader2Desc.includes('CHIEF SCIENCE OFFICER')) ? '' : rawLeader2Desc
+  
+  const leader3Name = pageData?.leader3Name || 'Ali Napoleon'
+  const leader3Role = pageData?.leader3Role || 'Co-Founder / Director of Technology Strategy & Field Systems'
   const openRoles = [
     {
       role: 'Program Coordinator',
@@ -234,9 +241,11 @@ export default async function TheHuiPage() {
                 </div>
                 <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">{leader1Name}</h3>
                 <span className="text-[11px] font-mono tracking-wider text-slate-400 block mb-3 uppercase">{leader1Role}</span>
-                <p className="text-xs text-slate-500 leading-relaxed font-light">
-                  {leader1Desc}
-                </p>
+                {leader1Desc ? (
+                  <p className="text-xs text-slate-500 leading-relaxed font-light">
+                    {leader1Desc}
+                  </p>
+                ) : null}
               </div>
             </Reveal>
 
@@ -248,9 +257,22 @@ export default async function TheHuiPage() {
                 </div>
                 <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">{leader2Name}</h3>
                 <span className="text-[11px] font-mono tracking-wider text-slate-400 block mb-3 uppercase">{leader2Role}</span>
-                <p className="text-xs text-slate-500 leading-relaxed font-light">
-                  {leader2Desc}
-                </p>
+                {leader2Desc ? (
+                  <p className="text-xs text-slate-500 leading-relaxed font-light">
+                    {leader2Desc}
+                  </p>
+                ) : null}
+              </div>
+            </Reveal>
+
+            {/* Leader 3: Ali Napoleon */}
+            <Reveal delay={150}>
+              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-all duration-300">
+                <div className="h-12 w-12 rounded-full bg-teal-50 flex items-center justify-center text-teal-700 border border-teal-100 mb-4">
+                  <User className="h-6 w-6" />
+                </div>
+                <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">{leader3Name}</h3>
+                <span className="text-[11px] font-mono tracking-wider text-slate-400 block mb-3 uppercase">{leader3Role}</span>
               </div>
             </Reveal>
 

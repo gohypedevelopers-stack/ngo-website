@@ -14,31 +14,49 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
     'Hui Nehu is the first community-led, ***whole-system*** marine conservation organization in Hawaiʻi, with the expressed mission to revitalize its forage fish, as well as nearshore and fisheries populations. Our daily goal is to collaborate. We don’t just restore coral — we restore the entire food web. Our model is the ahupuaʻa made operational.'
   const imgUrl = getStrapiMediaUrl(data?.solutionImage) || ''
 
-  const programs = [
+  const rawPrograms = [
     {
       emoji: data?.solutionProg1Emoji,
       title: data?.solutionProg1Title,
       body: data?.solutionProg1Body,
+      image: getStrapiMediaUrl(data?.solutionProg1Image) || '/HM3.jpg',
     },
     {
       emoji: data?.solutionProg2Emoji,
       title: data?.solutionProg2Title,
       body: data?.solutionProg2Body,
+      image: getStrapiMediaUrl(data?.solutionProg2Image),
     },
     {
       emoji: data?.solutionProg3Emoji,
       title: data?.solutionProg3Title,
       body: data?.solutionProg3Body,
+      image: getStrapiMediaUrl(data?.solutionProg3Image),
     },
   ].filter(p => p.title || p.body);
 
+  const defaultPrograms = [
+    {
+      emoji: '🪸',
+      title: "Habitat, Loko I'a Revitalization & Restoration, and Fishing Ko'a",
+      body: "Restoring estuarine habitats, coral reefs, and traditional fishponds. Propagating thermal-tolerant coral and native limu.",
+      image: '/HM3.jpg',
+    },
+    {
+      emoji: '🔬',
+      title: "Nā Kiaʻi Kai Community Science",
+      body: "Training local volunteers in fish surveys, limu monitoring, and water quality testing to produce publication-quality datasets.",
+      image: undefined,
+    },
+  ];
 
+  const programs = rawPrograms.length > 0 ? rawPrograms : defaultPrograms;
 
   return (
     <section id="solution" className="relative overflow-hidden bg-white px-5 py-20 sm:px-8 sm:py-28">
       <div className="relative mx-auto max-w-7xl">
         
-        {/* PART 1: Three Program Overview Cards */}
+        {/* PART 1: Program Overview Cards */}
         <div className="mb-20">
           <div className="max-w-3xl mb-12">
             <Reveal>
@@ -53,25 +71,47 @@ export function SolutionSection({ data }: { data?: HomepageData | null }) {
             </Reveal>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className={`grid gap-6 ${
+            programs.length === 2 
+              ? 'grid-cols-1 md:grid-cols-2' 
+              : programs.length === 1 
+              ? 'grid-cols-1 max-w-2xl mx-auto' 
+              : 'grid-cols-1 md:grid-cols-3'
+          }`}>
             {programs.map((p, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="group h-full flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1 hover:border-teal-500/30 hover:shadow-md hover:bg-gradient-to-b hover:from-white hover:to-teal-50/10">
-                  <div>
-                    {/* Emoji/Number Circle Container */}
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 border border-teal-100/40 text-teal-700 font-serif text-lg font-bold shadow-sm transition-all duration-350 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 group-hover:scale-110 mb-5">
-                      {p.emoji}
+                <div className="group relative h-full flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 sm:p-7 shadow-sm shadow-slate-100/50 transition-all duration-300 hover:-translate-y-1 hover:border-teal-500/30 hover:shadow-md overflow-hidden">
+                  
+                  {/* Card Background Image */}
+                  {p.image && (
+                    <div className="absolute inset-0 z-0 pointer-events-none">
+                      <Image
+                        src={p.image}
+                        alt={p.title || "Program background image"}
+                        fill
+                        className="object-cover object-center opacity-85 transition-all duration-700 group-hover:scale-105 group-hover:opacity-95"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/50 to-white/20" />
                     </div>
-                    {p.title && (
-                      <h3 className="mb-2 font-serif text-lg font-bold text-teal-deep transition-colors duration-300 group-hover:text-teal-bright">
-                        {p.title}
-                      </h3>
-                    )}
-                    {p.body && (
-                      <p className="text-sm leading-relaxed text-slate-600 font-light">
-                        {p.body}
-                      </p>
-                    )}
+                  )}
+
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div>
+                      {/* Emoji/Number Circle Container */}
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50/90 border border-teal-100/60 text-teal-700 font-serif text-lg font-bold shadow-xs backdrop-blur-xs transition-all duration-350 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 group-hover:scale-110 mb-5">
+                        {p.emoji}
+                      </div>
+                      {p.title && (
+                        <h3 className="mb-2 font-serif text-lg font-bold text-teal-deep transition-colors duration-300 group-hover:text-teal-bright">
+                          {p.title}
+                        </h3>
+                      )}
+                      {p.body && (
+                        <p className="text-sm leading-relaxed text-slate-700 font-light">
+                          {p.body}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </Reveal>
